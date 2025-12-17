@@ -1,0 +1,127 @@
+@import "tailwindcss";
+
+.main-container {
+  max-width: 1654px;
+  margin: auto;
+}
+
+:root {
+  --primary: #6346FA;
+  --secondary: #1B1B2B;
+}
+
+body {
+  font-family: var(--font-kodchasan-medium);
+}
+
+.cus_container {
+  max-width: 1670px;
+  margin: auto;
+  padding-inline: 4%;
+}
+
+.text-primary {
+  color: var(--primary);
+}
+
+.bg-primary {
+  background-color: var(--primary);
+}
+
+.border-primary {
+  border-color: var(--primary);
+}
+
+
+.text-secondary {
+  color: var(--secondary);
+}
+
+.bg-secondary {
+  background-color: var(--secondary);
+}
+
+.border-secondary {
+  border-color: var(--secondary);
+}
+
+
+.main-bg {
+  background: #F7F7F5;
+  background: linear-gradient(0deg, rgba(247, 247, 245, 1) 0%, rgba(221, 214, 255, 1) 100%);
+}
+
+.bg-purple-gradient {
+  background: radial-gradient(circle at top,
+      #d1b3ff 0%,
+      #c7a0ff 40%,
+      #ffffff 90%);
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  color: #6346FA !important;
+
+  /* arrow color */
+  width: 40px;
+  height: 40px;
+}
+
+.swiper-button-next {
+  right: -35px !important;
+  /* Right arrow ko bahar push */
+}
+
+.swiper-button-prev {
+  left: -35px !important;
+  /* Left arrow ko bahar push */
+}
+
+
+@keyframes bounceBall {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-25px);
+  }
+}
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+ 
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+ 
+.animate-slideDown {
+  animation: slideDown 0.25s ease-out;
+}
+.tool1 {
+  animation: bounceBall 1.8s infinite ease-in-out;
+}
+
+@media (max-width: 1520px) {
+  .banner_button {
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 375px) and (max-width: 1024px) {
+  .screcth-relative {
+    position: relative;
+  }
+}
+
+@media screen and (max-width:768px) {
+   br {
+    display: none;
+   }
+}
