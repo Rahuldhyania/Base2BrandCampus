@@ -27,12 +27,6 @@ const WhyChoose = ({ featuresNumbered }) => {
                             title={'<span class="text-primary">Why Choose Our Institute?</span> <br/>'}
                             text_color={'text-secondary'}
                         />
-                        {/* <div className='pt-3'>
-                            <Description
-                                description={'Practical, real-world training by US logistics experts.'}
-                                text_color={'text-secondary'}
-                            />
-                        </div> */}
                     </div>
                 </div>
 
@@ -43,7 +37,6 @@ const WhyChoose = ({ featuresNumbered }) => {
                             className="relative bg-[#6346FA] rounded-2xl p-6 text-white overflow-hidden"
                             style={{ minHeight: '180px' }}
                         >
-                            {/* Circle background image corner-to-corner */}
                             <div className="absolute inset-0 pointer-events-none">
                                 <Image
                                     src={circleBg}
@@ -52,21 +45,14 @@ const WhyChoose = ({ featuresNumbered }) => {
                                     className="object-cover opacity-100"
                                 />
                             </div>
-
-                            {/* Number text */}
                             <div className="text-2xl w-[55px] h-[55px] bg-white rounded-full flex justify-center items-center text-black font-bold mb-4 relative z-10">
                                 {number}
                             </div>
-
-                            {/* Title */}
                             <h3 className="text-lg 2xl:text-2xl  mb-2 relative z-10">{title}</h3>
-
-                            {/* Description */}
                             <p className="text-sm 2xl:text-[17px] md:w-[85%] leading-relaxed relative z-10">{description}</p>
                         </div>
                     ))}
                 </div>
-
                 <div className='flex items-center justify-center flex-col lg:flex-row gap-4 lg:gap-10 pt-4'>
                     <div className='flex items-center gap-5'>
                         <Image

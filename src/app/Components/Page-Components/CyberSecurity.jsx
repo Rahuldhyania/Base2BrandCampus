@@ -13,6 +13,7 @@ import cybersecurity_leftbanner from "../../../../public/images/cybersecurity_le
 import cybersecurity_rightbanner from "../../../../public/images/cybersecurity_rightbanner.webp";
 import iot_leftposter from "../../../../public/images/iot_leftposter.webp";
 import CourseSyllabus from "../Courses/CourseSyllabus";
+import Professionalskill from "./Professionalskill";
 const faq_data = [
     {
         q: "Is this course good for beginners?",
@@ -327,6 +328,8 @@ const CyberSecurity = () => {
             />
 
             <CourseCareerSupport />
+            
+
             <WhyChoose featuresNumbered={featuresNumbered} />
             <div className="main-bg">
                 <CanJoin conjoin_data={conjoin_data} />

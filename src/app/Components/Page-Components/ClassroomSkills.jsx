@@ -44,7 +44,7 @@ const classskill = [
 ]
 const ClassroomSkills = () => {
     return (
-        <div className='main-bg'>
+        <div className=''>
             <div className="cus_container py-12 md:py-16">
                 <div>
                     <div className="relative">
@@ -70,7 +70,7 @@ const ClassroomSkills = () => {
                         />
                     </div>
                 </div>
-                <div className='pt-12 grid grid-cols-3 gap-6'>
+                <div className='pt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
                     {
                         classskill.map((data, index) => (
                             <div key={index} className='flex items-center gap-2 bg-white py-4 2xl:py-5 px-6 2xl:px-8 shadow-lg rounded-2xl'>

@@ -6,10 +6,12 @@ import Description from '../UiUx/Description'
 import Certificate from '../Page-Components/Certificate'
 import Buttons from '../UiUx/Buttons'
 import Youtubevideo from '../Page-Components/Youtubevideo'
+import Professionalskill from '../Page-Components/Professionalskill'
 const CourseCareerSupport = () => {
     return (
         <div>
             <Youtubevideo />
+            <Professionalskill/>
             <div className='main-bg pt-12 md:pt-16 md:pb-16'>
                 <section className='cus_container py-section-y px-section-x sm:py-section-y-sm'>
                     <div className="relative  justify-center items-center">

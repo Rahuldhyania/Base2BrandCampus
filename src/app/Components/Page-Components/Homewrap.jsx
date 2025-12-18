@@ -14,6 +14,7 @@ import FaqSection from "./FaqSection";
 import WhyChooseSection from "./WhyChooseSection";
 import Whatstudentget from "./Whatstudentget";
 import Youtubevideo from "./Youtubevideo";
+import PlacedStudent from "./PlacedStudent";
 const faq_data = [
   {
     q: "Is this course good for beginners?",
@@ -96,11 +97,12 @@ const Homewrap = () => {
         <Teachcareer clickscroll={scrollToEnrolment} />
         <CampusProgram clickscroll={scrollToEnrolment} />
       </div>
+      <PlacedStudent showdata={2} />
       <TestimonialsSlider />
       <TopCompanys clickscroll={scrollToEnrolment} />
       <FeaturedIn clickscroll={scrollToEnrolment} />
       <FaqSection faq_data={faq_data} />
-      <Journeywithb2b2 />
+      <Journeywithb2b2  PlacedStudent={false}/>
     </div>
   );
 };

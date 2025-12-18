@@ -1,6 +1,5 @@
 import React from 'react'
 import FaqSection from './FaqSection'
-import Journeywithb2b2 from './Journeywithb2b2'
 import CoursesBanner from "../Courses/CoursesBanner";
 import CoursesCareer from "../Courses/CoursesCareer";
 import CourseProgram from "../Courses/CourseProgram";
@@ -13,6 +12,7 @@ import ai_leftbanner from "../../../../public/images/ai_leftbanner.webp";
 import ai_rightbanner from "../../../../public/images/ai_rightbanner.webp";
 import ai_leftposter from "../../../../public/images/ai_leftposter.webp"
 import CourseSyllabus from '../Courses/CourseSyllabus';
+import Journeywithb2b2 from './Journeywithb2b2';
 const faq_data = [
   {
     q: "Is this course good for beginners?",
@@ -303,7 +303,7 @@ const AiCourse = () => {
         right_image={ai_leftposter}
       />
       {/* <FaqSection faq_data={faq_data} /> */}
-      <Journeywithb2b2 />
+      <Journeywithb2b2 PlacedStudent={true} />
     </div>
   );
 };
