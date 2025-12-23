@@ -21,7 +21,6 @@ import Title from "../UiUx/Title";
 import Description from "../UiUx/Description";
 import Buttons from "../UiUx/Buttons";
 
-// 🔹 Images Array
 const coachingImages = [
   coathcing,
   coathcing2,
@@ -37,8 +36,6 @@ const coachingImages = [
 
 const CanJoin = ({ conjoin_data }) => {
   const [randomImage, setRandomImage] = useState(null);
-
-  // 🔁 Random image on refresh (no repeat of last image)
   useEffect(() => {
     const lastIndex = localStorage.getItem("lastCoachingImage");
 

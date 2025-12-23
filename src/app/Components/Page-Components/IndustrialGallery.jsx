@@ -22,23 +22,23 @@ const gallarydata = [
 const items = [
     {
         icon: "/images/45days.webp",
-        title: "3 Months",
-        subtitle: "Practical Training ",
+        title: "4+",
+        subtitle: "Years of Experience ",
     },
     {
         icon: "/images/handmoney.webp",
-        title: "100%",
-        subtitle: "Placement Support",
+        title: "1,350+",
+        subtitle: "Successful Batches",
     },
     {
         icon: "/images/globeicon.webp",
-        title: "Global Work",
-        subtitle: "Freelance or Full-Time",
+        title: "1,500+",
+        subtitle: "Successfully Trained",
     },
     {
         icon: "/images/money.webp",
-        title: "INR / USD",
-        subtitle: "Earning Opportunitiess",
+        title: "200+",
+        subtitle: "Placement Partners",
     },
 ];
 const IndustrialGallery = () => {

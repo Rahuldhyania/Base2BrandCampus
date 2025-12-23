@@ -1,5 +1,6 @@
 import React from 'react'
 import mainbtnng from "../../../../public/images/mainbtnbg.webp"
+
 const Buttons = ({ btnname, text_color, btn_primary, btn_bg, onClick }) => {
     return (
         <div>

@@ -31,7 +31,7 @@ const WhatIndustrial = () => {
                         alt="bubble-bg"
                         width={1000}
                         height={500}
-                        className="absolute hidden md:block top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 
+                        className="absolute hidden md:block -bottom-5 left-1/2 -translate-x-1/2 
                     w-[480px] md:w-[670px] sm:w-[241px] pointer-events-none select-none opacity-90"
                     />
 
@@ -44,12 +44,12 @@ const WhatIndustrial = () => {
                 </div>
                 <Description
                     description={'B2B Campus industrial training offers hands-on experience, real tools, <br/> and job-ready skills for a strong career start'}
-                    text_color={'text-black'}
+                    text_color={'text-black relative z-10'}
                 />
             </div>
-            <div className=' py-12 md:py-16  max-w-[85%] m-auto'>
-                <div className="grid grid-cols-2 gap-4">
-                    <div>
+            <div className=' py-12 md:py-16  md:max-w-[85%] m-auto'>
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                    <div className='relative hidden md:block'>
                         <Image
                             src={'/images/WhatIndustrialleft.webp'}
                             alt=''
@@ -58,8 +58,9 @@ const WhatIndustrial = () => {
                             className='max-w-[90%]'
                         />
 
-                        <div>
-                           <p className=''>100%</p>  
+                        <div className='p-4 bg-primary flex flex-col w-fit rounded-2xl absolute -bottom-4 -left-6'>
+                           <p className='text-4xl text-white text-center'>100%</p>  
+                           <p className='text-white text-center'>Practical Training</p>
                         </div>
                     </div>
                     <div className='flex items-center'>
@@ -72,7 +73,7 @@ const WhatIndustrial = () => {
                                             alt='icon'
                                             width={1000}
                                             height={500}
-                                            className='max-w-8'
+                                            className='max-w-6 md:max-w-8'
                                         />
                                     </div>
                                     <div>
