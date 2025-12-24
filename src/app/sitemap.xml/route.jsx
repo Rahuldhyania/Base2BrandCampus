@@ -27,7 +27,8 @@ export async function GET() {
     "video-editing",
     "web-designing-course",
     "web-development-course",
-    "wordpress-training-course"
+    "wordpress-training-course",
+    ""
   ];
 
   const urls = staticPages
