@@ -155,7 +155,7 @@ const KnowledgeCenter = () => {
                     <div className="flex gap-8">
                         {toptagfilter.map(data => {
                             const isActive = activeTag === data.id;
-                            activeTag === data.id ? setActiveTagname(data.tag_name) : null;
+                            activeTag === data.id ? setActiveTagname(data.tag_name) : '';
                             return (
                                 <div
                                     key={data.id}
@@ -256,7 +256,7 @@ const KnowledgeCenter = () => {
                                     <div className="grid grid-cols-3 gap-6">
                                         {knowledgeCategories.map((data, index) => {
                                             const ActiveTab = activeTab == data.id;
-                                            activeTab === data.id ? setActiveTabname(data.title) : null;
+                                            activeTab === data.id ? setActiveTabname(data.title) : '';
                                             return (
                                                 <div
                                                     className={`${ActiveTab
@@ -299,7 +299,7 @@ const KnowledgeCenter = () => {
                                         })}
                                     </div>
                                     :
-                                    null
+                                    ''
                             }
 
 

@@ -158,7 +158,7 @@ export default function Header() {
     { name: "Home", path: "/" },
     { name: "Courses", path: "/courses" },
     { name: "Placement", path: "/placement" },
-    { name: "Knowledge Center", path: "/knowledge-center" },
+    { name: "Industrial Training ", path: "/industrial-training" },
     { name: "Contact Us", path: "/contact-us" },
   ];
 
