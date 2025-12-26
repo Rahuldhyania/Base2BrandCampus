@@ -4,7 +4,7 @@ import Title from "../UiUx/Title";
 import Description from "../UiUx/Description";
 import titlewhitebg from "../../../../public/images/titlewhitebg.webp";
 import Buttons from "../UiUx/Buttons";
-const CerticateIndus = ({scrollclick}) => {
+const CerticateIndus = ({ scrollclick }) => {
     return (
         <div className="main-bg">
             <div className="cus_container py-12 md:p-16">
@@ -64,7 +64,7 @@ const CerticateIndus = ({scrollclick}) => {
 
                     <div>
                         <Image
-                            src={'/images/certificate.webp'}
+                            src={'/images/certificate.png'}
                             alt=""
                             width={1000}
                             height={500}
@@ -73,9 +73,9 @@ const CerticateIndus = ({scrollclick}) => {
 
                         <div className="flex justify-center pt-6 w-fit m-auto " onClick={scrollclick}>
                             <Buttons
-                             btnname={'Join Now'}
-                             text_color={'text-white'}
-                             />
+                                btnname={'Join Now'}
+                                text_color={'text-white'}
+                            />
                         </div>
                     </div>
                     <div className="flex flex-col justify-center">

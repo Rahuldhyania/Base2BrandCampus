@@ -59,8 +59,8 @@ const WhatIndustrial = () => {
                         />
 
                         <div className='p-4 bg-primary flex flex-col w-fit rounded-2xl absolute -bottom-4 -left-6'>
-                           <p className='text-4xl text-white text-center'>100%</p>  
-                           <p className='text-white text-center'>Practical Training</p>
+                            <p className='text-4xl text-white text-center'>100%</p>
+                            <p className='text-white text-center'>Practical Training</p>
                         </div>
                     </div>
                     <div className='flex items-center'>
@@ -77,12 +77,12 @@ const WhatIndustrial = () => {
                                         />
                                     </div>
                                     <div>
-                                     <p className='text-primary text-2xl font-semibold'>
-                                        {data.title}
-                                     </p>
-                                     <span className='text-[17px] text-secondary'>
-                                        {data.description}
-                                     </span>
+                                        <p className='text-primary text-2xl font-semibold'>
+                                            {data.title}
+                                        </p>
+                                        <span className='text-[17px] text-secondary'>
+                                            {data.description}
+                                        </span>
                                     </div>
                                 </div>
                             ))}
