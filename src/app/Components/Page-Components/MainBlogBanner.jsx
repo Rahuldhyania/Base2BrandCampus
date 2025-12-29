@@ -12,7 +12,7 @@ const MainBlogBanner = () => {
 
                 <div>
                     <div className="relative py-3">
-                        <Image src={titlewhitebg.src} alt="bubble-bg" width={1000} height={500} className="absolute hidden md:block top-[0px] h-[165px] left-1/2 -translate-x-1/2 w-[600px] md:w-[600px] sm:w-[241px] pointer-events-none select-none " />
+                        {/* <Image src={titlewhitebg.src} alt="bubble-bg" width={1000} height={500} className="absolute hidden md:block top-[0px] h-[165px] left-1/2 -translate-x-1/2 w-[600px] md:w-[600px] sm:w-[241px] pointer-events-none select-none " /> */}
                         <div className="relative z-10 text-center pt-10 sm:pt-0">
 
                             <Title title={'<span class="text-primary"> Our Blog </span>'} text_color={'text-secondary'} />
