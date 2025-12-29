@@ -301,36 +301,56 @@ export default function Header() {
           <ul className="flex flex-col gap-4 text-[18px] px-4 py-4">
             {menuItems.map((item) => (
               <li key={item.name}>
-                <Link
-                  href={item.path}
-                >
-                  <span
-                    className={`flex py-2 px-2 ${pathname === item.path
-                      ? "text-purple-600 font-semibold"
-                      : "text-gray-700"
-                      }`}
-                    onClick={() => {
-                      if (item.name === "Courses") {
-                        setMegaOpen(true);
-                        setOpen(false);
-                      } else {
-                        setOpen(false);
-                      }
-                    }}
-                  >
-                    {item.name}
-                    {item.name == "Courses" ? (
-                      <Image
-                        src={arrowdown}
-                        width={20}
-                        height={20}
-                        alt="arrowdown"
-                        className={`ml-1 transition-transform duration-300 ${megaOpen ? "rotate-180" : "rotate-0"
+                { item.name === "Courses" ? (
+                    <div
+                      className="cursor-pointer px-1 text-gray-700 hover:text-purple-500 transition-colors"
+                      onClick={() => setMegaOpen(!megaOpen)}
+                    >
+                      <span className="inline-flex items-center">
+                        {item.name}
+                        <Image
+                          src={arrowdown}
+                          width={20}
+                          height={20}
+                          alt="arrowdown"
+                          className={`ml-1 transition-transform duration-300 ${megaOpen ? "rotate-180" : "rotate-0"
+                            }`}
+                        />
+                      </span>
+                    </div>
+                  ) :
+                    <Link
+                      href={item.path}
+                    >
+                      <span
+                        className={`flex py-2 px-2 ${pathname === item.path
+                          ? "text-purple-600 font-semibold"
+                          : "text-gray-700"
                           }`}
-                      />
-                    ) : null}
-                  </span>
-                </Link>
+                        onClick={() => {
+                          if (item.name === "Courses") {
+                            setMegaOpen(true);
+                            setOpen(false);
+                          } else {
+                            setOpen(false);
+                          }
+                        }}
+                      >
+                        {item.name}
+                        {item.name == "Courses" ? (
+                          <Image
+                            src={arrowdown}
+                            width={20}
+                            height={20}
+                            alt="arrowdown"
+                            className={`ml-1 transition-transform duration-300 ${megaOpen ? "rotate-180" : "rotate-0"
+                              }`}
+                          />
+                        ) : null}
+                      </span>
+                    </Link>
+                }
+
               </li>
             ))}
             {isLoggedIn ? (
@@ -462,7 +482,7 @@ export default function Header() {
             <div className="md:w-3/4 w-full py-3 md:px-6 overflow-y-auto h-full">
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
                 {coursesData[activeCategory]?.map((course, index) => (
-                  <Link key={index} href={course.path}>
+                  <Link key={index} href={course.path} onClick={() => setOpen(!open)}>
                     <motion.div
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
