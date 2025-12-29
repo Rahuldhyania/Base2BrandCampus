@@ -39,8 +39,9 @@ const coursesData = {
     { name: "Wordpress", path: "/wordpress-training-course" },
     { name: "Web Designing", path: "/web-designing-course" },
     { name: "Video Editing", path: "/video-editing" },
-
     { name: "Python & Java ", path: "/python-java-course" },
+    // { name: "Shopify App Dev", path: "/shopify-app-development-course" },
+    // { name: "Shopify Theme Dev", path: "/shopify-theme-development-course" },
   ],
   Development: [
     { name: "Cyber Security", path: "/cyber-security-course" },
@@ -52,6 +53,8 @@ const coursesData = {
     { name: "Wordpress", path: "/wordpress-training-course" },
     { name: "Web Designing", path: "/web-designing-course" },
     { name: "Python & Java ", path: "/python-java-course" },
+    // { name: "Shopify App Dev", path: "/shopify-app-development-course" },
+    // { name: "Shopify Theme Dev", path: "/shopify-theme-development-course" },
   ],
   Logistics: [
     { name: "Truck Dispatch", path: "/truck-dispatching" },
@@ -301,13 +304,43 @@ export default function Header() {
           <ul className="flex flex-col gap-4 text-[18px] px-4 py-4">
             {menuItems.map((item) => (
               <li key={item.name}>
-                { item.name === "Courses" ? (
-                    <div
-                      className="cursor-pointer px-1 text-gray-700 hover:text-purple-500 transition-colors"
-                      onClick={() => setMegaOpen(!megaOpen)}
+                {item.name === "Courses" ? (
+                  <div
+                    className="cursor-pointer px-1 text-gray-700 hover:text-purple-500 transition-colors"
+                    onClick={() => setMegaOpen(!megaOpen)}
+                  >
+                    <span className="inline-flex items-center">
+                      {item.name}
+                      <Image
+                        src={arrowdown}
+                        width={20}
+                        height={20}
+                        alt="arrowdown"
+                        className={`ml-1 transition-transform duration-300 ${megaOpen ? "rotate-180" : "rotate-0"
+                          }`}
+                      />
+                    </span>
+                  </div>
+                ) :
+                  <Link
+                    href={item.path}
+                  >
+                    <span
+                      className={`flex py-2 px-2 ${pathname === item.path
+                        ? "text-purple-600 font-semibold"
+                        : "text-gray-700"
+                        }`}
+                      onClick={() => {
+                        if (item.name === "Courses") {
+                          setMegaOpen(true);
+                          setOpen(false);
+                        } else {
+                          setOpen(false);
+                        }
+                      }}
                     >
-                      <span className="inline-flex items-center">
-                        {item.name}
+                      {item.name}
+                      {item.name == "Courses" ? (
                         <Image
                           src={arrowdown}
                           width={20}
@@ -316,39 +349,9 @@ export default function Header() {
                           className={`ml-1 transition-transform duration-300 ${megaOpen ? "rotate-180" : "rotate-0"
                             }`}
                         />
-                      </span>
-                    </div>
-                  ) :
-                    <Link
-                      href={item.path}
-                    >
-                      <span
-                        className={`flex py-2 px-2 ${pathname === item.path
-                          ? "text-purple-600 font-semibold"
-                          : "text-gray-700"
-                          }`}
-                        onClick={() => {
-                          if (item.name === "Courses") {
-                            setMegaOpen(true);
-                            setOpen(false);
-                          } else {
-                            setOpen(false);
-                          }
-                        }}
-                      >
-                        {item.name}
-                        {item.name == "Courses" ? (
-                          <Image
-                            src={arrowdown}
-                            width={20}
-                            height={20}
-                            alt="arrowdown"
-                            className={`ml-1 transition-transform duration-300 ${megaOpen ? "rotate-180" : "rotate-0"
-                              }`}
-                          />
-                        ) : null}
-                      </span>
-                    </Link>
+                      ) : null}
+                    </span>
+                  </Link>
                 }
 
               </li>

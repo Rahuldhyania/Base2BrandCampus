@@ -142,13 +142,13 @@ const allVideoCourses = [
         videoLink: "https://www.youtube.com/watch?v=f6Ma7Jsdiic",
     },
     
-        {
-        id: 18,
-        title: "Marketing & Bussiness",
-        des: "Boost your website traffic",
-        category: "Marketing & Bussiness",
-        videoLink: "https://www.youtube.com/watch?v=HJwRUpkgY3Q",
-    },
+    //     {
+    //     id: 18,
+    //     title: "Marketing & Bussiness",
+    //     des: "Boost your website traffic",
+    //     category: "Marketing & Bussiness",
+    //     videoLink: "https://www.youtube.com/watch?v=HJwRUpkgY3Q",
+    // },
         {
         id: 19,
         title: "Marketing & Bussiness",

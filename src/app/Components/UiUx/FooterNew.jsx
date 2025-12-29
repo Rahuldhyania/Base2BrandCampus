@@ -90,6 +90,16 @@ const footerData = [
         id: 13,
         page_name: "Python/Java Course",
         page_links: "/python-java-course"
+      },
+      {
+        id: 14,
+        page_name: "Shopify App Dev",
+        page_links: "/shopify-app-development-course"
+      },
+      {
+        id: 15,
+        page_name: "Shopify Theme Dev",
+        page_links: "/shopify-theme-development-course"
       }
     ]
   },
@@ -195,10 +205,12 @@ const socialLinks = [
   { icon: Footerfacebook, url: "https://www.facebook.com/CampusB2B" },
   { icon: insta, url: "https://www.instagram.com/b2bcampus/?hl=en" },
   { icon: linkedin, url: "https://www.linkedin.com/company/b2b-campus/" },
-  { icon: youtube, url: "https://www.youtube.com/channel/UCs1sxcuHQ7GWgB9gMyRXwXQ/featured" },
+  {
+    icon: youtube,
+    url: "https://www.youtube.com/channel/UCs1sxcuHQ7GWgB9gMyRXwXQ/featured"
+  },
   { icon: twitter, url: "https://x.com/B2bCampus" },
-  { icon: pinterest, url: "https://in.pinterest.com/b2bcampus/" },
-
+  { icon: pinterest, url: "https://in.pinterest.com/b2bcampus/" }
 ];
 const FooterNew = () => {
   const [showitem, setShowitem] = useState({
@@ -228,14 +240,14 @@ const FooterNew = () => {
               />
             </Link>
             <div className="flex gap-3 sm:gap-4 mt-2 sm:mt-0 pt-4">
-            {socialLinks.map((item, i) =>
-              <Link href={item.url} key={i} target="_blank">
-                <div className="p-3 sm:p-[11px] rounded-full bg-[#4924C9] flex justify-center items-center transition-transform duration-300 hover:scale-110">
-                  <Image src={item.icon} width={20} height={20} alt="" />
-                </div>
-              </Link>
-            )}
-          </div>
+              {socialLinks.map((item, i) =>
+                <Link href={item.url} key={i} target="_blank">
+                  <div className="p-3 sm:p-[11px] rounded-full bg-[#4924C9] flex justify-center items-center transition-transform duration-300 hover:scale-110">
+                    <Image src={item.icon} width={20} height={20} alt="" />
+                  </div>
+                </Link>
+              )}
+            </div>
           </div>
           <div>
             <Newletterfrom />

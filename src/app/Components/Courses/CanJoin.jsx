@@ -97,9 +97,8 @@ const CanJoin = ({ conjoin_data }) => {
               {conjoin_data.map((item, index) => (
                 <div
                   key={index}
-                  className={`relative flex items-center bg-white text-black px-6 py-4 rounded-[17px] shadow-sm hover:scale-[1.02] transition-all duration-300 ${
-                    index === 4 ? "sm:col-span-2" : ""
-                  }`}
+                  className={`relative flex items-center bg-white text-black px-6 py-4 rounded-[17px] shadow-sm hover:scale-[1.02] transition-all duration-300 ${index === 4 ? "sm:col-span-2" : ""
+                    }`}
                 >
                   <Image
                     src={item.icon}
@@ -116,7 +115,11 @@ const CanJoin = ({ conjoin_data }) => {
             </div>
 
             {/* Button */}
-            <div className="buttons text-[25px] flex justify-center md:justify-start pt-6 md:pt-12">
+            <div className="buttons text-[25px] flex justify-center md:justify-start pt-6 md:pt-12 w-fit"
+              onClick={() =>
+                window.scrollTo({ top: 0, behavior: "smooth" })
+              }
+            >
               <Buttons
                 btnname="Book Your Seats Now"
                 text_color={"text-white"}
