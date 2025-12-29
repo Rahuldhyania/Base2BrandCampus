@@ -63,7 +63,15 @@ export const Coursesdata = [
     {
         name: "Shopify Theme Development",
         path: "/shopify-theme-development-course"
-    }
+    },
+        {
+        name: "React Native",
+        path: "/react-native"
+    },
+        {
+        name: "React Js",
+        path: "/react-js-course"
+    },
 ];
 
 export const partnercompany = [

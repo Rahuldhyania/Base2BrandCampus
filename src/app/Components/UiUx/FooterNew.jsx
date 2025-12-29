@@ -100,7 +100,17 @@ const footerData = [
         id: 15,
         page_name: "Shopify Theme Dev",
         page_links: "/shopify-theme-development-course"
-      }
+      },
+         {
+        id: 16,
+        page_name: "React Native",
+        page_links: "/react-native"
+      },
+         {
+        id: 17,
+        page_name: "React Js",
+        page_links: "/react-js-course"
+      },
     ]
   },
 

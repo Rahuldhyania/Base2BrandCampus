@@ -40,8 +40,11 @@ const coursesData = {
     { name: "Web Designing", path: "/web-designing-course" },
     { name: "Video Editing", path: "/video-editing" },
     { name: "Python & Java ", path: "/python-java-course" },
-    // { name: "Shopify App Dev", path: "/shopify-app-development-course" },
-    // { name: "Shopify Theme Dev", path: "/shopify-theme-development-course" },
+    { name: "Shopify App Dev", path: "/shopify-app-development-course" },
+    { name: "Shopify Theme Dev", path: "/shopify-theme-development-course" },
+    { name: "Flutter", path: "/flutter" },
+    { name: "React Js", path: "/react-js-course" },
+    { name: "React Native", path: "/react-native" },
   ],
   Development: [
     { name: "Cyber Security", path: "/cyber-security-course" },
@@ -53,8 +56,11 @@ const coursesData = {
     { name: "Wordpress", path: "/wordpress-training-course" },
     { name: "Web Designing", path: "/web-designing-course" },
     { name: "Python & Java ", path: "/python-java-course" },
-    // { name: "Shopify App Dev", path: "/shopify-app-development-course" },
-    // { name: "Shopify Theme Dev", path: "/shopify-theme-development-course" },
+    { name: "Shopify App Dev", path: "/shopify-app-development-course" },
+    { name: "Shopify Theme Dev", path: "/shopify-theme-development-course" },
+    { name: "Flutter", path: "/flutter" },
+    { name: "React Js", path: "/react-js-course" },
+    { name: "React Native", path: "/react-native" },
   ],
   Logistics: [
     { name: "Truck Dispatch", path: "/truck-dispatching" },
@@ -159,6 +165,7 @@ export default function Header() {
 
   const menuItems = [
     { name: "Home", path: "/" },
+    { name: "About Us", path: "/about-us" },
     { name: "Courses", path: "/courses" },
     { name: "Placement", path: "/placement" },
     { name: "Industrial Training ", path: "/industrial-training" },
@@ -192,7 +199,7 @@ export default function Header() {
         </Link>
 
         <div className="hidden xl:block">
-          <ul className="flex items-center gap-10 text-[21px] font-medium">
+          <ul className="flex items-center gap-6 2xl:gap-10 text-[21px] font-medium">
             {menuItems.map((item) => (
               <li key={item.name}>
                 {item.name === "Courses" ? (
@@ -483,7 +490,7 @@ export default function Header() {
               </ul>
             </div>
             <div className="md:w-3/4 w-full py-3 md:px-6 overflow-y-auto h-full">
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 md:max-h-[344px]">
                 {coursesData[activeCategory]?.map((course, index) => (
                   <Link key={index} href={course.path} onClick={() => setOpen(!open)}>
                     <motion.div

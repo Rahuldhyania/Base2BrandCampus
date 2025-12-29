@@ -12,8 +12,6 @@ const nextConfig = {
       { source: "/php-training-course", destination: "/", permanent: true },
       { source: "/laravel-course", destination: "/web-development-course", permanent: true },
       { source: "/ai-ml-and-data-science", destination: "/", permanent: true },
-      { source: "/react-js-course", destination: "/", permanent: true },
-      { source: "/react-native", destination: "/", permanent: true },
       { source: "/python-training-course", destination: "/", permanent: true },
       { source: "/mern-stack-course", destination: "/", permanent: true },
       {
