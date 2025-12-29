@@ -272,7 +272,7 @@ export default function Header() {
               <Buttons
                 btnname="Enroll Now"
                 text_color="text-white"
-                onClick={() => setEnrollModalOpen(true)}
+                // onClick={() => setEnrollModalOpen(true)}
               />
             </div>
           )}
@@ -398,10 +398,10 @@ export default function Header() {
               <Buttons
                 btnname="Enroll Now"
                 text_color="text-white"
-                onClick={() => {
-                  setEnrollModalOpen(true);
-                  setOpen(false);
-                }}
+                // onClick={() => {
+                //   setEnrollModalOpen(true);
+                //   setOpen(false);
+                // }}
               />
             )}
             <div className="pt-4">
