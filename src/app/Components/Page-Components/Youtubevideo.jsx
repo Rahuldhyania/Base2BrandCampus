@@ -187,7 +187,7 @@ const getYoutubeThumbnail = (url) => {
 export default function Youtubevideo() {
   const [activeTab, setActiveTab] = useState("All Courses");
   const [playingVideo, setPlayingVideo] = useState(null);
-  const [visibleCount, setVisibleCount] = useState(6);
+  const [visibleCount, setVisibleCount] = useState(8);
   const iframeRefs = useRef({});
 
   /* ===== STOP ALL VIDEOS ===== */
@@ -258,7 +258,7 @@ export default function Youtubevideo() {
       </div>
 
       {/* ===== GRID ===== */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 pt-12 px-[4%] max-w-[1500px] mx-auto">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 2xl:grid-cols-4 gap-6 pt-12 px-[4%] max-w-[1500px] mx-auto">
         {filteredCourses.slice(0, visibleCount).map((course) => (
           <div
             key={course.id}

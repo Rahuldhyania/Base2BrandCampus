@@ -181,7 +181,63 @@ const allCourses = [
     buttonText: "Learn more",
     page_link: "/digital-marketing-course",
     img: arrows5
-  }
+  },
+  {
+    id: 20,
+    title: "Shopify App Development",
+    des: "B2B Campus – Learn Shopify App Development and build powerful custom Shopify apps.",
+    category: "Development",
+    icon: icon7,
+    color: "#0A9DFF",
+    buttonText: "Learn more",
+    page_link: "/shopify-app-development-course",
+    img: arrows4
+  },
+  {
+    id: 21,
+    title: "Shopify Theme Development",
+    des: "B2B Campus – Master Shopify Theme Development and create custom storefronts.",
+    category: "Development",
+    icon: icon7,
+    color: "#0A9DFF",
+    buttonText: "Learn more",
+    page_link: "/shopify-theme-development-course",
+    img: arrows4
+  },
+  {
+    id: 22,
+    title: "Flutter Development",
+    des: "B2B Campus – Learn Flutter and build cross-platform mobile apps from scratch.",
+    category: "Development",
+    icon: icon7,
+    color: "#0A9DFF",
+    buttonText: "Learn more",
+    page_link: "/flutter",
+    img: arrows4
+  },
+  {
+    id: 23,
+    title: "React JS",
+    des: "B2B Campus – Learn React JS and build fast, modern web applications.",
+    category: "Development",
+    icon: icon7,
+    color: "#0A9DFF",
+    buttonText: "Learn more",
+    page_link: "/react-js-course",
+    img: arrows4
+  },
+  {
+    id: 24,
+    title: "React Native",
+    des: "B2B Campus – Learn React Native and build mobile apps for Android & iOS.",
+    category: "Development",
+    icon: icon7,
+    color: "#0A9DFF",
+    buttonText: "Learn more",
+    page_link: "/react-native",
+    img: arrows4
+  },
+
 ];
 
 
@@ -231,7 +287,7 @@ export default function PopularCourses({ clickscroll }) {
               key={item.id}
               onClick={() => handleTabClick(item.btn)}
               className={`px-6 py-3 rounded-xl text-[16px] transition-all duration-300 ease-in-out ${activeTab ===
-              item.btn
+                item.btn
                 ? "bg-[#6346FA] text-white"
                 : "bg-[#E4DFFF] hover:bg-[#6346FA] hover:text-white"}`}
             >
@@ -249,7 +305,7 @@ export default function PopularCourses({ clickscroll }) {
               key={item.id}
               onClick={() => handleTabClick(item.btn)}
               className={`px-6 py-3 rounded-xl text-[16px] transition-all duration-300 ease-in-out ${activeTab ===
-              item.btn
+                item.btn
                 ? "bg-[#6346FA] text-white"
                 : "bg-[#E4DFFF] hover:bg-[#6346FA] hover:text-white"}`}
             >
