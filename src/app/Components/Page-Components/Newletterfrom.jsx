@@ -76,6 +76,7 @@ export const Newletterfrom = () => {
               placeholder="Email address"
               className="text-[18px] placeholder-white py-3 pe-3.5 pl-12 rounded-2xl w-full border-2 border-white bg-transparent text-white outline-none"
               required
+              suppressHydrationWarning
             />
           </div>
         </div>

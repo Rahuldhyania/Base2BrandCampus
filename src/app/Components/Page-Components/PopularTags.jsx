@@ -1,8 +1,8 @@
 'use client'
-import React, { useState } from 'react'
+import React, { useState, useMemo } from 'react'
 import Image from 'next/image'
 
-const popularTags = [
+const defaultTags = [
   'Tutorial',
   'Guide',
   'Tips',
@@ -15,21 +15,52 @@ const popularTags = [
   'Best Practices',
 ];
 
-export const PopularTags = () => {
+export const PopularTags = ({ tags = [], onTagChange }) => {
   const [activeTags, setActiveTags] = useState([])
 
+  // Extract unique tags from the tags array
+  const uniqueTags = useMemo(() => {
+    if (!tags || tags.length === 0) return defaultTags;
+    
+    const tagSet = new Set();
+    
+    tags.forEach(tag => {
+      if (tag) {
+        // Handle comma-separated tags
+        if (typeof tag === 'string' && tag.includes(',')) {
+          tag.split(',').forEach(t => {
+            const trimmed = t.trim();
+            if (trimmed) tagSet.add(trimmed);
+          });
+        } else if (typeof tag === 'string') {
+          tagSet.add(tag.trim());
+        }
+      }
+    });
+    
+    const uniqueArray = Array.from(tagSet);
+    return uniqueArray.length > 0 ? uniqueArray : defaultTags;
+  }, [tags]);
+
   const toggleTag = (tag) => {
-    setActiveTags((prev) =>
-      prev.includes(tag)
+    setActiveTags((prev) => {
+      const newActiveTags = prev.includes(tag)
         ? prev.filter((t) => t !== tag)
-        : [...prev, tag]
-    )
+        : [...prev, tag];
+      
+      // Notify parent component about tag changes
+      if (onTagChange) {
+        onTagChange(newActiveTags);
+      }
+      
+      return newActiveTags;
+    });
   }
+
   const orderedTags = [
     ...activeTags,
-    ...popularTags.filter((tag) => !activeTags.includes(tag)),
+    ...uniqueTags.filter((tag) => !activeTags.includes(tag)),
   ]
-   console.log(activeTags);
    
   return (
     <div className="bg-white rounded-2xl py-6 px-6">
@@ -44,37 +75,41 @@ export const PopularTags = () => {
       </h5>
 
       <div className="pt-3 flex flex-wrap gap-3 ps-4">
-        {orderedTags.map((tag, index) => {
-          const isActive = activeTags.includes(tag)
+        {orderedTags.length > 0 ? (
+          orderedTags.map((tag, index) => {
+            const isActive = activeTags.includes(tag)
 
-          return (
-            <span
-              key={index}
-              onClick={() => toggleTag(tag)}
-              className={`flex items-center gap-2 px-4 py-1 rounded-3xl cursor-pointer transition-all
-                ${
-                  isActive
-                    ? 'bg-primary text-white'
-                    : 'bg-[#e8e8e8] text-secondary'
-                }
-              `}
-            >
-              {tag}
+            return (
+              <span
+                key={`${tag}-${index}`}
+                onClick={() => toggleTag(tag)}
+                className={`flex items-center gap-2 px-4 py-1 rounded-3xl cursor-pointer transition-all
+                  ${
+                    isActive
+                      ? 'bg-primary text-white'
+                      : 'bg-[#e8e8e8] text-secondary'
+                  }
+                `}
+              >
+                {tag}
 
-              {isActive && (
-                <span
-                  onClick={(e) => {
-                    e.stopPropagation()
-                    toggleTag(tag)
-                  }}
-                  className="w-4 h-4 text-xs bg-white text-primary rounded-full flex items-center justify-center"
-                >
-                  ✕
-                </span>
-              )}
-            </span>
-          )
-        })}
+                {isActive && (
+                  <span
+                    onClick={(e) => {
+                      e.stopPropagation()
+                      toggleTag(tag)
+                    }}
+                    className="w-4 h-4 text-xs bg-white text-primary rounded-full flex items-center justify-center"
+                  >
+                    ✕
+                  </span>
+                )}
+              </span>
+            )
+          })
+        ) : (
+          <p className="text-gray-500">No tags available</p>
+        )}
       </div>
     </div>
   )

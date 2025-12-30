@@ -1,7 +1,8 @@
 import React from 'react'
+import Image from 'next/image'
 import SingleBlogCareer from './SingleBlogCareer'
 
-const SingleDetailBlogContent = () => {
+const SingleDetailBlogContent = ({ blog }) => {
     const readBlogSvg = (
         <svg className="w-[14px] h-[14px] sm:w-[16px] sm:h-[16px] md:w-[18px] md:h-[18px] lg:w-[20px] lg:h-[20px]" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M10.0013 18.3333C14.6037 18.3333 18.3346 14.6024 18.3346 9.99999C18.3346 5.39762 14.6037 1.66666 10.0013 1.66666C5.39893 1.66666 1.66797 5.39762 1.66797 9.99999C1.66797 14.6024 5.39893 18.3333 10.0013 18.3333Z" stroke="#4A5565" strokeWidth="1.66667" strokeLinecap="round" strokeLinejoin="round" />
@@ -65,6 +66,35 @@ const SingleDetailBlogContent = () => {
         }
     ];
 
+    // If no blog data, show default/fallback content
+    if (!blog) {
+        return (
+            <div className='cus_container bg-[#E6E2FF] pb-[40px] sm:pb-[40px] md:pb-[48px] lg:pb-[60px] xl:pb-[70px]'>
+                <div className='px-2 sm:px-2 md:px-10 lg:px-[120px] xl:px-[180px]'>
+                    <div className="py-8 sm:py-12">
+                        <p className="text-center text-gray-600">Loading content...</p>
+                    </div>
+                </div>
+            </div>
+        );
+    }
+
+    // Extract data from blog
+    const heading = blog.heading || '';
+    const description = blog.description || '';
+    const imageUrl = blog.imageUrl || '/images/web-devlopment.webp';
+    const createdAt = blog.createdAt 
+        ? new Date(blog.createdAt).toLocaleDateString('en-US', { 
+            year: 'numeric', 
+            month: 'long', 
+            day: 'numeric' 
+          })
+        : 'December 24, 2024';
+    
+    // Calculate reading time
+    const wordCount = description.replace(/<[^>]*>/g, '').split(/\s+/).length;
+    const readingTime = Math.ceil(wordCount / 200) || 8;
+
     return (
         <div className='cus_container bg-[#E6E2FF] pb-[40px] sm:pb-[40px] md:pb-[48px] lg:pb-[60px] xl:pb-[70px]'>
             <div className='px-2 sm:px-2 md:px-10 lg:px-[120px] xl:px-[180px]'>
@@ -75,18 +105,23 @@ const SingleDetailBlogContent = () => {
                         <div className="lg:col-span-2 ">
                             <div className='pb-[24px]'>
                                 <h1 className="text-[22px] leading-[30px] sm:text-[28px] sm:leading-[36px] md:text-[32px] md:leading-[40px] lg:text-[40px] lg:leading-[48px] font-regular text-[#0A0A0A]">
-                                    Master Digital Marketing in <br className="hidden sm:block" />
-                                    2024: Complete Roadmap
+                                    {heading}
                                 </h1>
 
                                 <div className="flex items-center gap-4 mt-3 text-sm text-gray-500">
-                                    <span className="flex gap-[6px] sm:gap-[7px] md:gap-[8px] text-[12px] sm:text-[14px] md:text-[16px] leading-[16px] sm:leading-[20px] md:leading-[24px] text-[#4A5565]">{readBlogSvg} 8 min read</span>
-                                    <span className="flex gap-[6px] sm:gap-[7px] md:gap-[8px] text-[12px] sm:text-[14px] md:text-[16px] leading-[16px] sm:leading-[20px] md:leading-[24px] text-[#4A5565]">{celenderSvg} December 24, 2024</span>
+                                    <span className="flex gap-[6px] sm:gap-[7px] md:gap-[8px] text-[12px] sm:text-[14px] md:text-[16px] leading-[16px] sm:leading-[20px] md:leading-[24px] text-[#4A5565]">{readBlogSvg} {readingTime} min read</span>
+                                    <span className="flex gap-[6px] sm:gap-[7px] md:gap-[8px] text-[12px] sm:text-[14px] md:text-[16px] leading-[16px] sm:leading-[20px] md:leading-[24px] text-[#4A5565]">{celenderSvg} {createdAt}</span>
                                 </div>
                             </div>
 
                             <div className="rounded-[16px] overflow-hidden shadow-[0_7px_29px_0_rgba(100,100,111,0.2)] mb-[48px]">
-                                <img src="/images/web-devlopment.webp" alt="Blog" className="w-full h-auto object-cover" />
+                                <Image 
+                                    src={imageUrl} 
+                                    alt={heading} 
+                                    width={1200} 
+                                    height={600}
+                                    className="w-full h-auto object-cover" 
+                                />
                             </div>
 
                             {/* KEY TAKEAWAYS */}
@@ -103,16 +138,10 @@ const SingleDetailBlogContent = () => {
                             </div>
 
                             <div className='single_blog_man_content pt-[40px]'>
-                                {blogContents.map((blog, index) => (
-                                    <div key={index} className='mmb'>
-                                        <h2 className="text-xl sm:text-2xl md:text-[26px] lg:text-[30px] leading-7 sm:leading-8 md:leading-[32px] lg:leading-[36px] font-normal text-[#0A0A0A]">
-                                            {blog.title}
-                                        </h2>
-                                        <p className='text-[#364153] text-[14px] leading-[22px] sm:text-[14px] sm:leading-[24px] md:text-[16px] md:leading-[24px] lg:text-[16px] lg:leading-[24px] pt-[10px] sm:pt-[15px] md:pt-[16px] lg:pt-[20px] xl:pt-[20px] pb-[40px] '>
-                                            {blog.text}
-                                        </p>
-                                    </div>
-                                ))}
+                                <div 
+                                    className="prose prose-lg max-w-none text-[#364153] text-[14px] leading-[22px] sm:text-[14px] sm:leading-[24px] md:text-[16px] md:leading-[24px] lg:text-[16px] lg:leading-[24px]"
+                                    dangerouslySetInnerHTML={{ __html: description }}
+                                />
                             </div>
                         </div>
 
