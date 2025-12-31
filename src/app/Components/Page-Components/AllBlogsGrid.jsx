@@ -3,11 +3,12 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState, useMemo } from "react";
 import { fetchBlogs } from "@/app/Data/Articlesdata";
+import Buttons from "../UiUx/Buttons";
 
 const AllBlogsGrid = ({ blog_title }) => {
   const [blogs, setBlogs] = useState([]);
   const [loading, setLoading] = useState(true);
-
+  const [showBlog, setShowBlog] = useState(6)
   useEffect(() => {
     const loadBlogs = async () => {
       try {
@@ -247,7 +248,9 @@ const AllBlogsGrid = ({ blog_title }) => {
       article_btn: "Read Article",
     },
   ];
-
+  const handelloadmore = () => {
+    setShowBlog(showBlog + 3)
+  }
   // Use API data if available, otherwise fallback to static data
   const displayBlogs = blogs.length > 0 ? blogs : gridBlogs;
 
@@ -266,39 +269,40 @@ const AllBlogsGrid = ({ blog_title }) => {
             <p className="text-lg text-gray-600">No blogs found.</p>
           </div>
         ) : (
-          <div className=" grid_blogs grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[30px] md:gap-[30px]">
-            {displayBlogs.map((blog, index) => {
-              const blogImage = blog.imageUrl || blog.image || "";
-              const blogTitle = blog.heading || blog.title || "";
-              const blogCategory = blog.pageDescription || blog.course || "Blog";
-              const readingTime = blog.description
-                ? calculateReadingTime(blog.description)
-                : blog.duration || "5 min read";
-              const blogSlug = blog.slugUrl || blog.id;
-              console.log(displayBlogs,"displayBlogs")
-              console.log(blogCategory,"blogCategory")
+          <div>
+            <div className=" grid_blogs grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[30px] md:gap-[30px]">
+              {displayBlogs.slice(0, showBlog).map((blog, index) => {
+                const blogImage = blog.imageUrl || blog.image || "";
+                const blogTitle = blog.heading || blog.title || "";
+                const blogCategory = blog.pageDescription || blog.course || "Blog";
+                const readingTime = blog.description
+                  ? calculateReadingTime(blog.description)
+                  : blog.duration || "5 min read";
+                const blogSlug = blog.slugUrl || blog.id;
+                console.log(displayBlogs, "displayBlogs")
+                console.log(blogCategory, "blogCategory")
 
-              return (
-                <Link
-                  href={`/blog/${blogSlug}`}
-                  key={blog.id || index}
-                  className="cursor-pointer group transition-all duration-300 ease-in-out bg-white rounded-xl overflow-hidden shadow-[0px_-2px_19px_0px_#6346FA33] hover:shadow-[0px_5px_15px_rgba(0,0,0,0.35)]"
-                >
-                  {/* Image */}
-                  <div className="h-[215px] bg-gray-200 relative">
-                    {blogImage && (
-                      <Image
-                        src={blogImage}
-                        alt={blogTitle}
-                        fill
-                        className="object-cover"
-                        placeholder="empty"
-                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                      />
-                    )}
+                return (
+                  <Link
+                    href={`/blog/${blogSlug}`}
+                    key={blog.id || index}
+                    className="cursor-pointer group transition-all duration-300 ease-in-out bg-white rounded-xl overflow-hidden shadow-[0px_-2px_19px_0px_#6346FA33] hover:shadow-[0px_5px_15px_rgba(0,0,0,0.35)]"
+                  >
+                    {/* Image */}
+                    <div className="h-[215px] bg-gray-200 relative">
+                      {blogImage && (
+                        <Image
+                          src={blogImage}
+                          alt={blogTitle}
+                          fill
+                          className="object-cover"
+                          placeholder="empty"
+                          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                        />
+                      )}
 
-                    <div
-                      className="
+                      <div
+                        className="
                                                 transition-all duration-300 ease-in-out
                                                 hidden gap-[4px]
                                                 absolute
@@ -310,39 +314,39 @@ const AllBlogsGrid = ({ blog_title }) => {
                                                 text-[14px] sm:text-[16px] md:text-[18px] lg:text-[18px]
                                                 hover:underline
                                                 transition-all"
-                    >
-                      Read Article
-                      <svg
-                        width={21}
-                        height={21}
-                        viewBox="0 0 21 21"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
                       >
-                        <path
-                          d="M4.29688 10.3145H16.3304"
-                          stroke="white"
-                          strokeWidth="1.5"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                        <path
-                          d="M10.3125 4.29761L16.3293 10.3144L10.3125 16.3311"
-                          stroke="white"
-                          strokeWidth="1.5"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
+                        Read Article
+                        <svg
+                          width={21}
+                          height={21}
+                          viewBox="0 0 21 21"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M4.29688 10.3145H16.3304"
+                            stroke="white"
+                            strokeWidth="1.5"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                          <path
+                            d="M10.3125 4.29761L16.3293 10.3144L10.3125 16.3311"
+                            stroke="white"
+                            strokeWidth="1.5"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                        </svg>
+                      </div>
                     </div>
-                  </div>
 
-                  {/* Content */}
-                  <div className="py-[40px] px-[25px]">
-                    {/* Meta */}
-                    <div className="flex items-center gap-2 sm:gap-3 md:gap-4 mb-2 sm:mb-3">
-                      <span
-                        className="
+                    {/* Content */}
+                    <div className="py-[40px] px-[25px]">
+                      {/* Meta */}
+                      <div className="flex items-center gap-2 sm:gap-3 md:gap-4 mb-2 sm:mb-3">
+                        <span
+                          className="
                                                     text-[#6346FA] group-hover:text-[#fff]
                                                     bg-[#E4E0FC99] group-hover:bg-[#000]
                                                     font-medium
@@ -353,30 +357,45 @@ const AllBlogsGrid = ({ blog_title }) => {
                                                     transition-all duration-300 ease-in-out
                                                     rounded-md sm:rounded-lg md:rounded-[8px]
                                                     whitespace-nowrap"
-                      >
-                        {blogCategory}
-                      </span>
-                    </div>
+                        >
+                          {blogCategory}
+                        </span>
+                      </div>
 
-                    <h2
-                      className="
+                      <h2
+                        className="
                                                 text-[#0A0A0A] group-hover:text-[#6346FA]
                                                 font-medium
                                                 text-[16px] md:text-[18px] lg:text-[20px] xl:text-[24px]
                                                 leading-[22px] md:leading-[24px] lg:leading-[34px] xl:leading-[34px]
                                                 mb-3 md:mb-4
                                                 line-clamp-2"
-                    >
-                      {blogTitle}
-                    </h2>
+                      >
+                        {blogTitle}
+                      </h2>
 
-                    <p className="text-[#6A7282] text-[14px] leading-[20px] flex items-center gap-[4px]">
-                      {durationSvg} {readingTime}
-                    </p>
+                      <p className="text-[#6A7282] text-[14px] leading-[20px] flex items-center gap-[4px]">
+                        {durationSvg} {readingTime}
+                      </p>
+                    </div>
+                  </Link>
+                );
+              })}
+            </div>
+            {
+
+              showBlog < displayBlogs.length && (
+                <div className="pt-6">
+                  <div className="w-fit m-auto " onClick={handelloadmore}>
+                    <Buttons
+                      btnname={'Load More'}
+                      text_color={'text-white'}
+                    />
                   </div>
-                </Link>
-              );
-            })}
+                </div>
+              )
+
+            }
           </div>
         )}
       </div>

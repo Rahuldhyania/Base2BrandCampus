@@ -14,6 +14,7 @@ import fullstack_leftposter from "../../../../public/images/fullstack_leftposter
 import CourseDetail from '../Courses/CourseDetail';
 import CareerOpportunities from '../Courses/CareerOpportunities';
 import CourseSyllabus from '../Courses/CourseSyllabus';
+import Youtubevideo from './Youtubevideo';
 
 const Flutter = () => {
 
@@ -274,7 +275,7 @@ const Flutter = () => {
         lower_title2="Enroll with B2B Campus Today"
         lower_description2="Start your journey toward a high-growth Flutter development career."
       />
-
+      <Youtubevideo current_tab={'Development'} />
       <CourseCareerSupport />
       <WhyChoose featuresNumbered={featuresNumbered} />
 

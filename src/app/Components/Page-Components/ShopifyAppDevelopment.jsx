@@ -15,6 +15,7 @@ import python_leftposter from "../../../../public/images/python_leftposter.webp"
 import CourseSyllabus from "../Courses/CourseSyllabus";
 import CourseDetail from "../Courses/CourseDetail";
 import CareerOpportunities from "../Courses/CareerOpportunities";
+import Youtubevideo from "./Youtubevideo";
 const faq_data = [
     {
         q: "Is this course good for beginners?",
@@ -375,7 +376,7 @@ const ShopifyAppDevelopment = () => {
                     "Take the first step toward a high-growth Shopify App Development career."
                 }
             />
-
+             <Youtubevideo current_tab={'Development'} />
             <CourseCareerSupport />
             <WhyChoose featuresNumbered={featuresNumbered} />
             <div className="main-bg">

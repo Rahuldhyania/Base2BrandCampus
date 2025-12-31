@@ -14,7 +14,7 @@ const ServiceCard = ({
 }) => {
   return (
     <Link href={`${linkpage}`}>
-      <div className="group relative w-full ] rounded-2xl p-6 md:p-auto md:px-4 md:py-6 flex flex-col justify-between bg-white border border-[#5D38DE66] transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:bg-[#CEC5FF] gap-y-2">
+      <div className="group relative w-full ] rounded-2xl p-6 md:p-auto md:px-4 md:py-6 flex flex-col justify-between bg-white border border-[#5D38DE66] transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:bg-[#CEC5FF] gap-y-2 h-full">
         <div className="flex justify-between items-center">
           <Image
             src={icon}

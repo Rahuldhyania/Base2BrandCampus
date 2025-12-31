@@ -12,6 +12,7 @@ import AboutCourse from "../Courses/AboutCourse";
 import videoediting_bannerleft from "../../../../public/images/videoediting_bannerleft.webp";
 import videoediting_bannerright from "../../../../public/images/videoediting_bannerright.webp";
 import video_left_banner from "../../../../public/images/video_left_banner.webp"
+import Youtubevideo from './Youtubevideo';
 const faq_data = [
   {
     q: "What is the duration of the video editing course offered?",
@@ -225,6 +226,7 @@ const VideoEditing = () => {
            Hands-on learning is essential to mastering video editing. Our state-of-the-art facilities provide you with access to the latest equipment and industry-standard software. You’ll work on real projects, gaining practical experience that you can showcase in your professional portfolio.
           `}
       />
+      <Youtubevideo current_tab={'All Courses'} />
       <CourseCareerSupport />
       <WhyChoose featuresNumbered={featuresNumbered} />
       <div className="main-bg">

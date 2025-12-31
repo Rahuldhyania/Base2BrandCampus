@@ -12,6 +12,7 @@ import AboutCourse from "../Courses/AboutCourse";
 import fullstack_leftbanner from "../../../../public/images/fullstack_leftbanner.webp";
 import fullstack_rightbanner from "../../../../public/images/fullstack_rightbanner.webp";
 import fullstack_leftposter from "../../../../public/images/fullstack_leftposter.webp"
+import Youtubevideo from './Youtubevideo';
 const faq_data = [
     {
         q: "Is this course good for beginners?",
@@ -240,6 +241,7 @@ const Fullstackdevelopment = () => {
                    Learners of this course gain access to high-demand tech opportunities across startups and global companies. With full stack skills, students can confidently pursue roles such as Frontend Developer, Backend Developer, or Full Stack Developer..
           `}
             />
+             <Youtubevideo current_tab={'Development'} />
             <CourseCareerSupport />
             <WhyChoose featuresNumbered={featuresNumbered} />
             <div className="main-bg">

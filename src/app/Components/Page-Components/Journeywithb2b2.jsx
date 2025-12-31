@@ -21,7 +21,7 @@ const Journeywithb2b2 = ({ PlacedStudent }) => {
                     <PlacedStudents showdata={1} rownumber={2} />
             }
 
-            <div className='md:py-12 pb-0 px-[3%]' >
+            <div className='md:py-12 !pb-0 px-[3%]' >
                 <div className="relative">
 
                     {/* Background Image */}
@@ -43,7 +43,7 @@ const Journeywithb2b2 = ({ PlacedStudent }) => {
                 <div className="description">
                     <Description
                         description={'Build confidence, gain real experience, and move closer to your goals'}
-                        text_color={'text-secondary'}
+                        text_color={'text-secondary relative z-10 '}
                     />
                 </div>
                 <div className="">

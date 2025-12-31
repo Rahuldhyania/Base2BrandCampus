@@ -13,6 +13,7 @@ import python_leftbanner from "../../../../public/images/python_leftbanner.webp"
 import python_rightbanner from "../../../../public/images/python_rightbanner.webp";
 import python_leftposter from "../../../../public/images/python_leftposter.webp"
 import CourseSyllabus from '../Courses/CourseSyllabus';
+import Youtubevideo from './Youtubevideo';
 const faq_data = [
     {
         q: "Is this course good for beginners?",
@@ -287,7 +288,7 @@ const PythonJava = () => {
                 description3={`With Python and Java widely used in software development, data, automation, web applications, and enterprise systems, skilled developers are in high demand globally across IT, startups, and multinational companies.`}
             />
 
-
+             <Youtubevideo current_tab={'Development'} />
             <CourseCareerSupport />
             <WhyChoose featuresNumbered={featuresNumbered} />
             <div className="main-bg">

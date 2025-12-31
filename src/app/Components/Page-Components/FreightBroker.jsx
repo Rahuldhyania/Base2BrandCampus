@@ -14,6 +14,7 @@ import freightbroker_rightbanner from "../../../../public/images/freightbroker_r
 import freight_leftposter from "../../../../public/images/freight_leftposter.webp"
 import CourseDetail from '../Courses/CourseDetail';
 import CareerOpportunities from '../Courses/CareerOpportunities';
+import Youtubevideo from './Youtubevideo';
 const faq_data = [
     {
         q: "Is this course good for beginners?",
@@ -162,7 +163,7 @@ const FreightBroker = () => {
     const conjoin_data = [
         { text: "Students & freshers", icon: "/images/greencheck.webp" },
         { text: "Career switchers", icon: "/images/greencheck.webp" },
-        { text: "Housewifes (WFH roles)", icon: "/images/greencheck.webp" },
+        { text: "Housewives (WFH roles)", icon: "/images/greencheck.webp" },
         { text: "BPO/Call center workers", icon: "/images/greencheck.webp" },
         { text: "Anyone wanting a high-income creative career", icon: "/images/greencheck.webp" },
     ];
@@ -283,6 +284,7 @@ const FreightBroker = () => {
                 lower_title2={'Enroll with B2B Campus Today'}
                 lower_description2={'Take the first step toward a high-growth logistics career.'}
             />
+            <Youtubevideo current_tab={'Truck Dispatching'} />
             <CourseCareerSupport />
             <WhyChoose featuresNumbered={featuresNumbered} />
             <div className="main-bg">

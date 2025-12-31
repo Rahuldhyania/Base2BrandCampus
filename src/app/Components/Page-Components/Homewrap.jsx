@@ -15,6 +15,7 @@ import WhyChooseSection from "./WhyChooseSection";
 import Whatstudentget from "./Whatstudentget";
 import Youtubevideo from "./Youtubevideo";
 import PlacedStudent from "./PlacedStudent";
+import { TopPressReleases } from "./PressReleases";
 const faq_data = [
   {
     q: "Is this course good for beginners?",
@@ -89,7 +90,8 @@ const Homewrap = () => {
         <WhyChooseSection />
       </div>
       <PopularCourses clickscroll={scrollToEnrolment} />
-      <Youtubevideo />
+      <Youtubevideo current_tab={'All Courses'}/>
+      <TopPressReleases bg={true}/>
       <TrainingSection clickscroll={scrollToEnrolment} />
       <Professionalskill clickscroll={scrollToEnrolment} />
       <Whatstudentget />

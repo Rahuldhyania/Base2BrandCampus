@@ -14,6 +14,7 @@ import cybersecurity_rightbanner from "../../../../public/images/cybersecurity_r
 import iot_leftposter from "../../../../public/images/iot_leftposter.webp";
 import CourseSyllabus from "../Courses/CourseSyllabus";
 import Professionalskill from "./Professionalskill";
+import Youtubevideo from "./Youtubevideo";
 const faq_data = [
     {
         q: "Is this course good for beginners?",
@@ -326,7 +327,7 @@ const CyberSecurity = () => {
                 description2={`This hands-on course covers core cyber security concepts, ethical hacking, network defense, and real-world attack simulations to build strong practical expertise.`}
                 description3={`With rising cyber threats and digital transformation, the demand for Cyber Security professionals is growing globally across IT, banking, healthcare, government, and enterprise sectors, offering strong career opportunities.`}
             />
-
+            <Youtubevideo current_tab={'Development'} />
             <CourseCareerSupport />
             
 

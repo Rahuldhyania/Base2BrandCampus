@@ -15,6 +15,7 @@ import truckdispatchgirl from "../../../../public/images/truckdispatchgirl.webp"
 import whitetruck from "../../../../public/images/whitetruck.webp";
 import boylike from "../../../../public/images/boylike.webp";
 import turckleft from "../../../../public/images/turckleft.webp";
+import Youtubevideo from './Youtubevideo';
 const faq_data = [
   {
     q: "What does the B2B Campus truck dispatching course cover for students in Mohali?",
@@ -232,6 +233,7 @@ const TruckDispatcher = () => {
            helps you build a solid foundation for long-term success in the freight industry.
           `}
       />
+      <Youtubevideo current_tab={'Truck Dispatching'} />
       <CourseCareerSupport />
       <WhyChoose featuresNumbered={featuresNumbered} />
       <div className="main-bg">

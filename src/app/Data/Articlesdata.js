@@ -64,7 +64,7 @@ export const fetchKnowledgeCenter = async (
 ) => {
   try {
     // Build URL with optional type parameter
-    let url = `http://143.244.137.225:9000/api/B2Badmin/public/knowledge-center?page=${page}&limit=${limit}`;
+    let url = `https://backend.b2bcampus.com/api/B2Badmin/public/knowledge-center?page=${page}&limit=${limit}`;
     if (type) {
       url += `&type=${type}`;
     }
@@ -91,7 +91,7 @@ export const fetchKnowledgeCenter = async (
 export const fetchKnowledgeCenterBySlug = async (slug) => {
   try {
     const response = await fetch(
-      `http://143.244.137.225:9000/api/B2Badmin/public/knowledge-center/slug/${slug}`,
+      `https://backend.b2bcampus.com/api/B2Badmin/public/knowledge-center/slug/${slug}`,
       {
         method: "GET",
         headers: {
@@ -115,7 +115,7 @@ export const fetchKnowledgeCenterBySlug = async (slug) => {
 export const fetchBlogs = async (page = 1, limit = 21) => {
   try {
     const response = await fetch(
-      `http://143.244.137.225:9000/api/B2Badmin/blogs?page=${page}&limit=${limit}`,
+      `https://backend.b2bcampus.com/api/B2Badmin/blogs?page=${page}&limit=${limit}`,
       {
         method: "GET",
         headers: {
@@ -139,7 +139,7 @@ export const fetchBlogs = async (page = 1, limit = 21) => {
 export const fetchBlogBySlug = async (slug) => {
   try {
     const response = await fetch(
-      `http://143.244.137.225:9000/api/B2Badmin/blogs/slug/${slug}`,
+      `https://backend.b2bcampus.com/api/B2Badmin/blogs/slug/${slug}`,
       {
         method: "GET",
         headers: {
@@ -163,7 +163,7 @@ export const fetchBlogBySlug = async (slug) => {
 export const fetchCategories = async (page = 1, limit = 6) => {
   try {
     const response = await fetch(
-      `http://143.244.137.225:9000/api/B2Badmin/public/categories?page=${page}&limit=${limit}`,
+      `https://backend.b2bcampus.com/api/B2Badmin/public/categories?page=${page}&limit=${limit}`,
       {
         method: "GET",
         headers: {

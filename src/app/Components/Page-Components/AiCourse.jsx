@@ -13,6 +13,7 @@ import ai_rightbanner from "../../../../public/images/ai_rightbanner.webp";
 import ai_leftposter from "../../../../public/images/ai_leftposter.webp"
 import CourseSyllabus from '../Courses/CourseSyllabus';
 import Journeywithb2b2 from './Journeywithb2b2';
+import Youtubevideo from './Youtubevideo';
 const faq_data = [
   {
     q: "Is this course good for beginners?",
@@ -290,7 +291,7 @@ const AiCourse = () => {
         description2={`This hands-on course covers AI fundamentals, prompt engineering, AI tools like ChatGPT, automation workflows, chatbot building, and data handling—making learners job-ready without a coding background.`}
         description3={`With AI rapidly transforming industries worldwide, the demand for AI professionals is growing across IT, marketing, automation, healthcare, and customer support—creating strong global career opportunities.`}
       />
-
+      <Youtubevideo current_tab={'Development'} />
       <CourseCareerSupport />
       <WhyChoose featuresNumbered={featuresNumbered} />
       <div className="main-bg">

@@ -13,6 +13,7 @@ import cybersecurity_leftbanner from "../../../../public/images/cybersecurity_le
 import cybersecurity_rightbanner from "../../../../public/images/cybersecurity_rightbanner.webp";
 import iot_leftposter from "../../../../public/images/iot_leftposter.webp";
 import CourseSyllabus from "../Courses/CourseSyllabus";
+import Youtubevideo from "./Youtubevideo";
 const faq_data = [
     {
         q: "Is this course good for beginners?",
@@ -325,7 +326,7 @@ const Devops = () => {
                 description3={`With businesses increasingly adopting Agile and DevOps practices, the demand for skilled DevOps professionals is rapidly growing worldwide across IT, cloud services, startups, and enterprise sectors, offering excellent career growth and high-paying job opportunities.`}
             />
 
-
+             <Youtubevideo current_tab={'Development'} />
             <CourseCareerSupport />
             <WhyChoose featuresNumbered={featuresNumbered} />
             <div className="main-bg">

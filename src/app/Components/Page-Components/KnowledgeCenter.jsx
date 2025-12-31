@@ -72,7 +72,7 @@ export const TrandingTopics = () => {
                     const title = item.heading || item.article_title || '';
                     return title;
                 }).filter(title => title);
-                
+
                 // Use API data if available, otherwise fallback to static data
                 setTrendingTopics(titles.length > 0 ? titles : trandingtopics);
             } catch (error) {
@@ -148,7 +148,7 @@ const KnowledgeCenter = () => {
                 const res = await fetchCategories(1, 6);
                 const categories = res?.categories || [];
                 setCategoriesTotalPages(res?.totalPages || 1);
-                
+
                 // Map API categories to display format
                 // Handle pipe-separated names - take the first one
                 const mappedCategories = categories.map((cat) => {
@@ -161,7 +161,7 @@ const KnowledgeCenter = () => {
                         icon: getCategoryIcon(categoryName)
                     };
                 });
-                
+
                 setKnowledgeCategories(mappedCategories.length > 0 ? mappedCategories : staticKnowledgeCategories);
             } catch (error) {
                 console.error("Error fetching categories:", error);
@@ -182,7 +182,7 @@ const KnowledgeCenter = () => {
             const nextPage = categoriesPage + 1;
             const res = await fetchCategories(nextPage, 6);
             const newCategories = res?.categories || [];
-            
+
             // Map new categories
             const mappedNewCategories = newCategories.map((cat) => {
                 const categoryName = cat.name.split('|')[0].split('>')[0].trim();
@@ -193,7 +193,7 @@ const KnowledgeCenter = () => {
                     icon: getCategoryIcon(categoryName)
                 };
             });
-            
+
             // Append new categories to existing ones
             setKnowledgeCategories(prev => [...prev, ...mappedNewCategories]);
             setCategoriesPage(nextPage);
@@ -211,10 +211,10 @@ const KnowledgeCenter = () => {
             // Count articles in this category from knowledgeCenterData
             const count = knowledgeCenterData.filter(item => {
                 const itemCategory = item.category?.name || '';
-                return itemCategory.toLowerCase().includes(cat.title.toLowerCase()) || 
-                       cat.title.toLowerCase().includes(itemCategory.toLowerCase());
+                return itemCategory.toLowerCase().includes(cat.title.toLowerCase()) ||
+                    cat.title.toLowerCase().includes(itemCategory.toLowerCase());
             }).length;
-            
+
             return {
                 ...cat,
                 articles: count > 0 ? count : cat.articles
@@ -318,7 +318,7 @@ const KnowledgeCenter = () => {
                 className="banner_section bg-cover bg-center"
                 style={{ backgroundImage: "url(/images/knowledgecenterbg.webp)" }}
             >
-                <div className="cus_container py-16">
+                <div className="cus_container py-12 md:py-16">
                     <Globaltitle
                         highlightText="Knowledge Center"
                         description="Your hub for courses, career insights, and industry knowledge"
@@ -327,18 +327,18 @@ const KnowledgeCenter = () => {
             </div>
 
             {/* Top Bar */}
-            <div className="bg-primary py-6 sticky top-0 z-50">
-                <div className="cus_container flex justify-between items-center gap-6">
+            <div className="bg-primary py-6 sticky top-0 z-40">
+                <div className="cus_container flex flex-col lg:flex-row justify-between items-center gap-6">
 
                     {/* Top Tags */}
-                    <div className="flex gap-4">
+                    <div className="flex gap-2 md:gap-4">
                         {toptagfilter.map(tag => {
                             const isActive = activeTag === tag.id;
                             return (
                                 <div
                                     key={tag.id}
                                     onClick={() => setActiveTag(tag.id)}
-                                    className={`flex items-center gap-2 px-4 py-3 rounded-2xl cursor-pointer ${isActive ? "bg-white" : "bg-[#4129BA]"
+                                    className={`flex items-center gap-2 px-4 py-1.5 md:py-3 rounded-2xl cursor-pointer ${isActive ? "bg-white" : "bg-[#4129BA]"
                                         }`}
                                 >
                                     <Image
@@ -356,7 +356,7 @@ const KnowledgeCenter = () => {
                     </div>
 
                     {/* Search */}
-                    <div className="w-[40%] bg-white rounded-2xl flex items-center gap-3 px-5 py-3">
+                    <div className="w-full md:w-[40%] bg-white rounded-2xl flex items-center gap-3 px-5 py-3">
                         <Image src="/icons/lence.svg" alt="" width={20} height={20} />
                         <input
                             className="w-full outline-none"
@@ -372,7 +372,7 @@ const KnowledgeCenter = () => {
                     </div>
 
                     {/* Dropdown */}
-                    <div className="relative">
+                    <div className="relative hidden md:block">
                         <div
                             onClick={() => setTopdropdownOpen(!topdropdownopen)}
                             className="bg-white px-5 py-2 rounded-xl cursor-pointer"
@@ -401,87 +401,91 @@ const KnowledgeCenter = () => {
             </div>
 
             {/* Content */}
-            <div className="max-w-7xl mx-auto py-12 grid grid-cols-[4fr_2fr] gap-10">
+            <div className="cus_container">
+                <div className="max-w-7xl mx-auto py-6 md:py-12 grid grid-cols-1 md:grid-cols-[4fr_2fr] gap-10">
 
-                {/* Left */}
-                <div>
-                    {!isSearchActive && (
-                        <>
-                            <div className="grid grid-cols-3 gap-6">
-                                {categoriesWithCounts.map(cat => {
-                                    const isActive = activeTab === cat.id;
-                                    return (
-                                        <div
-                                            key={cat.id}
-                                            onClick={() => setActiveTab(cat.id)}
-                                            className={`p-7 rounded-xl cursor-pointer ${isActive ? "bg-primary text-white" : "bg-white"
-                                                }`}
-                                        >
-                                            <Image src={cat.icon} alt="" width={40} height={40} />
-                                            <p className="pt-3 text-lg">{cat.title}</p>
-                                            <p>{cat.articles} articles</p>
-                                        </div>
-                                    );
-                                })}
-                            </div>
-                            
-                            {/* Load More Button */}
-                            {categoriesPage < categoriesTotalPages && (
-                                <div className="flex justify-center mt-6">
-                                    <button
-                                        onClick={loadMoreCategories}
-                                        disabled={loadingMoreCategories}
-                                        className="bg-primary text-white px-6 py-3 rounded-xl text-lg font-medium hover:bg-[#4129BA] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-                                    >
-                                        {loadingMoreCategories ? "Loading..." : "Load More Categories"}
-                                    </button>
+                    {/* Left */}
+                    <div>
+                        {!isSearchActive && (
+                            <>
+                                <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
+                                    {categoriesWithCounts.map(cat => {
+                                        const isActive = activeTab === cat.id;
+                                        return (
+                                            <div
+                                                key={cat.id}
+                                                onClick={() => setActiveTab(cat.id)}
+                                                className={`p-7 rounded-xl cursor-pointer ${isActive ? "bg-primary text-white" : "bg-white"
+                                                    }`}
+                                            >
+                                                <Image src={cat.icon} alt="" width={40} height={40} />
+                                                <p className="pt-3 text-lg">{cat.title}</p>
+                                                <p>{cat.articles} articles</p>
+                                            </div>
+                                        );
+                                    })}
                                 </div>
-                            )}
-                        </>
-                    )}
 
-                    <div className="pt-12 space-y-8">
-                        {loading ? (
-                            <div className="text-center py-12">
-                                <p className="text-lg text-gray-600">Loading articles...</p>
-                            </div>
-                        ) : filteredArticles.length === 0 ? (
-                            <div className="text-center py-12">
-                                <p className="text-lg text-gray-600">No articles found.</p>
-                            </div>
-                        ) : (
-                            filteredArticles.map(article => (
-                                <ArticleCard
-                                    key={article.id}
-                                    id={article.id}
-                                    poster_image={article.article_poster}
-                                    imageUrl={article.imageUrl}
-                                    isfeatured={article.isfeatured}
-                                    features={article.features}
-                                    article_tag={article.article_toptag}
-                                    tags={article.tags}
-                                    article_des_tag={article.article_des_tag}
-                                    category={article.category}
-                                    article_title={article.article_title}
-                                    heading={article.heading}
-                                    article_carddescription={article.article_carddescription}
-                                    shortDescription={article.shortDescription}
-                                    description={article.description}
-                                    publish_date={article.publish_date}
-                                    createdAt={article.createdAt}
-                                    reading_time={article.reading_time}
-                                    slugUrl={article.slugUrl}
-                                />
-                            ))
+                                {/* Load More Button */}
+                                {categoriesPage < categoriesTotalPages && (
+                                    <div className="flex justify-center mt-6">
+                                        <button
+                                            onClick={loadMoreCategories}
+                                            disabled={loadingMoreCategories}
+                                            className="bg-primary text-white px-6 py-3 rounded-xl text-lg font-medium hover:bg-[#4129BA] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                                        >
+                                            {loadingMoreCategories ? "Loading..." : "Load More Categories"}
+                                        </button>
+                                    </div>
+                                )}
+                            </>
                         )}
+
+                        <div className="pt-6 md:pt-12 space-y-8">
+                            {loading ? (
+                                <div className="text-center py-12">
+                                    <p className="text-lg text-gray-600">Loading articles...</p>
+                                </div>
+                            ) : filteredArticles.length === 0 ? (
+                                <div className="text-center py-12">
+                                    <p className="text-lg text-gray-600">No articles found.</p>
+                                </div>
+                            ) : (
+                                filteredArticles.map(article => (
+                                    <ArticleCard
+                                        key={article.id}
+                                        id={article.id}
+                                        poster_image={article.article_poster}
+                                        imageUrl={article.imageUrl}
+                                        isfeatured={article.isfeatured}
+                                        features={article.features}
+                                        article_tag={article.article_toptag}
+                                        tags={article.tags}
+                                        article_des_tag={article.article_des_tag}
+                                        category={article.category}
+                                        article_title={article.article_title}
+                                        heading={article.heading}
+                                        article_carddescription={article.article_carddescription}
+                                        shortDescription={article.shortDescription}
+                                        description={article.description}
+                                        publish_date={article.publish_date}
+                                        createdAt={article.createdAt}
+                                        reading_time={article.reading_time}
+                                        slugUrl={article.slugUrl}
+                                    />
+                                ))
+                            )}
+                        </div>
+
                     </div>
 
-                </div>
-
-                {/* Right */}
-                <div className="space-y-6 sticky top-[120px]">
-                    <TrandingTopics />
-                    <PopularTags tags={allTags} onTagChange={setSelectedTags} />
+                    {/* Right */}
+                    <div className="space-y-6 hidden md:block">
+                        <TrandingTopics />
+                        <div className="sticky top-[120px]">
+                            <PopularTags tags={allTags} onTagChange={setSelectedTags} />
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

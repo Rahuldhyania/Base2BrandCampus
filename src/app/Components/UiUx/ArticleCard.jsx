@@ -23,15 +23,15 @@ const ArticleCard = ({
   slugUrl,
 }) => {
   // Handle imageUrl - it might be a pipe-separated string, take the first image
-  const displayImage = imageUrl 
-    ? (imageUrl.split('|')[0] || imageUrl) 
+  const displayImage = imageUrl
+    ? (imageUrl.split('|')[0] || imageUrl)
     : poster_image || '';
-  
+
   const displayTitle = heading || article_title || '';
   const displayDescription = shortDescription || description || article_carddescription || '';
   const displayTag = category?.tags || tags || article_tag || '';
   const displayCategory = category?.name || article_des_tag || '';
-  const displayDate = createdAt 
+  const displayDate = createdAt
     ? new Date(createdAt).toLocaleDateString()
     : publish_date || '';
   const showFeatured = features || isfeatured;
@@ -69,9 +69,9 @@ const ArticleCard = ({
         <h3 className="text-3xl line-clamp-1 pt-3">
           {displayTitle}
         </h3>
-        <p className="text-lg text-[#4A5565] line-clamp-2 pt-2">
-          {displayDescription}
-        </p>
+        <p className="text-lg text-[#4A5565] line-clamp-2 pt-2"
+          dangerouslySetInnerHTML={{ __html: displayDescription }}
+        />
 
         <div className="pt-4 flex items-center gap-4">
           <div className="flex items-center gap-2 text-[#4A5565]">

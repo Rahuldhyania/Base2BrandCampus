@@ -12,6 +12,7 @@ import AboutCourse from "../Courses/AboutCourse";
 import webdev_leftbanner from "../../../../public/images/webdev_leftbanner.webp";
 import webdev_rightbanner from "../../../../public/images/webdev_rightbanner.webp";
 import webdev_leftposter from "../../../../public/images/webdev_leftposter.webp"
+import Youtubevideo from './Youtubevideo';
 const faq_data = [
     {
         q: "Is this course good for beginners?",
@@ -331,6 +332,7 @@ const WebDevelopment = () => {
                     Additionally, you will explore server-side programming languages like PHP or Python, allowing you to build robust and data-driven websites. Join our Web Development Course and embark on an exciting journey to become a proficient web developer.            
           `}
             />
+             <Youtubevideo current_tab={'Development'} />
             <CourseCareerSupport />
             <WhyChoose featuresNumbered={featuresNumbered} />
             <div className="main-bg">

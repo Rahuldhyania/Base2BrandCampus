@@ -13,6 +13,7 @@ import graphic_left from "../../../../public/images/graphic_left.webp";
 import graphic_right from "../../../../public/images/graphic_right.webp";
 import graphic_left_banner from "../../../../public/images/graphic_left_banner.webp"
 import BecomeStudent from '../Courses/BecomeStudent';
+import Youtubevideo from './Youtubevideo';
 const faq_data = [
     {
         q: "Is this course good for beginners?",
@@ -324,6 +325,7 @@ const WebDesigning = () => {
                     Stay ahead of the curve with our cutting-edge curriculum that reflects the latest industry trends and technologies. Join our course today and unlock your potential as a skilled web designer.            
           `}
             />
+            <Youtubevideo current_tab={'Development'} />
             <CourseCareerSupport />
             <WhyChoose featuresNumbered={featuresNumbered} />
             <div className="main-bg">

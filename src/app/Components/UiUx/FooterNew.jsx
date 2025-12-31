@@ -11,6 +11,7 @@ import pinterest from "../../../../public/icons/pinterest.svg";
 import twitter from "../../../../public/icons/twitter.svg";
 import youtube from "../../../../public/icons/youtube.svg";
 import { Newletterfrom } from "../Page-Components/Newletterfrom";
+import PressReleases, { TopPressReleases } from "../Page-Components/PressReleases";
 const footerData = [
   {
     title: "Industrial Training",
@@ -101,12 +102,12 @@ const footerData = [
         page_name: "Shopify Theme Dev",
         page_links: "/shopify-theme-development-course"
       },
-         {
+      {
         id: 16,
         page_name: "React Native",
         page_links: "/react-native"
       },
-         {
+      {
         id: 17,
         page_name: "React Js",
         page_links: "/react-js-course"
@@ -236,167 +237,172 @@ const FooterNew = () => {
   };
 
   return (
-    <div className="bg-primary">
-      <div className="max-w-[1780px] m-auto px-[3%] py-16">
-        <div className="flex flex-col md:flex-row gap-y-6 md:items-center justify-between pb-8">
-          <div>
-            <Link href={"/"}>
-              <Image
-                src={footerlogo}
-                alt="footerlogo"
-                width={1000}
-                height={500}
-                className="max-w-[220px] m-auto md:m-0"
-              />
-            </Link>
-            <div className="flex gap-3 sm:gap-4 mt-2 sm:mt-0 pt-4">
-              {socialLinks.map((item, i) =>
-                <Link href={item.url} key={i} target="_blank">
-                  <div className="p-3 sm:p-[11px] rounded-full bg-[#4924C9] flex justify-center items-center transition-transform duration-300 hover:scale-110">
-                    <Image src={item.icon} width={20} height={20} alt="" />
+    <div>
+      <div className="main-bg">
+        <TopPressReleases />
+      </div>
+      <div className="bg-primary">
+        <div className="max-w-[1780px] m-auto px-[3%] py-16">
+          <div className="flex flex-col md:flex-row gap-y-6 md:items-center justify-between pb-8">
+            <div>
+              <Link href={"/"}>
+                <Image
+                  src={footerlogo}
+                  alt="footerlogo"
+                  width={1000}
+                  height={500}
+                  className="max-w-[220px] m-auto md:m-0"
+                />
+              </Link>
+              <div className="flex gap-3 sm:gap-4 mt-2 sm:mt-0 pt-4">
+                {socialLinks.map((item, i) =>
+                  <Link href={item.url} key={i} target="_blank">
+                    <div className="p-3 sm:p-[11px] rounded-full bg-[#4924C9] flex justify-center items-center transition-transform duration-300 hover:scale-110">
+                      <Image src={item.icon} width={20} height={20} alt="" />
+                    </div>
+                  </Link>
+                )}
+              </div>
+            </div>
+            <div>
+              <Newletterfrom />
+            </div>
+          </div>
+          <div className="grid grid-cols-1 xl:grid-cols-[2fr_3fr]">
+            <div>
+              <h3 className="text-white text-3xl md:text-4xl pb-3">
+                {footerData[0].title}
+              </h3>
+              <div className="hidden md:grid grid-cols-1 md:grid-cols-2">
+                {footerData[0].links.map((data, index) =>
+                  <div className="flex items-center py-2" key={index}>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="30"
+                      height="30"
+                      viewBox="0 0 24 24"
+                    >
+                      <rect width="24" height="24" fill="none" />
+                      <path
+                        fill="#fff"
+                        d="M8 6.82v10.36c0 .79.87 1.27 1.54.84l8.14-5.18a1 1 0 0 0 0-1.69L9.54 5.98A.998.998 0 0 0 8 6.82"
+                      />
+                    </svg>
+                    <Link
+                      href={data.page_links}
+                      className="text-white text-lg 2xl:text-xl hover:underline transition-all duration-500"
+                    >
+                      {data.page_name}
+                    </Link>
                   </div>
-                </Link>
-              )}
-            </div>
-          </div>
-          <div>
-            <Newletterfrom />
-          </div>
-        </div>
-        <div className="grid grid-cols-1 xl:grid-cols-[2fr_3fr]">
-          <div>
-            <h3 className="text-white text-3xl md:text-4xl pb-3">
-              {footerData[0].title}
-            </h3>
-            <div className="hidden md:grid grid-cols-1 md:grid-cols-2">
-              {footerData[0].links.map((data, index) =>
-                <div className="flex items-center py-2" key={index}>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="30"
-                    height="30"
-                    viewBox="0 0 24 24"
+                )}
+              </div>
+              <div className="grid md:hidden grid-cols-1 md:grid-cols-2">
+                {footerData[0].links.slice(0, showitem[0]).map((data, index) =>
+                  <div
+                    className="flex items-start md:items-center py-2"
+                    key={index}
                   >
-                    <rect width="24" height="24" fill="none" />
-                    <path
-                      fill="#fff"
-                      d="M8 6.82v10.36c0 .79.87 1.27 1.54.84l8.14-5.18a1 1 0 0 0 0-1.69L9.54 5.98A.998.998 0 0 0 8 6.82"
-                    />
-                  </svg>
-                  <Link
-                    href={data.page_links}
-                    className="text-white text-lg 2xl:text-xl hover:underline transition-all duration-500"
-                  >
-                    {data.page_name}
-                  </Link>
-                </div>
-              )}
-            </div>
-            <div className="grid md:hidden grid-cols-1 md:grid-cols-2">
-              {footerData[0].links.slice(0, showitem[0]).map((data, index) =>
-                <div
-                  className="flex items-start md:items-center py-2"
-                  key={index}
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="30"
+                      height="30"
+                      viewBox="0 0 24 24"
+                    >
+                      <rect width="24" height="24" fill="none" />
+                      <path
+                        fill="#fff"
+                        d="M8 6.82v10.36c0 .79.87 1.27 1.54.84l8.14-5.18a1 1 0 0 0 0-1.69L9.54 5.98A.998.998 0 0 0 8 6.82"
+                      />
+                    </svg>
+                    <Link
+                      href={"/"}
+                      className="text-white text-lg 2xl:text-xl hover:underline transition-all duration-500"
+                    >
+                      {data.page_name}
+                    </Link>
+                  </div>
+                )}
+                <span
+                  className="text-white underline"
+                  onClick={() => handelshow(0)}
                 >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="30"
-                    height="30"
-                    viewBox="0 0 24 24"
-                  >
-                    <rect width="24" height="24" fill="none" />
-                    <path
-                      fill="#fff"
-                      d="M8 6.82v10.36c0 .79.87 1.27 1.54.84l8.14-5.18a1 1 0 0 0 0-1.69L9.54 5.98A.998.998 0 0 0 8 6.82"
-                    />
-                  </svg>
-                  <Link
-                    href={"/"}
-                    className="text-white text-lg 2xl:text-xl hover:underline transition-all duration-500"
-                  >
-                    {data.page_name}
-                  </Link>
-                </div>
-              )}
-              <span
-                className="text-white underline"
-                onClick={() => handelshow(0)}
-              >
-                {showitem[0] >= footerData[0].links.length
-                  ? "See Less"
-                  : "See More"}
-              </span>
+                  {showitem[0] >= footerData[0].links.length
+                    ? "See Less"
+                    : "See More"}
+                </span>
+              </div>
             </div>
-          </div>
-          <div className="pt-8 md:pt-0">
-            <h3 className="text-white text-3xl md:text-4xl pb-3">
-              {footerData[1].title}
-            </h3>
-            <div className="hidden md:grid grid-cols-1 md:grid-cols-2">
-              {footerData[1].links.map((data, index) =>
-                <div className="flex items-center py-2" key={index}>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="30"
-                    height="30"
-                    viewBox="0 0 24 24"
+            <div className="pt-8 md:pt-0">
+              <h3 className="text-white text-3xl md:text-4xl pb-3">
+                {footerData[1].title}
+              </h3>
+              <div className="hidden md:grid grid-cols-1 md:grid-cols-2">
+                {footerData[1].links.map((data, index) =>
+                  <div className="flex items-center py-2" key={index}>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="30"
+                      height="30"
+                      viewBox="0 0 24 24"
+                    >
+                      <rect width="24" height="24" fill="none" />
+                      <path
+                        fill="#fff"
+                        d="M8 6.82v10.36c0 .79.87 1.27 1.54.84l8.14-5.18a1 1 0 0 0 0-1.69L9.54 5.98A.998.998 0 0 0 8 6.82"
+                      />
+                    </svg>
+                    <Link
+                      href={"/"}
+                      className="text-white text-lg 2xl:text-xl hover:underline transition-all duration-500"
+                    >
+                      {data.page_name}
+                    </Link>
+                  </div>
+                )}
+              </div>
+              <div className="grid md:hidden grid-cols-1 md:grid-cols-2">
+                {footerData[1].links.slice(0, showitem[1]).map((data, index) =>
+                  <div
+                    className="flex items-start md:items-center py-2"
+                    key={index}
                   >
-                    <rect width="24" height="24" fill="none" />
-                    <path
-                      fill="#fff"
-                      d="M8 6.82v10.36c0 .79.87 1.27 1.54.84l8.14-5.18a1 1 0 0 0 0-1.69L9.54 5.98A.998.998 0 0 0 8 6.82"
-                    />
-                  </svg>
-                  <Link
-                    href={"/"}
-                    className="text-white text-lg 2xl:text-xl hover:underline transition-all duration-500"
-                  >
-                    {data.page_name}
-                  </Link>
-                </div>
-              )}
-            </div>
-            <div className="grid md:hidden grid-cols-1 md:grid-cols-2">
-              {footerData[1].links.slice(0, showitem[1]).map((data, index) =>
-                <div
-                  className="flex items-start md:items-center py-2"
-                  key={index}
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="30"
+                      height="30"
+                      viewBox="0 0 24 24"
+                    >
+                      <rect width="24" height="24" fill="none" />
+                      <path
+                        fill="#fff"
+                        d="M8 6.82v10.36c0 .79.87 1.27 1.54.84l8.14-5.18a1 1 0 0 0 0-1.69L9.54 5.98A.998.998 0 0 0 8 6.82"
+                      />
+                    </svg>
+                    <Link
+                      href={"/"}
+                      className="text-white text-lg 2xl:text-xl hover:underline transition-all duration-500"
+                    >
+                      {data.page_name}
+                    </Link>
+                  </div>
+                )}
+                <span
+                  className="text-white underline"
+                  onClick={() => handelshow(1)}
                 >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="30"
-                    height="30"
-                    viewBox="0 0 24 24"
-                  >
-                    <rect width="24" height="24" fill="none" />
-                    <path
-                      fill="#fff"
-                      d="M8 6.82v10.36c0 .79.87 1.27 1.54.84l8.14-5.18a1 1 0 0 0 0-1.69L9.54 5.98A.998.998 0 0 0 8 6.82"
-                    />
-                  </svg>
-                  <Link
-                    href={"/"}
-                    className="text-white text-lg 2xl:text-xl hover:underline transition-all duration-500"
-                  >
-                    {data.page_name}
-                  </Link>
-                </div>
-              )}
-              <span
-                className="text-white underline"
-                onClick={() => handelshow(1)}
-              >
-                {showitem[1] >= footerData[1].links.length
-                  ? "See Less"
-                  : "See More"}
-              </span>
+                  {showitem[1] >= footerData[1].links.length
+                    ? "See Less"
+                    : "See More"}
+                </span>
+              </div>
             </div>
           </div>
-        </div>
-        <div className="border-t border-white/20 mt-8 pt-6 flex flex-col justify-between items-center gap-4 lg:gap-6">
-          <p className="text-base opacity-80 text-center sm:text-left text-white">
-            © B2B Campus. All Rights Reserved 2025.
-          </p>
+          <div className="border-t border-white/20 mt-8 pt-6 flex flex-col justify-between items-center gap-4 lg:gap-6">
+            <p className="text-base opacity-80 text-center sm:text-left text-white">
+              © B2B Campus. All Rights Reserved 2025.
+            </p>
+          </div>
         </div>
       </div>
     </div>

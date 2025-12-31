@@ -17,152 +17,159 @@ export const Coursesbtn = [
 
 /* ================= VIDEOS ================= */
 const allVideoCourses = [
-    {
-        id: 1,
-        title: "React Tutorial",
-        des: "Learn React step by step",
-        category: "Development",
-        videoLink: "https://www.youtube.com/watch?v=CP7Woi6SJKw",
-    },
-    {
-        id: 2,
-        title: "React Tutorial",
-        des: "Learn React step by step",
-        category: "Development",
-        videoLink: "https://www.youtube.com/watch?v=mw7czS0khFc",
-    },
-    {
-        id: 3,
-        title: "UI/UX Design",
-        des: "Create stunning interfaces",
-        category: "Graphics",
-        videoLink: "https://www.youtube.com/watch?v=TQvAz9DAoHs",
-    },
-    {
-        id: 4,
-        title: "Digital Marketing",
-        des: "Grow your brand online",
-        category: "Marketing & Bussiness",
-        videoLink: "https://www.youtube.com/watch?v=59K-fxaiOas&t=11s",
-    },
-    {
-        id: 5,
-        title: "Advanced JavaScript",
-        des: "Master JS with real projects",
-        category: "Development",
-        videoLink: "https://www.youtube.com/watch?v=1HJNSGhKCcs&t=15s",
-    },
-    {
-        id: 6,
-        title: "Graphic Motion Design",
-        des: "Animate your designs",
-        category: "Graphics",
-        videoLink: "https://www.youtube.com/watch?v=LuqZqP4nUqg",
-    },
-    {
-        id: 7,
-        title: "Next.js Tutorial",
-        des: "Build React apps with Next.js",
-        category: "Development",
-        videoLink: "https://www.youtube.com/watch?v=57g_PY-bAvI&t=11s",
-    },
-    {
-        id: 8,
-        title: "Photoshop Basics",
-        des: "Edit images like a pro",
-        category: "Graphics",
-        videoLink: "https://www.youtube.com/watch?v=ivJwUXjcEt0",
-    },
-    {
-        id: 9,
-        title: "SEO Marketing",
-        des: "Boost your website traffic",
-        category: "Marketing & Bussiness",
-        videoLink: "https://www.youtube.com/watch?v=WT5Egh-WPdg&t=1s",
-    },
+  {
+    id: 1,
+    title: "React Tutorial",
+    des: "Learn React step by step",
+    category: "Development",
+    videoLink: "https://www.youtube.com/watch?v=CP7Woi6SJKw",
+  },
+  {
+    id: 2,
+    title: "React Tutorial",
+    des: "Learn React step by step",
+    category: "Development",
+    videoLink: "https://www.youtube.com/watch?v=mw7czS0khFc",
+  },
+  {
+    id: 3,
+    title: "UI/UX Design",
+    des: "Create stunning interfaces",
+    category: "Graphics",
+    videoLink: "https://www.youtube.com/watch?v=TQvAz9DAoHs",
+  },
+  {
+    id: 4,
+    title: "Digital Marketing",
+    des: "Grow your brand online",
+    category: "Marketing & Bussiness",
+    videoLink: "https://www.youtube.com/watch?v=59K-fxaiOas&t=11s",
+  },
+  {
+    id: 5,
+    title: "Advanced JavaScript",
+    des: "Master JS with real projects",
+    category: "Development",
+    videoLink: "https://www.youtube.com/watch?v=1HJNSGhKCcs&t=15s",
+  },
+  {
+    id: 6,
+    title: "Graphic Motion Design",
+    des: "Animate your designs",
+    category: "Graphics",
+    videoLink: "https://www.youtube.com/watch?v=LuqZqP4nUqg",
+  },
+  {
+    id: 7,
+    title: "Next.js Tutorial",
+    des: "Build React apps with Next.js",
+    category: "Development",
+    videoLink: "https://www.youtube.com/watch?v=57g_PY-bAvI&t=11s",
+  },
+  {
+    id: 8,
+    title: "Photoshop Basics",
+    des: "Edit images like a pro",
+    category: "Graphics",
+    videoLink: "https://www.youtube.com/watch?v=ivJwUXjcEt0",
+  },
+  {
+    id: 9,
+    title: "SEO Marketing",
+    des: "Boost your website traffic",
+    category: "Marketing & Bussiness",
+    videoLink: "https://www.youtube.com/watch?v=WT5Egh-WPdg&t=1s",
+  },
 
-    {
-        id: 10,
-        title: "Truck Dispatching",
-        des: "Boost your website traffic",
-        category: "Truck Dispatching",
-        videoLink: "https://www.youtube.com/watch?v=yVaIRbl-Bm8",
-    },
-    {
-        id: 11,
-        title: "Truck Dispatching",
-        des: "Boost your website traffic",
-        category: "Truck Dispatching",
-        videoLink: "https://www.youtube.com/watch?v=QYWr2y0o6RU",
-    },
-    {
-        id: 12,
-        title: "Truck Dispatching",
-        des: "Boost your website traffic",
-        category: "Truck Dispatching",
-        videoLink: "https://www.youtube.com/watch?v=NjL6LuZ1T-k",
-    },
-        {
-        id: 13,
-        title: "Marketing & Bussiness",
-        des: "Boost your website traffic",
-        category: "Marketing & Bussiness",
-        videoLink: "https://www.youtube.com/watch?v=53GuCL_Y5hg",
-    },
-    {
-        id: 14,
-        title: "Marketing & Bussiness",
-        des: "Boost your website traffic",
-        category: "Marketing & Bussiness",
-        videoLink: "https://www.youtube.com/watch?v=HJwRUpkgY3Q",
-    },
-//   sdfsad
-        {
-        id: 15,
-        title: "Marketing & Bussiness",
-        des: "Boost your website traffic",
-        category: "Graphics",
-        videoLink: "https://www.youtube.com/watch?v=G1Fr_3xvMF8",
-    },
-    
-        {
-        id: 16,
-        title: "Marketing & Bussiness",
-        des: "Boost your website traffic",
-        category: "Marketing & Bussiness",
-        videoLink: "https://www.youtube.com/watch?v=LPJxf7yq8Ao",
-    },
-    
-        {
-        id: 17,
-        title: "Marketing & Bussiness",
-        des: "Boost your website traffic",
-        category: "Marketing & Bussiness",
-        videoLink: "https://www.youtube.com/watch?v=f6Ma7Jsdiic",
-    },
-    
-    //     {
-    //     id: 18,
-    //     title: "Marketing & Bussiness",
-    //     des: "Boost your website traffic",
-    //     category: "Marketing & Bussiness",
-    //     videoLink: "https://www.youtube.com/watch?v=HJwRUpkgY3Q",
-    // },
-        {
-        id: 19,
-        title: "Marketing & Bussiness",
-        des: "Boost your website traffic",
-        category: "Graphics",
-        videoLink: "https://www.youtube.com/watch?v=1G4yvwvHyRU",
-    },
-        {
-        id: 20,
-        title: "Marketing & Bussiness",
-        des: "Boost your website traffic",
-        category: "Truck Dispatching",
-        videoLink: "https://www.youtube.com/watch?v=9_Z_SavZPNM",
-    },
-    
+  {
+    id: 10,
+    title: "Truck Dispatching",
+    des: "Boost your website traffic",
+    category: "Truck Dispatching",
+    videoLink: "https://www.youtube.com/watch?v=yVaIRbl-Bm8",
+  },
+  {
+    id: 11,
+    title: "Truck Dispatching",
+    des: "Boost your website traffic",
+    category: "Truck Dispatching",
+    videoLink: "https://www.youtube.com/watch?v=QYWr2y0o6RU",
+  },
+  {
+    id: 12,
+    title: "Truck Dispatching",
+    des: "Boost your website traffic",
+    category: "Truck Dispatching",
+    videoLink: "https://www.youtube.com/watch?v=NjL6LuZ1T-k",
+  },
+  {
+    id: 13,
+    title: "Marketing & Bussiness",
+    des: "Boost your website traffic",
+    category: "Marketing & Bussiness",
+    videoLink: "https://www.youtube.com/watch?v=53GuCL_Y5hg",
+  },
+  {
+    id: 14,
+    title: "Marketing & Bussiness",
+    des: "Boost your website traffic",
+    category: "Marketing & Bussiness",
+    videoLink: "https://www.youtube.com/watch?v=HJwRUpkgY3Q",
+  },
+  //   sdfsad
+  {
+    id: 15,
+    title: "Marketing & Bussiness",
+    des: "Boost your website traffic",
+    category: "Graphics",
+    videoLink: "https://www.youtube.com/watch?v=G1Fr_3xvMF8",
+  },
+
+  {
+    id: 16,
+    title: "Marketing & Bussiness",
+    des: "Boost your website traffic",
+    category: "Marketing & Bussiness",
+    videoLink: "https://www.youtube.com/watch?v=LPJxf7yq8Ao",
+  },
+
+  {
+    id: 17,
+    title: "Marketing & Bussiness",
+    des: "Boost your website traffic",
+    category: "Marketing & Bussiness",
+    videoLink: "https://www.youtube.com/watch?v=f6Ma7Jsdiic",
+  },
+
+  //     {
+  //     id: 18,
+  //     title: "Marketing & Bussiness",
+  //     des: "Boost your website traffic",
+  //     category: "Marketing & Bussiness",
+  //     videoLink: "https://www.youtube.com/watch?v=HJwRUpkgY3Q",
+  // },
+  {
+    id: 19,
+    title: "Marketing & Bussiness",
+    des: "Boost your website traffic",
+    category: "Graphics",
+    videoLink: "https://www.youtube.com/watch?v=1G4yvwvHyRU",
+  },
+  {
+    id: 20,
+    title: "Marketing & Bussiness",
+    des: "Boost your website traffic",
+    category: "Truck Dispatching",
+    videoLink: "https://www.youtube.com/watch?v=9_Z_SavZPNM",
+  },
+  {
+    id: 21,
+    title: "Marketing & Bussiness",
+    des: "Boost your website traffic",
+    category: "Truck Dispatching",
+    videoLink: "https://www.youtube.com/watch?v=6oLGCQGtmKc",
+
+  }
 ];
 
 /* ================= HELPERS ================= */
@@ -184,8 +191,8 @@ const getYoutubeThumbnail = (url) => {
 };
 
 /* ================= COMPONENT ================= */
-export default function Youtubevideo() {
-  const [activeTab, setActiveTab] = useState("All Courses");
+export default function Youtubevideo({current_tab}) {
+  const [activeTab, setActiveTab] = useState(current_tab ? current_tab : 'All Courses');
   const [playingVideo, setPlayingVideo] = useState(null);
   const [visibleCount, setVisibleCount] = useState(8);
   const iframeRefs = useRef({});
@@ -199,7 +206,7 @@ export default function Youtubevideo() {
           "*"
         );
         iframe.src = "about:blank";
-      } catch {}
+      } catch { }
     });
     iframeRefs.current = {};
   }, []);
@@ -245,11 +252,10 @@ export default function Youtubevideo() {
             <button
               key={tab.id}
               onClick={() => handleTabClick(tab.btn)}
-              className={`px-6 py-3 rounded-xl ${
-                activeTab === tab.btn
+              className={`px-6 py-3 rounded-xl ${activeTab === tab.btn
                   ? "bg-[#6346FA] text-white"
                   : "bg-[#E4DFFF]"
-              }`}
+                }`}
             >
               {tab.btn}
             </button>

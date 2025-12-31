@@ -12,6 +12,7 @@ import AboutCourse from "../Courses/AboutCourse";
 import wordpress_leftbanner from "../../../../public/images/wordpress_leftbanner.webp";
 import wordpress_rightbanner from "../../../../public/images/wordpress_rightbanner.webp";
 import BecomeStudent from "../Courses/BecomeStudent";
+import Youtubevideo from "./Youtubevideo";
 const faq_data = [
   {
     q: "Is this course good for beginners?",
@@ -335,6 +336,7 @@ const WordPress = () => {
                     Whether you’re a freelancer, business owner, or aspiring web developer, our WordPress Training Course is your ticket to creating stunning websites with ease. Enroll today and unleash your creativity!. It provides a powerful set of libraries and tools for data analysis, manipulation, and visualization. Python’s popularity in the data science community makes it a valuable skill for anyone interested in this field.           
           `}
       />
+      <Youtubevideo current_tab={'Development'} />
       <CourseCareerSupport />
       <WhyChoose featuresNumbered={featuresNumbered} />
       <div className="main-bg">

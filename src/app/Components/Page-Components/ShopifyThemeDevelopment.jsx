@@ -14,6 +14,7 @@ import python_leftposter from "../../../../public/images/python_leftposter.webp"
 import CourseSyllabus from "../Courses/CourseSyllabus";
 import CourseDetail from "../Courses/CourseDetail";
 import CareerOpportunities from "../Courses/CareerOpportunities";
+import Youtubevideo from "./Youtubevideo";
 
 const faq_data = [
   {
@@ -334,7 +335,7 @@ const ShopifyThemeDevelopment = () => {
         lower_title2={"Enroll with B2B Campus Today"}
         lower_description2={"Take the first step toward a high-growth Shopify Theme Development career."}
       />
-
+      <Youtubevideo current_tab={'Development'} />
       <CourseCareerSupport />
       <WhyChoose featuresNumbered={featuresNumbered} />
 

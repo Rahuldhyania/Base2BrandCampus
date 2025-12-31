@@ -174,7 +174,7 @@ export default function Header() {
       path: "/blogs",
       dropdown: [
         { name: "Knowledge Center", path: "/knowledge-center" },
-        // { name: "Career", path: "/career" },
+        { name: "Career", path: "/career" },
       ],
     },
 
@@ -183,7 +183,7 @@ export default function Header() {
       path: "/industrial-training",
       dropdown: [
         { name: "Placement", path: "/placement" },
-        // { name: "Career", path: "/career" },
+        { name: "Press Releases", path: "/press-releases" },
       ],
     },
 
@@ -206,7 +206,7 @@ export default function Header() {
 
   return (
     <nav className="relative z-50">
-      <div className="flex justify-between xl:justify-around items-center flex-wrap gap-4 relative py-5 px-5 bg-white">
+      <div className="flex justify-between xl:justify-around items-center flex-wrap gap-4 relative py-5 px-5 bg-white border-[0.5px] border-[#00000021]">
         <Link href="/">
           <Image
             src={B2BCAMPUSLOGO}
@@ -275,14 +275,14 @@ export default function Header() {
 
                     {activeDropdown === item.name && (
                       <ul
-                        className={`absolute top-full left-0 mt-3 w-56 bg-white border border-gray-200 rounded-xl shadow-xl z-50 transform transition-all duration-300 ease-out origin-top opacity-100 scale-100 translate-y-0"}`}
+                        className={`absolute top-full left-0 mt-3 pb-3 w-56 bg-white border border-gray-200 rounded-xl shadow-xl z-50 transform transition-all duration-300 ease-out origin-top opacity-100 scale-100 translate-y-0"}`}
                       >
                         {item.dropdown.map((data, index) => (
                           <li key={index}>
                             <Link
                               href={data.path}
-                               onClick={() => setActiveDropdown(null)}
-                              className="block px-5 py-3 text-[16px] text-gray-700 hover:bg-purple-50 hover:text-purple-600 transition-colors"
+                              onClick={() => setActiveDropdown(null)}
+                              className="block px-5 pt-3 text-[16px] text-gray-700 hover:bg-purple-50 hover:text-purple-600 transition-colors"
                             >
                               {data.name}
                             </Link>
@@ -344,11 +344,15 @@ export default function Header() {
             </div>
           ) : (
             <div className="hidden md:flex">
-              <Buttons
-                btnname="Enroll Now"
-                text_color="text-white"
-              // onClick={() => setEnrollModalOpen(true)}
-              />
+              <Link
+                href={'contact-us'}
+              >
+                <Buttons
+                  btnname="Enroll Now"
+                  text_color="text-white"
+                // onClick={() => setEnrollModalOpen(true)}
+                />
+              </Link>
             </div>
           )}
 
@@ -385,103 +389,98 @@ export default function Header() {
         >
           <ul className="flex flex-col gap-4 text-[18px] px-4 py-4">
             {menuItems.map((item) => (
-  <li key={item.name}>
-    {item.name === "Courses" ? (
-      <div
-        className="cursor-pointer px-2 py-2 text-gray-700 flex items-center justify-between"
-        onClick={() => setMegaOpen(!megaOpen)}
-      >
-        <span>{item.name}</span>
-        <Image
-          src={arrowdown}
-          width={18}
-          height={18}
-          alt="arrowdown"
-          className={`transition-transform duration-300 ${
-            megaOpen ? "rotate-180" : ""
-          }`}
-        />
-      </div>
-    ) : item.dropdown ? (
-      /* 🔥 BLOGS / INDUSTRIAL TRAINING MOBILE DROPDOWN */
-      <div>
-        <div className="flex items-center justify-between px-2 py-2">
-          {/* TEXT → PAGE OPEN */}
-          <Link
-            href={item.path}
-            onClick={() => {
-              setOpen(false);
-              setActiveDropdown(null);
-            }}
-            className={`${
-              pathname === item.path
-                ? "text-purple-600 font-semibold"
-                : "text-gray-700"
-            }`}
-          >
-            {item.name}
-          </Link>
+              <li key={item.name}>
+                {item.name === "Courses" ? (
+                  <div
+                    className="cursor-pointer px-2 py-2 text-gray-700 flex items-center justify-between"
+                    onClick={() => setMegaOpen(!megaOpen)}
+                  >
+                    <span>{item.name}</span>
+                    <Image
+                      src={arrowdown}
+                      width={18}
+                      height={18}
+                      alt="arrowdown"
+                      className={`transition-transform duration-300 ${megaOpen ? "rotate-180" : ""
+                        }`}
+                    />
+                  </div>
+                ) : item.dropdown ? (
+                  /* 🔥 BLOGS / INDUSTRIAL TRAINING MOBILE DROPDOWN */
+                  <div>
+                    <div className="flex items-center justify-between px-2 py-2">
+                      {/* TEXT → PAGE OPEN */}
+                      <Link
+                        href={item.path}
+                        onClick={() => {
+                          setOpen(false);
+                          setActiveDropdown(null);
+                        }}
+                        className={`${pathname === item.path
+                          ? "text-purple-600 font-semibold"
+                          : "text-gray-700"
+                          }`}
+                      >
+                        {item.name}
+                      </Link>
 
-          {/* ARROW → DROPDOWN */}
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              setActiveDropdown(
-                activeDropdown === item.name ? null : item.name
-              );
-            }}
-          >
-            <Image
-              src={arrowdown}
-              width={18}
-              height={18}
-              alt="arrow"
-              className={`transition-transform duration-300 ${
-                activeDropdown === item.name ? "rotate-180" : ""
-              }`}
-            />
-          </button>
-        </div>
+                      {/* ARROW → DROPDOWN */}
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setActiveDropdown(
+                            activeDropdown === item.name ? null : item.name
+                          );
+                        }}
+                      >
+                        <Image
+                          src={arrowdown}
+                          width={18}
+                          height={18}
+                          alt="arrow"
+                          className={`transition-transform duration-300 ${activeDropdown === item.name ? "rotate-180" : ""
+                            }`}
+                        />
+                      </button>
+                    </div>
 
-        {/* SUB MENU */}
-        <div
-          className={`ml-4 overflow-hidden transition-all duration-300 ease-out ${
-            activeDropdown === item.name
-              ? "max-h-40 opacity-100"
-              : "max-h-0 opacity-0"
-          }`}
-        >
-          {item.dropdown.map((sub, i) => (
-            <Link
-              key={i}
-              href={sub.path}
-              onClick={() => {
-                setOpen(false);
-                setActiveDropdown(null);
-              }}
-              className="block py-2 text-gray-600 hover:text-purple-600"
-            >
-              {sub.name}
-            </Link>
-          ))}
-        </div>
-      </div>
-    ) : (
-      /* NORMAL MOBILE LINK */
-      <Link
-        href={item.path}
-        onClick={() => setOpen(false)}
-        className={`block px-2 py-2 ${
-          pathname === item.path
-            ? "text-purple-600 font-semibold"
-            : "text-gray-700"
-        }`}
-      >
-        {item.name}
-      </Link>
-    )}
-  </li>
-))}
+                    {/* SUB MENU */}
+                    <div
+                      className={`ml-4 overflow-hidden transition-all duration-300 ease-out ${activeDropdown === item.name
+                        ? "max-h-40 opacity-100"
+                        : "max-h-0 opacity-0"
+                        }`}
+                    >
+                      {item.dropdown.map((sub, i) => (
+                        <Link
+                          key={i}
+                          href={sub.path}
+                          onClick={() => {
+                            setOpen(false);
+                            setActiveDropdown(null);
+                          }}
+                          className="block py-2 text-gray-600 hover:text-purple-600"
+                        >
+                          {sub.name}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                ) : (
+                  /* NORMAL MOBILE LINK */
+                  <Link
+                    href={item.path}
+                    onClick={() => setOpen(false)}
+                    className={`block px-2 py-2 ${pathname === item.path
+                      ? "text-purple-600 font-semibold"
+                      : "text-gray-700"
+                      }`}
+                  >
+                    {item.name}
+                  </Link>
+                )}
+              </li>
+            ))}
 
             {isLoggedIn ? (
               <div className="flex flex-col gap-3 px-2">
@@ -515,14 +514,17 @@ export default function Header() {
                 </button>
               </div>
             ) : (
-              <Buttons
-                btnname="Enroll Now"
-                text_color="text-white"
-              // onClick={() => {
-              //   setEnrollModalOpen(true);
-              //   setOpen(false);
-              // }}
-              />
+              <Link
+                href={'contact-us'}
+              >
+                <Buttons
+                  btnname="Enroll Now"
+                  text_color="text-white"
+                onClick={() => {
+                  setOpen(false);
+                }}
+                />
+              </Link>
             )}
             <div className="pt-4">
               <div className="flex gap-2">

@@ -12,6 +12,7 @@ import AboutCourse from "../Courses/AboutCourse";
 import graphic_left from "../../../../public/images/graphic_left.webp";
 import graphic_right from "../../../../public/images/graphic_right.webp";
 import graphic_left_banner from "../../../../public/images/graphic_left_banner.webp"
+import Youtubevideo from './Youtubevideo';
 const faq_data = [
   {
     q: "What is the duration of the graphic designing course offered?",
@@ -311,6 +312,7 @@ const GraphicDesign = () => {
                     Whether you’re looking to start a career in graphic design, or you’re a professional looking to expand your skill set, this course is perfect for you.            
           `}
             />
+             <Youtubevideo current_tab={'Graphics'} />
             <CourseCareerSupport />
             <WhyChoose featuresNumbered={featuresNumbered} />
             <div className="main-bg">

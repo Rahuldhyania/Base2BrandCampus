@@ -13,6 +13,7 @@ import digital_leftbanner from "../../../../public/images/digital_leftbanner.web
 import digital_rightbanner from "../../../../public/images/digital_rightbanner.webp";
 import digital_leftposter from "../../../../public/images/digital_leftposter.webp"
 import CourseSyllabus from '../Courses/CourseSyllabus';
+import Youtubevideo from './Youtubevideo';
 const faq_data = [
     {
         q: "Is this course good for beginners?",
@@ -285,6 +286,7 @@ const DigitalMarketing = () => {
                    Stay ahead of the curve with the latest industry trends and unlock exciting career opportunities. Join us on this educational journey and unleash your marketing potential today.
           `}
             />
+            <Youtubevideo current_tab={'Marketing & Bussiness'} />
             <CourseCareerSupport />
             <WhyChoose featuresNumbered={featuresNumbered} />
             <div className="main-bg">
