@@ -89,6 +89,8 @@ export default function Header() {
   const [activeCategory, setActiveCategory] = useState("AllCourses");
   const [enrollModalOpen, setEnrollModalOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState(null);
+
   const pathname = usePathname();
 
   // Check if user is logged in
@@ -167,10 +169,27 @@ export default function Header() {
     { name: "Home", path: "/" },
     { name: "About Us", path: "/about-us" },
     { name: "Courses", path: "/courses" },
-    { name: "Placement", path: "/placement" },
-    { name: "Industrial Training ", path: "/industrial-training" },
+    {
+      name: "Blogs",
+      path: "/blogs",
+      dropdown: [
+        { name: "Knowledge Center", path: "/knowledge-center" },
+        // { name: "Career", path: "/career" },
+      ],
+    },
+
+    {
+      name: "Industrial Training",
+      path: "/industrial-training",
+      dropdown: [
+        { name: "Placement", path: "/placement" },
+        // { name: "Career", path: "/career" },
+      ],
+    },
+
     { name: "Contact Us", path: "/contact-us" },
   ];
+
 
   useEffect(() => {
     const scrollbarWidth =
@@ -201,7 +220,7 @@ export default function Header() {
         <div className="hidden xl:block">
           <ul className="flex items-center gap-6 2xl:gap-10 text-[21px] font-medium">
             {menuItems.map((item) => (
-              <li key={item.name}>
+              <li key={item.name} className="relative">
                 {item.name === "Courses" ? (
                   <div
                     className="cursor-pointer px-1 text-gray-700 hover:text-purple-500 transition-colors"
@@ -219,6 +238,61 @@ export default function Header() {
                       />
                     </span>
                   </div>
+
+                ) : item.name === "Industrial Training" || item.name === 'Blogs' ? (
+                  <div className="flex items-center gap-1">
+                    <Link href={item.path}>
+                      <span
+                        className={`relative px-1 cursor-pointer ${pathname === item.path
+                          ? "text-purple-600"
+                          : "text-gray-700"
+                          } hover:text-purple-500`}
+                      >
+                        {item.name}
+                      </span>
+                    </Link>
+
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setActiveDropdown(
+                          activeDropdown === item.name ? null : item.name
+                        );
+                      }}
+
+                    >
+                      <Image
+                        src={arrowdown}
+                        width={16}
+                        height={16}
+                        alt="arrow"
+                        className={`transition-transform duration-300 ${activeDropdown === item.name ? "rotate-180" : ""
+                          }`}
+                      />
+
+
+                    </button>
+
+                    {activeDropdown === item.name && (
+                      <ul
+                        className={`absolute top-full left-0 mt-3 w-56 bg-white border border-gray-200 rounded-xl shadow-xl z-50 transform transition-all duration-300 ease-out origin-top opacity-100 scale-100 translate-y-0"}`}
+                      >
+                        {item.dropdown.map((data, index) => (
+                          <li key={index}>
+                            <Link
+                              href={data.path}
+                               onClick={() => setActiveDropdown(null)}
+                              className="block px-5 py-3 text-[16px] text-gray-700 hover:bg-purple-50 hover:text-purple-600 transition-colors"
+                            >
+                              {data.name}
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+
+                    )}
+                  </div>
+
                 ) : (
                   <Link href={item.path}>
                     <span
@@ -237,6 +311,7 @@ export default function Header() {
               </li>
             ))}
           </ul>
+
         </div>
 
         <div className="flex items-center gap-3">
@@ -272,7 +347,7 @@ export default function Header() {
               <Buttons
                 btnname="Enroll Now"
                 text_color="text-white"
-                // onClick={() => setEnrollModalOpen(true)}
+              // onClick={() => setEnrollModalOpen(true)}
               />
             </div>
           )}
@@ -310,59 +385,104 @@ export default function Header() {
         >
           <ul className="flex flex-col gap-4 text-[18px] px-4 py-4">
             {menuItems.map((item) => (
-              <li key={item.name}>
-                {item.name === "Courses" ? (
-                  <div
-                    className="cursor-pointer px-1 text-gray-700 hover:text-purple-500 transition-colors"
-                    onClick={() => setMegaOpen(!megaOpen)}
-                  >
-                    <span className="inline-flex items-center">
-                      {item.name}
-                      <Image
-                        src={arrowdown}
-                        width={20}
-                        height={20}
-                        alt="arrowdown"
-                        className={`ml-1 transition-transform duration-300 ${megaOpen ? "rotate-180" : "rotate-0"
-                          }`}
-                      />
-                    </span>
-                  </div>
-                ) :
-                  <Link
-                    href={item.path}
-                  >
-                    <span
-                      className={`flex py-2 px-2 ${pathname === item.path
-                        ? "text-purple-600 font-semibold"
-                        : "text-gray-700"
-                        }`}
-                      onClick={() => {
-                        if (item.name === "Courses") {
-                          setMegaOpen(true);
-                          setOpen(false);
-                        } else {
-                          setOpen(false);
-                        }
-                      }}
-                    >
-                      {item.name}
-                      {item.name == "Courses" ? (
-                        <Image
-                          src={arrowdown}
-                          width={20}
-                          height={20}
-                          alt="arrowdown"
-                          className={`ml-1 transition-transform duration-300 ${megaOpen ? "rotate-180" : "rotate-0"
-                            }`}
-                        />
-                      ) : null}
-                    </span>
-                  </Link>
-                }
+  <li key={item.name}>
+    {item.name === "Courses" ? (
+      <div
+        className="cursor-pointer px-2 py-2 text-gray-700 flex items-center justify-between"
+        onClick={() => setMegaOpen(!megaOpen)}
+      >
+        <span>{item.name}</span>
+        <Image
+          src={arrowdown}
+          width={18}
+          height={18}
+          alt="arrowdown"
+          className={`transition-transform duration-300 ${
+            megaOpen ? "rotate-180" : ""
+          }`}
+        />
+      </div>
+    ) : item.dropdown ? (
+      /* 🔥 BLOGS / INDUSTRIAL TRAINING MOBILE DROPDOWN */
+      <div>
+        <div className="flex items-center justify-between px-2 py-2">
+          {/* TEXT → PAGE OPEN */}
+          <Link
+            href={item.path}
+            onClick={() => {
+              setOpen(false);
+              setActiveDropdown(null);
+            }}
+            className={`${
+              pathname === item.path
+                ? "text-purple-600 font-semibold"
+                : "text-gray-700"
+            }`}
+          >
+            {item.name}
+          </Link>
 
-              </li>
-            ))}
+          {/* ARROW → DROPDOWN */}
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              setActiveDropdown(
+                activeDropdown === item.name ? null : item.name
+              );
+            }}
+          >
+            <Image
+              src={arrowdown}
+              width={18}
+              height={18}
+              alt="arrow"
+              className={`transition-transform duration-300 ${
+                activeDropdown === item.name ? "rotate-180" : ""
+              }`}
+            />
+          </button>
+        </div>
+
+        {/* SUB MENU */}
+        <div
+          className={`ml-4 overflow-hidden transition-all duration-300 ease-out ${
+            activeDropdown === item.name
+              ? "max-h-40 opacity-100"
+              : "max-h-0 opacity-0"
+          }`}
+        >
+          {item.dropdown.map((sub, i) => (
+            <Link
+              key={i}
+              href={sub.path}
+              onClick={() => {
+                setOpen(false);
+                setActiveDropdown(null);
+              }}
+              className="block py-2 text-gray-600 hover:text-purple-600"
+            >
+              {sub.name}
+            </Link>
+          ))}
+        </div>
+      </div>
+    ) : (
+      /* NORMAL MOBILE LINK */
+      <Link
+        href={item.path}
+        onClick={() => setOpen(false)}
+        className={`block px-2 py-2 ${
+          pathname === item.path
+            ? "text-purple-600 font-semibold"
+            : "text-gray-700"
+        }`}
+      >
+        {item.name}
+      </Link>
+    )}
+  </li>
+))}
+
             {isLoggedIn ? (
               <div className="flex flex-col gap-3 px-2">
                 <div className="flex items-center gap-3 py-2">
@@ -398,10 +518,10 @@ export default function Header() {
               <Buttons
                 btnname="Enroll Now"
                 text_color="text-white"
-                // onClick={() => {
-                //   setEnrollModalOpen(true);
-                //   setOpen(false);
-                // }}
+              // onClick={() => {
+              //   setEnrollModalOpen(true);
+              //   setOpen(false);
+              // }}
               />
             )}
             <div className="pt-4">

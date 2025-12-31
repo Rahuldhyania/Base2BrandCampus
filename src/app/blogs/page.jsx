@@ -1,11 +1,11 @@
 import React from 'react'
 import PageBanner from '../Components/Page-Components/PageBanner'
-import Journeywithb2b2 from '../Components/Page-Components/Journeywithb2b2'
-import BlogReadyTransform from '../Components/Page-Components/BlogReadyTransform'
-import AllBlogsGrid from '../Components/Page-Components/AllBlogsGrid'
-import BlogsConfusedCareer from '../Components/Page-Components/BlogsConfusedCareer'
-import FeaturedBlog from '../Components/Page-Components/FeaturedBlog'
-import MainBlogBanner from '../Components/Page-Components/MainBlogBanner'
+import Journeywithb2b2 from '../Components/Page-Components/Journeywithb2b2';
+import BlogReadyTransform from '../Components/Page-Components/BlogReadyTransform';
+import AllBlogsGrid from '../Components/Page-Components/AllBlogsGrid';
+import BlogsConfusedCareer from '../Components/Page-Components/BlogsConfusedCareer';
+import FeaturedBlog from '../Components/Page-Components/FeaturedBlog';
+import MainBlogBanner from '../Components/Page-Components/MainBlogBanner';
 
 const page = () => {
     return (
