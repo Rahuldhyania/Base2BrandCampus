@@ -10,10 +10,10 @@ import Canonical from "./Canonical";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-export const metadata = {
-  title: "Industrial Training in Mohali | Chandigarh | B2B Campus",
-  description: "Transform your future with our exceptional Industrial Training in Mohali and Chandigarh. Commit to excellence and shape a successful career. Start today!",
-};
+// export const metadata = {
+//   title: "Industrial Training in Mohali | Chandigarh | B2B Campus",
+//   description: "Transform your future with our exceptional Industrial Training in Mohali and Chandigarh. Commit to excellence and shape a successful career. Start today!",
+// };
 
 const KodchasanMedium = localFont({
   src: [{ path: "../../public/fonts/Kodchasan-Medium.ttf" }],

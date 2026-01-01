@@ -28,7 +28,11 @@ export async function GET() {
     "web-designing-course",
     "web-development-course",
     "wordpress-training-course",
-    ""
+    "shopify-app-development-course",
+    "shopify-theme-development-course",
+    "flutter",
+    "react-js-course",
+    "react-native"
   ];
 
   const urls = staticPages

@@ -168,10 +168,123 @@ const allVideoCourses = [
     des: "Boost your website traffic",
     category: "Truck Dispatching",
     videoLink: "https://www.youtube.com/watch?v=6oLGCQGtmKc",
+  },
+  {
+    id: 22,
+    title: "Marketing & Bussiness",
+    des: "Boost your website traffic",
+    category: "Marketing & Bussiness",
+    videoLink: "https://www.youtube.com/watch?v=UXk6Rk7Mrys",
+  },
 
-  }
+
+  // jabdjab
+    {
+    id: 23,
+    title: "Marketing & Bussiness",
+    des: "Boost your website traffic",
+    category: "Marketing & Bussiness",
+    videoLink: "https://www.youtube.com/watch?v=25D1b0YWwuI",
+  },
+   {
+    id: 24,
+    title: "Digital Marketing Course in Mohali & Kharar",
+    des: "Learn Digital Marketing with Sakshi Rana",
+    category: "Marketing & Bussiness",
+    videoLink: "https://www.youtube.com/watch?v=QZAQMe1BHdc",
+  },
+  {
+    id: 25,
+    title: "Graphic Designing Tutorial",
+    des: "Learn Graphic Designing step by step",
+    category: "Graphics",
+    videoLink: "https://www.youtube.com/watch?v=emiCZn1gwz4",
+  },
+  {
+    id: 26,
+    title: "Graphic Designing Tutorial",
+    des: "Learn Graphic Designing step by step",
+    category: "Graphics",
+    videoLink: "https://www.youtube.com/watch?v=FVy5goeO868",
+  },
+  {
+    id: 27,
+    title: "Graphic Designing Tutorial",
+    des: "Learn Graphic Designing step by step",
+    category: "Graphics",
+    videoLink: "https://www.youtube.com/watch?v=rcEgXYU9Qeo",
+  },
+  {
+    id: 28,
+    title: "Graphic Designing Tutorial",
+    des: "Learn Graphic Designing step by step",
+    category: "Graphics",
+    videoLink: "https://www.youtube.com/watch?v=1gUSFf_qtEU",
+  },
+  {
+    id: 29,
+    title: "Graphic Designing Tutorial",
+    des: "Learn Graphic Designing step by step",
+    category: "Graphics",
+    videoLink: "https://youtu.be/ogGYF3MK5Jg?si=rVzu82okfceFxy1i",
+  },
+  {
+    id: 30,
+    title: "MERN Stack Development",
+    des: "Learn MERN Stack step by step",
+    category: "Development",
+    videoLink: "https://www.youtube.com/watch?v=T1rTNCNlPTU",
+  },
+  {
+    id: 31,
+    title: "Web Development Tutorial",
+    des: "Learn Web Development step by step",
+    category: "Development",
+    videoLink: "https://www.youtube.com/watch?v=fk-Ji6rfcHQ",
+  },
+  {
+    id: 32,
+    title: "Full Stack Development Tutorial",
+    des: "Learn Full Stack Development",
+    category: "Development",
+    videoLink: "https://www.youtube.com/watch?v=fzhKQOyYIrs",
+  },
+  {
+    id: 33,
+    title: "Web Designing Tutorial",
+    des: "Learn Web Designing",
+    category: "Development",
+    videoLink: "https://www.youtube.com/watch?v=5agATDRrk4s",
+  },
+  {
+    id: 34,
+    title: "Web Designing Tutorial",
+    des: "Learn Web Designing",
+    category: "Development",
+    videoLink: "https://www.youtube.com/watch?v=dUAeRcxYGSY",
+  },
+  {
+    id: 35,
+    title: "Digital Marketing Tutorial",
+    des: "Learn Digital Marketing step by step",
+    category: "Marketing & Bussiness",
+    videoLink: "https://www.youtube.com/watch?v=jUqANS5ocEw",
+  },
+  {
+    id: 36,
+    title: "Web Development Tutorial",
+    des: "Learn Web Development step by step",
+    category: "Development",
+    videoLink: "https://www.youtube.com/watch?v=UGP7DOg8-UA",
+  },
+  // {
+  //   id: 37,
+  //   title: "Truck Dispatching Tutorial",
+  //   des: "Learn Truck Dispatching step by step",
+  //   category: "Truck Dispatching",
+  //   videoLink: "https://www.youtube.com/watch?v=yVaIRbl-Bm8",
+  // },
 ];
-
 /* ================= HELPERS ================= */
 const getYoutubeId = (url) => {
   const match = url.match(
@@ -191,7 +304,7 @@ const getYoutubeThumbnail = (url) => {
 };
 
 /* ================= COMPONENT ================= */
-export default function Youtubevideo({current_tab}) {
+export default function Youtubevideo({ current_tab }) {
   const [activeTab, setActiveTab] = useState(current_tab ? current_tab : 'All Courses');
   const [playingVideo, setPlayingVideo] = useState(null);
   const [visibleCount, setVisibleCount] = useState(8);
@@ -253,8 +366,8 @@ export default function Youtubevideo({current_tab}) {
               key={tab.id}
               onClick={() => handleTabClick(tab.btn)}
               className={`px-6 py-3 rounded-xl ${activeTab === tab.btn
-                  ? "bg-[#6346FA] text-white"
-                  : "bg-[#E4DFFF]"
+                ? "bg-[#6346FA] text-white"
+                : "bg-[#E4DFFF]"
                 }`}
             >
               {tab.btn}

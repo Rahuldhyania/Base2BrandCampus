@@ -69,10 +69,12 @@ const SingleDetailBlogContent = ({ blog }) => {
     // If no blog data, show default/fallback content
     if (!blog) {
         return (
-            <div className='cus_container bg-[#E6E2FF] pb-[40px] sm:pb-[40px] md:pb-[48px] lg:pb-[60px] xl:pb-[70px]'>
-                <div className='px-2 sm:px-2 md:px-10 lg:px-[120px] xl:px-[180px]'>
-                    <div className="py-8 sm:py-12">
-                        <p className="text-center text-gray-600">Loading content...</p>
+            <div className="main-bg">
+                <div className='cus_container pb-[40px] sm:pb-[40px] md:pb-[48px] lg:pb-[60px] xl:pb-[70px]'>
+                    <div className='px-2 sm:px-2'>
+                        <div className="py-8 sm:py-12">
+                            <p className="text-center text-gray-600">Loading content...</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -83,111 +85,113 @@ const SingleDetailBlogContent = ({ blog }) => {
     const heading = blog.heading || '';
     const description = blog.description || '';
     const imageUrl = blog.imageUrl || '/images/web-devlopment.webp';
-    const createdAt = blog.createdAt 
-        ? new Date(blog.createdAt).toLocaleDateString('en-US', { 
-            year: 'numeric', 
-            month: 'long', 
-            day: 'numeric' 
-          })
+    const createdAt = blog.createdAt
+        ? new Date(blog.createdAt).toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        })
         : 'December 24, 2024';
-    
+
     // Calculate reading time
     const wordCount = description.replace(/<[^>]*>/g, '').split(/\s+/).length;
     const readingTime = Math.ceil(wordCount / 200) || 8;
 
     return (
-        <div className='cus_container bg-[#E6E2FF] pb-[40px] sm:pb-[40px] md:pb-[48px] lg:pb-[60px] xl:pb-[70px]'>
-            <div className='px-2 sm:px-2 md:px-10 lg:px-[120px] xl:px-[180px]'>
-                <div className=" py-8 sm:py-12">
-                    {/* GRID */}
-                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8">
-                        {/* LEFT CONTENT */}
-                        <div className="lg:col-span-2 ">
-                            <div className='pb-[24px]'>
-                                <h1 className="text-[22px] leading-[30px] sm:text-[28px] sm:leading-[36px] md:text-[32px] md:leading-[40px] lg:text-[40px] lg:leading-[48px] font-regular text-[#0A0A0A]">
-                                    {heading}
-                                </h1>
+        <div className="main-bg">
+            <div className='cus_container pb-[40px] sm:pb-[40px] md:pb-[48px] lg:pb-[60px] xl:pb-[70px]'>
+                <div className='px-2 sm:px-2 '>
+                    <div className=" py-8 sm:py-12">
+                        {/* GRID */}
+                        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8">
+                            {/* LEFT CONTENT */}
+                            <div className="lg:col-span-2 ">
+                                <div className='pb-[24px]'>
+                                    <h1 className="text-[22px] leading-[30px] sm:text-[28px] sm:leading-[36px] md:text-[32px] md:leading-[40px] lg:text-[40px] lg:leading-[48px] font-regular text-[#0A0A0A]">
+                                        {heading}
+                                    </h1>
 
-                                <div className="flex items-center gap-4 mt-3 text-sm text-gray-500">
-                                    <span className="flex gap-[6px] sm:gap-[7px] md:gap-[8px] text-[12px] sm:text-[14px] md:text-[16px] leading-[16px] sm:leading-[20px] md:leading-[24px] text-[#4A5565]">{readBlogSvg} {readingTime} min read</span>
-                                    <span className="flex gap-[6px] sm:gap-[7px] md:gap-[8px] text-[12px] sm:text-[14px] md:text-[16px] leading-[16px] sm:leading-[20px] md:leading-[24px] text-[#4A5565]">{celenderSvg} {createdAt}</span>
+                                    <div className="flex items-center gap-4 mt-3 text-sm text-gray-500">
+                                        <span className="flex gap-[6px] sm:gap-[7px] md:gap-[8px] text-[12px] sm:text-[14px] md:text-[16px] leading-[16px] sm:leading-[20px] md:leading-[24px] text-[#4A5565]">{readBlogSvg} {readingTime} min read</span>
+                                        <span className="flex gap-[6px] sm:gap-[7px] md:gap-[8px] text-[12px] sm:text-[14px] md:text-[16px] leading-[16px] sm:leading-[20px] md:leading-[24px] text-[#4A5565]">{celenderSvg} {createdAt}</span>
+                                    </div>
+                                </div>
+
+                                <div className="rounded-[16px] overflow-hidden shadow-[0_7px_29px_0_rgba(100,100,111,0.2)] mb-[48px]">
+                                    <Image
+                                        src={imageUrl}
+                                        alt={heading}
+                                        width={1200}
+                                        height={600}
+                                        className="w-full h-auto object-cover"
+                                    />
+                                </div>
+
+                                {/* KEY TAKEAWAYS */}
+                                <div className="bg-white rounded-2xl p-[32px] sm:p-6 shadow-[0_7px_29px_0_rgba(100,100,111,0.2)]">
+                                    <h3 className="text-lg font-regular mb-4">Key Takeaways</h3>
+                                    <ul className="space-y-3 text-sm sm:text-base text-gray-600">
+                                        {takeaways.map((item, index) => (
+                                            <li key={index} className="flex gap-2 items-start">
+                                                <span className="text-[#6346FA]">{keyTakeway}</span>
+                                                <span>{item}</span>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+
+                                <div className='single_blog_man_content pt-[40px]'>
+                                    <div
+                                        className="prose prose-lg max-w-none text-[#364153] text-[14px] leading-[22px] sm:text-[14px] sm:leading-[24px] md:text-[16px] md:leading-[24px] lg:text-[16px] lg:leading-[24px] space-y-2"
+                                        dangerouslySetInnerHTML={{ __html: description }}
+                                    />
                                 </div>
                             </div>
 
-                            <div className="rounded-[16px] overflow-hidden shadow-[0_7px_29px_0_rgba(100,100,111,0.2)] mb-[48px]">
-                                <Image 
-                                    src={imageUrl} 
-                                    alt={heading} 
-                                    width={1200} 
-                                    height={600}
-                                    className="w-full h-auto object-cover" 
-                                />
-                            </div>
+                            {/* RIGHT SIDEBAR */}
+                            <div className="space-y-6 lg:sticky lg:top-[50px] self-start">
+                                {/* CTA CARD */}
+                                <div className="bg-white rounded-2xl p-[25px] sm:p-6">
+                                    <h4 className="font-regular text-[14px] sm:text-[15px] md:text-[16px] lg:text-[17px] xl:text-[17px] mb-[6px] sm:mb-[7px] md:mb-[9px] lg:mb-[10px] xl:mb-[12px]">
+                                        Start Your Learning Journey
+                                    </h4>
 
-                            {/* KEY TAKEAWAYS */}
-                            <div className="bg-white rounded-2xl p-[32px] sm:p-6 shadow-[0_7px_29px_0_rgba(100,100,111,0.2)]">
-                                <h3 className="text-lg font-regular mb-4">Key Takeaways</h3>
-                                <ul className="space-y-3 text-sm sm:text-base text-gray-600">
-                                    {takeaways.map((item, index) => (
-                                        <li key={index} className="flex gap-2 items-start">
-                                            <span className="text-[#6346FA]">{keyTakeway}</span>
-                                            <span>{item}</span>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
+                                    <p className="text-sm text-gray-600 mb-4">
+                                        Get expert guidance and hands-on training to launch your career in digital marketing.
+                                    </p>
 
-                            <div className='single_blog_man_content pt-[40px]'>
-                                <div 
-                                    className="prose prose-lg max-w-none text-[#364153] text-[14px] leading-[22px] sm:text-[14px] sm:leading-[24px] md:text-[16px] md:leading-[24px] lg:text-[16px] lg:leading-[24px]"
-                                    dangerouslySetInnerHTML={{ __html: description }}
-                                />
-                            </div>
-                        </div>
+                                    <div className="space-y-3">
+                                        <button className="w-full flex justify-center items-center gap-[9px] cursor-pointer bg-[#6346FA] hover:bg-[#4129BA] transition duration-300 ease-in-out text-white py-2.5 rounded-lg text-sm font-medium">
+                                            {talkToCareer} Talk to Career Expert
+                                        </button>
 
-                        {/* RIGHT SIDEBAR */}
-                        <div className="space-y-6 lg:sticky lg:top-[50px] self-start">
-                            {/* CTA CARD */}
-                            <div className="bg-white rounded-2xl p-[25px] sm:p-6">
-                                <h4 class="font-regular text-[14px] sm:text-[15px] md:text-[16px] lg:text-[17px] xl:text-[17px] mb-[6px] sm:mb-[7px] md:mb-[9px] lg:mb-[10px] xl:mb-[12px]">
-                                    Start Your Learning Journey
-                                </h4>
-
-                                <p className="text-sm text-gray-600 mb-4">
-                                    Get expert guidance and hands-on training to launch your career in digital marketing.
-                                </p>
-
-                                <div className="space-y-3">
-                                    <button className="w-full flex justify-center items-center gap-[9px] cursor-pointer bg-[#6346FA] hover:bg-[#4129BA] transition duration-300 ease-in-out text-white py-2.5 rounded-lg text-sm font-medium">
-                                        {talkToCareer} Talk to Career Expert
-                                    </button>
-
-                                    <button className="w-full group flex justify-center items-center gap-[9px] cursor-pointer border border-gray-300 hover:bg-[#6346FA] hover:text-[#fff] transition duration-300 ease-in-out py-2.5 rounded-lg text-sm font-medium">
-                                        {viewAllCareer} View All Courses
-                                    </button>
+                                        <button className="w-full group flex justify-center items-center gap-[9px] cursor-pointer border border-gray-300 hover:bg-[#6346FA] hover:text-[#fff] transition duration-300 ease-in-out py-2.5 rounded-lg text-sm font-medium">
+                                            {viewAllCareer} View All Courses
+                                        </button>
+                                    </div>
                                 </div>
+
+                                {/* IN THIS ARTICLE */}
+                                <div className="bg-white rounded-2xl py-[30px] px-[20px] sm:py-[34px] sm:px-[22px] md:py-[38px] md:px-[25px] lg:py-[42px] lg:px-[25px]">
+                                    <h4 className="font-regular mb-4">In This Article</h4>
+
+                                    <ul className="space-y-3 text-sm text-gray-600">
+                                        <li className="hover:text-[#6346FA] cursor-pointer transition">Introduction</li>
+                                        <li className="hover:text-[#6346FA] cursor-pointer transition">Why This Matters Now</li>
+                                        <li className="hover:text-[#6346FA] cursor-pointer transition">Getting Started</li>
+                                        <li className="hover:text-[#6346FA] cursor-pointer transition">Essential Tools</li>
+                                        <li className="hover:text-[#6346FA] cursor-pointer transition">Career Opportunities</li>
+                                        <li className="hover:text-[#6346FA] cursor-pointer transition">Conclusion</li>
+                                    </ul>
+                                </div>
+
                             </div>
-
-                            {/* IN THIS ARTICLE */}
-                            <div className="bg-white rounded-2xl py-[30px] px-[20px] sm:py-[34px] sm:px-[22px] md:py-[38px] md:px-[25px] lg:py-[42px] lg:px-[25px]">
-                                <h4 className="font-regular mb-4">In This Article</h4>
-
-                                <ul className="space-y-3 text-sm text-gray-600">
-                                    <li className="hover:text-[#6346FA] cursor-pointer transition">Introduction</li>
-                                    <li className="hover:text-[#6346FA] cursor-pointer transition">Why This Matters Now</li>
-                                    <li className="hover:text-[#6346FA] cursor-pointer transition">Getting Started</li>
-                                    <li className="hover:text-[#6346FA] cursor-pointer transition">Essential Tools</li>
-                                    <li className="hover:text-[#6346FA] cursor-pointer transition">Career Opportunities</li>
-                                    <li className="hover:text-[#6346FA] cursor-pointer transition">Conclusion</li>
-                                </ul>
-                            </div>
-
                         </div>
                     </div>
-                </div>
 
+                </div>
+                <SingleBlogCareer title="Build a Career in Digital Marketing?" description="Industry-Designed Courses for Job-Ready Skills" book_free="Explore Related Course" />
             </div>
-            <SingleBlogCareer title="Build a Career in Digital Marketing?" description="Industry-Designed Courses for Job-Ready Skills" book_free="Explore Related Course" />
         </div>
     )
 }

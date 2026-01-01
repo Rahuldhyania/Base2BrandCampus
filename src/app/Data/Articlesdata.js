@@ -136,6 +136,7 @@ export const fetchBlogs = async (page = 1, limit = 21) => {
   }
 };
 
+
 export const fetchBlogBySlug = async (slug) => {
   try {
     const response = await fetch(
@@ -153,13 +154,13 @@ export const fetchBlogBySlug = async (slug) => {
     }
 
     const data = await response.json();
+     
     return data;
   } catch (error) {
     console.error("Error fetching blog by slug:", error);
     throw error;
   }
 };
-
 export const fetchCategories = async (page = 1, limit = 6) => {
   try {
     const response = await fetch(

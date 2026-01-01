@@ -56,14 +56,12 @@ function Contactfrom({ onCloseModal }) {
       publicid: "b1d358f820e3c28e411b9058299241a5",
       urlencodeenable: "1",
       name: "b2bcampus",
-
       firstname: formData.firstname,
       lastname: formData.lastname,
       mobile: formData.mobile,
       email: formData.email,
-
       cf_1192: formData.course,         
-      leadsource: "b2bcampus website"   
+      leadsource: "b2bcampus website"  
     };
 
     try {

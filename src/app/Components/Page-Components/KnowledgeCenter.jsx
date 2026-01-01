@@ -5,6 +5,7 @@ import Image from "next/image";
 import { PopularTags } from "./PopularTags";
 import ArticleCard from "../UiUx/ArticleCard";
 import { articlesdata, fetchKnowledgeCenter, fetchCategories } from "@/app/Data/Articlesdata";
+import Link from "next/link";
 
 /* -------------------- STATIC DATA -------------------- */
 
@@ -56,7 +57,7 @@ const trandingtopics = [
 
 /* -------------------- SIDE COMPONENT -------------------- */
 
-export const TrandingTopics = () => {
+export const TrandingTopics = ({ data }) => {
     const [trendingTopics, setTrendingTopics] = useState([]);
     const [loading, setLoading] = useState(true);
 
@@ -97,10 +98,15 @@ export const TrandingTopics = () => {
                 <div className="pt-3 text-center text-gray-500">Loading...</div>
             ) : (
                 <ul className="pt-3 grid gap-y-3 ps-4">
-                    {trendingTopics.map((item, i) => (
-                        <li key={i} className="text-lg list-disc">
-                            {item}
-                        </li>
+                    {data.slice(0, 4).map((item, i) => (
+                        <Link
+                            key={i}
+                            href={`/knowledge-center/${item.slugUrl}`}
+                        >
+                            <li className="text-lg list-disc hover:text-(--primary) hover:underline">
+                                {item.heading}
+                            </li>
+                        </Link>
                     ))}
                 </ul>
             )}
@@ -223,7 +229,8 @@ const KnowledgeCenter = () => {
     }, [knowledgeCategories, knowledgeCenterData]);
 
     /* --------- FETCH KNOWLEDGE CENTER DATA --------- */
-
+    console.log("categoriesWithCounts",categoriesWithCounts);
+    
     useEffect(() => {
         const loadKnowledgeCenter = async () => {
             try {
@@ -381,7 +388,7 @@ const KnowledgeCenter = () => {
                         </div>
 
                         {topdropdownopen && (
-                            <div className="absolute mt-2 bg-white rounded-xl shadow w-full">
+                            <div className="absolute mt-2 bg-white rounded-xl shadow w-max">
                                 {topdropdown.map(item => (
                                     <div
                                         key={item}
@@ -389,7 +396,7 @@ const KnowledgeCenter = () => {
                                             setSelecteddropdown(item);
                                             setTopdropdownOpen(false);
                                         }}
-                                        className="px-4 py-2 hover:bg-primary hover:text-white cursor-pointer"
+                                        className="px-4 py-2 hover:bg-primary hover:text-(--primary) cursor-pointer"
                                     >
                                         {item}
                                     </div>
@@ -408,7 +415,7 @@ const KnowledgeCenter = () => {
                     <div>
                         {!isSearchActive && (
                             <>
-                                <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
+                                <div className="grid grid-cols-2 md:grid-cols-3  gap-6">
                                     {categoriesWithCounts.map(cat => {
                                         const isActive = activeTab === cat.id;
                                         return (
@@ -481,7 +488,7 @@ const KnowledgeCenter = () => {
 
                     {/* Right */}
                     <div className="space-y-6 hidden md:block">
-                        <TrandingTopics />
+                        <TrandingTopics data={filteredArticles} />
                         <div className="sticky top-[120px]">
                             <PopularTags tags={allTags} onTagChange={setSelectedTags} />
                         </div>

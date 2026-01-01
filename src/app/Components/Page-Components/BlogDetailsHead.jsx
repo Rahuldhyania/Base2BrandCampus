@@ -71,7 +71,7 @@ const BlogDetailsHead = ({ backbtn, share_btn, backUrl }) => {
   return (
     <div className="bg-[#6346FA] py-[29px]">
       <div className="cus_container">
-        <div className="inner_details_head flex  justify-between px-2 sm:px-2 md:px-10 lg:px-[120px] xl:px-[180px]">
+        <div className="inner_details_head flex  justify-between px-2 sm:px-2">
           {backUrl ? (
             <Link
               href={backUrl}
