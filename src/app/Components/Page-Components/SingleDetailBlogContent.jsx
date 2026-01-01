@@ -1,6 +1,7 @@
 import React from 'react'
 import Image from 'next/image'
 import SingleBlogCareer from './SingleBlogCareer'
+import Link from 'next/link'
 
 const SingleDetailBlogContent = ({ blog }) => {
     const readBlogSvg = (
@@ -161,13 +162,17 @@ const SingleDetailBlogContent = ({ blog }) => {
                                     </p>
 
                                     <div className="space-y-3">
-                                        <button className="w-full flex justify-center items-center gap-[9px] cursor-pointer bg-[#6346FA] hover:bg-[#4129BA] transition duration-300 ease-in-out text-white py-2.5 rounded-lg text-sm font-medium">
-                                            {talkToCareer} Talk to Career Expert
-                                        </button>
+                                        <Link
+                                            href={'/contact-us'}
+                                        >
+                                            <button className="w-full flex justify-center items-center gap-[9px] cursor-pointer bg-[#6346FA] hover:bg-[#4129BA] transition duration-300 ease-in-out text-white py-2.5 rounded-lg text-sm font-medium">
+                                                {talkToCareer} Talk to Career Expert
+                                            </button>
+                                        </Link>
 
-                                        <button className="w-full group flex justify-center items-center gap-[9px] cursor-pointer border border-gray-300 hover:bg-[#6346FA] hover:text-[#fff] transition duration-300 ease-in-out py-2.5 rounded-lg text-sm font-medium">
+                                        {/* <button className="w-full group flex justify-center items-center gap-[9px] cursor-pointer border border-gray-300 hover:bg-[#6346FA] hover:text-[#fff] transition duration-300 ease-in-out py-2.5 rounded-lg text-sm font-medium">
                                             {viewAllCareer} View All Courses
-                                        </button>
+                                        </button> */}
                                     </div>
                                 </div>
 

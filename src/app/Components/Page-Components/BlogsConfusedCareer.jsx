@@ -3,6 +3,7 @@ import Description from '../UiUx/Description'
 import Title from '../UiUx/Title'
 import Image from 'next/image'
 import titlewhitebg from "../../../../public/images/titlewhitebg.webp";
+import Link from 'next/link';
 const BlogsConfusedCareer = ({ title, description, book_free }) => {
     const careerInsight = [
         {
@@ -71,8 +72,8 @@ const BlogsConfusedCareer = ({ title, description, book_free }) => {
                     </p>
 
                     {/* Button */}
-                    <a
-                        href="javascript:void(0);"
+                    <Link
+                        href="/contact-us"
                         title={book_free}
                         className="
                             flex mx-auto w-fit
@@ -85,7 +86,7 @@ const BlogsConfusedCareer = ({ title, description, book_free }) => {
                             hover:bg-[#000]
                             transition-all duration-300 ease-in-out">
                         {book_free}
-                    </a>
+                    </Link>
                 </div>
             </div>
         </div>
