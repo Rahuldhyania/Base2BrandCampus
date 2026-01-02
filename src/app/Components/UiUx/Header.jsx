@@ -335,91 +335,94 @@ export default function Header() {
           </ul>
 
         </div>
-        <select
-          className="notranslate"
-          translate="no"
-          defaultValue="en"
-          onChange={(e) => changeLanguage(e.target.value)}
-        >
-          {Object.entries(languages).map(([code, name]) => (
-            <option
-              key={code}
-              value={code}
-              className="notranslate"
-              translate="no"
-            >
-              {name}
-            </option>
-          ))}
-        </select>
-        <div className="flex items-center gap-3">
-          {isLoggedIn ? (
-            <div className="hidden md:flex items-center gap-3">
-              {/* User Icon */}
-              <div className="flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-br from-[#6346FA] to-[#732dec] text-white font-semibold text-lg cursor-pointer hover:scale-110 transition-transform">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={2}
-                  stroke="currentColor"
-                  className="w-6 h-6"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"
-                  />
-                </svg>
-              </div>
-              {/* Logout Button */}
-              <button
-                onClick={handleLogout}
-                className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-[#5D38DE] border border-gray-300 rounded-xl hover:border-[#5D38DE] transition-colors"
-              >
-                Logout
-              </button>
-            </div>
-          ) : (
-            <div className="hidden md:flex">
-              <Link
-                href={'contact-us'}
-              >
-                <Buttons
-                  btnname="Enroll Now"
-                  text_color="text-white"
-                // onClick={() => setEnrollModalOpen(true)}
-                />
-              </Link>
-            </div>
-          )}
-
-          <div
-            className="xl:hidden cursor-pointer"
-            onClick={() => setOpen(!open)}
+        <div className="flex items-center gap-4">
+          <select
+            className="notranslate"
+            translate="no"
+            defaultValue="en"
+            onChange={(e) => changeLanguage(e.target.value)}
           >
-            <div className="space-y-1">
-              <span
-                className="block w-6 h-[3px] bg-gray-700 transition-all"
-                style={{
-                  rotate: open ? "45deg" : "0deg",
-                  translateY: open ? "8px" : "0px",
-                }}
-              />
-              <span
-                className={`block w-6 h-[3px] bg-gray-700 transition-all ${open ? "opacity-0" : "opacity-100"
-                  }`}
-              />
-              <span
-                className="block w-6 h-[3px] bg-gray-700 transition-all"
-                style={{
-                  rotate: open ? "-45deg" : "0deg",
-                  translateY: open ? "-8px" : "0px",
-                }}
-              />
+            {Object.entries(languages).map(([code, name]) => (
+              <option
+                key={code}
+                value={code}
+                className="notranslate"
+                translate="no"
+              >
+                {name}
+              </option>
+            ))}
+          </select>
+          <div className="flex items-center gap-3">
+            {isLoggedIn ? (
+              <div className="hidden md:flex items-center gap-3">
+                {/* User Icon */}
+                <div className="flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-br from-[#6346FA] to-[#732dec] text-white font-semibold text-lg cursor-pointer hover:scale-110 transition-transform">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth={2}
+                    stroke="currentColor"
+                    className="w-6 h-6"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"
+                    />
+                  </svg>
+                </div>
+                {/* Logout Button */}
+                <button
+                  onClick={handleLogout}
+                  className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-[#5D38DE] border border-gray-300 rounded-xl hover:border-[#5D38DE] transition-colors"
+                >
+                  Logout
+                </button>
+              </div>
+            ) : (
+              <div className="hidden md:flex">
+                <Link
+                  href={'contact-us'}
+                >
+                  <Buttons
+                    btnname="Enroll Now"
+                    text_color="text-white"
+                  // onClick={() => setEnrollModalOpen(true)}
+                  />
+                </Link>
+              </div>
+            )}
+
+            <div
+              className="xl:hidden cursor-pointer"
+              onClick={() => setOpen(!open)}
+            >
+              <div className="space-y-1">
+                <span
+                  className="block w-6 h-[3px] bg-gray-700 transition-all"
+                  style={{
+                    rotate: open ? "45deg" : "0deg",
+                    translateY: open ? "8px" : "0px",
+                  }}
+                />
+                <span
+                  className={`block w-6 h-[3px] bg-gray-700 transition-all ${open ? "opacity-0" : "opacity-100"
+                    }`}
+                />
+                <span
+                  className="block w-6 h-[3px] bg-gray-700 transition-all"
+                  style={{
+                    rotate: open ? "-45deg" : "0deg",
+                    translateY: open ? "-8px" : "0px",
+                  }}
+                />
+              </div>
             </div>
           </div>
         </div>
+
 
         <div
           className={`xl:hidden absolute top-full left-0 w-full bg-white shadow-lg rounded-b-lg overflow-hidden transition-all duration-500 ${open ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"
