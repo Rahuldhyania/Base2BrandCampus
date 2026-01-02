@@ -204,6 +204,7 @@ export default function Header() {
     }
   }, [megaOpen, enrollModalOpen]);
   const languages = {
+     en: "English",
     hi: "Hindi",
     bn: "Bengali",
     te: "Telugu",
