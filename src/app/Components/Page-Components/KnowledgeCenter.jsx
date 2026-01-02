@@ -57,7 +57,7 @@ export const TrandingTopics = ({ data }) => {
             try {
                 setLoading(true);
                 const res = await fetchKnowledgeCenter(2, 10, null);
-                const response = await fetch(`${baseurl}/api/B2Badmin/public/knowledge-center?isTrending=true`, { method: "GET" })
+                const response = await fetch(`https://backend.b2bcampus.com/api/B2Badmin/public/knowledge-center?isTrending=true`, { method: "GET" })
                 const trandingarticels = await response.json();
 
                 console.log("restrandingarticel", trandingarticels.knowledgeCenters);
@@ -245,7 +245,7 @@ const KnowledgeCenter = () => {
                 setLoading(true);
                 const type = getTypeFromActiveTag(activeTag);
                 const res = await fetchKnowledgeCenter(currentPage, 10, type);
-                const resalldata = await fetch(`${baseurl}/api/B2Badmin/public/knowledge-center`);
+                const resalldata = await fetch(`https://backend.b2bcampus.com/api/B2Badmin/public/knowledge-center`);
                 const alldata = await resalldata.json()
                 console.log("aldatasads", alldata);
 
