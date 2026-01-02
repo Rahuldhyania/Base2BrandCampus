@@ -204,11 +204,16 @@ export default function Header() {
     }
   }, [megaOpen, enrollModalOpen]);
   const languages = {
-    en: "English",
     hi: "Hindi",
-    pa: "Punjabi",
-    gu: "Gujarati",
+    bn: "Bengali",
+    te: "Telugu",
+    ta: "Tamil",
     mr: "Marathi",
+    gu: "Gujarati",
+    kn: "Kannada",
+    ml: "Malayalam",
+    pa: "Punjabi",
+    ur: "Urdu",
   };
 
   const changeLanguage = (lang) => {
