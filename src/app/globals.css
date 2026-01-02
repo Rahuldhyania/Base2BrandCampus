@@ -101,6 +101,15 @@ body {
     font-size: 18px;
 }
 /* about page css end */
+.icon-active svg path {
+  stroke: #fff !important;
+  fill: #fff !important;
+}
+
+.icon svg path {
+  stroke: #6346FA;
+  fill: none;
+}
 
 @keyframes bounceBall {
 

@@ -70,17 +70,19 @@ const SingleknowledgeCenterContent = ({ knowledgeCenter }) => {
 
   // If no knowledgeCenter data, show default/fallback content
   if (!knowledgeCenter) {
-    return (
-      <div className="main-bg">
-        <div className="cus_container pb-[40px] sm:pb-[40px] md:pb-[48px] lg:pb-[60px] xl:pb-[70px]">
-          <div className="pt-16">
-            <div className="bg-[#F9FAFB80] rounded-[5px] md:rounded-[29px] py-[24px] px-[16px] sm:py-[32px] sm:px-[20px] md:py-[40px] md:px-[24px] lg:py-[44px] lg:px-[28px] xl:py-[48px] xl:px-[32px] ">
-              <p className="text-center text-gray-600">Loading content...</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    );
+    // return (
+    //   <div className="main-bg">
+    //     <div className="cus_container pb-[40px] sm:pb-[40px] md:pb-[48px] lg:pb-[60px] xl:pb-[70px]">
+    //       <div className="pt-16">
+    //         <div className="bg-[#F9FAFB80] rounded-[5px] md:rounded-[29px] py-[24px] px-[16px] sm:py-[32px] sm:px-[20px] md:py-[40px] md:px-[24px] lg:py-[44px] lg:px-[28px] xl:py-[48px] xl:px-[32px] ">
+    //           <p className="text-center text-gray-600">Loading content...</p>
+    //         </div>
+    //       </div>
+    //     </div>
+    //   </div>
+    // );
+
+    return null
   }
 
   // Extract data from knowledgeCenter

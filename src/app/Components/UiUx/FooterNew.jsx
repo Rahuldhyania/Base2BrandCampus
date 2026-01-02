@@ -430,11 +430,11 @@ const FooterNew = () => {
                   India (B2bcampus)
                 </h4>
 
-                <p className="text-white text-base md:text-lg font-normal pt-4">
+                <p className="text-white text-base md:text-lg font-normal pt-4 hover:underline">
                  <a href="https://www.google.com/maps/place/B2B+Campus/data=!4m2!3m1!1s0x0:0xb9ae31b247ff7455?sa=X&ved=1t:2428&ictx=111" target="_blank">F-209, Sector 74, Mohali, 160074</a> 
                   <br />
                   <p>
-                     <a href="tel:+919872487850">IND +91 9872487850</a>
+                     <a href="tel:+919872487850">INDIA +91 9872487850</a>
                   </p>
                 </p>
               </div>
@@ -443,11 +443,11 @@ const FooterNew = () => {
                   Canada (B2bcampus)
                 </h4>
 
-                <p className="text-white text-base md:text-lg font-normal pt-4">
+                <p className="text-white text-base md:text-lg font-normal pt-4 hover:underline">
                  83 saddlebrook court , kitchener , NR2 0P6
                   <br />
                 <p>
-                  <a href="tel:+15482554922">CAN +1 548 255 4922</a>
+                  <a href="tel:+15482554922">CANADA +1 (548) 255-4922</a>
                 </p>
                 </p>
               </div>

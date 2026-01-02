@@ -203,7 +203,26 @@ export default function Header() {
       document.body.style.paddingRight = "0px";
     }
   }, [megaOpen, enrollModalOpen]);
+  const languages = {
+    en: "English",
+    hi: "Hindi",
+    pa: "Punjabi",
+    gu: "Gujarati",
+    mr: "Marathi",
+  };
 
+  const changeLanguage = (lang) => {
+    if (typeof window === "undefined") return;
+
+    const interval = setInterval(() => {
+      const select = document.querySelector("select.goog-te-combo");
+      if (select) {
+        select.value = lang;
+        select.dispatchEvent(new Event("change"));
+        clearInterval(interval);
+      }
+    }, 100);
+  };
   return (
     <nav className="relative z-50">
       <div className="flex justify-between xl:justify-around items-center flex-wrap gap-4 relative py-5 px-5 bg-white border-[0.5px] border-[#00000021]">
@@ -224,11 +243,14 @@ export default function Header() {
                 {item.name === "Courses" ? (
                   <div
                     className="cursor-pointer px-1 text-gray-700 hover:text-purple-500 transition-colors"
-                    onClick={() => setMegaOpen(!megaOpen)}
+
                   >
                     <span className="inline-flex items-center">
-                      {item.name}
+                      <Link href={'/courses'}>
+                        {item.name}
+                      </Link>
                       <Image
+                        onClick={() => setMegaOpen(!megaOpen)}
                         src={arrowdown}
                         width={20}
                         height={20}
@@ -313,7 +335,23 @@ export default function Header() {
           </ul>
 
         </div>
-
+        <select
+          className="notranslate"
+          translate="no"
+          defaultValue="en"
+          onChange={(e) => changeLanguage(e.target.value)}
+        >
+          {Object.entries(languages).map(([code, name]) => (
+            <option
+              key={code}
+              value={code}
+              className="notranslate"
+              translate="no"
+            >
+              {name}
+            </option>
+          ))}
+        </select>
         <div className="flex items-center gap-3">
           {isLoggedIn ? (
             <div className="hidden md:flex items-center gap-3">
@@ -393,10 +431,16 @@ export default function Header() {
                 {item.name === "Courses" ? (
                   <div
                     className="cursor-pointer px-2 py-2 text-gray-700 flex items-center justify-between"
-                    onClick={() => setMegaOpen(!megaOpen)}
+                    onClick={() => setOpen(false)}
                   >
-                    <span>{item.name}</span>
+                    <Link href={'/courses'}>
+                      <span>{item.name}</span>
+                    </Link>
                     <Image
+                      onClick={() => {
+                        setMegaOpen(!megaOpen)
+
+                      }}
                       src={arrowdown}
                       width={18}
                       height={18}
@@ -520,9 +564,9 @@ export default function Header() {
                 <Buttons
                   btnname="Enroll Now"
                   text_color="text-white"
-                onClick={() => {
-                  setOpen(false);
-                }}
+                  onClick={() => {
+                    setOpen(false);
+                  }}
                 />
               </Link>
             )}

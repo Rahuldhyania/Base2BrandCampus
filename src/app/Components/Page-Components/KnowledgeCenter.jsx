@@ -6,9 +6,6 @@ import { PopularTags } from "./PopularTags";
 import ArticleCard from "../UiUx/ArticleCard";
 import { articlesdata, fetchKnowledgeCenter, fetchCategories } from "@/app/Data/Articlesdata";
 import Link from "next/link";
-
-/* -------------------- STATIC DATA -------------------- */
-
 const toptagfilter = [
     { id: 1, icon_default: "/icons/clockwhite.svg", icon_select: "/icons/clockblack.svg", tag_name: "Latest" },
     { id: 2, icon_default: "/icons/popularwhite.svg", icon_select: "/icons/popularblack.svg", tag_name: "Popular" },
@@ -24,7 +21,6 @@ const topdropdown = [
     "Career Growth"
 ];
 
-// Icon mapping for categories
 const getCategoryIcon = (categoryName) => {
     const name = categoryName.toLowerCase();
     if (name.includes('freelancing') || name.includes('career')) return "/icons/bag.svg";
@@ -33,11 +29,8 @@ const getCategoryIcon = (categoryName) => {
     if (name.includes('design') || name.includes('graphic') || name.includes('ui/ux')) return "/icons/graphic.svg";
     if (name.includes('business')) return "/icons/business.svg";
     if (name.includes('people') || name.includes('guide')) return "/icons/people2.svg";
-    // Default icon
     return "/icons/webdev.svg";
 };
-
-// Static fallback categories
 const staticKnowledgeCategories = [
     { id: 1, title: "Freelancing", articles: 15, icon: "/icons/bag.svg" },
     { id: 2, title: "Digital Marketing", articles: 23, icon: "/icons/popularblack.svg" },
@@ -54,31 +47,42 @@ const trandingtopics = [
     "No-Code Development",
     "Personal Branding"
 ];
-
-/* -------------------- SIDE COMPONENT -------------------- */
-
 export const TrandingTopics = ({ data }) => {
     const [trendingTopics, setTrendingTopics] = useState([]);
+    const [topics, setTopics] = useState([])
     const [loading, setLoading] = useState(true);
-
+    const baseurl = process.env.NEXT_PUBLIC__API_URL
     useEffect(() => {
         const loadTrendingTopics = async () => {
             try {
                 setLoading(true);
-                // Fetch trending type articles (type="trading" for trending/popular)
-                const res = await fetchKnowledgeCenter(1, 10, "trading");
-                const topics = res?.knowledgeCenters || [];
-                // Extract only titles/headings from trending articles
-                const titles = topics.map(item => {
-                    const title = item.heading || item.article_title || '';
-                    return title;
-                }).filter(title => title);
+                const res = await fetchKnowledgeCenter(2, 10, null);
+                const response = await fetch(`${baseurl}/api/B2Badmin/public/knowledge-center?isTrending=true`, { method: "GET" })
+                const trandingarticels = await response.json();
 
-                // Use API data if available, otherwise fallback to static data
-                setTrendingTopics(titles.length > 0 ? titles : trandingtopics);
+                console.log("restrandingarticel", trandingarticels.knowledgeCenters);
+                setTrendingTopics(trandingarticels?.knowledgeCenters)
+                const topics = res?.knowledgeCenters || [];
+                // console.log("");
+                setTopics(topics)
+
+                const myHeaders = new Headers();
+                myHeaders.append("Authorization", "Bearer pms_nfwp49qiq");
+
+                const requestOptions = {
+                    method: "GET",
+                    headers: myHeaders,
+                    redirect: "follow"
+                };
+
+                fetch("https://backend.b2bcampus.com/api/B2Badmin/public/knowledge-center?page=3&limit=10", requestOptions)
+                    .then((response) => response.text())
+                    .then((result) => console.log("sdfasdfs", result))
+                    .catch((error) => console.error(error));
+
+
             } catch (error) {
                 console.error("Error fetching trending topics:", error);
-                setTrendingTopics(trandingtopics);
             } finally {
                 setLoading(false);
             }
@@ -86,6 +90,7 @@ export const TrandingTopics = ({ data }) => {
 
         loadTrendingTopics();
     }, []);
+    console.log("trendingTopics", trendingTopics);
 
     return (
         <div className="bg-white rounded-2xl py-6 px-6">
@@ -98,7 +103,7 @@ export const TrandingTopics = ({ data }) => {
                 <div className="pt-3 text-center text-gray-500">Loading...</div>
             ) : (
                 <ul className="pt-3 grid gap-y-3 ps-4">
-                    {data.slice(0, 4).map((item, i) => (
+                    {trendingTopics.map((item, i) => (
                         <Link
                             key={i}
                             href={`/knowledge-center/${item.slugUrl}`}
@@ -118,21 +123,23 @@ export const TrandingTopics = ({ data }) => {
 
 const KnowledgeCenter = () => {
     const [search, setSearch] = useState("");
+    const [pagedata, setpageData] = useState([])
     const [isSearchActive, setIsSearchActive] = useState(false);
     const [activeTag, setActiveTag] = useState(1);
     const [activeTab, setActiveTab] = useState(null);
     const [topdropdownopen, setTopdropdownOpen] = useState(false);
     const [selecteddropdown, setSelecteddropdown] = useState(topdropdown[0]);
     const [knowledgeCenterData, setKnowledgeCenterData] = useState([]);
+    const [knowledgeCenterAllData, setKnowledgeCenterAllData] = useState([]);
     const [loading, setLoading] = useState(true);
     const [selectedTags, setSelectedTags] = useState([]);
-    const [knowledgeCategories, setKnowledgeCategories] = useState(staticKnowledgeCategories);
+    const [knowledgeCategories, setKnowledgeCategories] = useState([]);
     const [categoriesPage, setCategoriesPage] = useState(1);
     const [categoriesTotalPages, setCategoriesTotalPages] = useState(1);
     const [loadingMoreCategories, setLoadingMoreCategories] = useState(false);
-
+    const [currentPage, setCurrentPage] = useState(1);
     /* --------- MAP ACTIVE TAG TO API TYPE --------- */
-
+    const baseurl = process.env.NEXT_PUBLIC__API_URL
     const getTypeFromActiveTag = (tagId) => {
         switch (tagId) {
             case 1: // Latest
@@ -152,6 +159,7 @@ const KnowledgeCenter = () => {
         const loadCategories = async () => {
             try {
                 const res = await fetchCategories(1, 6);
+
                 const categories = res?.categories || [];
                 setCategoriesTotalPages(res?.totalPages || 1);
 
@@ -229,14 +237,22 @@ const KnowledgeCenter = () => {
     }, [knowledgeCategories, knowledgeCenterData]);
 
     /* --------- FETCH KNOWLEDGE CENTER DATA --------- */
-    console.log("categoriesWithCounts",categoriesWithCounts);
-    
+    console.log("categoriesWithCounts", categoriesWithCounts);
+
     useEffect(() => {
         const loadKnowledgeCenter = async () => {
             try {
                 setLoading(true);
                 const type = getTypeFromActiveTag(activeTag);
-                const res = await fetchKnowledgeCenter(1, 10, type);
+                const res = await fetchKnowledgeCenter(currentPage, 10, type);
+                const resalldata = await fetch(`${baseurl}/api/B2Badmin/public/knowledge-center`);
+                const alldata = await resalldata.json()
+                console.log("aldatasads", alldata);
+
+                const topics = res?.resalldata || [];
+                setpageData(alldata)
+                console.log("pagedatapagedata", alldata);
+
                 setKnowledgeCenterData(res?.knowledgeCenters || []);
             } catch (error) {
                 console.error("Error fetching knowledge center:", error);
@@ -247,7 +263,7 @@ const KnowledgeCenter = () => {
         };
 
         loadKnowledgeCenter();
-    }, [activeTag]);
+    }, [activeTag, currentPage]);
 
     /* --------- DERIVED VALUES (NO STATE) --------- */
 
@@ -291,7 +307,6 @@ const KnowledgeCenter = () => {
         const dataToFilter = knowledgeCenterData.length > 0 ? knowledgeCenterData : articlesdata;
 
         return dataToFilter.filter(item => {
-            // Handle API data structure
             const title = item.heading || item.article_title || '';
             const category = item.category?.name || item.article_des_tag || '';
             const tag = item.tags || item.article_toptag || '';
@@ -314,9 +329,32 @@ const KnowledgeCenter = () => {
 
             return matchSearch && matchTab && matchTags;
         });
-    }, [search, activeTabname, knowledgeCenterData, selectedTags]);
+    }, [search, activeTabname, knowledgeCenterData, selectedTags, pagedata]);
 
     /* -------------------- JSX -------------------- */
+    const getPages = () => {
+        const total = pagedata.totalPages;
+        const pages = [];
+
+        if (total <= 4) {
+            for (let i = 1; i <= total; i++) pages.push(i);
+            return pages;
+        }
+
+        let start = currentPage;
+
+        if (start > total - 3) {
+            start = total - 3;
+        }
+
+        if (currentPage === 1) {
+            return [1, 2, "...", total - 1, total];
+        }
+
+        pages.push(start, start + 1, "...", total - 1, total);
+
+        return pages;
+    };
 
     return (
         <div className="main-bg">
@@ -389,16 +427,16 @@ const KnowledgeCenter = () => {
 
                         {topdropdownopen && (
                             <div className="absolute mt-2 bg-white rounded-xl shadow w-max">
-                                {topdropdown.map(item => (
+                                {categoriesWithCounts.map(item => (
                                     <div
                                         key={item}
                                         onClick={() => {
-                                            setSelecteddropdown(item);
+                                            setSelecteddropdown(item.title);
                                             setTopdropdownOpen(false);
                                         }}
                                         className="px-4 py-2 hover:bg-primary hover:text-(--primary) cursor-pointer"
                                     >
-                                        {item}
+                                        {item.title}
                                     </div>
                                 ))}
                             </div>
@@ -447,43 +485,86 @@ const KnowledgeCenter = () => {
                                 )}
                             </>
                         )}
+                        <div className="relative">
+                            <div className="pt-6 md:pt-12 space-y-8">
+                                {loading ? (
+                                    <div className="text-center py-12">
+                                        <p className="text-lg text-gray-600">Loading articles...</p>
+                                    </div>
+                                ) : filteredArticles.length === 0 ? (
+                                    <div className="text-center py-12">
+                                        <p className="text-lg text-gray-600">No articles found.</p>
+                                    </div>
+                                ) : (
+                                    filteredArticles.map(article => (
+                                        <ArticleCard
+                                            key={article.id}
+                                            id={article.id}
+                                            poster_image={article.article_poster}
+                                            imageUrl={article.imageUrl}
+                                            isfeatured={article.isfeatured}
+                                            features={article.features}
+                                            article_tag={article.article_toptag}
+                                            tags={article.tags}
+                                            article_des_tag={article.article_des_tag}
+                                            category={article.category}
+                                            article_title={article.article_title}
+                                            heading={article.heading}
+                                            article_carddescription={article.article_carddescription}
+                                            shortDescription={article.shortDescription}
+                                            description={article.description}
+                                            publish_date={article.publish_date}
+                                            createdAt={article.createdAt}
+                                            reading_time={article.reading_time}
+                                            slugUrl={article.slugUrl}
+                                        />
+                                    ))
+                                )}
+                            </div>
 
-                        <div className="pt-6 md:pt-12 space-y-8">
-                            {loading ? (
-                                <div className="text-center py-12">
-                                    <p className="text-lg text-gray-600">Loading articles...</p>
-                                </div>
-                            ) : filteredArticles.length === 0 ? (
-                                <div className="text-center py-12">
-                                    <p className="text-lg text-gray-600">No articles found.</p>
-                                </div>
-                            ) : (
-                                filteredArticles.map(article => (
-                                    <ArticleCard
-                                        key={article.id}
-                                        id={article.id}
-                                        poster_image={article.article_poster}
-                                        imageUrl={article.imageUrl}
-                                        isfeatured={article.isfeatured}
-                                        features={article.features}
-                                        article_tag={article.article_toptag}
-                                        tags={article.tags}
-                                        article_des_tag={article.article_des_tag}
-                                        category={article.category}
-                                        article_title={article.article_title}
-                                        heading={article.heading}
-                                        article_carddescription={article.article_carddescription}
-                                        shortDescription={article.shortDescription}
-                                        description={article.description}
-                                        publish_date={article.publish_date}
-                                        createdAt={article.createdAt}
-                                        reading_time={article.reading_time}
-                                        slugUrl={article.slugUrl}
-                                    />
-                                ))
-                            )}
+                            {
+                                loading ?
+                                    null
+                                    :
+                                    <div className="flex gap-3 w-fit m-auto py-4 px-18 rounded-full border-[3px] border-primary sticky bottom-5 bg-white" >
+                                        <div className="flex gap-2 items-center">
+                                            {/* Previous */}
+                                            <button
+                                                disabled={currentPage === 1}
+                                                onClick={() => setCurrentPage(currentPage - 1)}
+                                                className="px-3 py-1 border rounded disabled:opacity-40"
+                                            >
+                                                Prev
+                                            </button>
+
+                                            {/* Pages */}
+                                            {getPages().map((page, index) =>
+                                                page === "..." ? (
+                                                    <span key={index} className="px-2">...</span>
+                                                ) : (
+                                                    <button
+                                                        key={index}
+                                                        onClick={() => setCurrentPage(page)}
+                                                        className={`px-3 py-1 border rounded ${currentPage === page ? "bg-black text-white" : ""
+                                                            }`}
+                                                    >
+                                                        {page}
+                                                    </button>
+                                                )
+                                            )}
+
+                                            {/* Next */}
+                                            <button
+                                                disabled={currentPage === pagedata.totalPages}
+                                                onClick={() => setCurrentPage(currentPage + 1)}
+                                                className="px-3 py-1 border rounded disabled:opacity-40"
+                                            >
+                                                Next
+                                            </button>
+                                        </div>
+                                    </div>
+                            }
                         </div>
-
                     </div>
 
                     {/* Right */}

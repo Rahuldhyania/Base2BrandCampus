@@ -9,7 +9,7 @@ const ContactusBanner = () => {
         >
             <div className="cus_container py-12 md:py-16">
                 <div className="grid grid-cols-1 md:grid-cols-[3fr_2fr] gap-6">
-                    <div className="flex items-center">
+                    <div className="flex flex-col items-start gap-12">
                         <div className="w-full">
                             <Title
                                 title={"Get in touch with us"}
@@ -125,6 +125,34 @@ const ContactusBanner = () => {
                                         </a>
                                     </p>
                                 </div>
+                            </div>
+                        </div>
+                        <div className='grid grid-cols-1 md:grid-cols-2'>
+                            <div className='bg-primary w-fit py-4 px-4 rounded-2xl'>
+                                <h4 className="text-white text-xl md:text-2xl">
+                                    India (B2bcampus)
+                                </h4>
+
+                                <p className="text-white text-base md:text-lg font-normal pt-4 hover:underline">
+                                    <a href="https://www.google.com/maps/place/B2B+Campus/data=!4m2!3m1!1s0x0:0xb9ae31b247ff7455?sa=X&ved=1t:2428&ictx=111" target="_blank">F-209, Sector 74, Mohali, 160074</a>
+                                    <br />
+                                    <p>
+                                        <a href="tel:+919872487850">INDIA +91 9872487850</a>
+                                    </p>
+                                </p>
+                            </div>
+                            <div className='bg-primary w-fit py-4 px-4 rounded-2xl'>
+                                <h4 className="text-white text-xl md:text-2xl">
+                                    Canada (B2bcampus)
+                                </h4>
+
+                                <p className="text-white text-base md:text-lg font-normal pt-4 hover:underline">
+                                    83 saddlebrook court , kitchener , NR2 0P6
+                                    <br />
+                                    <p>
+                                        <a href="tel:+15482554922">CANADA +1 (548) 255-4922</a>
+                                    </p>
+                                </p>
                             </div>
                         </div>
                     </div>

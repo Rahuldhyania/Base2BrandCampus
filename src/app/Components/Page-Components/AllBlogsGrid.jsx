@@ -8,12 +8,17 @@ import Buttons from "../UiUx/Buttons";
 const AllBlogsGrid = ({ blog_title }) => {
   const [blogs, setBlogs] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [showBlog, setShowBlog] = useState(6)
+  const [showBlog, setShowBlog] = useState(12);
+  const [tottalpage, setTotalpage] = useState(null)
+  const [currentPage, setCurrentPage] = useState(1);
+  const [currentCategory, setcurrentCategory] = useState('');
+  const [activeid, setsctiveid] = useState(1)
   useEffect(() => {
     const loadBlogs = async () => {
       try {
         setLoading(true);
-        const res = await fetchBlogs(1, 21);
+        const res = await fetchBlogs(currentPage, 15, currentCategory);
+        setTotalpage(res.totalPages)
         setBlogs(res?.blogs || []);
       } catch (error) {
         console.error("Error fetching blogs:", error);
@@ -24,9 +29,8 @@ const AllBlogsGrid = ({ blog_title }) => {
     };
 
     loadBlogs();
-  }, []);
+  }, [currentPage, currentCategory]);
 
-  // Calculate reading time from description
   const calculateReadingTime = (description) => {
     if (!description) return "5 min read";
     const text = description.replace(/<[^>]*>/g, "");
@@ -34,6 +38,7 @@ const AllBlogsGrid = ({ blog_title }) => {
     const readingTime = Math.ceil(wordCount / 200);
     return `${readingTime} min read`;
   };
+  console.log("currentCategory", currentCategory);
 
   const durationSvg = (
     <svg
@@ -251,12 +256,23 @@ const AllBlogsGrid = ({ blog_title }) => {
   const BlogSkill = [
     {
       icon: (
+        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24">
+          <rect width="40" height="40" fill="none" />
+          <path fill="#b46aff" d="m18 7l-1.41-1.41l-6.34 6.34l1.41 1.41zm4.24-1.41L11.66 16.17L7.48 12l-1.41 1.41L11.66 19l12-12zM.41 13.41L6 19l1.41-1.41L1.83 12z" />
+        </svg>
+      ),
+      title: "",
+      id: 1
+    },
+    {
+      icon: (
         <svg width={40} height={40} viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M28.332 3.33334H11.6654C9.82442 3.33334 8.33203 4.82573 8.33203 6.66668V33.3333C8.33203 35.1743 9.82442 36.6667 11.6654 36.6667H28.332C30.173 36.6667 31.6654 35.1743 31.6654 33.3333V6.66668C31.6654 4.82573 30.173 3.33334 28.332 3.33334Z" stroke="#6346FA" strokeWidth="3.33333" strokeLinecap="round" strokeLinejoin="round" />
           <path d="M20 30H20.0167" stroke="#6346FA" strokeWidth="3.33333" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
       ),
       title: "Digital Marketing",
+      id: 2
     },
     {
       icon: (
@@ -266,6 +282,7 @@ const AllBlogsGrid = ({ blog_title }) => {
         </svg>
       ),
       title: "Web Development",
+      id: 3
     },
     {
       icon: (
@@ -282,6 +299,7 @@ const AllBlogsGrid = ({ blog_title }) => {
         </svg>
       ),
       title: "AI & Tech",
+      id: 4
     },
     {
       icon: (
@@ -292,7 +310,8 @@ const AllBlogsGrid = ({ blog_title }) => {
           <path d="M20 25V33.3333C20 33.3333 25.05 32.4167 26.6667 30C28.4667 27.3 26.6667 21.6667 26.6667 21.6667" stroke="#6346FA" strokeWidth="3.33333" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
       ),
-      title: "Freelancing",
+      title: "Uncategorized",
+      id: 5
     },
     {
       icon: (
@@ -302,33 +321,68 @@ const AllBlogsGrid = ({ blog_title }) => {
         </svg>
       ),
       title: "Career Growth",
+      id: 6
     },
   ];
   const handelloadmore = () => {
-    setShowBlog(showBlog + 3)
+    setShowBlog(showBlog + 6)
   }
-  // Use API data if available, otherwise fallback to static data
+  const getPages = () => {
+    const total = tottalpage;
+    const pages = [];
+
+    if (total <= 4) {
+      for (let i = 1; i <= total; i++) pages.push(i);
+      return pages;
+    }
+
+    let start = currentPage;
+
+    if (start > total - 3) {
+      start = total - 3;
+    }
+
+    if (currentPage === 1) {
+      return [1, 2, "...", total - 1, total];
+    }
+
+    pages.push(start, start + 1, "...", total - 1, total);
+
+    return pages;
+  };
   const displayBlogs = blogs.length > 0 ? blogs : gridBlogs;
 
   return (
     <div className="main-bg pt-[58px] px-0 sm:px-[0px] md:px-10 lg:px-[100px] mt-6">
       <div className="cus_container">
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-[16px]">
-          {BlogSkill.map((item, index) => (
-            <div
-              key={index}
-              className="bg-white transition-all duration-300 ease-in-out cursor-pointer p-6 rounded-[14px] shadow-sm hover:shadow-[0px_7px_29px_0px_rgba(100,100,111,0.2)] flex flex-col items-center gap-4">
-              {item.icon}
-              <h3 className=" text-center text-[#0A0A0A] font-regular text-[14px] leading-[18px] sm:text-[15px] sm:leading-[19px] md:text-[16px] md:leading-[20px] lg:text-[18px] lg:leading-[22px]">
-                {item.title}
-              </h3>
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-[16px]">
+          {BlogSkill.map((item, index) => {
+            const isactive = item.id === activeid
+            console.log(isactive, "isactive");
 
-            </div>
-          ))}
+            return (
+              <div
+                key={index}
+                className={`bg-white ${isactive ? "bg-primary" : 'bg-white'} transition-all duration-300 ease-in-out cursor-pointer p-6 rounded-[14px] shadow-sm hover:shadow-[0px_7px_29px_0px_rgba(100,100,111,0.2)] flex flex-col items-center gap-4`}
+                onClick={() => {
+                  setcurrentCategory(item.title)
+                  setsctiveid(item.id)
+                }}
+              >
+                <div className={isactive ? "icon-active" : "icon"}>
+                  {item.icon}
+                </div>
+                <h3 className={`text-center ${isactive ? 'text-white' : 'text-[#0A0A0A]'} font-regular text-[14px] leading-[18px] sm:text-[15px] sm:leading-[19px] md:text-[16px] md:leading-[20px] lg:text-[18px] lg:leading-[22px]`}>
+                  {item.title === "" ? "All"  : item.title === 'Uncategorized' ? 'Freelancing' : item.title }
+                </h3>
+
+              </div>
+            )
+          })}
         </div>
       </div>
 
-      <div className="cus_container pt-6">
+      <div className="cus_container pt-6 relative" >
         <h2 className="text-[#0A0A0A] text-[16px] sm:text-[18px] md:text-[20px] lg:text-[24px] leading-[22px] sm:leading-[26px] md:leading-[30px] lg:leading-[36px] pb-[28px]">
           {blog_title}
         </h2>
@@ -341,7 +395,7 @@ const AllBlogsGrid = ({ blog_title }) => {
             <p className="text-lg text-gray-600">No blogs found.</p>
           </div>
         ) : (
-          <div>
+          <div id="allblog">
             <div className=" grid_blogs grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[30px] md:gap-[30px]">
               {displayBlogs.slice(0, showBlog).map((blog, index) => {
                 const blogImage = blog.imageUrl || blog.image || "";
@@ -351,8 +405,6 @@ const AllBlogsGrid = ({ blog_title }) => {
                   ? calculateReadingTime(blog.description)
                   : blog.duration || "5 min read";
                 const blogSlug = blog.slugUrl || blog.id;
-                console.log(displayBlogs, "displayBlogs")
-                console.log(blogCategory, "blogCategory")
 
                 return (
                   <Link
@@ -419,8 +471,49 @@ const AllBlogsGrid = ({ blog_title }) => {
                 );
               })}
             </div>
-            {
 
+
+            <div className="flex gap-3 w-fit m-auto py-4 px-18 rounded-full border-[3px] border-primary bg-white mt-6" >
+              <div className="flex gap-2 items-center">
+                {/* Previous */}
+                <button
+                  disabled={currentPage === 1}
+                  onClick={() => setCurrentPage(currentPage - 1)}
+                  className="px-3 py-1 border rounded disabled:opacity-40"
+                >
+                  Prev
+                </button>
+
+                {/* Pages */}
+                {getPages().map((page, index) =>
+                  page === "..." ? (
+                    <span key={index} className="px-2">...</span>
+                  ) : (
+                    <button
+                      key={index}
+                      onClick={() => {
+                        setCurrentPage(page)
+                        document.getElementById("allblog").focus().scrollIntoView({ behavior: "smooth" });
+                      }}
+                      className={`px-3 py-1 border rounded ${currentPage === page ? "bg-black text-white" : ""
+                        }`}
+                    >
+                      {page}
+                    </button>
+                  )
+                )}
+
+                {/* Next */}
+                <button
+                  disabled={currentPage === blogs.totalPages}
+                  onClick={() => setCurrentPage(currentPage + 1)}
+                  className="px-3 py-1 border rounded disabled:opacity-40"
+                >
+                  Next
+                </button>
+              </div>
+            </div>
+            {/* {
               showBlog < displayBlogs.length && (
                 <div className="pt-6">
                   <div className="w-fit m-auto " onClick={handelloadmore}>
@@ -431,8 +524,7 @@ const AllBlogsGrid = ({ blog_title }) => {
                   </div>
                 </div>
               )
-
-            }
+            } */}
           </div>
         )}
       </div>

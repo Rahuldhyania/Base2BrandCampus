@@ -58,12 +58,11 @@ export const articlesdata = [
 ];
 
 export const fetchKnowledgeCenter = async (
-  page = 1,
+  page = currentPagination,
   limit = 10,
   type = null
 ) => {
   try {
-    // Build URL with optional type parameter
     let url = `https://backend.b2bcampus.com/api/B2Badmin/public/knowledge-center?page=${page}&limit=${limit}`;
     if (type) {
       url += `&type=${type}`;
@@ -112,10 +111,17 @@ export const fetchKnowledgeCenterBySlug = async (slug) => {
   }
 };
 
-export const fetchBlogs = async (page = 1, limit = 21) => {
+export const fetchBlogs = async (page = 1, limit = 21, categoryName) => {
+  console.log(categoryName,"categoryNamddde");
+  
   try {
+    let url = `https://backend.b2bcampus.com/api/B2Badmin/blogs?page=${page}&limit=${limit}`;
+    if (categoryName) {
+      url += `&categoryName=${categoryName}`;
+    }
     const response = await fetch(
-      `https://backend.b2bcampus.com/api/B2Badmin/blogs?page=${page}&limit=${limit}`,
+      url,
+
       {
         method: "GET",
         headers: {
@@ -154,7 +160,7 @@ export const fetchBlogBySlug = async (slug) => {
     }
 
     const data = await response.json();
-     
+
     return data;
   } catch (error) {
     console.error("Error fetching blog by slug:", error);

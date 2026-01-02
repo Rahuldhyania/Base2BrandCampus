@@ -85,25 +85,25 @@ const KnowledgeCenterDetail = () => {
         }
     ];
 
-    if (loading) {
-        return (
-            <div className="min-h-screen flex items-center justify-center">
-                <div className="text-center">
-                    <p className="text-lg text-gray-600">Loading article...</p>
-                </div>
-            </div>
-        );
-    }
+    // if (loading) {
+    //     return (
+    //         <div className="min-h-screen flex items-center justify-center">
+    //             <div className="text-center">
+    //                 <p className="text-lg text-gray-600">Loading article...</p>
+    //             </div>
+    //         </div>
+    //     );
+    // }
 
-    if (error || !knowledgeCenter) {
-        return (
-            <div className="min-h-screen flex items-center justify-center">
-                <div className="text-center">
-                    <p className="text-lg text-red-600">{error || "Article not found"}</p>
-                </div>
-            </div>
-        );
-    }
+    // if (error || !knowledgeCenter) {
+    //     return (
+    //         <div className="min-h-screen flex items-center justify-center">
+    //             <div className="text-center">
+    //                 <p className="text-lg text-red-600">{error || "Article not found"}</p>
+    //             </div>
+    //         </div>
+    //     );
+    // }
 
     return (
         <div>

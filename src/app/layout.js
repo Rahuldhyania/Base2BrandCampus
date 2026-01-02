@@ -28,8 +28,31 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <head >
         <Canonical />
+        <meta name="google-site-verification" content="2s7VVDUSWgOnw6WzgQoOhd-dz1K83tjl8UyA5mZdJRs" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              function googleTranslateElementInit() {
+                new google.translate.TranslateElement(
+                  {
+                    pageLanguage: 'en',
+                    autoDisplay: false
+                  },
+                  'google_translate_element'
+                );
+              }
+            `,
+          }}
+        />
+
+        {/* Google Translate Script */}
+        <script
+          src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
+          async
+        ></script>
       </head>
       <body className={`${KodchasanMedium.variable}`}>
+        <div id="google_translate_element" style={{ display: "none" }}></div>
         <Header />
         {children}
         <div className="fixed bottom-4 left-4 z-50">
