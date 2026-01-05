@@ -1,5 +1,6 @@
 import React from "react";
 import Buttons from "../UiUx/Buttons";
+import Link from "next/link";
 
 const ReadytoGrow = () => {
     return (
@@ -20,16 +21,14 @@ const ReadytoGrow = () => {
                 </p>
 
                 <div className="pt-3 flex flex-col md:flex-row gap-4 items-center justify-center">
-                    <Buttons
-                        btnname={'Explore All Courses'}
-                        text_color={'text-white'}
-                    />
-                    <Buttons
-                        btn_primary={false}
-                        btn_bg={'bg-white'}
-                        btnname={'Explore All Courses'}
-                        text_color={'text-black'}
-                    />
+                    <Link
+                        href={'/courses'}
+                    >
+                        <Buttons
+                            btnname={'Explore All Courses'}
+                            text_color={'text-white'}
+                        />
+                    </Link>
                 </div>
             </div>
         </div>

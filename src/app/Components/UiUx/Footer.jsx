@@ -150,7 +150,7 @@ const Footer = () => {
 
             <div className="border-t border-white/20 mt-8 pt-6 flex flex-col sm:flex-row justify-between items-center gap-4 sm:gap-0">
 
-                <p className="text-sm opacity-80 text-center sm:text-left">© B2B Campus. All Rights Reserved 2025.</p>
+                <p className="text-sm opacity-80 text-center sm:text-left">© B2B Campus. All Rights Reserved 2026.</p>
 
                 <div className="flex gap-3 sm:gap-4 mt-2 sm:mt-0">
                     {socialLinks.map((item, i) => (

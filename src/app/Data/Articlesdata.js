@@ -60,6 +60,7 @@ export const articlesdata = [
 export const fetchKnowledgeCenter = async (
   page = currentPagination,
   limit = 10,
+  category = null,
   type = null
 ) => {
   try {
@@ -68,11 +69,19 @@ export const fetchKnowledgeCenter = async (
       url += `&type=${type}`;
     }
 
+    if (category) {
+      url += `&categoryName=${category}`;
+    }
+    url += `&_=${Date.now()}`;
+
+
     const response = await fetch(url, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
+        "Cache-Control": "no-cache"
       },
+      cache: "no-store"
     });
 
     if (!response.ok) {
@@ -112,8 +121,8 @@ export const fetchKnowledgeCenterBySlug = async (slug) => {
 };
 
 export const fetchBlogs = async (page = 1, limit = 21, categoryName) => {
-  console.log(categoryName,"categoryNamddde");
-  
+  console.log(categoryName, "categoryNamddde");
+
   try {
     let url = `https://backend.b2bcampus.com/api/B2Badmin/blogs?page=${page}&limit=${limit}`;
     if (categoryName) {

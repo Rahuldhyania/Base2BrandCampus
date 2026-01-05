@@ -20,7 +20,7 @@ const BlogReadyTransform = ({ title, description, explore_btn, learing_btn }) =>
                 {/* Buttons */}
                 <div className="group button_wraper flex flex-col sm:flex-row justify-center items-center gap-[18px] sm:gap-[18px] mt-6 sm:mt-8">
                     {/* Primary Button */}
-                    <Link href="/" title="Explore All Courses" className="shadow-[0px_7px_29px_0px_rgba(100,100,111,0.2)] flex items-center justify-center w-full sm:w-auto bg-[#6346FA] hover:bg-[#000] hover:text-[#fff] transition-all duration-300 ease-in-out text-white font-medium text-[16px] sm:text-[18px] md:text-[20px] lg:text-[24px] leading-normal px-6 py-3 rounded-[16.27px]">
+                    <Link href="/courses" title="Explore All Courses" className="shadow-[0px_7px_29px_0px_rgba(100,100,111,0.2)] flex items-center justify-center w-full sm:w-auto bg-[#6346FA] hover:bg-[#000] hover:text-[#fff] transition-all duration-300 ease-in-out text-white font-medium text-[16px] sm:text-[18px] md:text-[20px] lg:text-[24px] leading-normal px-6 py-3 rounded-[16.27px]">
                         {explore_btn}
                     </Link>
 

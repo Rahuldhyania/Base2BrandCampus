@@ -51,9 +51,9 @@ const BlogsConfusedCareer = ({ title, description, book_free }) => {
                                 {item.description}
                             </p>
 
-                            <a href="javascript:void(0)" className="bg-[#6346FA] group-hover:bg-[#000] flex w-fit mx-auto rounded-[9px] text-[#fff] px-[20px] py-[10px] font-medium text-[15px] transition-all duration-300 ease-in-out">
+                            <Link href="/courses" className="bg-[#6346FA] group-hover:bg-[#000] flex w-fit mx-auto rounded-[9px] text-[#fff] px-[20px] py-[10px] font-medium text-[15px] transition-all duration-300 ease-in-out">
                                 {item.read_more}
-                            </a>
+                            </Link>
                         </div>
                     ))}
                 </div>

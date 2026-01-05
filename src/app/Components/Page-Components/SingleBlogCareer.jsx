@@ -1,4 +1,6 @@
+import Link from 'next/link'
 import React from 'react'
+import Buttons from '../UiUx/Buttons'
 
 const SingleBlogCareer = ({ title, description, book_free }) => {
 
@@ -17,21 +19,19 @@ const SingleBlogCareer = ({ title, description, book_free }) => {
                 </p>
 
                 {/* Button */}
-                <a
-                    href="javascript:void(0);"
-                    title={book_free}
-                    className="
-                            flex mx-auto w-fit
-                            text-white
-                            text-[14px] sm:text-[18px] md:text-[20px] lg:text-[20px]
-                            rounded-[12px] sm:rounded-[14px] md:rounded-[16px]
-                            py-[10px] sm:py-[12px] md:py-[14px]
-                            px-[30px] sm:px-[35px] md:px-[47px]
-                            bg-[#6346FA]
-                            hover:bg-[#000]
-                            transition-all duration-300 ease-in-out">
-                    {book_free}
-                </a>
+               
+               <div className='flex justify-center'>
+                 <Link
+                 href="/courses"
+                    >
+                    <Buttons
+                        btnname={book_free}
+                        text_color={'text-white'}
+                    />
+                </Link>
+               </div>
+
+
             </div>
         </div>
     )

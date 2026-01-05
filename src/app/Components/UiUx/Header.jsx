@@ -231,7 +231,7 @@ export default function Header() {
   };
   return (
     <nav className="relative z-50">
-      <div className="flex justify-between xl:justify-around items-center flex-wrap gap-4 relative py-5 px-5 bg-white border-[0.5px] border-[#00000021]">
+      <div className="flex justify-between xl:justify-around items-center flex-wrap gap-2 2xl:gap-4 relative py-5 px-5 bg-white border-[0.5px] border-[#00000021]">
         <Link href="/">
           <Image
             src={B2BCAMPUSLOGO}
@@ -271,7 +271,7 @@ export default function Header() {
                   <div className="flex items-center gap-1">
                     <Link href={item.path}>
                       <span
-                        className={`relative px-1 cursor-pointer ${pathname === item.path
+                        className={`relative text-lg 2xl:text-xl px-1 cursor-pointer ${pathname === item.path
                           ? "text-purple-600"
                           : "text-gray-700"
                           } hover:text-purple-500`}
@@ -324,7 +324,7 @@ export default function Header() {
                 ) : (
                   <Link href={item.path}>
                     <span
-                      className={`relative px-1 cursor-pointer ${pathname === item.path
+                      className={`relative text-lg 2xl:text-xl px-1 cursor-pointer ${pathname === item.path
                         ? "text-purple-600"
                         : "text-gray-700"
                         } hover:text-purple-500`}

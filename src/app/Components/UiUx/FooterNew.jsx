@@ -454,7 +454,7 @@ const FooterNew = () => {
            </div>
           <div className=" pt-6 flex flex-col justify-between items-center gap-4 lg:gap-6">
             <p className="text-base opacity-80 text-center sm:text-left text-white">
-              © B2B Campus. All Rights Reserved 2025.
+              © B2B Campus. All Rights Reserved 2026.
             </p>
           </div>
         </div>
