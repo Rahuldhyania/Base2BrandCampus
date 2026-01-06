@@ -1,10 +1,12 @@
+
 "use client";
-import React, { useState, useMemo, useEffect } from "react";
+import React, { useState, useMemo, useEffect, use } from "react";
 import Globaltitle from "../UiUx/Globaltitle";
 import Image from "next/image";
 import { PopularTags } from "./PopularTags";
 import ArticleCard from "../UiUx/ArticleCard";
 import { articlesdata, fetchKnowledgeCenter, fetchCategories } from "@/app/Data/Articlesdata";
+import { IoCodeOutline } from "react-icons/io5";
 import Link from "next/link";
 const toptagfilter = [
     { id: 1, icon_default: "/icons/clockwhite.svg", icon_select: "/icons/clockblack.svg", tag_name: "Latest" },
@@ -59,11 +61,8 @@ export const TrandingTopics = ({ data }) => {
                 const res = await fetchKnowledgeCenter(2, 10, null);
                 const response = await fetch(`https://backend.b2bcampus.com/api/B2Badmin/public/knowledge-center?isTrending=true`, { method: "GET" })
                 const trandingarticels = await response.json();
-
-                console.log("restrandingarticel", trandingarticels.knowledgeCenters);
                 setTrendingTopics(trandingarticels?.knowledgeCenters)
                 const topics = res?.knowledgeCenters || [];
-                // console.log("");
                 setTopics(topics)
 
                 const myHeaders = new Headers();
@@ -77,7 +76,7 @@ export const TrandingTopics = ({ data }) => {
 
                 fetch("https://backend.b2bcampus.com/api/B2Badmin/public/knowledge-center?page=3&limit=10", requestOptions)
                     .then((response) => response.text())
-                    .then((result) => console.log("sdfasdfs", result))
+                    .then((result) => console.log("sdfasdfs"))
                     .catch((error) => console.error(error));
 
 
@@ -90,7 +89,6 @@ export const TrandingTopics = ({ data }) => {
 
         loadTrendingTopics();
     }, []);
-    console.log("trendingTopics", trendingTopics);
 
     return (
         <div className="bg-white rounded-2xl py-6 px-6">
@@ -119,7 +117,6 @@ export const TrandingTopics = ({ data }) => {
     );
 };
 
-/* -------------------- MAIN COMPONENT -------------------- */
 
 const KnowledgeCenter = () => {
     const [search, setSearch] = useState("");
@@ -129,6 +126,7 @@ const KnowledgeCenter = () => {
     const [activeTab, setActiveTab] = useState(null);
     const [topdropdownopen, setTopdropdownOpen] = useState(false);
     const [selecteddropdown, setSelecteddropdown] = useState(topdropdown[0]);
+    const [categories, setCategories] = useState([]);
     const [knowledgeCenterData, setKnowledgeCenterData] = useState([]);
     const [knowledgeCenterAllData, setKnowledgeCenterAllData] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -138,7 +136,9 @@ const KnowledgeCenter = () => {
     const [categoriesTotalPages, setCategoriesTotalPages] = useState(1);
     const [loadingMoreCategories, setLoadingMoreCategories] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
-    /* --------- MAP ACTIVE TAG TO API TYPE --------- */
+    const [currentpagecategories, setcurrentpagecategories] = useState(null)
+    const [paginationpage, setPaginationpage] = useState(0)
+    
     const baseurl = process.env.NEXT_PUBLIC__API_URL
     const getTypeFromActiveTag = (tagId) => {
         switch (tagId) {
@@ -153,25 +153,21 @@ const KnowledgeCenter = () => {
         }
     };
 
-    /* --------- FETCH CATEGORIES --------- */
 
     useEffect(() => {
         const loadCategories = async () => {
             try {
-                const res = await fetchCategories(1, 6);
+                const res = await fetchCategories(1, 26);
 
-                const categories = res?.categories || [];
+                const categoriesres = res?.categories || [];
+                setCategories(categoriesres)
                 setCategoriesTotalPages(res?.totalPages || 1);
-
-                // Map API categories to display format
-                // Handle pipe-separated names - take the first one
                 const mappedCategories = categories.map((cat) => {
-                    // Extract first category name if pipe-separated
                     const categoryName = cat.name.split('|')[0].split('>')[0].trim();
                     return {
                         id: cat.id,
                         title: categoryName,
-                        articles: 0, // Will be calculated from knowledgeCenterData
+                        articles: 0,
                         icon: getCategoryIcon(categoryName)
                     };
                 });
@@ -218,11 +214,8 @@ const KnowledgeCenter = () => {
         }
     };
 
-    /* --------- CALCULATE ARTICLE COUNT PER CATEGORY --------- */
-
     const categoriesWithCounts = useMemo(() => {
         return knowledgeCategories.map(cat => {
-            // Count articles in this category from knowledgeCenterData
             const count = knowledgeCenterData.filter(item => {
                 const itemCategory = item.category?.name || '';
                 return itemCategory.toLowerCase().includes(cat.title.toLowerCase()) ||
@@ -234,25 +227,25 @@ const KnowledgeCenter = () => {
                 articles: count > 0 ? count : cat.articles
             };
         });
-    }, [knowledgeCategories, knowledgeCenterData]);
-
-    /* --------- FETCH KNOWLEDGE CENTER DATA --------- */
-    console.log("categoriesWithCounts", categoriesWithCounts);
+    }, [knowledgeCategories]);
 
     useEffect(() => {
         const loadKnowledgeCenter = async () => {
             try {
                 setLoading(true);
                 const type = getTypeFromActiveTag(activeTag);
-                const res = await fetchKnowledgeCenter(currentPage, 10, type);
+                const res = await fetchKnowledgeCenter(
+                    currentPage,
+                    10,
+                    currentpagecategories, // category
+                    type
+                );
                 const resalldata = await fetch(`https://backend.b2bcampus.com/api/B2Badmin/public/knowledge-center`);
                 const alldata = await resalldata.json()
-                console.log("aldatasads", alldata);
 
                 const topics = res?.resalldata || [];
+                setPaginationpage(res?.totalPages)
                 setpageData(alldata)
-                console.log("pagedatapagedata", alldata);
-
                 setKnowledgeCenterData(res?.knowledgeCenters || []);
             } catch (error) {
                 console.error("Error fetching knowledge center:", error);
@@ -263,7 +256,7 @@ const KnowledgeCenter = () => {
         };
 
         loadKnowledgeCenter();
-    }, [activeTag, currentPage]);
+    }, [activeTag, currentPage, currentpagecategories]);
 
     /* --------- DERIVED VALUES (NO STATE) --------- */
 
@@ -271,7 +264,7 @@ const KnowledgeCenter = () => {
         toptagfilter.find(tag => tag.id === activeTag)?.tag_name || "";
 
     const activeTabname =
-        knowledgeCategories.find(cat => cat.id === activeTab)?.title || "";
+        categories.find(cat => cat.id === activeTab)?.title || "";
 
     /* --------- EXTRACT TAGS FROM DATA --------- */
 
@@ -310,7 +303,6 @@ const KnowledgeCenter = () => {
             const title = item.heading || item.article_title || '';
             const category = item.category?.name || item.article_des_tag || '';
             const tag = item.tags || item.article_toptag || '';
-
             const matchSearch =
                 title.toLowerCase().includes(searchText) ||
                 category.toLowerCase().includes(searchText) ||
@@ -319,21 +311,20 @@ const KnowledgeCenter = () => {
             const matchTab =
                 !tabText || tag.toLowerCase().includes(tabText) || category.toLowerCase().includes(tabText);
 
-            // Filter by selected tags
             const matchTags = selectedTags.length === 0 || selectedTags.some(selectedTag => {
                 if (typeof tag === 'string' && tag.includes(',')) {
                     return tag.split(',').some(t => t.trim().toLowerCase() === selectedTag.toLowerCase());
                 }
                 return tag.toLowerCase().includes(selectedTag.toLowerCase());
             });
-
+        
             return matchSearch && matchTab && matchTags;
         });
     }, [search, activeTabname, knowledgeCenterData, selectedTags, pagedata]);
-
-    /* -------------------- JSX -------------------- */
+     
+    
     const getPages = () => {
-        const total = pagedata.totalPages;
+        const total = paginationpage;
         const pages = [];
 
         if (total <= 4) {
@@ -454,18 +445,23 @@ const KnowledgeCenter = () => {
                         {!isSearchActive && (
                             <>
                                 <div className="grid grid-cols-2 md:grid-cols-3  gap-6">
-                                    {categoriesWithCounts.map(cat => {
+                                    {categories.map(cat => {
+                                        if (cat?.knowledgeCenterCount <= 0) { return null; }
                                         const isActive = activeTab === cat.id;
                                         return (
                                             <div
                                                 key={cat.id}
-                                                onClick={() => setActiveTab(cat.id)}
+                                                onClick={() => {
+                                                    setActiveTab(cat.id);
+                                                    setcurrentpagecategories(cat.name);
+                                                    setCurrentPage(1); 
+                                                }}
                                                 className={`p-7 rounded-xl cursor-pointer ${isActive ? "bg-primary text-white" : "bg-white"
                                                     }`}
                                             >
-                                                <Image src={cat.icon} alt="" width={40} height={40} />
-                                                <p className="pt-3 text-lg">{cat.title}</p>
-                                                <p>{cat.articles} articles</p>
+                                                <IoCodeOutline  fontSize={'40px'} color={isActive ? 'white' : 'var(--primary)'}/>
+                                                <p className="pt-1 text-lg line-clamp-2">{cat.name}</p>
+                                                <p>{cat.knowledgeCenterCount} articles</p>
                                             </div>
                                         );
                                     })}
@@ -491,12 +487,12 @@ const KnowledgeCenter = () => {
                                     <div className="text-center py-12">
                                         <p className="text-lg text-gray-600">Loading articles...</p>
                                     </div>
-                                ) : filteredArticles.length === 0 ? (
+                                ) : filteredArticles?.length === 0 ? (
                                     <div className="text-center py-12">
                                         <p className="text-lg text-gray-600">No articles found.</p>
                                     </div>
                                 ) : (
-                                    filteredArticles.map(article => (
+                                    filteredArticles?.map(article => (
                                         <ArticleCard
                                             key={article.id}
                                             id={article.id}
@@ -528,16 +524,14 @@ const KnowledgeCenter = () => {
                                     :
                                     <div className="flex gap-3 w-fit m-auto py-4 px-18 rounded-full border-[3px] border-primary sticky bottom-5 bg-white" >
                                         <div className="flex gap-2 items-center">
-                                            {/* Previous */}
                                             <button
                                                 disabled={currentPage === 1}
                                                 onClick={() => setCurrentPage(currentPage - 1)}
-                                                className="px-3 py-1 border rounded disabled:opacity-40"
+                                                className="px-3  border rounded disabled:opacity-40"
                                             >
                                                 Prev
                                             </button>
 
-                                            {/* Pages */}
                                             {getPages().map((page, index) =>
                                                 page === "..." ? (
                                                     <span key={index} className="px-2">...</span>
@@ -545,7 +539,7 @@ const KnowledgeCenter = () => {
                                                     <button
                                                         key={index}
                                                         onClick={() => setCurrentPage(page)}
-                                                        className={`px-3 py-1 border rounded ${currentPage === page ? "bg-black text-white" : ""
+                                                        className={`flex text-base leading-[14px] border rounded ${currentPage === page ? "bg-black text-white px-3 py-2.5" : " p-2 "
                                                             }`}
                                                     >
                                                         {page}
@@ -581,3 +575,5 @@ const KnowledgeCenter = () => {
 };
 
 export default KnowledgeCenter;
+
+
