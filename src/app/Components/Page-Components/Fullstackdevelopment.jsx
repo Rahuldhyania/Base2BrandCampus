@@ -13,6 +13,8 @@ import fullstack_leftbanner from "../../../../public/images/fullstack_leftbanner
 import fullstack_rightbanner from "../../../../public/images/fullstack_rightbanner.webp";
 import fullstack_leftposter from "../../../../public/images/fullstack_leftposter.webp"
 import Youtubevideo from './Youtubevideo';
+import teacher from '../../../../public/images/sandeep.png'
+
 const faq_data = [
     {
         q: "Is this course good for beginners?",
@@ -222,10 +224,11 @@ const Fullstackdevelopment = () => {
             />
             <CoursesCareer
                 items={items}
-                left_banner={fullstack_leftposter}
+                left_banner={teacher}
                 featuresMain={featuresMain}
                 title={'Why Full Stack Development is the <br/> <span class="text-primary">Next Big Career</span>'}
                 description={"Work directly with US logistics companies, carriers, brokers & shippers"}
+                max_width={'md:max-w-[80%]'}
             />
             <CourseProgram
                 program_data={program_data}

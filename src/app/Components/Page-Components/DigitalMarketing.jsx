@@ -14,6 +14,8 @@ import digital_rightbanner from "../../../../public/images/digital_rightbanner.w
 import digital_leftposter from "../../../../public/images/digital_leftposter.webp"
 import CourseSyllabus from '../Courses/CourseSyllabus';
 import Youtubevideo from './Youtubevideo';
+import teacher from '../../../../public/images/Jagtarsingh.webp'
+
 const faq_data = [
     {
         q: "Is this course good for beginners?",
@@ -266,7 +268,7 @@ const DigitalMarketing = () => {
             />
             <CoursesCareer
                 items={items}
-                left_banner={digital_leftposter}
+                left_banner={teacher}
                 featuresMain={featuresMain}
                 title={'Why Digital Marketing is the <br/> <span class="text-primary">Next Big Career</span>'}
                 description={"Work with brands, agencies, influencers & international clients."}

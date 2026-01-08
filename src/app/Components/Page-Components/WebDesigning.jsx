@@ -14,6 +14,7 @@ import graphic_right from "../../../../public/images/graphic_right.webp";
 import graphic_left_banner from "../../../../public/images/graphic_left_banner.webp"
 import BecomeStudent from '../Courses/BecomeStudent';
 import Youtubevideo from './Youtubevideo';
+import teacher from '../../../../public/images/rishavlala.png'
 const faq_data = [
     {
         q: "Is this course good for beginners?",
@@ -306,10 +307,11 @@ const WebDesigning = () => {
             />
             <CoursesCareer
                 items={items}
-                left_banner={graphic_left_banner}
+                left_banner={teacher}
                 featuresMain={featuresMain}
                 title={'Why Web Designing is the  <br/> <span class="text-primary">Next Big Career</s  pan>'}
                 description={"Design beautiful, responsive websites for brands, creators & companies."}
+                max_width={'md:max-w-[80%]'}
             />
             <CourseProgram
                 program_data={program_data}

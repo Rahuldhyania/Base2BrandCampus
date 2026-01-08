@@ -264,11 +264,11 @@ export const allVideoCourses = [
     category: categoryname.Development,
     videoLink: "https://www.youtube.com/watch?v=UGP7DOg8-UA"
   },
-  {
-    id: 37,
-    category: categoryname.Development,
-    videoLink: "https://www.youtube.com/watch?v=gtFSHeB5DQ0"
-  },
+  // {
+  //   id: 37,
+  //   category: categoryname.Development,
+  //   videoLink: "https://www.youtube.com/watch?v=gtFSHeB5DQ0"
+  // },
   {
     id: 38,
     category: categoryname.DigitalMarketing,
@@ -304,5 +304,57 @@ export const allVideoCourses = [
     id: 44,
     category: categoryname.Development,
     videoLink: "https://www.youtube.com/watch?v=4fNK-bFbXdE"
-  }
+  },
+  //abndabdiuaw
+  {
+    id: 45,
+    category: categoryname.Development,
+    videoLink: "https://youtu.be/clXOp8EP6BA"
+  },
+  {
+    id: 46,
+    category: categoryname.Development,
+    videoLink: "https://youtu.be/hELIasPXNE4"
+  },
+  {
+    id: 47,
+    category: categoryname.Development,
+    videoLink: "https://youtu.be/Ij4gXyVLmL0"
+  },
+  {
+    id: 48,
+    category: categoryname.Development,
+    videoLink: "https://youtu.be/z93GnoqNSbo"
+  },
+  {
+    id: 49,
+    category: categoryname.Development,
+    videoLink: "https://youtu.be/EHx3r3sizBs"
+  },
+  {
+    id: 50,
+    category: categoryname.Development,
+    videoLink: "https://youtu.be/22mBpqb7K6E"
+  },
+  {
+    id: 51,
+    category: categoryname.Development,
+    videoLink: "https://youtu.be/VkF0OJhIlIs"
+  },
+  {
+    id: 52,
+    category: categoryname.DigitalMarketing,
+    videoLink: "https://youtu.be/p_aS5tJeoAs"
+  },
+  {
+    id: 53,
+    category: categoryname.Development,
+    videoLink: "https://youtu.be/40APpfgFU9Q"
+  },
+    {
+    id: 54,
+    category: categoryname.DigitalMarketing,
+    videoLink: "https://youtu.be/kbJ5cqx5mfA"
+  },
+
 ];

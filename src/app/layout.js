@@ -9,6 +9,7 @@ import FooterNew from "./Components/UiUx/FooterNew";
 import Canonical from "./Canonical";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import MobileFooterbar from "./Components/UiUx/MobileFooterbar";
 
 // export const metadata = {
 //   title: "Industrial Training in Mohali | Chandigarh | B2B Campus",
@@ -55,11 +56,15 @@ export default function RootLayout({ children }) {
         <div id="google_translate_element" style={{ display: "none" }}></div>
         <Header />
         {children}
-        <div className="fixed bottom-4 left-4 z-50">
+        
+        <div className="hidden md:block fixed bottom-4 left-4 z-50">
           <Whatsapp />
         </div>
-        <div className="fixed bottom-4 right-4 z-50">
+        <div className="hidden md:block fixed bottom-4 right-4 z-50">
           <Helpline />
+        </div>
+        <div className="block md:hidden fixed bottom-0 w-full z-50">
+          <MobileFooterbar />
         </div>
         <FooterNew />
         <ToastContainer

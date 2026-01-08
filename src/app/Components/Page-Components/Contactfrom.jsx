@@ -7,7 +7,7 @@ import Buttons from "../UiUx/Buttons";
 const PABBLY_WEBHOOK =
   "https://connect.pabbly.com/workflow/sendwebhookdata/IjU3NjcwNTZkMDYzMDA0MzY1MjY5NTUzNDUxMzIi_pc";
 
-function Contactfrom({ onCloseModal }) {
+function Contactfrom({ onCloseModal, singleColumn, description }) {
   const [formData, setFormData] = useState({
     firstname: "",
     lastname: "",
@@ -44,7 +44,7 @@ function Contactfrom({ onCloseModal }) {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8" },
         body: data.toString()
-      }).catch(() => {});
+      }).catch(() => { });
     } catch (e) {
     }
   };
@@ -60,8 +60,8 @@ function Contactfrom({ onCloseModal }) {
       lastname: formData.lastname,
       mobile: formData.mobile,
       email: formData.email,
-      cf_1192: formData.course,         
-      leadsource: "b2bcampus website"  
+      cf_1192: formData.course,
+      leadsource: "b2bcampus website"
     };
 
     try {
@@ -114,11 +114,22 @@ function Contactfrom({ onCloseModal }) {
                 <h2 className="text-[28px] sm:text-[30px] font-semibold text-[#6346FA] text-center">
                   Start Your Campus Journey
                 </h2>
-                <p className="text-gray-600 mb-6 sm:mb-4 text-[16px] sm:text-[20px] text-center">
-                  Let us help you with enrollment, courses, and more.
-                </p>
+                {
+                  description === false ?
+                    null
+                    :
+                    <p className="text-gray-600 mb-6 sm:mb-4 text-[16px] sm:text-[20px] text-center">
+                      Let us help you with enrollment, courses, and more.
+                    </p>
+                }
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+
+                <div
+                  className={` gap-4 ${singleColumn
+                    ? 'flex flex-col'
+                    : 'grid grid-cols-1 sm:grid-cols-2'
+                    }`}
+                >
                   <input
                     type="text"
                     name="firstname"

@@ -16,6 +16,7 @@ import CourseSyllabus from "../Courses/CourseSyllabus";
 import CourseDetail from "../Courses/CourseDetail";
 import CareerOpportunities from "../Courses/CareerOpportunities";
 import Youtubevideo from "./Youtubevideo";
+import teacher from '../../../../public/images/SrSaddam.png'
 const faq_data = [
     {
         q: "Is this course good for beginners?",
@@ -338,7 +339,7 @@ const ShopifyAppDevelopment = () => {
 
             <CoursesCareer
                 items={items}
-                left_banner={python_leftposter}
+                left_banner={teacher}
                 featuresMain={featuresMain}
                 title={
                     'Why Shopify App Development is the <br/> <span class="text-primary">Next Big Career</span>'
@@ -346,7 +347,9 @@ const ShopifyAppDevelopment = () => {
                 description={
                     "Work with Shopify agencies, SaaS startups, eCommerce brands & global merchants."
                 }
+                max_width={'md:max-w-[80%]'}
             />
+
             <CourseProgram
                 program_data={program_data}
                 title={

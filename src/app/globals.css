@@ -142,7 +142,9 @@ body {
 .tool1 {
   animation: bounceBall 1.8s infinite ease-in-out;
 }
-
+.banner_color_image {
+  background-image: url(/public/images/bannerbg-gradient.webp);
+}
 @media (max-width: 1520px) {
   .banner_button {
     font-size: 14px;

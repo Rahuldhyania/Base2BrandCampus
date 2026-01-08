@@ -14,6 +14,7 @@ import iot_rightbanner from "../../../../public/images/iot_rightbanner.webp";
 import iot_leftposter from "../../../../public/images/iot_leftposter.webp";
 import CourseSyllabus from "../Courses/CourseSyllabus";
 import Youtubevideo from "./Youtubevideo";
+import teacher from '../../../../public/images/gagniyaNchaniya.webp'
 const faq_data = [
   {
     q: "Is this course good for beginners?",
@@ -278,7 +279,7 @@ const InternetOfThings = () => {
       />
       <CoursesCareer
         items={items}
-        left_banner={iot_leftposter}
+        left_banner={teacher}
         featuresMain={featuresMain}
         title={
           'Why IoT is the <br/> <span class="text-primary">Next Big Career</span>'

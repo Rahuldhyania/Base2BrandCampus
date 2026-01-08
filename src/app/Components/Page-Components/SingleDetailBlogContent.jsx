@@ -2,6 +2,7 @@ import React from 'react'
 import Image from 'next/image'
 import SingleBlogCareer from './SingleBlogCareer'
 import Link from 'next/link'
+import Contactfrom from './Contactfrom'
 
 const SingleDetailBlogContent = ({ blog }) => {
     const readBlogSvg = (
@@ -152,7 +153,7 @@ const SingleDetailBlogContent = ({ blog }) => {
                             {/* RIGHT SIDEBAR */}
                             <div className="space-y-6 lg:sticky lg:top-[50px] self-start">
                                 {/* CTA CARD */}
-                                <div className="bg-white rounded-2xl p-[25px] sm:p-6">
+                                {/* <div className="bg-white rounded-2xl p-[25px] sm:p-6">
                                     <h4 className="font-regular text-[14px] sm:text-[15px] md:text-[16px] lg:text-[17px] xl:text-[17px] mb-[6px] sm:mb-[7px] md:mb-[9px] lg:mb-[10px] xl:mb-[12px]">
                                         Start Your Learning Journey
                                     </h4>
@@ -169,15 +170,11 @@ const SingleDetailBlogContent = ({ blog }) => {
                                                 {talkToCareer} Talk to Career Expert
                                             </button>
                                         </Link>
-
-                                        {/* <button className="w-full group flex justify-center items-center gap-[9px] cursor-pointer border border-gray-300 hover:bg-[#6346FA] hover:text-[#fff] transition duration-300 ease-in-out py-2.5 rounded-lg text-sm font-medium">
-                                            {viewAllCareer} View All Courses
-                                        </button> */}
                                     </div>
-                                </div>
+                                </div> */}
 
                                 {/* IN THIS ARTICLE */}
-                                <div className="bg-white rounded-2xl py-[30px] px-[20px] sm:py-[34px] sm:px-[22px] md:py-[38px] md:px-[25px] lg:py-[42px] lg:px-[25px]">
+                                {/* <div className="bg-white rounded-2xl py-[30px] px-[20px] sm:py-[34px] sm:px-[22px] md:py-[38px] md:px-[25px] lg:py-[42px] lg:px-[25px]">
                                     <h4 className="font-regular mb-4">In This Article</h4>
 
                                     <ul className="space-y-3 text-sm text-gray-600">
@@ -188,8 +185,11 @@ const SingleDetailBlogContent = ({ blog }) => {
                                         <li className="hover:text-[#6346FA] cursor-pointer transition">Career Opportunities</li>
                                         <li className="hover:text-[#6346FA] cursor-pointer transition">Conclusion</li>
                                     </ul>
-                                </div>
+                                </div> */}
 
+                                <div>
+                                    <Contactfrom singleColumn={true} description={false} />
+                                </div>
                             </div>
                         </div>
                     </div>

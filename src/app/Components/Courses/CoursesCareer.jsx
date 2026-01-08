@@ -62,13 +62,13 @@ const CoursesCareer = ({ items, featuresMain ,title ,description,left_banner ,ma
                     </div>
 
                     <div className="grid grid-cols-1 lg:grid-cols-[2fr_3fr] md:pt-12">
-                        <div className="boy relative w-full  hidden md:block">
+                        <div className="boy relative w-full  hidden md:block m-auto">
                             <Image
                                 src={left_banner}
                                 width={1000}
                                 height={500}
                                 alt="boy"
-                                className={`mx-auto relative top-1.5 md:top-0 ${max_width ? max_width : ''}`}
+                                className={`mx-auto relative top-1.5 md:top-0 rounded-3xl ${max_width ? max_width : ''}`}
                             />
                         </div>
                         <section className="flex items-center pt-6 lg:pt-0">

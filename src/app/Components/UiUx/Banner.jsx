@@ -19,8 +19,8 @@ import bannerbggradient from "../../../../public/images/bannerbg-gradient.webp";
 const Banner = () => {
   const currentpath = usePathname();
   return (
-    <div className="bg-cover bg-no-repeat bg-bottom"
-      style={{ backgroundImage: `url(${currentpath == '/' ? bannerbggradient.src : '/'})` }}
+    <div className="bg-cover bg-no-repeat bg-bottom bg-primary"
+      // style={{ backgroundImage: `url(${currentpath == '/' ? bannerbggradient.src : '/'})` }}
     >
       <div className="max-w-[1930px] m-auto">
         <div className="skill-title-container py-2 relative flex justify-centeritems-center">

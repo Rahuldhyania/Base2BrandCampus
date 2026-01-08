@@ -1,3 +1,4 @@
+'use client'
 import Image from 'next/image'
 import React from 'react'
 import titlewhitebg from "../../../../public/images/titlewhitebg.webp"
@@ -7,10 +8,19 @@ import Certificate from '../Page-Components/Certificate'
 import Buttons from '../UiUx/Buttons'
 import Youtubevideo from '../Page-Components/Youtubevideo'
 import Professionalskill from '../Page-Components/Professionalskill'
+import { usePathname } from 'next/navigation'
 const CourseCareerSupport = () => {
+    const pathname = usePathname();
+    console.log("pathname",pathname);
+    
     return (
         <div>
-            <Professionalskill/>
+            {
+                pathname === '/freight-broker' || pathname === '/truck-dispatching' ?
+                    null
+                    :
+                    <Professionalskill />
+            }
             <div className='main-bg pt-12 md:pt-16 md:pb-16'>
                 <section className='cus_container py-section-y px-section-x sm:py-section-y-sm'>
                     <div className="relative  justify-center items-center">

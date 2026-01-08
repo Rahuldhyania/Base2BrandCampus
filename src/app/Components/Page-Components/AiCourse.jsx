@@ -14,6 +14,7 @@ import ai_leftposter from "../../../../public/images/ai_leftposter.webp"
 import CourseSyllabus from '../Courses/CourseSyllabus';
 import Journeywithb2b2 from './Journeywithb2b2';
 import Youtubevideo from './Youtubevideo';
+import teacher from '../../../../public/images/gagniyaNchaniya.webp'
 const faq_data = [
   {
     q: "Is this course good for beginners?",
@@ -275,7 +276,7 @@ const AiCourse = () => {
       />
       <CoursesCareer
         items={items}
-        left_banner={ai_leftposter}
+        left_banner={teacher}
         featuresMain={featuresMain}
         title={'Why AI is the <br/> <span class="text-primary">Next Big Career</span>'}
         description={"Work with tech companies, startups, agencies & international clients."}

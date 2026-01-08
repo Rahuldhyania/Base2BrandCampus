@@ -13,6 +13,7 @@ import webdev_leftbanner from "../../../../public/images/webdev_leftbanner.webp"
 import webdev_rightbanner from "../../../../public/images/webdev_rightbanner.webp";
 import webdev_leftposter from "../../../../public/images/webdev_leftposter.webp"
 import Youtubevideo from './Youtubevideo';
+import teacher from '../../../../public/images/sandeep.png'
 const faq_data = [
     {
         q: "Is this course good for beginners?",
@@ -313,10 +314,11 @@ const WebDevelopment = () => {
             />
             <CoursesCareer
                 items={items}
-                left_banner={webdev_leftposter}
+                left_banner={teacher}
                 featuresMain={featuresMain}
                 title={'Why Web Development is the <br/> <span class="text-primary">Next Big Career</s  pan>'}
                 description={"Build websites for brands, companies, creators & international clients"}
+                max_width={'md:max-w-[80%]'}
             />
             <CourseProgram
                 program_data={program_data}

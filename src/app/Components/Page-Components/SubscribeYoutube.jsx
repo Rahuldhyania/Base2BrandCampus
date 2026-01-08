@@ -9,14 +9,14 @@ const SubscribeYoutube = () => {
                 <div className=' bg-center bg-cover bg-no-repeat rounded-3xl'
                   style={{ backgroundImage: `url(/images/Background+Shadow.webp)` }}
                 >
-                    <div className='grid grid-cols-3 w-[95%] m-auto relative'>
-                        <div className='py-8'>
+                    <div className='grid grid-cols-1 md:grid-cols-3 w-[95%] m-auto relative'>
+                        <div className='pt-8 md:pb-8'>
                             <Image
                                 src={'/images/youtubetext.webp'}
                                 alt=''
                                 width={1000}
                                 height={500}
-                                className='max-w-40'
+                                className='max-w-40 m-auto md:m-0'
                             />
                         </div>
                         <div className='flex flex-col items-center gap-4 py-8'>
@@ -36,7 +36,7 @@ const SubscribeYoutube = () => {
                                 </button>
                             </Link>
                         </div>
-                        <div>
+                        <div className='hidden md:block'>
                             <Image
                                 src={'/images/youtube_girl.webp'}
                                 alt=''

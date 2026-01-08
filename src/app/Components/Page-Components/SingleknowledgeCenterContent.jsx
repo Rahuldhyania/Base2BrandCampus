@@ -3,6 +3,7 @@ import Image from "next/image";
 import ReletedArticle from "./ReletedArticle";
 import SingleKnowledgeCareer from "./SingleKnowledgeCareer";
 import Link from "next/link";
+import Contactfrom from "./Contactfrom";
 
 const SingleknowledgeCenterContent = ({ knowledgeCenter }) => {
   const readBlogSvg = (
@@ -29,7 +30,6 @@ const SingleknowledgeCenterContent = ({ knowledgeCenter }) => {
     </svg>
   );
 
-  // celender svg code
   const celenderSvg = (
     <svg
       className="w-[14px] h-[14px] sm:w-[16px] sm:h-[16px] md:w-[18px] md:h-[18px] lg:w-[20px] lg:h-[20px]"
@@ -68,24 +68,10 @@ const SingleknowledgeCenterContent = ({ knowledgeCenter }) => {
     </svg>
   );
 
-  // If no knowledgeCenter data, show default/fallback content
   if (!knowledgeCenter) {
-    // return (
-    //   <div className="main-bg">
-    //     <div className="cus_container pb-[40px] sm:pb-[40px] md:pb-[48px] lg:pb-[60px] xl:pb-[70px]">
-    //       <div className="pt-16">
-    //         <div className="bg-[#F9FAFB80] rounded-[5px] md:rounded-[29px] py-[24px] px-[16px] sm:py-[32px] sm:px-[20px] md:py-[40px] md:px-[24px] lg:py-[44px] lg:px-[28px] xl:py-[48px] xl:px-[32px] ">
-    //           <p className="text-center text-gray-600">Loading content...</p>
-    //         </div>
-    //       </div>
-    //     </div>
-    //   </div>
-    // );
-
     return null
   }
 
-  // Extract data from knowledgeCenter
   const heading = knowledgeCenter.heading || '';
   const categoryName = knowledgeCenter.category?.name || knowledgeCenter.tags || '';
   const description = knowledgeCenter.description || '';
@@ -180,9 +166,9 @@ const SingleknowledgeCenterContent = ({ knowledgeCenter }) => {
             </div>
           </div>
           <div>
-            <div className="space-y-6 lg:sticky lg:top-0 self-start pt-12 md:pt-16 md:max-w-[85%] m-auto">
+            <div className="space-y-6 lg:sticky lg:top-0 self-start pt-12 md:pt-16 md:max-w-[90%] m-auto">
               {/* CTA CARD */}
-              <div className="bg-white rounded-2xl p-[25px] sm:p-6">
+              {/* <div className="bg-white rounded-2xl p-[25px] sm:p-6">
                 <h4 className="font-regular text-[14px] sm:text-[15px] md:text-[16px] lg:text-[17px] xl:text-[17px] mb-[6px] sm:mb-[7px] md:mb-[9px] lg:mb-[10px] xl:mb-[12px]">
                   Start Your Learning Journey
                 </h4>
@@ -200,16 +186,11 @@ const SingleknowledgeCenterContent = ({ knowledgeCenter }) => {
                       Talk to Career Expert
                     </button>
                   </Link>
-
-                  {/* <button className="w-full group flex justify-center items-center gap-[9px] cursor-pointer border border-gray-300 hover:bg-[#6346FA] hover:text-[#fff] transition duration-300 ease-in-out py-2.5 rounded-lg text-sm font-medium">
-                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-black group-hover:text-white transition"><g clipPath="url(#clip0_1266_3798)"><path d="M8 4.66669V14" stroke="currentColor" strokeWidth="1.33333" strokeLinecap="round" strokeLinejoin="round"></path><path d="M1.9987 12C1.82189 12 1.65232 11.9298 1.52729 11.8047C1.40227 11.6797 1.33203 11.5101 1.33203 11.3333V2.66667C1.33203 2.48986 1.40227 2.32029 1.52729 2.19526C1.65232 2.07024 1.82189 2 1.9987 2H5.33203C6.03927 2 6.71755 2.28095 7.21765 2.78105C7.71775 3.28115 7.9987 3.95942 7.9987 4.66667C7.9987 3.95942 8.27965 3.28115 8.77975 2.78105C9.27984 2.28095 9.95812 2 10.6654 2H13.9987C14.1755 2 14.3451 2.07024 14.4701 2.19526C14.5951 2.32029 14.6654 2.48986 14.6654 2.66667V11.3333C14.6654 11.5101 14.5951 11.6797 14.4701 11.8047C14.3451 11.9298 14.1755 12 13.9987 12H9.9987C9.46826 12 8.95956 12.2107 8.58448 12.5858C8.20941 12.9609 7.9987 13.4696 7.9987 14C7.9987 13.4696 7.78798 12.9609 7.41291 12.5858C7.03784 12.2107 6.52913 12 5.9987 12H1.9987Z" stroke="currentColor" strokeWidth="1.33333" strokeLinecap="round" strokeLinejoin="round"></path></g><defs><clipPath id="clip0_1266_3798"><rect width="16" height="16" fill="white"></rect></clipPath></defs></svg>
-                    View All Courses
-                  </button> */}
                 </div>
-              </div>
+              </div> */}
 
               {/* IN THIS ARTICLE */}
-              <div className="bg-white rounded-2xl py-[30px] px-[20px] sm:py-[34px] sm:px-[22px] md:py-[38px] md:px-[25px] lg:py-[42px] lg:px-[25px]">
+              {/* <div className="bg-white rounded-2xl py-[30px] px-[20px] sm:py-[34px] sm:px-[22px] md:py-[38px] md:px-[25px] lg:py-[42px] lg:px-[25px]">
                 <h4 className="font-regular mb-4">In This Article</h4>
 
                 <ul className="space-y-3 text-sm text-gray-600">
@@ -220,8 +201,10 @@ const SingleknowledgeCenterContent = ({ knowledgeCenter }) => {
                   <li className="hover:text-[#6346FA] cursor-pointer transition">Career Opportunities</li>
                   <li className="hover:text-[#6346FA] cursor-pointer transition">Conclusion</li>
                 </ul>
+              </div> */}
+              <div>
+                 <Contactfrom singleColumn={true} description={false}/>
               </div>
-
             </div>
           </div>
         </div>

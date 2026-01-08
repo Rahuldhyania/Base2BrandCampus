@@ -13,6 +13,7 @@ import videoediting_bannerleft from "../../../../public/images/videoediting_bann
 import videoediting_bannerright from "../../../../public/images/videoediting_bannerright.webp";
 import video_left_banner from "../../../../public/images/video_left_banner.webp"
 import Youtubevideo from './Youtubevideo';
+import teacher from '../../../../public/images/rishbh.png'
 const faq_data = [
   {
     q: "What is the duration of the video editing course offered?",
@@ -207,7 +208,7 @@ const VideoEditing = () => {
       />
       <CoursesCareer
         items={items}
-        left_banner={video_left_banner}
+        left_banner={teacher}
         featuresMain={featuresMain}
         title={'Why Video Editing is the   <br/> <span class="text-primary">Next Big Career</span>'}
         description={"Work with YouTubers, production houses, brands & international clients"}

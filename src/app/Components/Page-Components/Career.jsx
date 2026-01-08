@@ -66,8 +66,8 @@ const Career = () => {
   return (
     <div className="main-bg">
       <div
-        className="banner_section bg-cover bg-center"
-        style={{ backgroundImage: "url(/images/knowledgecenterbg.webp)" }}
+        className="banner_section bg-cover bg-center bg-primary"
+        // style={{ backgroundImage: "url(/images/knowledgecenterbg.webp)" }}
       >
         <div className="cus_container py-12 md:py-16">
           <Globaltitle

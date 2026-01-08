@@ -13,6 +13,8 @@ import graphic_left from "../../../../public/images/graphic_left.webp";
 import graphic_right from "../../../../public/images/graphic_right.webp";
 import graphic_left_banner from "../../../../public/images/graphic_left_banner.webp"
 import Youtubevideo from './Youtubevideo';
+import teacher from '../../../../public/images/abhishek.png'
+
 const faq_data = [
   {
     q: "What is the duration of the graphic designing course offered?",
@@ -293,10 +295,11 @@ const GraphicDesign = () => {
             />
             <CoursesCareer
                 items={items}
-                left_banner={graphic_left_banner}
+                left_banner={teacher}
                 featuresMain={featuresMain}
                 title={'Why Graphic Design is the  <br/> <span class="text-primary">Next Big Career</s  pan>'}
                 description={"Work with top brands, startups, and international clients"}
+                max_width={'md:max-w-[80%]'}
             />
             <CourseProgram
                 program_data={program_data}

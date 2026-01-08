@@ -71,7 +71,6 @@ const Homewrap = () => {
   const [width, setWidth] = useState(1200);
   useEffect(() => {
     setWidth(window.innerWidth);
-    console.log(window.innerWidth, "innerWidth");
   }, []);
 
   const scrollToEnrolment = () => {

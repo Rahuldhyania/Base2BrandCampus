@@ -127,7 +127,7 @@ const ContactusBanner = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className='grid grid-cols-1 md:grid-cols-2'>
+                        <div className='grid grid-cols-1 md:grid-cols-2 gap-y-4'>
                             <div className='bg-primary w-fit py-4 px-4 rounded-2xl'>
                                 <h4 className="text-white text-xl md:text-2xl">
                                     India (B2bcampus)

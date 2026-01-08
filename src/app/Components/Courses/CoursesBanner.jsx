@@ -7,9 +7,7 @@ import bublebg from "../../../../public/images/bublebg.webp";
 import bannerbggradient from "../../../../public/images/bannerbg-gradient.webp";
 const CoursesBanner = ({ highlightText, titleEnd, description, leftposter, rightposter ,max_width}) => {
     return (
-        <div className="bg-cover bg-no-repeat bg-bottom"
-            style={{ backgroundImage: `url(${bannerbggradient.src})` }}
-        >
+        <div className="bg-primary">
             <div className='max-w-[1900px] m-auto px-[3%]'>
                 <div className=" skill-title-container py-2 relative flex justify-centeritems-center">
                     <div className="absolute inset-0 flex justify-center items-center pointer-events-none">
@@ -37,7 +35,7 @@ const CoursesBanner = ({ highlightText, titleEnd, description, leftposter, right
                             width={1000}
                             height={500}
                             alt="boy"
-                            className="max-h-[600px] object-contain mx-auto"
+                            className="max-h-[600px] object-contain mx-auto rounded-3xl"
                         />
                     </div>
                     <div className='my-auto py-5 md:py-12'>
