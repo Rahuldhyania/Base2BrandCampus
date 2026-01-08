@@ -351,8 +351,8 @@ const KnowledgeCenter = () => {
         <div className="main-bg">
             {/* Banner */}
             <div
-                className="banner_section bg-cover bg-center"
-                style={{ backgroundImage: "url(/images/knowledgecenterbg.webp)" }}
+                className="banner_section bg-cover bg-center bg-primary"
+                // style={{ backgroundImage: "url(/images/knowledgecenterbg.webp)" }}
             >
                 <div className="cus_container py-12 md:py-16">
                     <Globaltitle
@@ -363,7 +363,7 @@ const KnowledgeCenter = () => {
             </div>
 
             {/* Top Bar */}
-            <div className="bg-primary py-6 sticky top-0 z-40">
+            <div className="bg-primary py-6 sticky top-0 z-40 mt-3">
                 <div className="cus_container flex flex-col lg:flex-row justify-between items-center gap-6">
 
                     {/* Top Tags */}
