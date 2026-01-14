@@ -281,6 +281,7 @@ const AiCourse = () => {
         title={'Why AI is the <br/> <span class="text-primary">Next Big Career</span>'}
         description={"Work with tech companies, startups, agencies & international clients."}
         max_width={'max-w-[75%]'}
+        course_brocher={false}
       />
       <CourseProgram
         program_data={program_data}

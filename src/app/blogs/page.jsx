@@ -7,6 +7,10 @@ import BlogsConfusedCareer from '../Components/Page-Components/BlogsConfusedCare
 import FeaturedBlog from '../Components/Page-Components/FeaturedBlog';
 import MainBlogBanner from '../Components/Page-Components/MainBlogBanner';
 
+export const metadata = {
+    title: 'B2B Campus Blog | Marketing, IT, Truck Dispatch & Career Guidance',
+    description: 'Stay updated with the latest tips, tutorials, and trends in marketing, tech, and careers on the B2B Campus blog. Discover helpful guides and insights today.' 
+}
 const page = () => {
     return (
         <div>

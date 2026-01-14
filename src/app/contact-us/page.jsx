@@ -2,7 +2,8 @@ import React from 'react';
 import ContactusBanner from '../Components/Page-Components/ContactusBanner';
 
 export const metadata = {
-    title : ''
+    title: 'Contact B2B Campus | Enroll, Queries & Assistance',
+    description: 'Get in touch with B2B Campus for course inquiries, support, or assistance. Our team helps with enrollment, placement support, and all your questions today now.' 
 }
 const page = () => {
     return (

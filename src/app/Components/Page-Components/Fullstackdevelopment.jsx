@@ -229,6 +229,7 @@ const Fullstackdevelopment = () => {
                 title={'Why Full Stack Development is the <br/> <span class="text-primary">Next Big Career</span>'}
                 description={"Work directly with US logistics companies, carriers, brokers & shippers"}
                 max_width={'md:max-w-[80%]'}
+                course_brocher={false}
             />
             <CourseProgram
                 program_data={program_data}

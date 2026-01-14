@@ -319,6 +319,7 @@ const WordPress = () => {
           "Design & develop websites, blogs, e-commerce stores & business platforms."
         }
         max_width={'max-w-[350px]'}
+        course_brocher={false}
       />
       <CourseProgram
         program_data={program_data}

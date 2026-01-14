@@ -182,8 +182,17 @@ function Contactfrom({ onCloseModal, singleColumn, description }) {
                     ))}
                   </select>
 
-                  <div className="buttons text-[25px] flex justify-center mt-6 mb-6 sm:col-span-2">
+                  <div className="buttons text-[25px] flex flex-col items-center justify-center mt-6 mb-6 sm:col-span-2 gap-2">
                     <Buttons btnname="Enquire Now" text_color="text-white" type="submit" />
+                    <div className="text-lg underline w-fit m-auto block md:hidden">
+                      <a
+                        href={`tel:+919878300209`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        Free Demo Class
+                      </a>
+                    </div>
                   </div>
                 </div>
               </div>

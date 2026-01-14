@@ -1,10 +1,20 @@
+"use client";
 import Image from "next/image";
 import React from "react";
 import Description from "../UiUx/Description";
 import titlewhitebg from "../../../../public/images/titlewhitebg.webp";
 import Title from "../UiUx/Title";
 import Buttons from "../UiUx/Buttons";
-const CoursesCareer = ({ items, featuresMain ,title ,description,left_banner ,max_width}) => {
+import DownloadBrocher from "./DownloadBrocher";
+const CoursesCareer = ({
+    items,
+    featuresMain,
+    title,
+    description,
+    left_banner,
+    max_width,
+    course_brocher = true
+}) => {
     return (
         <div className="main-bg py-12 md:py-18">
             <section className="cus_container m-auto">
@@ -48,10 +58,7 @@ const CoursesCareer = ({ items, featuresMain ,title ,description,left_banner ,ma
                         />
 
                         <div className="relative z-10 text-center">
-                            <Title
-                                title={title}
-                                text_color={"text-secondary"}
-                            />
+                            <Title title={title} text_color={"text-secondary"} />
                             <div className="pt-3">
                                 <Description
                                     description={description}
@@ -68,7 +75,9 @@ const CoursesCareer = ({ items, featuresMain ,title ,description,left_banner ,ma
                                 width={1000}
                                 height={500}
                                 alt="boy"
-                                className={`mx-auto relative top-1.5 md:top-0 rounded-3xl ${max_width ? max_width : ''}`}
+                                className={`mx-auto relative top-1.5 md:top-0 rounded-3xl ${max_width
+                                    ? max_width
+                                    : ""}`}
                             />
                         </div>
                         <section className="flex items-center pt-6 lg:pt-0">
@@ -101,21 +110,25 @@ const CoursesCareer = ({ items, featuresMain ,title ,description,left_banner ,ma
                                             </div>
                                         </div>
                                     )}
-
                                 </div>
                                 <div className="max-w-[95%] mx-auto grid md:grid-cols-2 w-full gap-2 md:gap-6 pt-6">
-                                    <div>
+                                    <div
+                                        className="cursor-pointer"
+                                        onClick={() => {
+                                            window.scrollTo({
+                                                top: 0,
+                                                behavior: "smooth"
+                                            });
+                                        }}
+                                    >
                                         <Buttons
-                                            btnname={'Start Your Training This Week'}
-                                            text_color={'text-white'}
+                                            btnname={"Start Your Training This Week"}
+                                            text_color={"text-white"}
                                         />
                                     </div>
-                                    <div>
-                                        <Buttons
-                                            btnname={'Download Course PDF'}
-                                            text_color={'text-white'}
-                                        />
-                                    </div>
+                                    {course_brocher &&
+                                        <DownloadBrocher />
+                                    }
                                 </div>
                             </div>
                         </section>

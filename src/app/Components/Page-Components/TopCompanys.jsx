@@ -158,10 +158,20 @@ const TopCompanys = ({ clickscroll }) => {
                     description={'Dreaming of your first big placement?'}
                     text_color={'text-secondary'}
                 />
+                {
+                    clickscroll ? (
+                        <div className="buttons text-[25px] hidden md:flex justify-center m-auto mt-[2%]" onClick={clickscroll}>
+                            <Buttons btnname='Enquire Now' text_color={'text-white'} />
+                        </div>
+                    )
+                        :
+                        <div className="buttons text-[25px] hidden md:flex justify-center m-auto mt-[2%]" onClick={()=>{
+                            window.scrollTo({ top: 0, behavior: 'smooth' });
+                        }}>
+                            <Buttons btnname='Enquire Now' text_color={'text-white'} />
+                        </div>
+                }
 
-                <div className="buttons text-[25px] hidden md:flex justify-center m-auto mt-[2%]" onClick={clickscroll}>
-                    <Buttons btnname='Enquire Now' text_color={'text-white'} />
-                </div>
             </div>
         </div>
     )

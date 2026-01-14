@@ -104,9 +104,7 @@ const SingleDetailBlogContent = ({ blog }) => {
             <div className='cus_container pb-[40px] sm:pb-[40px] md:pb-[48px] lg:pb-[60px] xl:pb-[70px]'>
                 <div className='px-2 sm:px-2 '>
                     <div className=" py-8 sm:py-12">
-                        {/* GRID */}
                         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8">
-                            {/* LEFT CONTENT */}
                             <div className="lg:col-span-2 ">
                                 <div className='pb-[24px]'>
                                     <h1 className="text-[22px] leading-[30px] sm:text-[28px] sm:leading-[36px] md:text-[32px] md:leading-[40px] lg:text-[40px] lg:leading-[48px] font-regular text-[#0A0A0A]">
@@ -128,8 +126,6 @@ const SingleDetailBlogContent = ({ blog }) => {
                                         className="w-full h-auto object-cover"
                                     />
                                 </div>
-
-                                {/* KEY TAKEAWAYS */}
                                 <div className="bg-white rounded-2xl p-[32px] sm:p-6 shadow-[0_7px_29px_0_rgba(100,100,111,0.2)]">
                                     <h3 className="text-lg font-regular mb-4">Key Takeaways</h3>
                                     <ul className="space-y-3 text-sm sm:text-base text-gray-600">
@@ -150,43 +146,7 @@ const SingleDetailBlogContent = ({ blog }) => {
                                 </div>
                             </div>
 
-                            {/* RIGHT SIDEBAR */}
                             <div className="space-y-6 lg:sticky lg:top-[50px] self-start">
-                                {/* CTA CARD */}
-                                {/* <div className="bg-white rounded-2xl p-[25px] sm:p-6">
-                                    <h4 className="font-regular text-[14px] sm:text-[15px] md:text-[16px] lg:text-[17px] xl:text-[17px] mb-[6px] sm:mb-[7px] md:mb-[9px] lg:mb-[10px] xl:mb-[12px]">
-                                        Start Your Learning Journey
-                                    </h4>
-
-                                    <p className="text-sm text-gray-600 mb-4">
-                                        Get expert guidance and hands-on training to launch your career in digital marketing.
-                                    </p>
-
-                                    <div className="space-y-3">
-                                        <Link
-                                            href={'/contact-us'}
-                                        >
-                                            <button className="w-full flex justify-center items-center gap-[9px] cursor-pointer bg-[#6346FA] hover:bg-[#4129BA] transition duration-300 ease-in-out text-white py-2.5 rounded-lg text-sm font-medium">
-                                                {talkToCareer} Talk to Career Expert
-                                            </button>
-                                        </Link>
-                                    </div>
-                                </div> */}
-
-                                {/* IN THIS ARTICLE */}
-                                {/* <div className="bg-white rounded-2xl py-[30px] px-[20px] sm:py-[34px] sm:px-[22px] md:py-[38px] md:px-[25px] lg:py-[42px] lg:px-[25px]">
-                                    <h4 className="font-regular mb-4">In This Article</h4>
-
-                                    <ul className="space-y-3 text-sm text-gray-600">
-                                        <li className="hover:text-[#6346FA] cursor-pointer transition">Introduction</li>
-                                        <li className="hover:text-[#6346FA] cursor-pointer transition">Why This Matters Now</li>
-                                        <li className="hover:text-[#6346FA] cursor-pointer transition">Getting Started</li>
-                                        <li className="hover:text-[#6346FA] cursor-pointer transition">Essential Tools</li>
-                                        <li className="hover:text-[#6346FA] cursor-pointer transition">Career Opportunities</li>
-                                        <li className="hover:text-[#6346FA] cursor-pointer transition">Conclusion</li>
-                                    </ul>
-                                </div> */}
-
                                 <div>
                                     <Contactfrom singleColumn={true} description={false} />
                                 </div>

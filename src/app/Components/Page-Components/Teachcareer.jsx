@@ -1,3 +1,4 @@
+'use client'
 import Image from 'next/image';
 import arrowup from '../../../../public/images/arrowup.webp'
 import titlewhitebg from "../../../../public/images/titlewhitebg.webp"
@@ -9,7 +10,8 @@ import Title from '../UiUx/Title';
 
 import ScratchCards from './ScratchCard';
 import Buttons from '../UiUx/Buttons';
-export default function Teachcareer({clickscroll}) {
+export default function Teachcareer({ clickscroll, placementData, title, scratchCards_cus }) {
+
   const items = [
     {
       icon: "/images/arrowup.webp",
@@ -31,7 +33,7 @@ export default function Teachcareer({clickscroll}) {
   return (
     <div className=''>
       <div className="w-[90%] relative bottom-[57px] m-auto max-w-[1450px] p-[1%] border-none rounded-[50px] bg-[#E9E5FF] flex flex-wrap lg:flex-nowrap justify-center lg:justify-between items-center gap-2 md:gap-6">
-        {items.map((item, index) => (
+        {(placementData && Array.isArray(placementData) ? placementData : items).map((item, index) => (
           <div
             key={index}
             className="flex flex-col sm:flex-row items-center w-[45%] m-auto md:w-full sm:w-auto justify-center group relative transition-transform duration-300 hover:-translate-y-2 hover:shadow-lg animate-float p-1.5 rounded-[19px]"
@@ -73,7 +75,7 @@ export default function Teachcareer({clickscroll}) {
         {/* Title On Top */}
         <div className="relative z-10 text-center cus_container ">
           <Title
-            title={'Other Institutes Teach Chapters<br/> <span class="text-primary"> We Teach Careers </span>'}
+            title={title ? title : 'Other Institutes Teach Chapters<br/> <span class="text-primary"> We Teach Careers </span>'}
             text_color={'text-secondary'}
           />
         </div>
@@ -108,11 +110,33 @@ export default function Teachcareer({clickscroll}) {
           </div> */}
 
           <div className="absolute screcth-relative inset-0 flex justify-center items-center z-20 pointer-events-none">
-            <ScratchCards />
+            {
+              scratchCards_cus ? (
+                <ScratchCards scratchCards_cus={scratchCards_cus} />
+              )
+                :
+                <ScratchCards/>
+            }
+
           </div>
-           <div className="relative z-10 flex justify-center m-auto mt-8 md:mt-4 sm:mb-0" onClick={clickscroll}>
-            <Buttons btnname="Backed by a Successful Agency" text_color={"text-white"} />
-          </div>
+          {
+            clickscroll ? (
+              <div className="relative z-10 flex justify-center m-auto mt-8 md:mt-4 sm:mb-0" onClick={clickscroll}>
+                <Buttons btnname="Backed by a Successful Agency" text_color={"text-white"} />
+              </div>
+            )
+              :
+              (
+                <div className="relative z-10 flex justify-center m-auto mt-8 md:mt-4 sm:mb-0"
+                  onClick={() =>
+                    window.scrollTo({ top: 0, behavior: "smooth" })
+                  }
+                >
+                  <Buttons btnname="Backed by a Successful Agency" text_color={"text-white"} />
+                </div>
+              )
+          }
+
 
         </div>
 

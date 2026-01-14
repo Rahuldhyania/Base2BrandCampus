@@ -312,6 +312,7 @@ const Devops = () => {
                     "DevOps bridges development and operations, enabling faster releases, better stability, <br/> and high-demand roles across modern tech companies."
                 }
                 max_width={"max-w-[80%]"}
+                course_brocher={false}
             />
             <CourseProgram
                 program_data={program_data}

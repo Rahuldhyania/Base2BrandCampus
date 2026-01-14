@@ -42,7 +42,7 @@ const features = [
 
 ];
 
-export default function WhyChooseSection() {
+export default function WhyChooseSection({features_p, title}) {
     return (
         <div className="pb-6 md:pb-16">
             <section className="md:pt-6 cus_container ">
@@ -56,14 +56,14 @@ export default function WhyChooseSection() {
 
                     <div className="relative z-10 text-center md:pt-5 pb-4 md:pb-12">
                         <Title
-                            title={'<span class="text-primary"> Why Choose </span> Our Institute'}
+                            title={title ? title : '<span class="text-primary"> Why Choose </span> Our Institute'}
                             text_color={'text-secondary'}
                         />
                     </div>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
-                    {features.map((feature, idx) => (
+                    {(features_p && Array.isArray(features_p) ? features_p : features).map((feature, idx) => (
                         <div className="" key={idx}>
                             <Card {...feature} />
                         </div>
@@ -84,7 +84,7 @@ function Card({ title, description, img, variant }) {
                         <Image src={img} alt={title} fill className="object-cover" />
                     </div>
                     <div className="p-6 bg-white">
-                        <h3 className="text-[22px] 2xl:text-[26px] font-bold text-purple-700 mb-2 ">{title}</h3>
+                        <h3 className="text-[22px] 2xl:text-[26px] leading-normal font-bold text-purple-700 mb-2 ">{title}</h3>
                         <p className=" text-gray-700 text-[17px]">{description}</p>
                     </div>
                 </div>
@@ -116,7 +116,7 @@ function Card({ title, description, img, variant }) {
                         <Image src={img} alt={title} fill className="object-cover" />
                     </div>
                     <div className="p-6 bg-white">
-                        <h3 className="text-[22px] 2xl:text-[26px] font-bold text-purple-700 mb-2 ">{title}</h3>
+                        <h3 className="text-[22px] 2xl:text-[26px] leading-normal font-bold text-purple-700 mb-2 ">{title}</h3>
                         <p className=" text-gray-700 text-[17px]">{description}</p>
                     </div>
                 </div>

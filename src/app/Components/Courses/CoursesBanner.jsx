@@ -28,7 +28,7 @@ const CoursesBanner = ({ highlightText, titleEnd, description, leftposter, right
                         />
                     </div>
                 </div>
-                <div className=" banner-wrap grid grid-cols-1 lg:grid-cols-3 gap-6 mt-4 items-end">
+                <div className=" banner-wrap grid grid-cols-1 lg:grid-cols-3 gap-6 items-end">
                     <div className="boy relative w-full h-full hidden lg:flex items-end">
                         <Image
                             src={leftposter}

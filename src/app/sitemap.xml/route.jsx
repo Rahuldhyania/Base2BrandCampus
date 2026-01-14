@@ -32,7 +32,8 @@ export async function GET() {
     "shopify-theme-development-course",
     "flutter",
     "react-js-course",
-    "react-native"
+    "react-native",
+    
   ];
 
   const urls = staticPages

@@ -1,7 +1,7 @@
 import Image from "next/image";
 import fontscratch from "../../../../public/images/fontscratch.webp";
 
-export default function ScratchCards() {
+export default function ScratchCards({scratchCards_cus}) {
     const scratchCards = [
         {
             title: "NOTES",
@@ -40,7 +40,7 @@ export default function ScratchCards() {
     return (
         <div className="relative w-full flex justify-center px-4 mt-10">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-30 max-w-[90%] w-full">
-                {scratchCards.map((item, index) => (
+                {(scratchCards_cus && Array.isArray(scratchCards_cus) ? scratchCards_cus : scratchCards).map((item, index) => (
                     <div
                         key={index}
                         className={`flex flex-col justify-center items-center transform transition duration-500 hover:scale-105 cursor-pointer ${item.rotate}`}

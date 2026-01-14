@@ -37,7 +37,7 @@ const MobileFooterbar = () => {
                         width="25"
                         height="25"
                         fill="#fff"
-                        class="bi bi-telephone-fill"
+                        className="bi bi-telephone-fill"
                         viewBox="0 0 16 16"
                     >
                         <path

@@ -121,93 +121,93 @@ const footerData = [
       {
         id: 19,
         page_name: "Six months industrial training in Chandigarh",
-        page_links: "/six-months-industrial-training-chandigarh"
+        page_links: "/six-months-industrial-training-in-chandigarh"
       },
       {
         id: 20,
         page_name: "Six weeks industrial training in Chandigarh",
-        page_links: "/six-weeks-industrial-training-chandigarh"
+        page_links: "/six-weeks-industrial-training-in-chandigarh"
       },
       {
         id: 21,
         page_name: "Industrial training in Chandigarh",
-        page_links: "/industrial-training-chandigarh"
+        page_links: "/industrial-training-in-chandigarh"
       },
       {
         id: 22,
         page_name: "6 months industrial training in Chandigarh",
-        page_links: "/6-months-industrial-training-chandigarh"
+        page_links: false
       },
       {
         id: 23,
         page_name: "6 weeks industrial training in Chandigarh",
-        page_links: "/6-weeks-industrial-training-chandigarh"
+        page_links: false
       },
       {
         id: 24,
         page_name: "Best industrial training in Chandigarh",
-        page_links: "/best-industrial-training-chandigarh"
+        page_links: "/best-industrial-training-in-chandigarh"
       },
       {
         id: 25,
         page_name: "Best industrial training in Mohali",
-        page_links: "/best-industrial-training-mohali"
+        page_links: "/best-industrial-training-in-mohali"
       },
       {
         id: 26,
         page_name: "Six months industrial training in Mohali",
-        page_links: "/six-months-industrial-training-mohali"
+        page_links: false
       },
       {
         id: 27,
         page_name: "Six weeks industrial training in Mohali",
-        page_links: "/six-weeks-industrial-training-mohali"
+        page_links: "/six-months-industrial-training-in-mohali"
       },
 
       {
         id: 28,
         page_name: "Summer Training in Chandigarh",
-        page_links: "/summer-training-chandigarh"
+        page_links: false
       },
       {
         id: 29,
         page_name: "Training companies in Chandigarh",
-        page_links: "/training-companies-chandigarh"
+        page_links: false
       },
       {
         id: 30,
         page_name: "Free industrial training in Chandigarh",
-        page_links: "/free-industrial-training-chandigarh"
+        page_links: false
       },
       {
         id: 31,
         page_name: "Free six months industrial training in Chandigarh",
-        page_links: "/free-six-months-industrial-training-chandigarh"
+        page_links: false
       },
       {
         id: 32,
         page_name: "Best six months industrial training in Chandigarh",
-        page_links: "/best-six-months-industrial-training-chandigarh"
+        page_links: false
       },
       {
         id: 33,
         page_name: "Best six weeks industrial training in Chandigarh",
-        page_links: "/best-six-weeks-industrial-training-chandigarh"
+        page_links: false
       },
       {
         id: 34,
         page_name: "Live projects based industrial training in Chandigarh",
-        page_links: "/live-projects-industrial-training-chandigarh"
+        page_links: false
       },
       {
         id: 35,
         page_name: "Best IT training companies in Chandigarh",
-        page_links: "/best-it-training-companies-chandigarh"
+        page_links: false
       },
       {
         id: 36,
         page_name: "Top IT training companies in Chandigarh",
-        page_links: "/top-it-training-companies-chandigarh"
+        page_links: false
       }
     ]
   }
@@ -353,7 +353,7 @@ const FooterNew = () => {
                       />
                     </svg>
                     <Link
-                      href={"/"}
+                      href={data.page_links ? data.page_links : '/'}
                       className="text-white text-lg 2xl:text-xl hover:underline transition-all duration-500"
                     >
                       {data.page_name}

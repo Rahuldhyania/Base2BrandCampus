@@ -60,6 +60,10 @@ const faq_data = [
             "Simple! Just contact us → Attend a quick counseling session → Choose batch → Start learning."
     }
 ];
+export const metadata = {
+    title: 'Placement Assistance & Career Support | B2B Campus',
+    description: 'Get complete placement support at B2B Campus with resume building, interview training, job assistance & career guidance. Enroll now to start your career today.' 
+}
 const page = () => {
     return (
         <div>

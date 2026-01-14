@@ -2,7 +2,7 @@ import Title from "../UiUx/Title";
 import titlewhitebg from "../../../../public/images/titlewhitebg.webp"
 import Description from "../UiUx/Description";
 
-export default function Whatstudentget() {
+export default function Whatstudentget({title, description, items_p}) {
     const items = [
         { icon: "📘", text: "Full Course Material & Notes" },
         { icon: "💼", text: "Real Company-Level Projects" },
@@ -27,13 +27,13 @@ export default function Whatstudentget() {
                             className="absolute hidden md:block top-1/2 left-1/2  -translate-x-1/2 -translate-y-1/2 w-[480px] md:w-[670px]  sm:w-[241px] pointer-events-none select-none opacity-90"
                         />
                         <Title
-                            title={'<span class="text-primary"> What Students </span>  Receive'}
+                            title={title ? title : '<span class="text-primary"> What Students </span>  Receive'}
                             text_color={'text-secondary relative z-[2]'}
                         />
                     </div>
                    <div className="relative z-10">
                      <Description
-                        description={'Everything you need to become job-ready and industry-prepared'}
+                        description={description ?description :'Everything you need to become job-ready and industry-prepared'}
                         text_color={'text-secondary'}
                     />
                    </div>
@@ -43,11 +43,10 @@ export default function Whatstudentget() {
 
                 {/* Features Grid */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                    {items.map((item, i) => (
+                    {(items_p && Array.isArray(items_p) ? items_p : items).map((item, i) => (
                         <div
                             key={i}
-                            className="flex items-center gap-4 p-5 bg-white rounded-2xl shadow-sm 
-              border border-[#E3DFFF] hover:shadow-md transition-all duration-300"
+                            className="flex items-center gap-4 p-5 bg-white rounded-2xl shadow-sm border border-[#E3DFFF] hover:shadow-md transition-all duration-300"
                         >
                             {/* Icon */}
                             <div className="text-3xl bg-[#ECE7FF] w-14 h-14 flex items-center justify-center rounded-xl">

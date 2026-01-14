@@ -212,6 +212,7 @@ const VideoEditing = () => {
         featuresMain={featuresMain}
         title={'Why Video Editing is the   <br/> <span class="text-primary">Next Big Career</span>'}
         description={"Work with YouTubers, production houses, brands & international clients"}
+        course_brocher={false}
       />
       <CourseProgram
         program_data={program_data}

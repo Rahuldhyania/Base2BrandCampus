@@ -16,6 +16,7 @@ import whitetruck from "../../../../public/images/whitetruck.webp";
 import boylike from "../../../../public/images/boylike.webp";
 import turckleft from "../../../../public/images/turckleft.webp";
 import Youtubevideo from './Youtubevideo';
+import CourseExtracontent from '../Courses/CourseExtracontent';
 const faq_data = [
   {
     q: "What does the B2B Campus truck dispatching course cover for students in Mohali?",
@@ -234,12 +235,14 @@ const TruckDispatcher = () => {
           `}
       />
       <Youtubevideo current_tab={'Truck Dispatching'} />
+       <CourseExtracontent />
       <CourseCareerSupport />
       <WhyChoose featuresNumbered={featuresNumbered} />
       <div className="main-bg">
         <CanJoin conjoin_data={conjoin_data} />
         <CanadaUSA />
       </div>
+     
       <CourseSyllabus title={'Truck Dispatching Course<br/> <span class="text-primary"> Syllabus</span>'} Syllabus_data={Syllabus_data} />
       <BecomeStudent
         title={'From Training to Truck <sapn class="text-primary"> Dispatching Success </span>'}

@@ -314,6 +314,7 @@ const CyberSecurity = () => {
                     "Our training helps you understand network security, penetration testing, malware <br/> analysis, and ethical hacking, preparing you for high-demand roles <br/> in the IT and cyber security industry."
                 }
                 max_width={"max-w-[80%]"}
+                course_brocher={false}
             />
             <CourseProgram
                 program_data={program_data}

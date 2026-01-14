@@ -288,6 +288,7 @@ const InternetOfThings = () => {
           "Build smart devices, automation systems, and connected solutions used by companies worldwide."
         }
         max_width={"max-w-[80%]"}
+        course_brocher={false}
       />
       <CourseProgram
         program_data={program_data}

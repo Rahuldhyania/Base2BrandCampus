@@ -71,7 +71,10 @@ const faq_data = [
             "You can enroll by contacting us, attending a counseling session, selecting your preferred domain and batch, and starting your training journey."
     }
 ];
-
+export const metadata = {
+    title: 'About Us | B2B Campus -Training & Placement Support',
+    description: 'Understand how B2B Campus prepares learners for professional success through practical training, industry exposure, and placement support today now here fast.' 
+}
 const page = () => {
     return (
         <div>
