@@ -145,6 +145,7 @@ export const metadata = {
 
 
 
+
 const page = () => {
     return (
         <div>
@@ -168,6 +169,7 @@ const page = () => {
                 title_lower={'Training in Mohali'}
                 description={'Industry-Ready Programs Designed for Career-Focused Learning'}
                 features_p={featuresaboutus}
+                show_discription={true}
             />
             <CampusProgram />
             <Whatstudentget
