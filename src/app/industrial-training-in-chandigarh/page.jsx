@@ -9,6 +9,7 @@ import PlacedStudent from "../Components/Page-Components/PlacedStudent";
 import FaqSection from "../Components/Page-Components/FaqSection";
 import TopCompanys from "../Components/Page-Components/TopCompanys";
 import CampusProgram from "../Components/Page-Components/CampusProgram";
+import TrainingDomains from "../Components/Page-Components/TrainingDomains";
 
 const features = [
   {
@@ -101,53 +102,53 @@ const statsdata = [
   }
 ];
 const faq_data = [
-    {
-        q: "What courses are offered at your industrial training institute in Chandigarh?",
-        a: "Our industrial training institute in Chandigarh provides 6 months industrial training in Chandigarh with practical sessions, covering multiple domains to support long-term career growth."
-    },
-    {
-        q: "Who can enroll for 6 months industrial training in Chandigarh?",
-        a: "Anyone seeking quality industrial training in Chandigarh can join our industrial training institute in Chandigarh for 6 months industrial training with industry-relevant skills."
-    },
-    {
-        q: "Does your industrial training institute in Chandigarh provide placement support?",
-        a: "Yes, our industrial training institute in Chandigarh ensures the best 6 months industrial training in Chandigarh with placement assistance after successful course completion."
-    },
-    {
-        q: "What is the duration of industrial training in Chandigarh at your institute?",
-        a: "We offer 6 months industrial training in Chandigarh at our industrial training institute in Chandigarh, focusing on hands-on practical experience and professional skill development."
-    },
-    {
-        q: "Is the 6 months industrial training in Chandigarh suitable for freshers?",
-        a: "Absolutely. Our industrial training institute in Chandigarh offers 6 months industrial training in Chandigarh tailored for freshers, making it one of the best industrial training programs in Chandigarh."
-    },
-    {
-        q: "Do you provide real-time projects during industrial training in Chandigarh?",
-        a: "Yes, our industrial training institute in Chandigarh includes live and real-time projects as part of the 6 months industrial training in Chandigarh for practical exposure."
-    },
-    {
-        q: "What makes your industrial training institute in Chandigarh different?",
-        a: "Our industrial training institute in Chandigarh stands out by offering 6 months industrial training in Chandigarh with practical exposure, expert mentors, and career-focused learning."
-    },
-    {
-        q: "Can working professionals join the 6 months industrial training in Chandigarh?",
-        a: "Yes, our industrial training institute in Chandigarh provides flexible 6 months industrial training in Chandigarh programs suitable for working professionals."
-    },
-    {
-        q: "Are certifications provided after completing industrial training in Chandigarh?",
-        a: "Yes, our industrial training institute in Chandigarh provides certifications after completing the 6 months industrial training in Chandigarh program."
-    },
-    {
-        q: "How do I enroll for 6 months industrial training in Chandigarh?",
-        a: "You can contact our industrial training institute in Chandigarh to enroll in 6 months industrial training in Chandigarh and begin your journey toward the best industrial training in Chandigarh."
-    }
+  {
+    q: "What courses are offered at your industrial training institute in Chandigarh?",
+    a: "Our industrial training institute in Chandigarh provides 6 months industrial training in Chandigarh with practical sessions, covering multiple domains to support long-term career growth."
+  },
+  {
+    q: "Who can enroll for 6 months industrial training in Chandigarh?",
+    a: "Anyone seeking quality industrial training in Chandigarh can join our industrial training institute in Chandigarh for 6 months industrial training with industry-relevant skills."
+  },
+  {
+    q: "Does your industrial training institute in Chandigarh provide placement support?",
+    a: "Yes, our industrial training institute in Chandigarh ensures the best 6 months industrial training in Chandigarh with placement assistance after successful course completion."
+  },
+  {
+    q: "What is the duration of industrial training in Chandigarh at your institute?",
+    a: "We offer 6 months industrial training in Chandigarh at our industrial training institute in Chandigarh, focusing on hands-on practical experience and professional skill development."
+  },
+  {
+    q: "Is the 6 months industrial training in Chandigarh suitable for freshers?",
+    a: "Absolutely. Our industrial training institute in Chandigarh offers 6 months industrial training in Chandigarh tailored for freshers, making it one of the best industrial training programs in Chandigarh."
+  },
+  {
+    q: "Do you provide real-time projects during industrial training in Chandigarh?",
+    a: "Yes, our industrial training institute in Chandigarh includes live and real-time projects as part of the 6 months industrial training in Chandigarh for practical exposure."
+  },
+  {
+    q: "What makes your industrial training institute in Chandigarh different?",
+    a: "Our industrial training institute in Chandigarh stands out by offering 6 months industrial training in Chandigarh with practical exposure, expert mentors, and career-focused learning."
+  },
+  {
+    q: "Can working professionals join the 6 months industrial training in Chandigarh?",
+    a: "Yes, our industrial training institute in Chandigarh provides flexible 6 months industrial training in Chandigarh programs suitable for working professionals."
+  },
+  {
+    q: "Are certifications provided after completing industrial training in Chandigarh?",
+    a: "Yes, our industrial training institute in Chandigarh provides certifications after completing the 6 months industrial training in Chandigarh program."
+  },
+  {
+    q: "How do I enroll for 6 months industrial training in Chandigarh?",
+    a: "You can contact our industrial training institute in Chandigarh to enroll in 6 months industrial training in Chandigarh and begin your journey toward the best industrial training in Chandigarh."
+  }
 ];
 
 
 export const metadata = {
-    title: 'Industrial Training Institute in Chandigarh | B2B Campus',
-    description:
-        'Join B2B Campus for industrial training in Chandigarh with practical learning and expert trainers. Enroll now to start your career journey today ahead now fast.'
+  title: 'Industrial Training Institute in Chandigarh | B2B Campus',
+  description:
+    'Join B2B Campus for industrial training in Chandigarh with practical learning and expert trainers. Enroll now to start your career journey today ahead now fast.'
 };
 
 const page = () => {
@@ -167,7 +168,7 @@ const page = () => {
         title={'<span class="text-primary">Why Choose  </span>B2B Campus?'}
         features_p={features}
       />
-      <Youtubevideo />
+      <TrainingDomains />
       <TrainingSection
         title_upper={"About Our Industrial Training "}
         title_lower={"In Chandigarh"}
@@ -178,6 +179,7 @@ const page = () => {
         show_discription={true}
       />
       <CampusProgram />
+      <Youtubevideo />
       <Whatstudentget
         title={
           '<span class="text-primary"> What Students Receive with Industrial  </span> <br/>  Training in Mohali '

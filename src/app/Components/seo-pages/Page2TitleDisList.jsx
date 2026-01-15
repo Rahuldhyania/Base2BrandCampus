@@ -6,7 +6,7 @@ const Page2TitleDisList = ({ title, discription1, listData, discription2 }) => {
   return (
     <div className="pt-8">
       <h2 className="text-xl md:text-2xl 2xl:text-3xl text-primary">
-       {title}
+        {title}
       </h2>
 
       {discription1 &&
@@ -19,7 +19,7 @@ const Page2TitleDisList = ({ title, discription1, listData, discription2 }) => {
         listData.map((data, index) =>
           <div className="py-3" key={index}>
             <h4 className="text-lg lg:text-xl 2xl:text-2xl text-black font-medium">
-              Industrial training helps students:
+              {data.title}
             </h4>
             <ul className="pt-3 grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-3 px-4">
               {data.listdata.map((item, i) =>
@@ -42,7 +42,7 @@ const Page2TitleDisList = ({ title, discription1, listData, discription2 }) => {
             </ul>
           </div>
         )}
-
+      <div className={`${listData ? "" : 'pt-2'}`} />
       {discription2 &&
         <Description
           description={discription2}

@@ -2,6 +2,7 @@ import React from "react";
 import Page2Banner from "../Components/seo-pages/Page2Banner";
 import ContactForm from "../Components/Page-Components/From";
 import Page2TitleDisList from "../Components/seo-pages/Page2TitleDisList";
+import Page2FinalThoughts from "../Components/seo-pages/Page2FinalThoughts";
 
 const listData1 = [
   {
@@ -98,12 +99,76 @@ const listData8 = [
     ]
   }
 ];
+const listData9 = [
+  {
+    title:
+      "After successful completion of the training, students receive a recognized industrial training certificate from B2B Campus. This certificate is helpful for:",
+    listdata: [
+      "College submissions",
+      "Internship applications",
+      "Resume building",
+      "Job interviews",
+    ]
+  },
+  {
+    title:
+      "The institute also provides:",
+    listdata: [
+      "Project reports",
+      "Internship documentation",
+      "Assistance with viva and evaluations",
+    ]
+  },
+];
+const listData10 = [
+  {
+    title:
+      "Students gain:",
+    listdata: [
+      "Improved technical confidence",
+      "Practical skills demanded by employers",
+      "Better clarity about career choices",
+      "Strong foundation for advanced learning",
+      "Higher chances of internships and placements",
+    ]
+  }
+];
+const listData11 = [
+  {
+    title:
+      "Students consistently choose B2B Campus because of its:",
+    listdata: [
+      "Practical, industry-focused curriculum",
+      "Supportive learning environment",
+      "Modern infrastructure and labs",
+      "Affordable training fees",
+      "Strategic locations in Chandigarh and Mohali",
+      "Strong student success record",
+    ]
+  }
+];
+const listData12 = [
+  {
+    title:
+      "The enrollment process is simple and student-friendly:",
+    listdata: [
+      "Visit the B2B Campus center or website",
+      "Choose your preferred course",
+      "Get guidance from training counselors",
+      "Complete registration and start training"
+    ]
+  }
+];
+const finalthoughts = [
+  'Choosing the best six weeks industrial training in Chandigarh can significantly impact your academic performance and career growth. With the right guidance, practical exposure, and mentorship, these six weeks can help you stand out in a competitive job market.',
+  'B2B Campus in Chandigarh and Mohali offers an ideal environment for students who want to learn, build skills, and prepare for the future. Whether you are a beginner or someone looking to strengthen your technical foundation, B2B Campus provides the right blend of knowledge, practice, and professional support.'
+]
 const page = () => {
   return (
     <div className="main-bg">
       <div className="cus_container relative">
         <div className="flex gap-2">
-          <div className="w-[70%]">
+          <div className="lg:w-[70%]">
             <Page2Banner
               title={"Best Six Weeks Industrial Training in Chandigarh: A Complete Guide for Students"}
               discription1={"In today’s competitive academic and professional environment, students need more than classroom knowledge to succeed. Companies now expect graduates to be skilled, confident, and ready to work on real projects from day one. This is why six weeks industrial training has become a crucial step for students pursuing B.Tech, MCA, BCA, Diploma, and other technical courses."}
@@ -155,11 +220,36 @@ const page = () => {
               listData={listData8}
               discription2={"Even students with basic knowledge can join, as foundational concepts are covered before moving to advanced topics."}
             />
+            <Page2TitleDisList
+              title={"9. Certification and Academic Support"}
+              listData={listData9}
+              discription2={"This makes it easier for students to fulfill academic requirements smoothly."}
+            />
+            <Page2TitleDisList
+              title={"10. Career Benefits of Six Weeks Industrial Training"}
+              discription1={"Completing the best six weeks industrial training in Chandigarh offers long-term career advantages."}
+              listData={listData10}
+              discription2={"Many students who start with six weeks training at B2B Campus later enroll in advanced or six-month industrial training programs, further strengthening their profiles."}
+            />
+            <Page2TitleDisList
+              title={"11. Why Students Prefer B2B Campus?"}
+              listData={listData11}
+              discription2={"The institute’s goal is not just to train students, but to transform learners into professionals."}
+            />
+            <Page2TitleDisList
+              title={"12. How to Enroll for Six Weeks Industrial Training at B2B Campus?"}
+              listData={listData12}
+              discription2={"Batches are designed to accommodate both college schedules and vacation periods."}
+            />
           </div>
-          <div className="w-[30%] py-6 md:py-12 sticky top-0 h-fit">
+          <div className="w-[30%] py-6 md:py-12 sticky top-0 h-fit hidden lg:block">
             <ContactForm />
           </div>
         </div>
+        <Page2FinalThoughts
+          title={'Final Thoughts'}
+          finalthoughts={finalthoughts}
+        />
       </div>
     </div>
   );

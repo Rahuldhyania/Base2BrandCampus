@@ -10,6 +10,7 @@ import PlacedStudent from "../Components/Page-Components/PlacedStudent";
 import FaqSection from "../Components/Page-Components/FaqSection";
 import TopCompanys from "../Components/Page-Components/TopCompanys";
 import CampusProgram from "../Components/Page-Components/CampusProgram";
+import TrainingDomains from "../Components/Page-Components/TrainingDomains";
 
 const features = [
     {
@@ -135,12 +136,12 @@ const page = () => {
                 leftposter={"/images/fullstack_leftbanner.webp"}
                 rightposter={"/images/fullstack_rightbanner.webp"}
             />
-
+           
             <WhyChooseSection
                 title={'<span class="text-primary"> Why Choose </span> B2B Campus'}
                 features_p={features}
             />
-            <Youtubevideo />
+            <TrainingDomains />
             <TrainingSection
                 title_upper={'About Our Industrial Training'}
                 title_lower={'in Chandigarh'}
@@ -148,6 +149,7 @@ const page = () => {
                 features_p={featuresaboutus}
             />
             <CampusProgram />
+            <Youtubevideo />
             <Whatstudentget
                 title={'<span class="text-primary"> What Students Receive with  </span> Industrial Training in Mohali'}
 

@@ -8,7 +8,7 @@ import Footerfacebook from "../../../../public/images/Footerfacebook.webp";
 import linkedin from "../../../../public/images/linkedin.webp";
 import insta from "../../../../public/images/insta.webp";
 import pinterest from "../../../../public/icons/pinterest.svg";
-import twitter from "../../../../public/icons/twitter.svg";
+import snapchat from "../../../../public/icons/snapchat.svg";
 import youtube from "../../../../public/icons/youtube.svg";
 import { Newletterfrom } from "../Page-Components/Newletterfrom";
 import PressReleases, { TopPressReleases } from "../Page-Components/PressReleases";
@@ -220,7 +220,7 @@ const socialLinks = [
     icon: youtube,
     url: "https://www.youtube.com/channel/UCs1sxcuHQ7GWgB9gMyRXwXQ/featured"
   },
-  { icon: twitter, url: "https://x.com/B2bCampus" },
+  { icon: snapchat, url: "https://www.snapchat.com/@b2bcampus" },
   { icon: pinterest, url: "https://in.pinterest.com/b2bcampus/" }
 ];
 const FooterNew = () => {

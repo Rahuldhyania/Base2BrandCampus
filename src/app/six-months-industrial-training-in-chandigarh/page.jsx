@@ -9,6 +9,7 @@ import PlacedStudent from "../Components/Page-Components/PlacedStudent";
 import FaqSection from "../Components/Page-Components/FaqSection";
 import TopCompanys from "../Components/Page-Components/TopCompanys";
 import CampusProgram from "../Components/Page-Components/CampusProgram";
+import TrainingDomains from "../Components/Page-Components/TrainingDomains";
 
 const features = [
     {
@@ -161,7 +162,7 @@ const page = () => {
                 title={'<span class="text-primary"> Why Choose </span> B2B Campus'}
                 features_p={features}
             />
-            <Youtubevideo />
+            <TrainingDomains />
             <TrainingSection
                 title_upper={'About Our Six Months Industrial '}
                 title_lower={'Training in Chandigarh'}
@@ -170,6 +171,7 @@ const page = () => {
                 show_discription={true}
             />
             <CampusProgram />
+            <Youtubevideo />
             <Whatstudentget
                 title={'<span class="text-primary"> Student Benefits from Industrial  </span>  Training '}
 

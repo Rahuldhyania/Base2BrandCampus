@@ -15,7 +15,7 @@ import Footerfacebook from "../../../../public/images/Footerfacebook.webp";
 import linkedin from "../../../../public/images/linkedin.webp";
 import insta from "../../../../public/images/insta.webp";
 import pinterest from "../../../../public/icons/pinterest.svg";
-import twitter from "../../../../public/icons/twitter.svg";
+import snapchat from "../../../../public/icons/snapchat.svg";
 import youtube from "../../../../public/icons/youtube.svg";
 const categories = [
   { name: "All Courses", key: "AllCourses" },
@@ -79,7 +79,7 @@ const socialLinks = [
   { icon: insta, url: "https://www.instagram.com/b2bcampus/?hl=en" },
   { icon: linkedin, url: "https://www.linkedin.com/company/b2b-campus/" },
   { icon: youtube, url: "https://www.youtube.com/channel/UCs1sxcuHQ7GWgB9gMyRXwXQ/featured" },
-  { icon: twitter, url: "https://x.com/B2bCampus" },
+  { icon: snapchat, url: "https://www.snapchat.com/@b2bcampus" },
   { icon: pinterest, url: "https://in.pinterest.com/b2bcampus/" },
 
 ];

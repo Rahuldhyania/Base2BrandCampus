@@ -43,7 +43,7 @@ const Page2Banner = ({ title, discription1, discription2 }) => {
         {title}
       </h1>
       <Image
-        src={randomImage}
+        src={randomImage || '/sdsfsdf.webp'}
         alt="randomImage"
         width={1000}
         height={500}

@@ -9,6 +9,7 @@ import PlacedStudent from "../Components/Page-Components/PlacedStudent";
 import FaqSection from "../Components/Page-Components/FaqSection";
 import TopCompanys from "../Components/Page-Components/TopCompanys";
 import CampusProgram from "../Components/Page-Components/CampusProgram";
+import TrainingDomains from "../Components/Page-Components/TrainingDomains";
 
 const features = [
     {
@@ -159,7 +160,7 @@ const page = () => {
                 title={'<span class="text-primary"> Why Enroll in Six Months  </span> <br/> Training in Mohali?'}
                 features_p={features}
             />
-            <Youtubevideo />
+            <TrainingDomains />
             <TrainingSection
                 title_upper={'About Our Six Months Industrial '}
                 title_lower={'Training in Mohali'}
@@ -168,6 +169,7 @@ const page = () => {
                 show_discription={true}
             />
             <CampusProgram />
+            <Youtubevideo />
             <Whatstudentget
                 title={'<span class="text-primary"> What Students Receive with  </span> <br/> Industrial Training '}
 
