@@ -93,19 +93,15 @@ export default function Header() {
 
   const pathname = usePathname();
 
-  // Check if user is logged in
   useEffect(() => {
     const checkLoginStatus = () => {
       setIsLoggedIn(hasEnrollmentToken());
     };
 
-    // Check on mount
     checkLoginStatus();
 
-    // Listen for storage changes (in case token is added/removed in another tab)
     window.addEventListener('storage', checkLoginStatus);
 
-    // Also check periodically (in case token is removed in same tab)
     const interval = setInterval(checkLoginStatus, 1000);
 
     return () => {
@@ -114,32 +110,23 @@ export default function Header() {
     };
   }, []);
 
-  // Handle logout
   const handleLogout = () => {
-    // Stop all YouTube videos before logout
     const stopAllVideos = () => {
-      // Find and stop all YouTube iframes
       const iframes = document.querySelectorAll('iframe[src*="youtube.com"], iframe[src*="youtu.be"]');
       iframes.forEach(iframe => {
         try {
           if (iframe.contentWindow) {
-            // Send stop commands
             iframe.contentWindow.postMessage('{"event":"command","func":"stopVideo","args":""}', '*');
             iframe.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
             iframe.contentWindow.postMessage('{"event":"command","func":"setVolume","args":[0]}', '*');
           }
-          // Clear src immediately
           iframe.src = 'about:blank';
-          // Remove from DOM
           if (iframe.parentNode) {
             iframe.parentNode.removeChild(iframe);
           }
         } catch (e) {
-          // Ignore errors
         }
       });
-
-      // Stop all HTML5 media
       const mediaElements = document.querySelectorAll('video, audio');
       mediaElements.forEach(media => {
         try {
@@ -147,19 +134,15 @@ export default function Header() {
           media.currentTime = 0;
           media.volume = 0;
         } catch (e) {
-          // Ignore
         }
       });
     };
 
-    // Stop videos immediately
     stopAllVideos();
 
-    // Remove token
     removeEnrollmentToken();
     setIsLoggedIn(false);
 
-    // Wait a bit to ensure videos are stopped before reload
     setTimeout(() => {
       window.location.reload();
     }, 200);
