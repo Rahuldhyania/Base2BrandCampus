@@ -361,7 +361,7 @@ const FooterNew = () => {
                   </div>
                 )}
               </div>
-              <div className="grid md:hidden grid-cols-1 md:grid-cols-2">
+              <div className="grid md:hidden grid-cols-1 md:grid-cols-2 pb-4">
                 {footerData[1].links.slice(0, showitem[1]).map((data, index) =>
                   <div
                     className="flex items-start md:items-center py-2"
