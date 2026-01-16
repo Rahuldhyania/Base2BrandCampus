@@ -44,7 +44,11 @@ const Conclusion = [
     'The rise of skill-based learning has transformed how careers are built, and training companies in Chandigarh are at the forefront of this change. By focusing on practical learning, live projects, and career readiness, they are helping learners move from classrooms to successful careers.',
     'Among all training companies in Chandigarh, B2B Campus stands out as the best institute for industry-focused training. With its comprehensive programs, experienced trainers, and strong placement support, B2B Campus continues to shape the future of skill-based education in Chandigarh.',
     "For students, freshers, and professionals looking to build real-world skills and long-term career success, choosing the right training company in Chandigarh can be the most important decision—and B2B Campus proves to be that trusted choice."
-]
+];
+export const metadata = {
+  title : 'Best Skill-Based Training Institute in Chandigarh | B2B Campus',
+  description : 'Skill-based learning training companies in Chandigarh help students gain practical, job-ready skills through hands-on courses. Enroll now to boost your career.'
+}
 const page = () => {
     return (
         <div className="main-bg">

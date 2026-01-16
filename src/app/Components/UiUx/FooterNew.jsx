@@ -182,7 +182,7 @@ const footerData = [
       {
         id: 31,
         page_name: "Free six months industrial training in Chandigarh",
-        page_links: false
+        page_links: 'free-six-months-industrial-training-in-chandigarh-for-btech-mca-and-diploma-students'
       },
       {
         id: 32,
@@ -192,7 +192,7 @@ const footerData = [
       {
         id: 33,
         page_name: "Best six weeks industrial training in Chandigarh",
-        page_links: false
+        page_links: 'best-six-weeks-industrial-training-in-chandigarh'
       },
       {
         id: 34,
@@ -201,13 +201,13 @@ const footerData = [
       },
       {
         id: 35,
-        page_name: "Best IT training companies in Chandigarh",
-        page_links: false
+        page_name: "Skill based Learning training companies in Chandigarh",
+        page_links: 'skill-based-learning-training-companies-chandigarh'
       },
       {
         id: 36,
-        page_name: "Top IT training companies in Chandigarh",
-        page_links: false
+        page_name: "Training Companies in Chandigarh in Skill Development and Employability",
+        page_links: 'training-companies-chandigarh-skill-development-employability'
       }
     ]
   }
@@ -242,8 +242,8 @@ const FooterNew = () => {
         <TopPressReleases />
       </div>
       <div className="bg-primary">
-        <div className="max-w-[1780px] m-auto px-[3%] py-16">
-          <div className="flex flex-col md:flex-row gap-y-6 md:items-center justify-between pb-8">
+        <div className=" pt-16">
+          <div className="flex flex-col md:flex-row gap-y-6 md:items-center justify-between pb-8 max-w-[1780px] m-auto px-[3%]">
             <div>
               <Link href={"/"}>
                 <Image
@@ -268,7 +268,7 @@ const FooterNew = () => {
               <Newletterfrom />
             </div>
           </div>
-          <div className="grid grid-cols-1 xl:grid-cols-[2fr_3fr]">
+          <div className="grid grid-cols-1 xl:grid-cols-[2fr_3fr] max-w-[1780px] m-auto px-[3%]">
             <div>
               <h3 className="text-white text-3xl md:text-4xl pb-3">
                 {footerData[0].title}
@@ -398,21 +398,21 @@ const FooterNew = () => {
               </div>
             </div>
           </div>
-
-           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 py-6 mt-6 border-y-2 border-y-white/20 gap-x-4 gap-y-5">
+          <div className="bg-[#4924c9] pb-16  border-t-2 border-t-white">
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 py-6 mt-6 border-b-2 border-b-white/20 gap-x-4 gap-y-5 max-w-[1780px] m-auto px-[3%]">
               <div className="">
                 <h4 className="text-xl xl:text-2xl 2xl:text-3xl text-white font-bold">
                   Follow Us
                 </h4>
                 <div className="flex flex-wrap gap-3 sm:gap-4 mt-2 sm:mt-0 pt-4">
-                {socialLinks.map((item, i) =>
-                  <Link href={item.url} key={i} target="_blank">
-                    <div className="p-3 sm:p-[11px] rounded-full bg-[#4924C9] flex justify-center items-center transition-transform duration-300 hover:scale-110">
-                      <Image src={item.icon} width={20} height={20} alt="" />
-                    </div>
-                  </Link>
-                )}
-              </div>
+                  {socialLinks.map((item, i) =>
+                    <Link href={item.url} key={i} target="_blank">
+                      <div className="p-3 sm:p-[11px] rounded-full bg-[#000000] flex justify-center items-center transition-transform duration-300 hover:scale-110">
+                        <Image src={item.icon} width={20} height={20} alt="" />
+                      </div>
+                    </Link>
+                  )}
+                </div>
               </div>
               <div>
                 <h4 className="text-white text-xl md:text-2xl">
@@ -431,32 +431,34 @@ const FooterNew = () => {
                 </h4>
 
                 <p className="text-white text-base md:text-lg font-normal pt-4 hover:underline">
-                 <a href="https://www.google.com/maps/place/B2B+Campus/data=!4m2!3m1!1s0x0:0xb9ae31b247ff7455?sa=X&ved=1t:2428&ictx=111" target="_blank">F-209, Sector 74, Mohali, 160074</a> 
+                  <a href="https://www.google.com/maps/place/B2B+Campus/data=!4m2!3m1!1s0x0:0xb9ae31b247ff7455?sa=X&ved=1t:2428&ictx=111" target="_blank">F-209, Sector 74, Mohali, 160074</a>
                   <br />
                   <p>
-                     <a href="tel:+919872487850">INDIA +91 9872487850</a>
+                    <a href="tel:+919872487850">INDIA +91 9872487850</a>
                   </p>
                 </p>
               </div>
-             <div>
+              <div>
                 <h4 className="text-white text-xl md:text-2xl">
                   Canada (B2bcampus)
                 </h4>
 
                 <p className="text-white text-base md:text-lg font-normal pt-4 hover:underline">
-                 83 saddlebrook court , kitchener , NR2 0P6
+                  83 saddlebrook court , kitchener , NR2 0P6
                   <br />
-                <p>
-                  <a href="tel:+15482554922">CANADA +1 (548) 255-4922</a>
-                </p>
+                  <p>
+                    <a href="tel:+15482554922">CANADA +1 (548) 255-4922</a>
+                  </p>
                 </p>
               </div>
-           </div>
-          <div className=" pt-6 flex flex-col justify-between items-center gap-4 lg:gap-6">
-            <p className="text-base opacity-80 text-center sm:text-left text-white">
-              © B2B Campus. All Rights Reserved 2026.
-            </p>
+            </div>
+            <div className=" pt-6 flex flex-col justify-between items-center gap-4 lg:gap-6 max-w-[1780px] m-auto px-[3%]">
+              <p className="text-base opacity-80 text-center sm:text-left text-white">
+                © B2B Campus. All Rights Reserved 2026.
+              </p>
+            </div>
           </div>
+
         </div>
       </div>
     </div>

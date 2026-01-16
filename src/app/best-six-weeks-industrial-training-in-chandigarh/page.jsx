@@ -163,6 +163,10 @@ const finalthoughts = [
   'Choosing the best six weeks industrial training in Chandigarh can significantly impact your academic performance and career growth. With the right guidance, practical exposure, and mentorship, these six weeks can help you stand out in a competitive job market.',
   'B2B Campus in Chandigarh and Mohali offers an ideal environment for students who want to learn, build skills, and prepare for the future. Whether you are a beginner or someone looking to strengthen your technical foundation, B2B Campus provides the right blend of knowledge, practice, and professional support.'
 ]
+export const metadata = {
+  title : 'Best Six Weeks Industrial Training in Chandigarh | B2B Campus',
+  description : 'Join the best six weeks industrial training in Chandigarh at B2B Campus. Learn practical skills, work on real projects, and enroll today to start your career.'
+}
 const page = () => {
   return (
     <div className="main-bg">

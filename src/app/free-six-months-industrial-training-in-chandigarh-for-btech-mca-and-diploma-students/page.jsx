@@ -122,6 +122,10 @@ const finalthoughts = [
     'Many students who joined the program with limited industry experience now work at top tech firms, startups, and multinational companies.',
     'From fresh B.Tech graduates to diploma holders seeking career growth, the free six-month training at B2B Campus has paved the way for many success stories. These testimonials reflect the quality of training, mentorship, and the practical edge students gain.'
 ];
+export const metadata = {
+  title : 'Free 6 Months Industrial Training for BTech, MCA & Diploma',
+  description : 'B2B Campus offers free six months industrial training in Chandigarh for BTech, MCA, and diploma students with hands-on learning. Apply now to build skills.'
+}
 const page = () => {
     return (
         <div className="main-bg">

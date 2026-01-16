@@ -29,6 +29,10 @@ const Conclusion = [
     'The role of training companies in Chandigarh in skill development and employability is very important. They help students and professionals learn real skills, gain confidence, and become job-ready.',
     'By offering practical training, career guidance, and industry-focused courses, B2B Campus stands out among training companies in Chandigarh. For anyone looking to improve skills and build a strong career, choosing the right training company can make a big difference.'
 ];
+export const metadata = {
+  title : 'Training Companies in Chandigarh for Skill Development',
+  description : 'Training companies in Chandigarh focus on skill development and employability through practical learning and career-oriented programs. Enroll now to grow skills.'
+}
 const page = () => {
     return (
         <div className="main-bg">
