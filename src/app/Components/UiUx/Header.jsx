@@ -78,10 +78,12 @@ const socialLinks = [
   { icon: Footerfacebook, url: "https://www.facebook.com/CampusB2B" },
   { icon: insta, url: "https://www.instagram.com/b2bcampus/?hl=en" },
   { icon: linkedin, url: "https://www.linkedin.com/company/b2b-campus/" },
-  { icon: youtube, url: "https://www.youtube.com/channel/UCs1sxcuHQ7GWgB9gMyRXwXQ/featured" },
+  {
+    icon: youtube,
+    url: "https://www.youtube.com/channel/UCs1sxcuHQ7GWgB9gMyRXwXQ/featured",
+  },
   { icon: snapchat, url: "https://www.snapchat.com/@b2bcampus" },
   { icon: pinterest, url: "https://in.pinterest.com/b2bcampus/" },
-
 ];
 export default function Header() {
   const [open, setOpen] = useState(false);
@@ -100,41 +102,50 @@ export default function Header() {
 
     checkLoginStatus();
 
-    window.addEventListener('storage', checkLoginStatus);
+    window.addEventListener("storage", checkLoginStatus);
 
     const interval = setInterval(checkLoginStatus, 1000);
 
     return () => {
-      window.removeEventListener('storage', checkLoginStatus);
+      window.removeEventListener("storage", checkLoginStatus);
       clearInterval(interval);
     };
   }, []);
 
   const handleLogout = () => {
     const stopAllVideos = () => {
-      const iframes = document.querySelectorAll('iframe[src*="youtube.com"], iframe[src*="youtu.be"]');
-      iframes.forEach(iframe => {
+      const iframes = document.querySelectorAll(
+        'iframe[src*="youtube.com"], iframe[src*="youtu.be"]',
+      );
+      iframes.forEach((iframe) => {
         try {
           if (iframe.contentWindow) {
-            iframe.contentWindow.postMessage('{"event":"command","func":"stopVideo","args":""}', '*');
-            iframe.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
-            iframe.contentWindow.postMessage('{"event":"command","func":"setVolume","args":[0]}', '*');
+            iframe.contentWindow.postMessage(
+              '{"event":"command","func":"stopVideo","args":""}',
+              "*",
+            );
+            iframe.contentWindow.postMessage(
+              '{"event":"command","func":"pauseVideo","args":""}',
+              "*",
+            );
+            iframe.contentWindow.postMessage(
+              '{"event":"command","func":"setVolume","args":[0]}',
+              "*",
+            );
           }
-          iframe.src = 'about:blank';
+          iframe.src = "about:blank";
           if (iframe.parentNode) {
             iframe.parentNode.removeChild(iframe);
           }
-        } catch (e) {
-        }
+        } catch (e) {}
       });
-      const mediaElements = document.querySelectorAll('video, audio');
-      mediaElements.forEach(media => {
+      const mediaElements = document.querySelectorAll("video, audio");
+      mediaElements.forEach((media) => {
         try {
           media.pause();
           media.currentTime = 0;
           media.volume = 0;
-        } catch (e) {
-        }
+        } catch (e) {}
       });
     };
 
@@ -173,7 +184,6 @@ export default function Header() {
     { name: "Contact Us", path: "/contact-us" },
   ];
 
-
   useEffect(() => {
     const scrollbarWidth =
       window.innerWidth - document.documentElement.clientWidth;
@@ -187,7 +197,7 @@ export default function Header() {
     }
   }, [megaOpen, enrollModalOpen]);
   const languages = {
-     en: "English",
+    en: "English",
     hi: "Hindi",
     bn: "Bengali",
     te: "Telugu",
@@ -230,34 +240,31 @@ export default function Header() {
             {menuItems.map((item) => (
               <li key={item.name} className="relative">
                 {item.name === "Courses" ? (
-                  <div
-                    className="cursor-pointer px-1 text-gray-700 hover:text-purple-500 transition-colors"
-
-                  >
+                  <div className="cursor-pointer px-1 text-gray-700 hover:text-purple-500 transition-colors">
                     <span className="inline-flex items-center">
-                      <Link href={'/courses'}>
-                        {item.name}
-                      </Link>
+                      <Link href={"/courses"}>{item.name}</Link>
                       <Image
                         onClick={() => setMegaOpen(!megaOpen)}
                         src={arrowdown}
                         width={20}
                         height={20}
                         alt="arrowdown"
-                        className={`ml-1 transition-transform duration-300 ${megaOpen ? "rotate-180" : "rotate-0"
-                          }`}
+                        className={`ml-1 transition-transform duration-300 ${
+                          megaOpen ? "rotate-180" : "rotate-0"
+                        }`}
                       />
                     </span>
                   </div>
-
-                ) : item.name === "Industrial Training" || item.name === 'Blogs' ? (
+                ) : item.name === "Industrial Training" ||
+                  item.name === "Blogs" ? (
                   <div className="flex items-center gap-1">
                     <Link href={item.path}>
                       <span
-                        className={`relative text-lg 2xl:text-xl px-1 cursor-pointer ${pathname === item.path
-                          ? "text-purple-600"
-                          : "text-gray-700"
-                          } hover:text-purple-500`}
+                        className={`relative text-lg 2xl:text-xl px-1 cursor-pointer ${
+                          pathname === item.path
+                            ? "text-purple-600"
+                            : "text-gray-700"
+                        } hover:text-purple-500`}
                       >
                         {item.name}
                       </span>
@@ -267,21 +274,19 @@ export default function Header() {
                       onClick={(e) => {
                         e.stopPropagation();
                         setActiveDropdown(
-                          activeDropdown === item.name ? null : item.name
+                          activeDropdown === item.name ? null : item.name,
                         );
                       }}
-
                     >
                       <Image
                         src={arrowdown}
                         width={16}
                         height={16}
                         alt="arrow"
-                        className={`transition-transform duration-300 ${activeDropdown === item.name ? "rotate-180" : ""
-                          }`}
+                        className={`transition-transform duration-300 ${
+                          activeDropdown === item.name ? "rotate-180" : ""
+                        }`}
                       />
-
-
                     </button>
 
                     {activeDropdown === item.name && (
@@ -300,17 +305,16 @@ export default function Header() {
                           </li>
                         ))}
                       </ul>
-
                     )}
                   </div>
-
                 ) : (
                   <Link href={item.path}>
                     <span
-                      className={`relative text-lg 2xl:text-xl px-1 cursor-pointer ${pathname === item.path
-                        ? "text-purple-600"
-                        : "text-gray-700"
-                        } hover:text-purple-500`}
+                      className={`relative text-lg 2xl:text-xl px-1 cursor-pointer ${
+                        pathname === item.path
+                          ? "text-purple-600"
+                          : "text-gray-700"
+                      } hover:text-purple-500`}
                     >
                       {item.name}
                       {pathname === item.path && (
@@ -322,7 +326,6 @@ export default function Header() {
               </li>
             ))}
           </ul>
-
         </div>
         <div className="flex items-center gap-4">
           <select
@@ -372,15 +375,15 @@ export default function Header() {
               </div>
             ) : (
               <div className="hidden md:flex">
-                <Link
+                {/* <Link
                   href={'contact-us'}
-                >
-                  <Buttons
-                    btnname="Enroll Now"
-                    text_color="text-white"
-                  // onClick={() => setEnrollModalOpen(true)}
-                  />
-                </Link>
+                > */}
+                <Buttons
+                  btnname="Enroll Now"
+                  text_color="text-white"
+                  onClick={() => setEnrollModalOpen(true)}
+                />
+                {/* </Link> */}
               </div>
             )}
 
@@ -397,8 +400,9 @@ export default function Header() {
                   }}
                 />
                 <span
-                  className={`block w-6 h-[3px] bg-gray-700 transition-all ${open ? "opacity-0" : "opacity-100"
-                    }`}
+                  className={`block w-6 h-[3px] bg-gray-700 transition-all ${
+                    open ? "opacity-0" : "opacity-100"
+                  }`}
                 />
                 <span
                   className="block w-6 h-[3px] bg-gray-700 transition-all"
@@ -412,10 +416,10 @@ export default function Header() {
           </div>
         </div>
 
-
         <div
-          className={`xl:hidden absolute top-full left-0 w-full bg-white shadow-lg rounded-b-lg overflow-hidden transition-all duration-500 ${open ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"
-            }`}
+          className={`xl:hidden absolute top-full left-0 w-full bg-white shadow-lg rounded-b-lg overflow-hidden transition-all duration-500 ${
+            open ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"
+          }`}
         >
           <ul className="flex flex-col gap-4 text-[18px] px-4 py-4">
             {menuItems.map((item) => (
@@ -425,20 +429,20 @@ export default function Header() {
                     className="cursor-pointer px-2 py-2 text-gray-700 flex items-center justify-between"
                     onClick={() => setOpen(false)}
                   >
-                    <Link href={'/courses'}>
+                    <Link href={"/courses"}>
                       <span>{item.name}</span>
                     </Link>
                     <Image
                       onClick={() => {
-                        setMegaOpen(!megaOpen)
-
+                        setMegaOpen(!megaOpen);
                       }}
                       src={arrowdown}
                       width={18}
                       height={18}
                       alt="arrowdown"
-                      className={`transition-transform duration-300 ${megaOpen ? "rotate-180" : ""
-                        }`}
+                      className={`transition-transform duration-300 ${
+                        megaOpen ? "rotate-180" : ""
+                      }`}
                     />
                   </div>
                 ) : item.dropdown ? (
@@ -452,10 +456,11 @@ export default function Header() {
                           setOpen(false);
                           setActiveDropdown(null);
                         }}
-                        className={`${pathname === item.path
-                          ? "text-purple-600 font-semibold"
-                          : "text-gray-700"
-                          }`}
+                        className={`${
+                          pathname === item.path
+                            ? "text-purple-600 font-semibold"
+                            : "text-gray-700"
+                        }`}
                       >
                         {item.name}
                       </Link>
@@ -465,7 +470,7 @@ export default function Header() {
                         onClick={(e) => {
                           e.stopPropagation();
                           setActiveDropdown(
-                            activeDropdown === item.name ? null : item.name
+                            activeDropdown === item.name ? null : item.name,
                           );
                         }}
                       >
@@ -474,18 +479,20 @@ export default function Header() {
                           width={18}
                           height={18}
                           alt="arrow"
-                          className={`transition-transform duration-300 ${activeDropdown === item.name ? "rotate-180" : ""
-                            }`}
+                          className={`transition-transform duration-300 ${
+                            activeDropdown === item.name ? "rotate-180" : ""
+                          }`}
                         />
                       </button>
                     </div>
 
                     {/* SUB MENU */}
                     <div
-                      className={`ml-4 overflow-hidden transition-all duration-300 ease-out ${activeDropdown === item.name
-                        ? "max-h-40 opacity-100"
-                        : "max-h-0 opacity-0"
-                        }`}
+                      className={`ml-4 overflow-hidden transition-all duration-300 ease-out ${
+                        activeDropdown === item.name
+                          ? "max-h-40 opacity-100"
+                          : "max-h-0 opacity-0"
+                      }`}
                     >
                       {item.dropdown.map((sub, i) => (
                         <Link
@@ -507,10 +514,11 @@ export default function Header() {
                   <Link
                     href={item.path}
                     onClick={() => setOpen(false)}
-                    className={`block px-2 py-2 ${pathname === item.path
-                      ? "text-purple-600 font-semibold"
-                      : "text-gray-700"
-                      }`}
+                    className={`block px-2 py-2 ${
+                      pathname === item.path
+                        ? "text-purple-600 font-semibold"
+                        : "text-gray-700"
+                    }`}
                   >
                     {item.name}
                   </Link>
@@ -550,27 +558,28 @@ export default function Header() {
                 </button>
               </div>
             ) : (
-              <Link
-                href={'contact-us'}
-              >
-                <Buttons
-                  btnname="Enroll Now"
-                  text_color="text-white"
-                  onClick={() => {
-                    setOpen(false);
-                  }}
-                />
-              </Link>
+              // <Link
+              //   href={'contact-us'}
+              // >
+              <Buttons
+                btnname="Enroll Now"
+                text_color="text-white"
+                onClick={() => {
+                  setOpen(false);
+                  setEnrollModalOpen(true);
+                }}
+              />
+              // </Link>
             )}
             <div className="pt-4">
               <div className="flex gap-2">
-                {socialLinks.map((item, i) =>
+                {socialLinks.map((item, i) => (
                   <Link href={item.url} key={i} target="_blank">
                     <div className="p-3 sm:p-[11px] rounded-full bg-[#4924C9] flex justify-center items-center transition-transform duration-300 hover:scale-110">
                       <Image src={item.icon} width={16} height={16} alt="" />
                     </div>
                   </Link>
-                )}
+                ))}
               </div>
             </div>
             <div className="pt-4">
@@ -637,10 +646,11 @@ export default function Header() {
                     key={cat.key}
                     onClick={() => setActiveCategory(cat.key)}
                     className={`px-4 py-2 cursor-pointer rounded-md text-sm flex justify-between mb-1
-                            ${activeCategory === cat.key
-                        ? "bg-[#E4DFFF] text-[#5D38DE]"
-                        : "hover:bg-gray-100"
-                      }`}
+                            ${
+                              activeCategory === cat.key
+                                ? "bg-[#E4DFFF] text-[#5D38DE]"
+                                : "hover:bg-gray-100"
+                            }`}
                   >
                     {cat.name} <span>›</span>
                   </li>
@@ -650,7 +660,11 @@ export default function Header() {
             <div className="md:w-3/4 w-full py-3 md:px-6 overflow-y-auto h-full">
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 md:max-h-[344px]">
                 {coursesData[activeCategory]?.map((course, index) => (
-                  <Link key={index} href={course.path} onClick={() => setOpen(!open)}>
+                  <Link
+                    key={index}
+                    href={course.path}
+                    onClick={() => setOpen(!open)}
+                  >
                     <motion.div
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}

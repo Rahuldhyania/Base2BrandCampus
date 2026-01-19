@@ -1,11 +1,13 @@
 "use client";
 
-import React, { useState, useRef, useCallback } from "react";
+import React, { useState, useRef, useCallback, useEffect } from "react";
 import Title from "../UiUx/Title";
 import EnrollModal from "../UiUx/EnrollModal";
 import youtube from "../../../../public/images/youtube.webp";
 import Image from "next/image";
 import { allVideoCourses } from "@/app/Data/VideoData";
+import { hasEnrollmentToken } from "@/lib/enrollment";
+
 export const Coursesbtn = [
   { id: 1, btn: "All Courses" },
   { id: 2, btn: "Marketing & Bussiness" },
@@ -36,6 +38,31 @@ export default function Youtubevideo({ current_tab }) {
   const [playingVideo, setPlayingVideo] = useState(null);
   const [visibleCount, setVisibleCount] = useState(8);
   const iframeRefs = useRef({});
+  
+  /* ===== LOGIN STATE ===== */
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [showLoginModal, setShowLoginModal] = useState(false);
+  const [pendingVideoId, setPendingVideoId] = useState(null);
+
+  /* ===== CHECK LOGIN STATUS ===== */
+  useEffect(() => {
+    const checkLoginStatus = () => {
+      setIsLoggedIn(hasEnrollmentToken());
+    };
+
+    checkLoginStatus();
+
+    // Listen for storage changes (login/logout in other tabs)
+    window.addEventListener("storage", checkLoginStatus);
+
+    // Periodic check for login status changes
+    const interval = setInterval(checkLoginStatus, 1000);
+
+    return () => {
+      window.removeEventListener("storage", checkLoginStatus);
+      clearInterval(interval);
+    };
+  }, []);
 
   /* ===== STOP ALL VIDEOS ===== */
   const stopAllVideos = useCallback(() => {
@@ -53,6 +80,13 @@ export default function Youtubevideo({ current_tab }) {
 
   /* ===== VIDEO CLICK ===== */
   const handleVideoClick = (id) => {
+    // If user is not logged in, show login modal
+    if (!isLoggedIn) {
+      setPendingVideoId(id);
+      setShowLoginModal(true);
+      return;
+    }
+
     if (playingVideo === id) {
       stopAllVideos();
       setPlayingVideo(null);
@@ -60,6 +94,25 @@ export default function Youtubevideo({ current_tab }) {
     }
     stopAllVideos();
     setPlayingVideo(id);
+  };
+
+  /* ===== LOGIN SUCCESS CALLBACK ===== */
+  const handleLoginSuccess = () => {
+    setIsLoggedIn(true);
+    setShowLoginModal(false);
+    
+    // Play the pending video after successful login
+    if (pendingVideoId) {
+      stopAllVideos();
+      setPlayingVideo(pendingVideoId);
+      setPendingVideoId(null);
+    }
+  };
+
+  /* ===== CLOSE LOGIN MODAL ===== */
+  const handleCloseLoginModal = () => {
+    setShowLoginModal(false);
+    setPendingVideoId(null);
   };
 
   /* ===== TAB CHANGE ===== */
@@ -149,6 +202,13 @@ export default function Youtubevideo({ current_tab }) {
           </button>
         </div>
       )}
+
+      {/* ===== LOGIN MODAL ===== */}
+      <EnrollModal
+        isOpen={showLoginModal}
+        onClose={handleCloseLoginModal}
+        onLoginSuccess={handleLoginSuccess}
+      />
     </div>
   );
 }

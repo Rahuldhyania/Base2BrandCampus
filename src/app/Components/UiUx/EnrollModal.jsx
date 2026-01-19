@@ -163,6 +163,9 @@ const EnrollModal = ({ isOpen, onClose, onLoginSuccess }) => {
             toast.success("Enrollment completed successfully! You are now logged in.");
             setError("");
             
+            // Submit email to CRM
+            submitToCRM(email);
+            
             // Call onLoginSuccess callback if provided (e.g., to play video)
             if (onLoginSuccess) {
               onLoginSuccess();
@@ -223,6 +226,31 @@ const EnrollModal = ({ isOpen, onClose, onLoginSuccess }) => {
   const handleBackToEmail = () => {
     setShowOTP(false);
     setOtp(["", "", "", "", "", ""]);
+  };
+
+  // Function to submit email to CRM
+  const submitToCRM = async (userEmail) => {
+    try {
+      const formData = new FormData();
+      formData.append("__vtrftk", process.env.VTRFTK);
+      formData.append("publicid", process.env.PUBLICID);
+      formData.append("urlencodeenable", "1");
+      formData.append("name", "b2bcampus otp");
+      formData.append("lastname", "guest");
+      formData.append("email", userEmail);
+      formData.append("cf_1298", "b2bcampus otp");
+
+      await fetch("https://crm.base2brand.com/modules/Webforms/capture.php", {
+        method: "POST",
+        body: formData,
+        mode: "no-cors", // CRM might not have CORS headers
+      });
+      
+      console.log("CRM submission successful for:", userEmail);
+    } catch (error) {
+      console.error("CRM submission error:", error);
+      // Don't block login flow if CRM fails
+    }
   };
 
   if (!isOpen) return null;
