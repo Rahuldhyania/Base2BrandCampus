@@ -208,7 +208,17 @@ const footerData = [
         id: 36,
         page_name: "Training Companies in Chandigarh in Skill Development and Employability",
         page_links: 'training-companies-chandigarh-skill-development-employability'
-      }
+      },
+      {
+        id: 37,
+        page_name: "Truck Dispatching Course in Canada",
+        page_links: 'truck-dispatching-canada'
+      },
+      {
+        id: 38,
+        page_name: "Truck Dispatching Course in USA",
+        page_links: 'truck-dispatching-usa'
+      },
     ]
   }
 ];
@@ -268,7 +278,7 @@ const FooterNew = () => {
               <Newletterfrom />
             </div>
           </div>
-          <div className="grid grid-cols-1 xl:grid-cols-[2fr_3fr] max-w-[1780px] m-auto px-[3%]">
+          <div className="grid grid-cols-1 xl:grid-cols-[2fr_3fr] max-w-[1780px] m-auto px-[3%] pb-3">
             <div>
               <h3 className="text-white text-3xl md:text-4xl pb-3">
                 {footerData[0].title}
@@ -338,55 +348,65 @@ const FooterNew = () => {
                 {footerData[1].title}
               </h3>
               <div className="hidden md:grid grid-cols-1 md:grid-cols-2">
-                {footerData[1].links.map((data, index) =>
-                  <div className="flex items-center py-2" key={index}>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="30"
-                      height="30"
-                      viewBox="0 0 24 24"
-                    >
-                      <rect width="24" height="24" fill="none" />
-                      <path
-                        fill="#fff"
-                        d="M8 6.82v10.36c0 .79.87 1.27 1.54.84l8.14-5.18a1 1 0 0 0 0-1.69L9.54 5.98A.998.998 0 0 0 8 6.82"
-                      />
-                    </svg>
-                    <Link
-                      href={data.page_links ? data.page_links : '/'}
-                      className="text-white text-lg 2xl:text-xl hover:underline transition-all duration-500"
-                    >
-                      {data.page_name}
-                    </Link>
-                  </div>
-                )}
+                {footerData[1].links.map((data, index) => {
+                  if (data.page_links === false) {
+                    return null
+                  }
+                  return (
+                    <div className="flex items-center py-2" key={index}>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="30"
+                        height="30"
+                        viewBox="0 0 24 24"
+                      >
+                        <rect width="24" height="24" fill="none" />
+                        <path
+                          fill="#fff"
+                          d="M8 6.82v10.36c0 .79.87 1.27 1.54.84l8.14-5.18a1 1 0 0 0 0-1.69L9.54 5.98A.998.998 0 0 0 8 6.82"
+                        />
+                      </svg>
+                      <Link
+                        href={data.page_links ? data.page_links : '/'}
+                        className="text-white text-lg 2xl:text-xl hover:underline transition-all duration-500"
+                      >
+                        {data.page_name}
+                      </Link>
+                    </div>
+                  )
+                })}
               </div>
               <div className="grid md:hidden grid-cols-1 md:grid-cols-2 pb-4">
-                {footerData[1].links.slice(0, showitem[1]).map((data, index) =>
-                  <div
-                    className="flex items-start md:items-center py-2"
-                    key={index}
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="30"
-                      height="30"
-                      viewBox="0 0 24 24"
+                {footerData[1].links.slice(0, showitem[1]).map((data, index) => {
+                  if (data.page_links === false) {
+                    return null;
+                  }
+                  return (
+                    <div
+                      className="flex items-start md:items-center py-2"
+                      key={index}
                     >
-                      <rect width="24" height="24" fill="none" />
-                      <path
-                        fill="#fff"
-                        d="M8 6.82v10.36c0 .79.87 1.27 1.54.84l8.14-5.18a1 1 0 0 0 0-1.69L9.54 5.98A.998.998 0 0 0 8 6.82"
-                      />
-                    </svg>
-                    <Link
-                      href={data.page_links ? data.page_links : '/'}
-                      className="text-white text-lg 2xl:text-xl hover:underline transition-all duration-500"
-                    >
-                      {data.page_name}
-                    </Link>
-                  </div>
-                )}
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="30"
+                        height="30"
+                        viewBox="0 0 24 24"
+                      >
+                        <rect width="24" height="24" fill="none" />
+                        <path
+                          fill="#fff"
+                          d="M8 6.82v10.36c0 .79.87 1.27 1.54.84l8.14-5.18a1 1 0 0 0 0-1.69L9.54 5.98A.998.998 0 0 0 8 6.82"
+                        />
+                      </svg>
+                      <Link
+                        href={data.page_links ? data.page_links : '/'}
+                        className="text-white text-lg 2xl:text-xl hover:underline transition-all duration-500"
+                      >
+                        {data.page_name}
+                      </Link>
+                    </div>
+                  )
+                })}
                 <span
                   className="text-white underline"
                   onClick={() => handelshow(1)}

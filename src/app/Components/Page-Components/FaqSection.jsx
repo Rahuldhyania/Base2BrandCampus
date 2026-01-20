@@ -8,7 +8,7 @@ import Description from "../UiUx/Description";
 
 
 
-export default function FaqSection({faq_data}) {
+export default function FaqSection({faq_data, description}) {
   const [openIndex, setOpenIndex] = useState(null);
 
   return (
@@ -37,7 +37,7 @@ export default function FaqSection({faq_data}) {
           <div className="text-center relative z-3">
             <Description
               description={
-                " Clear answers — so you feel confident before joining."
+                description ? description :" Clear answers — so you feel confident before joining."
               }
               text_color={"text-secondary"}
             />

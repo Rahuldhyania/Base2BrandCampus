@@ -59,7 +59,7 @@ const CoursesCareer = ({
 
                         <div className="relative z-10 text-center">
                             <Title title={title} text_color={"text-secondary"} />
-                            <div className="pt-3">
+                            <div className="pt-3 max-w-4xl">
                                 <Description
                                     description={description}
                                     text_color={"text-secondary"}
