@@ -269,7 +269,7 @@ const TruckDispatcherCanada = () => {
             <WhyChoose featuresNumbered={featuresNumbered} />
             <div className="main-bg">
                 <CanJoin conjoin_data={conjoin_data} />
-                <CanadaUSA />
+                {/* <CanadaUSA /> */}
             </div>
 
             <CourseSyllabus title={'Truck Dispatching Course<br/> <span class="text-primary"> Syllabus</span>'} Syllabus_data={Syllabus_data} />
