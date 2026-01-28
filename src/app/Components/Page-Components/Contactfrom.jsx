@@ -108,7 +108,7 @@ function Contactfrom({ onCloseModal, singleColumn, description }) {
             </p>
           </div>
         ) : (
-          <form onSubmit={handleSubmit} className="crm-form">
+          <form onSubmit={handleSubmit} className="crm-form"  data-np-intersection-state="visible">
             <section className="middle w-full flex justify-center items-center px-4 relative">
               <div className="max-w-2xl w-full text-center sm:text-left">
                 <h2 className="text-[28px] sm:text-[30px] font-semibold text-[#6346FA] text-center">

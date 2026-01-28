@@ -219,6 +219,41 @@ const footerData = [
         page_name: "Truck Dispatching Course in USA",
         page_links: 'truck-dispatching-usa'
       },
+      {
+        id: 39,
+        page_name: "Web Designing Complete Guide For Beginners",
+        page_links: "web-designing-complete-guide-for-beginners",
+      },
+      {
+        id: 40,
+        page_name: "Six Months Industrial Training In Chandigarh",
+        page_links: "6-months-industrial-training-in-chandigarh",
+      },
+      {
+        id: 41,
+        page_name: "Best Six Weeks Industrial Training In Chandigarh For Students",
+        page_links: "best-6-weeks-industrial-training-in-chandigarh-for-students",
+      },
+      {
+        id: 42,
+        page_name: "Best Industrial Training In Chandigarh For Students",
+        page_links: "best-industrial-training-in-chandigarh-for-students",
+      },
+      {
+        id: 43,
+        page_name: "Six Weeks Industrial Training In Chandigarh For Job Readiness",
+        page_links: "six-weeks-industrial-training-in-chandigarh-for-job-readiness",
+      },
+      {
+        id: 44,
+        page_name: "Best Summer Training In Chandigarh For Engineering Students",
+        page_links: "best-summer-training-in-chandigarh-for-engineering-students",
+      },
+      {
+        id: 45,
+        page_name: "Top IT Certification Courses In Chandigarh",
+        page_links: "top-it-certification-courses-in-chandigarh",
+      },
     ]
   }
 ];
@@ -450,31 +485,31 @@ const FooterNew = () => {
                   India (B2bcampus)
                 </h4>
 
-                <p className="text-white text-base md:text-lg font-normal pt-4 hover:underline">
+                <div className="text-white text-base md:text-lg font-normal pt-4 hover:underline">
                   <a href="https://www.google.com/maps/place/B2B+Campus/data=!4m2!3m1!1s0x0:0xb9ae31b247ff7455?sa=X&ved=1t:2428&ictx=111" target="_blank">F-209, Sector 74, Mohali, 160074</a>
                   <br />
-                  <p>
+                  <div>
                     <a href="tel:+919872487850">INDIA +91 9872487850</a>
-                  </p>
-                </p>
+                  </div>
+                </div>
               </div>
               <div>
                 <h4 className="text-white text-xl md:text-2xl">
                   Canada (B2bcampus)
                 </h4>
 
-                <p className="text-white text-base md:text-lg font-normal pt-4 hover:underline">
+                <div className="text-white text-base md:text-lg font-normal pt-4 hover:underline">
                   83 saddlebrook court , kitchener , NR2 0P6
                   <br />
-                  <p>
+                  <div>
                     <a href="tel:+15482554922">CANADA +1 (548) 255-4922</a>
-                  </p>
-                </p>
+                  </div>
+                </div>
               </div>
             </div>
             <div className=" pt-6 flex flex-col justify-between items-center gap-4 lg:gap-6 max-w-[1780px] m-auto px-[3%]">
               <p className="text-base opacity-80 text-center sm:text-left text-white">
-                © B2B Campus. All Rights Reserved 2026.
+                © B2B Campus. All Rights Reserved {new Date().getFullYear()}.
               </p>
             </div>
           </div>

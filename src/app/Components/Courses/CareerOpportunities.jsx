@@ -55,7 +55,7 @@ const CareerOpportunities = ({ careeropportunitie, lowerdata, lower_title1, lowe
                             </h5>
                             <p className='pt-2 text-base 2xl:text-lg'>
                                 {lower_description2} <br />
-                                <a href="tel:+919878300209"> Call Now </a>  | <a href="https://wa.me/9878300209" className=''> <span className='text-green-600'>WhatsApp Us </span> |  Book Free Counseling</a>
+                                <a href="tel:+919878300209"> Call Now </a>  | <a href="https://wa.me/9878300209" className=''> <span className='text-green-600'>WhatsApp Us </span> |  Book Free Counseling </a>
                             </p>
                         </div>
                     </div>

@@ -33,6 +33,8 @@ export default function DownloadBrocher() {
       <Buttons
         btnname="Download Course PDF"
         text_color="text-white"
+        btn_primary={false}
+        btn_bg={'bg-[#008000]'}
       />
     </div>
   );

@@ -62,7 +62,12 @@ const pageData = [
 const finalthoughts = [
     'Industrial training can truly change the direction of a student’s life, especially for those who think they have limited options due to a non-technical background. Chandigarh offers the right environment, opportunities, and institutes to support such students. With the right guidance, dedication, and training, anyone can become job-ready.',
     'Choosing the best industrial training institute is the most important step. An institute like B2B Campus not only teaches skills but also builds confidence, clarity, and career direction. For students with no technical background, industrial training in Chandigarh is not just an option, but a powerful opportunity to start fresh and succeed professionally.'
-]
+];
+
+export const metadata = {
+   title : 'Best Industrial Training in Chandigarh for Students | B2B Campus',
+   description : 'Industrial training in Chandigarh for students focused on hands-on learning, industry projects, and job-ready skills to build careers. Join the best program now!'  
+}
 const page = () => {
     return (
         <div className="main-bg">

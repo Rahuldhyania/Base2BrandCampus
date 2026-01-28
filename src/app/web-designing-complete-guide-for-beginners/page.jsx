@@ -71,7 +71,12 @@ const pageData = [
 
 const finalthoughts = [
     'Learning web designing is a rewarding journey that combines creativity, technology, and problem-solving. It empowers individuals to shape digital experiences that matter. By mastering fundamentals, practicing consistently, and embracing continuous learning, anyone can become a skilled web designer. With dedication and curiosity, web designing can evolve from a skill into a fulfilling career.'
-]
+];
+export const metadata = {
+    title : 'Web Designing Complete Guide for Beginners | B2B Campus',
+    description : 'Learn web designing from scratch with this complete beginner guide covering HTML, CSS, UI/UX, tools, and career tips. Start learning today! Read now for free.' 
+    
+}
 const page = () => {
     return (
         <div className="main-bg">
