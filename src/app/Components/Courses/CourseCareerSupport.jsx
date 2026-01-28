@@ -15,9 +15,9 @@ const CourseCareerSupport = () => {
   return (
     <div>
       {pathname === "/freight-broker" ||
-      pathname === "/truck-dispatching" ||
-      pathname === "/truck-dispatching-canada" ||
-      pathname === "/truck-dispatching-usa"
+        pathname === "/truck-dispatching" ||
+        pathname === "/truck-dispatching-canada" ||
+        pathname === "/truck-dispatching-usa"
         ? null
         : <Professionalskill />}
       <div className="main-bg pt-12 md:pt-16 md:pb-16">
@@ -46,7 +46,11 @@ const CourseCareerSupport = () => {
           {pathname === "/truck-dispatching"
             ? <CertificateDress />
             : <Certificate />}
-          <div className="buttons text-[25px] flex justify-center m-auto sm:mb-0 pt-6 md:pt-0">
+          <div className="buttons text-[25px] flex justify-center m-auto sm:mb-0 pt-6 md:pt-0"
+            onClick={() => {
+              window.scrollTo({ top: 0, behavior: 'smooth' })
+            }}
+          >
             <Buttons
               btnname=" Secure Your Placement Now"
               text_color={"text-white"}
