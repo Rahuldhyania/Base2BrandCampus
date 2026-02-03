@@ -138,7 +138,7 @@ const KnowledgeCenter = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [currentpagecategories, setcurrentpagecategories] = useState(null)
     const [paginationpage, setPaginationpage] = useState(0)
-    
+
     const baseurl = process.env.NEXT_PUBLIC__API_URL
     const getTypeFromActiveTag = (tagId) => {
         switch (tagId) {
@@ -231,24 +231,30 @@ const KnowledgeCenter = () => {
 
     useEffect(() => {
         const loadKnowledgeCenter = async () => {
-            try {
-                setLoading(true);
-                const type = getTypeFromActiveTag(activeTag);
-                const res = await fetchKnowledgeCenter(
-                    currentPage,
-                    10,
-                    currentpagecategories, // category
-                    type
-                );
-                const resalldata = await fetch(`https://backend.b2bcampus.com/api/B2Badmin/public/knowledge-center`);
-                const alldata = await resalldata.json()
+            setLoading(true);
 
-                const topics = res?.resalldata || [];
-                setPaginationpage(res?.totalPages)
-                setpageData(alldata)
-                setKnowledgeCenterData(res?.knowledgeCenters || []);
-            } catch (error) {
-                console.error("Error fetching knowledge center:", error);
+            try {
+                let url = `https://backend.b2bcampus.com/api/B2Badmin/public/knowledge-center?page=${currentPage}&limit=10`;
+
+                if (currentpagecategories) {
+                    url += `&categoryName=${encodeURIComponent(currentpagecategories)}`;
+                }
+
+                const response = await fetch(url, {
+                    cache: "no-store",
+                    headers: {
+                        "Cache-Control": "no-cache",
+                        "Pragma": "no-cache",
+                    },
+                });
+
+                const data = await response.json();
+
+                setKnowledgeCenterData(data?.knowledgeCenters || []);
+                setPaginationpage(data?.totalPages || 0);
+
+            } catch (err) {
+                console.error(err);
                 setKnowledgeCenterData([]);
             } finally {
                 setLoading(false);
@@ -256,7 +262,8 @@ const KnowledgeCenter = () => {
         };
 
         loadKnowledgeCenter();
-    }, [activeTag, currentPage, currentpagecategories]);
+    }, [currentPage, currentpagecategories]);
+
 
     /* --------- DERIVED VALUES (NO STATE) --------- */
 
@@ -317,12 +324,12 @@ const KnowledgeCenter = () => {
                 }
                 return tag.toLowerCase().includes(selectedTag.toLowerCase());
             });
-        
+
             return matchSearch && matchTab && matchTags;
         });
     }, [search, activeTabname, knowledgeCenterData, selectedTags, pagedata]);
-     
-    
+
+
     const getPages = () => {
         const total = paginationpage;
         const pages = [];
@@ -352,7 +359,7 @@ const KnowledgeCenter = () => {
             {/* Banner */}
             <div
                 className="banner_section bg-cover bg-center bg-primary"
-                // style={{ backgroundImage: "url(/images/knowledgecenterbg.webp)" }}
+            // style={{ backgroundImage: "url(/images/knowledgecenterbg.webp)" }}
             >
                 <div className="cus_container py-12 md:py-16">
                     <Globaltitle
@@ -373,7 +380,11 @@ const KnowledgeCenter = () => {
                             return (
                                 <div
                                     key={tag.id}
-                                    onClick={() => setActiveTag(tag.id)}
+                                    onClick={() => {
+                                        setActiveTag(tag.id);
+                                        setCurrentPage(1);
+                                    }}
+
                                     className={`flex items-center gap-2 px-4 py-1.5 md:py-3 rounded-2xl cursor-pointer ${isActive ? "bg-white" : "bg-[#4129BA]"
                                         }`}
                                 >
@@ -454,12 +465,12 @@ const KnowledgeCenter = () => {
                                                 onClick={() => {
                                                     setActiveTab(cat.id);
                                                     setcurrentpagecategories(cat.name);
-                                                    setCurrentPage(1); 
+                                                    setCurrentPage(1);
                                                 }}
                                                 className={`p-7 rounded-xl cursor-pointer ${isActive ? "bg-primary text-white" : "bg-white"
                                                     }`}
                                             >
-                                                <IoCodeOutline  fontSize={'40px'} color={isActive ? 'white' : 'var(--primary)'}/>
+                                                <IoCodeOutline fontSize={'40px'} color={isActive ? 'white' : 'var(--primary)'} />
                                                 <p className="pt-1 text-lg line-clamp-2">{cat.name}</p>
                                                 <p>{cat.knowledgeCenterCount} articles</p>
                                             </div>
