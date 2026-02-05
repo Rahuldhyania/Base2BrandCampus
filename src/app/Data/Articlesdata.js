@@ -121,8 +121,7 @@ export const fetchKnowledgeCenterBySlug = async (slug) => {
 };
 
 export const fetchBlogs = async (page = 1, limit = 21, categoryName) => {
-  console.log(categoryName, "categoryNamddde");
-
+ 
   try {
     let url = `https://backend.b2bcampus.com/api/B2Badmin/blogs?page=${page}&limit=${limit}`;
     if (categoryName) {

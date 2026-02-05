@@ -76,7 +76,7 @@ export const TrandingTopics = ({ data }) => {
 
                 fetch("https://backend.b2bcampus.com/api/B2Badmin/public/knowledge-center?page=3&limit=10", requestOptions)
                     .then((response) => response.text())
-                    .then((result) => console.log("sdfasdfs"))
+                    .then((result) => console.log(""))
                     .catch((error) => console.error(error));
 
 
@@ -139,7 +139,6 @@ const KnowledgeCenter = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [currentpagecategories, setcurrentpagecategories] = useState(null)
     const [paginationpage, setPaginationpage] = useState(0)
-    console.log(categories, "categories categories");
 
     const baseurl = process.env.NEXT_PUBLIC__API_URL
     const getTypeFromActiveTag = (tagId) => {
@@ -155,7 +154,6 @@ const KnowledgeCenter = () => {
         }
     };
     const filtercategory = categories.filter((item) => item.knowledgeCenterCount > 0)
-    console.log(filtercategory, "sdfdfdfsdf");
 
     useEffect(() => {
         const loadCategories = async () => {
@@ -187,7 +185,6 @@ const KnowledgeCenter = () => {
     const loadmorecategory = () => {
         setCategoriescount(categoriescount + 6)
     }
-    console.log(categoriescount, 'categoriescount');
 
     const categoriesWithCounts = useMemo(() => {
         return knowledgeCategories.map(cat => {

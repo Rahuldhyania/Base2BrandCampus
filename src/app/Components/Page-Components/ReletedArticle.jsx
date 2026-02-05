@@ -51,9 +51,6 @@ const RelatedArticle = ({ title }) => {
         loadKnowledgeCenter();
     }, []);
 
-    console.log("datadata", data);
-
-
     const currentIndex = data.findIndex(
         (item) => item.slugUrl?.split("/").pop() === currentSlug
     );

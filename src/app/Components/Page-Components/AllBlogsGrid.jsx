@@ -38,7 +38,6 @@ const AllBlogsGrid = ({ blog_title }) => {
     const readingTime = Math.ceil(wordCount / 200);
     return `${readingTime} min read`;
   };
-  console.log("currentCategory", currentCategory);
 
   const durationSvg = (
     <svg
@@ -358,8 +357,6 @@ const AllBlogsGrid = ({ blog_title }) => {
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-[16px]">
           {BlogSkill.map((item, index) => {
             const isactive = item.id === activeid
-            console.log(isactive, "isactive");
-
             return (
               <div
                 key={index}

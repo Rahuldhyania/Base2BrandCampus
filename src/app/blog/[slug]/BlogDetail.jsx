@@ -13,11 +13,8 @@ const BlogDetail = () => {
     const params = useParams();
     const slug = params?.slug;
     const [blog, setBlog] = useState(null);
-    console.log("blog", blog);
-
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-
     useEffect(() => {
         const loadBlog = async () => {
             if (!slug) return;

@@ -6,9 +6,6 @@ import { usePathname } from "next/navigation";
 
 const downloadPDF = (currentpath,courseName) => {
   const pdfPath = `/coursesbrocher${currentpath}.pdf`;
-
-  console.log("PDF Path:", pdfPath);
-
   const link = document.createElement('a');
   link.href = pdfPath;
   link.download = `${courseName} syllabus.pdf`;
