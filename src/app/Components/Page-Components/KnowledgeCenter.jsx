@@ -127,6 +127,7 @@ const KnowledgeCenter = () => {
     const [topdropdownopen, setTopdropdownOpen] = useState(false);
     const [selecteddropdown, setSelecteddropdown] = useState(topdropdown[0]);
     const [categories, setCategories] = useState([]);
+    const [categoriescount, setCategoriescount] = useState(6)
     const [knowledgeCenterData, setKnowledgeCenterData] = useState([]);
     const [knowledgeCenterAllData, setKnowledgeCenterAllData] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -138,6 +139,7 @@ const KnowledgeCenter = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [currentpagecategories, setcurrentpagecategories] = useState(null)
     const [paginationpage, setPaginationpage] = useState(0)
+    console.log(categories, "categories categories");
 
     const baseurl = process.env.NEXT_PUBLIC__API_URL
     const getTypeFromActiveTag = (tagId) => {
@@ -152,7 +154,8 @@ const KnowledgeCenter = () => {
                 return null;
         }
     };
-
+    const filtercategory = categories.filter((item) => item.knowledgeCenterCount > 0)
+    console.log(filtercategory, "sdfdfdfsdf");
 
     useEffect(() => {
         const loadCategories = async () => {
@@ -181,38 +184,10 @@ const KnowledgeCenter = () => {
 
         loadCategories();
     }, []);
-
-    /* --------- LOAD MORE CATEGORIES --------- */
-
-    const loadMoreCategories = async () => {
-        if (categoriesPage >= categoriesTotalPages || loadingMoreCategories) return;
-
-        try {
-            setLoadingMoreCategories(true);
-            const nextPage = categoriesPage + 1;
-            const res = await fetchCategories(nextPage, 6);
-            const newCategories = res?.categories || [];
-
-            // Map new categories
-            const mappedNewCategories = newCategories.map((cat) => {
-                const categoryName = cat.name.split('|')[0].split('>')[0].trim();
-                return {
-                    id: cat.id,
-                    title: categoryName,
-                    articles: 0,
-                    icon: getCategoryIcon(categoryName)
-                };
-            });
-
-            // Append new categories to existing ones
-            setKnowledgeCategories(prev => [...prev, ...mappedNewCategories]);
-            setCategoriesPage(nextPage);
-        } catch (error) {
-            console.error("Error loading more categories:", error);
-        } finally {
-            setLoadingMoreCategories(false);
-        }
-    };
+    const loadmorecategory = () => {
+        setCategoriescount(categoriescount + 6)
+    }
+    console.log(categoriescount, 'categoriescount');
 
     const categoriesWithCounts = useMemo(() => {
         return knowledgeCategories.map(cat => {
@@ -264,17 +239,11 @@ const KnowledgeCenter = () => {
         loadKnowledgeCenter();
     }, [currentPage, currentpagecategories]);
 
-
-    /* --------- DERIVED VALUES (NO STATE) --------- */
-
     const activeTagname =
         toptagfilter.find(tag => tag.id === activeTag)?.tag_name || "";
 
     const activeTabname =
         categories.find(cat => cat.id === activeTab)?.title || "";
-
-    /* --------- EXTRACT TAGS FROM DATA --------- */
-
     const allTags = useMemo(() => {
         const tagSet = new Set();
         const dataToExtract = knowledgeCenterData.length > 0 ? knowledgeCenterData : articlesdata;
@@ -282,7 +251,6 @@ const KnowledgeCenter = () => {
         dataToExtract.forEach(item => {
             const tag = item.tags || item.article_toptag || '';
             if (tag) {
-                // Handle comma-separated tags
                 if (typeof tag === 'string' && tag.includes(',')) {
                     tag.split(',').forEach(t => {
                         const trimmed = t.trim();
@@ -297,13 +265,9 @@ const KnowledgeCenter = () => {
         return Array.from(tagSet);
     }, [knowledgeCenterData]);
 
-    /* --------- FILTERED ARTICLES --------- */
-
     const filteredArticles = useMemo(() => {
         const searchText = search.toLowerCase();
         const tabText = activeTabname.toLowerCase();
-
-        // Use API data if available, otherwise fallback to static data
         const dataToFilter = knowledgeCenterData.length > 0 ? knowledgeCenterData : articlesdata;
 
         return dataToFilter.filter(item => {
@@ -356,11 +320,7 @@ const KnowledgeCenter = () => {
 
     return (
         <div className="main-bg">
-            {/* Banner */}
-            <div
-                className="banner_section bg-cover bg-center bg-primary"
-            // style={{ backgroundImage: "url(/images/knowledgecenterbg.webp)" }}
-            >
+            <div className="banner_section bg-cover bg-center bg-primary">
                 <div className="cus_container py-12 md:py-16">
                     <Globaltitle
                         highlightText="Knowledge Center"
@@ -370,7 +330,7 @@ const KnowledgeCenter = () => {
             </div>
 
             {/* Top Bar */}
-            <div className="bg-primary py-6 sticky top-0 z-40 mt-3">
+            <div className="bg-primary py-6 sticky top-0 z-40 mt-1">
                 <div className="cus_container flex flex-col lg:flex-row justify-between items-center gap-6">
 
                     {/* Top Tags */}
@@ -447,17 +407,13 @@ const KnowledgeCenter = () => {
                 </div>
             </div>
 
-            {/* Content */}
             <div className="cus_container">
                 <div className="max-w-7xl mx-auto py-6 md:py-12 grid grid-cols-1 md:grid-cols-[4fr_2fr] gap-10">
-
-                    {/* Left */}
                     <div>
                         {!isSearchActive && (
                             <>
                                 <div className="grid grid-cols-2 md:grid-cols-3  gap-6">
-                                    {categories.map(cat => {
-                                        if (cat?.knowledgeCenterCount <= 0) { return null; }
+                                    {filtercategory.slice(0, categoriescount).map(cat => {
                                         const isActive = activeTab === cat.id;
                                         return (
                                             <div
@@ -478,15 +434,13 @@ const KnowledgeCenter = () => {
                                     })}
                                 </div>
 
-                                {/* Load More Button */}
-                                {categoriesPage < categoriesTotalPages && (
+                                {filtercategory.length > categoriescount && (
                                     <div className="flex justify-center mt-6">
                                         <button
-                                            onClick={loadMoreCategories}
-                                            disabled={loadingMoreCategories}
-                                            className="bg-primary text-white px-6 py-3 rounded-xl text-lg font-medium hover:bg-[#4129BA] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                                            onClick={loadmorecategory}
+                                            className="bg-primary cursor-pointer text-white px-6 py-3 rounded-xl text-lg font-medium hover:bg-[#4129BA] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                                         >
-                                            {loadingMoreCategories ? "Loading..." : "Load More Categories"}
+                                            Load More Categories
                                         </button>
                                     </div>
                                 )}

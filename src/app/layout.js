@@ -52,7 +52,7 @@ export default function RootLayout({ children }) {
           async
         ></script>
       </head>
-      <body className={`${KodchasanMedium.variable}`}>
+      <body className={`${KodchasanMedium.variable}`} cz-shortcut-listen="true">
         <div id="google_translate_element" style={{ display: "none" }}></div>
         <Header />
         {children}

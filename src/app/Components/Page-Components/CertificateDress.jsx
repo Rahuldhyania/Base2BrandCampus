@@ -1,6 +1,7 @@
+'use client'
 import Image from "next/image";
 import React from "react";
-
+import { usePathname } from "next/navigation";
 const newCertificateData = [
   {
     image: "/images/CertificateDress01.webp",
@@ -46,7 +47,8 @@ const newCertificateData = [
 
 const CertificateDress = () => {
 
-
+  const currentpath = usePathname();
+  
   return (
     <div className="w-full my-10">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-y-12 gap-x-6 xl:gap-x-4 2xl:gap-x-4 md:px-6 xl:px-4 2xl:px-4 max-w-[1500px] mx-auto">
