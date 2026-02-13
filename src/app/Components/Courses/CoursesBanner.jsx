@@ -5,7 +5,7 @@ import Contactfrom from '../Page-Components/Contactfrom';
 import bublebg from "../../../../public/images/bublebg.webp";
 
 import bannerbggradient from "../../../../public/images/bannerbg-gradient.webp";
-const CoursesBanner = ({ highlightText, titleEnd, description, leftposter, rightposter ,max_width}) => {
+const CoursesBanner = ({ highlightText, titleEnd, description, leftposter, rightposter ,max_width,showVideoPopupOnSubmit }) => {
     return (
         <div className="bg-primary">
             <div className='max-w-[1900px] m-auto px-[3%]'>
@@ -39,7 +39,7 @@ const CoursesBanner = ({ highlightText, titleEnd, description, leftposter, right
                         />
                     </div>
                     <div className='my-auto py-5 md:py-12'>
-                        <Contactfrom />
+                        <Contactfrom showVideoPopupOnSubmit={showVideoPopupOnSubmit}/>
                     </div>
                     <div className="girl relative w-full hidden lg:flex items-center h-full">
                         <Image

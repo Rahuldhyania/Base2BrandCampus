@@ -48,7 +48,8 @@ const allCourses = [
     color: "#60A5FA",
     buttonText: "Learn more",
     page_link: "/freight-broker",
-    img: arrows2
+    img: arrows2,
+    trandingCource:true
   },
   {
     id: 2,
@@ -59,7 +60,8 @@ const allCourses = [
     color: "#60A5FA",
     buttonText: "Learn more",
     page_link: "/truck-dispatching",
-    img: arrows2
+    img: arrows2,
+    trandingCource:true
   },
   {
     id: 1,
@@ -239,8 +241,6 @@ const allCourses = [
   },
 
 ];
-
-
 
 export default function PopularCourses({ clickscroll }) {
   const [activeTab, setActiveTab] = useState("All Courses");

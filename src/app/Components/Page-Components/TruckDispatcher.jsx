@@ -17,6 +17,7 @@ import boylike from "../../../../public/images/boylike.webp";
 import turckleft from "../../../../public/images/turckleft.webp";
 import Youtubevideo from './Youtubevideo';
 import CourseExtracontent from '../Courses/CourseExtracontent';
+import VideoPopupCompo from './VideoPopupCompo';
 const faq_data = [
   {
     q: "What does the B2B Campus truck dispatching course cover for students in Mohali?",
@@ -211,6 +212,7 @@ const TruckDispatcher = () => {
         description={"Master US & Canada Logistics • Work-from-Home • Earn in INR or USD"}
         leftposter={truckdispatchgirl}
         rightposter={whitetruck}
+        showVideoPopupOnSubmit={true}
       />
       <CoursesCareer
         items={items}
@@ -238,6 +240,7 @@ const TruckDispatcher = () => {
        <CourseExtracontent />
       <CourseCareerSupport />
       <WhyChoose featuresNumbered={featuresNumbered} />
+      <VideoPopupCompo />
       <div className="main-bg">
         <CanJoin conjoin_data={conjoin_data} />
         <CanadaUSA />

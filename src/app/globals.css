@@ -162,3 +162,13 @@ body {
     display: none;
   }
 }
+
+@keyframes bgBlink {
+  0%,100% { background:green; }   /* green */
+  50% { background:var(--primary); }       /* darker green */
+}
+
+@keyframes dotBlink {
+  0%,100% { background:#ffffff; }   /* white */
+  50% { background:#22c55e; }       /* green */
+}

@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { fetchBlogs } from '@/app/Data/Articlesdata';
+import Image from "next/image";
 
 const FeaturedBlog = ({ title }) => {
     const [blogs, setBlogs] = useState([]);
@@ -24,7 +25,6 @@ const FeaturedBlog = ({ title }) => {
         loadBlogs();
     }, []);
 
-    // Calculate reading time
     const calculateReadingTime = (description) => {
         if (!description) return "5 min read";
         const text = description.replace(/<[^>]*>/g, '');
@@ -33,8 +33,6 @@ const FeaturedBlog = ({ title }) => {
         return `${readingTime} min read`;
     };
 
-
-    // Fallback featured blogs if API data not available
     const fallbackFeaturedBlogs = [
         {
             image: "/images/featured-blog.webp",
@@ -59,7 +57,6 @@ const FeaturedBlog = ({ title }) => {
         },
     ];
 
-    // Use API data if available, otherwise fallback
     const featuredBlogs = blogs.length >= 3
         ? blogs.slice(0, 3).map(blog => ({
             image: blog.imageUrl || "/images/featured-blog.webp",
@@ -72,7 +69,6 @@ const FeaturedBlog = ({ title }) => {
         : fallbackFeaturedBlogs;
 
 
-    // assign blogs duration svg icon
     const DurationIcon = () => (
         <svg width={16} height={16} viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
             <g clipPath="url(#clip0_1241_2003)">
@@ -84,7 +80,8 @@ const FeaturedBlog = ({ title }) => {
     );
 
 
-
+   console.log(featuredBlogs,'featuredBlogs');
+   
 
     return (
         <div className="main-bg px-[0] sm:px-[16px] md:px-[40px] lg:px-[64px] xl:px-[100px]">
@@ -104,7 +101,7 @@ const FeaturedBlog = ({ title }) => {
                             {featuredBlogs[0] && (
                                 <Link
                                     href={featuredBlogs[0].slug ? `/blog/${featuredBlogs[0].slug}` : '#'}
-                                    className="bg-white group cursor-pointer rounded-2xl overflow-hidden shadow-[0_7px_29px_rgba(100,100,111,0.2)] transition-all duration-300 hover:-translate-y-2">
+                                    className="bg-white group h-fit cursor-pointer rounded-2xl overflow-hidden shadow-[0_7px_29px_rgba(100,100,111,0.2)] transition-all duration-300 hover:-translate-y-2">
                                     <img src={featuredBlogs[0].image} alt={featuredBlogs[0].title} className="w-full h-[260px] md:h-[320px] object-cover" />
                                     <div className="p-6">
                                         {/* <span className="inline-block transition-all duration-300 ease-in-out text-[#6346FA] group-hover:text-[#fff] bg-[#E4E0FC] group-hover:bg-[#000] text-sm px-3 py-1 rounded-lg mb-3">{featuredBlogs[0].courseName}</span> */}
@@ -131,10 +128,10 @@ const FeaturedBlog = ({ title }) => {
                                         href={blog.slug ? `/blog/${blog.slug}` : '#'}
                                         key={index}
                                         className="bg-white group cursor-pointer rounded-2xl overflow-hidden shadow-[0_7px_29px_rgba(100,100,111,0.2)] transition-all duration-300 hover:-translate-y-2">
-                                        <img src={blog.image} alt={blog.title} className="w-full h-[150px] object-cover" />
+                                        <Image width={1000} height={500} src={blog.image} alt={blog.title} className="w-full h-[150px] object-cover" />
                                         <div className="p-5">
                                             {/* <span className="inline-block transition-all duration-300 ease-in-out text-[#6346FA] group-hover:text-[#fff] bg-[#E4E0FC] group-hover:bg-[#000] text-xs px-3 py-1 rounded-lg mb-2">{blog.courseName}</span> */}
-                                            <h4 className="text-[14px] sm:text-[16px] md:text-[18px] lg:text-[18px] font-normal leading-[18px] sm:leading-[20px] md:leading-[20px] lg:leading-[20px] mb-1 group-hover:text-[#6346FA] py-[10px]">
+                                            <h4 className="text-[18px] lg:text-[18px] 2xl:text-2xl font-normal  mb-1 group-hover:text-[#6346FA] py-[10px]">
                                                 {blog.title}
                                             </h4>
                                             <p

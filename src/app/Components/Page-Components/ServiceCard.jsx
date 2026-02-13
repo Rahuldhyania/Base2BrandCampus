@@ -10,11 +10,29 @@ const ServiceCard = ({
   des,
   buttonText,
   clickscroll,
-  linkpage
+  linkpage,
+  trandingCource
 }) => {
   return (
     <Link href={`${linkpage}`}>
       <div className="group relative w-full ] rounded-2xl p-6 md:p-auto md:px-4 md:py-6 flex flex-col justify-between bg-white border border-[#5D38DE66] transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:bg-[#CEC5FF] gap-y-2 h-full">
+        {trandingCource
+          ? <div>
+              {/* <Image
+                src={"/images/trending.webp"}
+                alt="trending"
+                width={1000}
+                height={500}
+                className="max-w-14 absolute z-10 rounded-full -left-4 -top-4 rotate-333"
+              /> */}
+
+              <p class="text-[11px] w-fit absolute right-2 top-1 px-[8px] py-[3px] text-white rounded-[23px] flex items-center gap-1 animate-[bgBlink_1s_infinite]">
+                <span class="w-[6px] h-[6px] rounded-full animate-[dotBlink_1s_infinite]" />
+                NEXT BATCH — MARCH 2026
+              </p>
+            </div>
+          : null}
+
         <div className="flex justify-between items-center">
           <Image
             src={icon}
@@ -33,17 +51,17 @@ const ServiceCard = ({
           {des}
         </p>
 
-        <Link href={`${linkpage}`}>
-          <div className="flex justify-between items-center bg-white border border-[#6346FA4D] rounded-xl p-[2%] cursor-pointer transition-all duration-300  hover:bg-[#F3F0FF] hover:shadow-md hover:-translate-y-1 ">
-            <span className="text-[18px] md:text-[16px] font-medium text-[#1C1C1C]">
-              {buttonText}
-            </span>
+        {/* <Link href={`${linkpage}`}> */}
+        <div className="flex justify-between items-center bg-white border border-[#6346FA4D] rounded-xl p-[2%] cursor-pointer transition-all duration-300  hover:bg-[#F3F0FF] hover:shadow-md hover:-translate-y-1 ">
+          <span className="text-[18px] md:text-[16px] font-medium text-[#1C1C1C]">
+            {buttonText}
+          </span>
 
-            <div className="w-10 h-10 sm:w-7 sm:h-7 rounded-full bg-[#CEC5FF] flex items-center justify-center transition-all duration-300 group-hover:translate-x-1 hover:bg-[#b8aaff]">
-              <Image src={arrowiconcvgv} alt="arrow" width={12} height={12} />
-            </div>
+          <div className="w-10 h-10 sm:w-7 sm:h-7 rounded-full bg-[#CEC5FF] flex items-center justify-center transition-all duration-300 group-hover:translate-x-1 hover:bg-[#b8aaff]">
+            <Image src={arrowiconcvgv} alt="arrow" width={12} height={12} />
           </div>
-        </Link>
+        </div>
+        {/* </Link> */}
       </div>
     </Link>
   );
@@ -64,6 +82,7 @@ export default function ServicesSection({ courses, clickscroll }) {
             img={item.arrowIcon}
             clickscroll={clickscroll}
             linkpage={item.page_link}
+            trandingCource={item.trandingCource}
           />
         )}
       </div>

@@ -7,7 +7,7 @@ import Buttons from "../UiUx/Buttons";
 const PABBLY_WEBHOOK =
   "https://connect.pabbly.com/workflow/sendwebhookdata/IjU3NjcwNTZkMDYzMDA0MzY1MjY5NTUzNDUxMzIi_pc";
 
-function Contactfrom({ onCloseModal, singleColumn, description }) {
+function Contactfrom({ onCloseModal, singleColumn, description, showVideoPopupOnSubmit = false  }) {
   const [formData, setFormData] = useState({
     firstname: "",
     lastname: "",
@@ -85,7 +85,9 @@ function Contactfrom({ onCloseModal, singleColumn, description }) {
           course: ""
         });
         setthankyou(true);
+        window.dispatchEvent(new Event("openVideoPopup"));
         onCloseModal?.();
+
       } else {
         toast.error("Submission failed.");
       }

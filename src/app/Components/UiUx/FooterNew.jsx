@@ -11,7 +11,9 @@ import pinterest from "../../../../public/icons/pinterest.svg";
 import snapchat from "../../../../public/icons/snapchat.svg";
 import youtube from "../../../../public/icons/youtube.svg";
 import { Newletterfrom } from "../Page-Components/Newletterfrom";
-import PressReleases, { TopPressReleases } from "../Page-Components/PressReleases";
+import PressReleases, {
+  TopPressReleases
+} from "../Page-Components/PressReleases";
 const footerData = [
   {
     title: "Industrial Training",
@@ -111,7 +113,7 @@ const footerData = [
         id: 17,
         page_name: "React Js",
         page_links: "/react-js-course"
-      },
+      }
     ]
   },
 
@@ -182,7 +184,8 @@ const footerData = [
       {
         id: 31,
         page_name: "Free six months industrial training in Chandigarh",
-        page_links: 'free-six-months-industrial-training-in-chandigarh-for-btech-mca-and-diploma-students'
+        page_links:
+          "free-six-months-industrial-training-in-chandigarh-for-btech-mca-and-diploma-students"
       },
       {
         id: 32,
@@ -192,7 +195,7 @@ const footerData = [
       {
         id: 33,
         page_name: "Best six weeks industrial training in Chandigarh",
-        page_links: 'best-six-weeks-industrial-training-in-chandigarh'
+        page_links: "best-six-weeks-industrial-training-in-chandigarh"
       },
       {
         id: 34,
@@ -202,58 +205,66 @@ const footerData = [
       {
         id: 35,
         page_name: "Skill based Learning training companies in Chandigarh",
-        page_links: 'skill-based-learning-training-companies-chandigarh'
+        page_links: "skill-based-learning-training-companies-chandigarh"
       },
       {
         id: 36,
-        page_name: "Training Companies in Chandigarh in Skill Development and Employability",
-        page_links: 'training-companies-chandigarh-skill-development-employability'
+        page_name:
+          "Training Companies in Chandigarh in Skill Development and Employability",
+        page_links:
+          "training-companies-chandigarh-skill-development-employability"
       },
       {
         id: 37,
         page_name: "Truck Dispatching Course in Canada",
-        page_links: 'truck-dispatching-canada'
+        page_links: "truck-dispatching-canada"
       },
       {
         id: 38,
         page_name: "Truck Dispatching Course in USA",
-        page_links: 'truck-dispatching-usa'
+        page_links: "truck-dispatching-usa"
       },
       {
         id: 39,
         page_name: "Web Designing Complete Guide For Beginners",
-        page_links: "web-designing-complete-guide-for-beginners",
+        page_links: "web-designing-complete-guide-for-beginners"
       },
       {
         id: 40,
         page_name: "Six Months Industrial Training In Chandigarh",
-        page_links: "6-months-industrial-training-in-chandigarh",
+        page_links: "6-months-industrial-training-in-chandigarh"
       },
       {
         id: 41,
-        page_name: "Best Six Weeks Industrial Training In Chandigarh For Students",
-        page_links: "best-6-weeks-industrial-training-in-chandigarh-for-students",
+        page_name:
+          "Best Six Weeks Industrial Training In Chandigarh For Students",
+        page_links:
+          "best-6-weeks-industrial-training-in-chandigarh-for-students"
       },
       {
         id: 42,
         page_name: "Best Industrial Training In Chandigarh For Students",
-        page_links: "best-industrial-training-in-chandigarh-for-students",
+        page_links: "best-industrial-training-in-chandigarh-for-students"
       },
       {
         id: 43,
-        page_name: "Six Weeks Industrial Training In Chandigarh For Job Readiness",
-        page_links: "six-weeks-industrial-training-in-chandigarh-for-job-readiness",
+        page_name:
+          "Six Weeks Industrial Training In Chandigarh For Job Readiness",
+        page_links:
+          "six-weeks-industrial-training-in-chandigarh-for-job-readiness"
       },
       {
         id: 44,
-        page_name: "Best Summer Training In Chandigarh For Engineering Students",
-        page_links: "best-summer-training-in-chandigarh-for-engineering-students",
+        page_name:
+          "Best Summer Training In Chandigarh For Engineering Students",
+        page_links:
+          "best-summer-training-in-chandigarh-for-engineering-students"
       },
       {
         id: 45,
         page_name: "Top IT Certification Courses In Chandigarh",
-        page_links: "top-it-certification-courses-in-chandigarh",
-      },
+        page_links: "top-it-certification-courses-in-chandigarh"
+      }
     ]
   }
 ];
@@ -385,7 +396,7 @@ const FooterNew = () => {
               <div className="hidden md:grid grid-cols-1 md:grid-cols-2">
                 {footerData[1].links.map((data, index) => {
                   if (data.page_links === false) {
-                    return null
+                    return null;
                   }
                   return (
                     <div className="flex items-center py-2" key={index}>
@@ -402,46 +413,48 @@ const FooterNew = () => {
                         />
                       </svg>
                       <Link
-                        href={data.page_links ? data.page_links : '/'}
+                        href={data.page_links ? data.page_links : "/"}
                         className="text-white text-lg 2xl:text-xl hover:underline transition-all duration-500"
                       >
                         {data.page_name}
                       </Link>
                     </div>
-                  )
+                  );
                 })}
               </div>
               <div className="grid md:hidden grid-cols-1 md:grid-cols-2 pb-4">
-                {footerData[1].links.slice(0, showitem[1]).map((data, index) => {
-                  if (data.page_links === false) {
-                    return null;
-                  }
-                  return (
-                    <div
-                      className="flex items-start md:items-center py-2"
-                      key={index}
-                    >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="30"
-                        height="30"
-                        viewBox="0 0 24 24"
+                {footerData[1].links
+                  .slice(0, showitem[1])
+                  .map((data, index) => {
+                    if (data.page_links === false) {
+                      return null;
+                    }
+                    return (
+                      <div
+                        className="flex items-start md:items-center py-2"
+                        key={index}
                       >
-                        <rect width="24" height="24" fill="none" />
-                        <path
-                          fill="#fff"
-                          d="M8 6.82v10.36c0 .79.87 1.27 1.54.84l8.14-5.18a1 1 0 0 0 0-1.69L9.54 5.98A.998.998 0 0 0 8 6.82"
-                        />
-                      </svg>
-                      <Link
-                        href={data.page_links ? data.page_links : '/'}
-                        className="text-white text-lg 2xl:text-xl hover:underline transition-all duration-500"
-                      >
-                        {data.page_name}
-                      </Link>
-                    </div>
-                  )
-                })}
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="30"
+                          height="30"
+                          viewBox="0 0 24 24"
+                        >
+                          <rect width="24" height="24" fill="none" />
+                          <path
+                            fill="#fff"
+                            d="M8 6.82v10.36c0 .79.87 1.27 1.54.84l8.14-5.18a1 1 0 0 0 0-1.69L9.54 5.98A.998.998 0 0 0 8 6.82"
+                          />
+                        </svg>
+                        <Link
+                          href={data.page_links ? data.page_links : "/"}
+                          className="text-white text-lg 2xl:text-xl hover:underline transition-all duration-500"
+                        >
+                          {data.page_name}
+                        </Link>
+                      </div>
+                    );
+                  })}
                 <span
                   className="text-white underline"
                   onClick={() => handelshow(1)}
@@ -461,10 +474,18 @@ const FooterNew = () => {
                 </h4>
                 <div className="flex flex-wrap gap-3 sm:gap-4 mt-2 sm:mt-0 pt-4">
                   {socialLinks.map((item, i) =>
-                    <Link href={item.url} key={i} target="_blank">
-                      <div className="p-3 sm:p-[11px] rounded-full bg-[#000000] flex justify-center items-center transition-transform duration-300 hover:scale-110">
-                        <Image src={item.icon} width={20} height={20} alt="" />
-                      </div>
+                    <Link
+                      href={item.url}
+                      key={i}
+                      target="_blank"
+                      className="p-3 sm:p-[11px] rounded-full bg-[#000000] flex justify-center items-center transition-transform duration-300 hover:scale-110"
+                    >
+                      <Image
+                        src={item.icon}
+                        width={20}
+                        height={20}
+                        alt="icons"
+                      />
                     </Link>
                   )}
                 </div>
@@ -486,7 +507,12 @@ const FooterNew = () => {
                 </h4>
 
                 <div className="text-white text-base md:text-lg font-normal pt-4 hover:underline">
-                  <a href="https://www.google.com/maps/place/B2B+Campus/data=!4m2!3m1!1s0x0:0xb9ae31b247ff7455?sa=X&ved=1t:2428&ictx=111" target="_blank">F-209, Sector 74, Mohali, 160074</a>
+                  <a
+                    href="https://www.google.com/maps/place/B2B+Campus/data=!4m2!3m1!1s0x0:0xb9ae31b247ff7455?sa=X&ved=1t:2428&ictx=111"
+                    target="_blank"
+                  >
+                    F-209, Sector 74, Mohali, 160074
+                  </a>
                   <br />
                   <div>
                     <a href="tel:+919872487850">INDIA +91 9872487850</a>
@@ -513,7 +539,6 @@ const FooterNew = () => {
               </p>
             </div>
           </div>
-
         </div>
       </div>
     </div>

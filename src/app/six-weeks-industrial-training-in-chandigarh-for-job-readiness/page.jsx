@@ -170,7 +170,7 @@ const finalthoughts = [
 export const metadata = {
    title : 'Six Weeks Industrial Training in Chandigarh for Job Readiness',
    description : 'Six weeks industrial training in Chandigarh helps students gain hands-on experience, industry exposure, and job-ready skills needed for real careers. Join now!'
-}
+};
 const page = () => {
   return (
     <div className="main-bg">

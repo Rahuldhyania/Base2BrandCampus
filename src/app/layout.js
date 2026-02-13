@@ -10,6 +10,7 @@ import Canonical from "./Canonical";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import MobileFooterbar from "./Components/UiUx/MobileFooterbar";
+import Script from "next/script";
 
 // export const metadata = {
 //   title: "Industrial Training in Mohali | Chandigarh | B2B Campus",
@@ -19,17 +20,18 @@ import MobileFooterbar from "./Components/UiUx/MobileFooterbar";
 const KodchasanMedium = localFont({
   src: [{ path: "../../public/fonts/Kodchasan-Medium.ttf" }],
 
-  variable: "--font-kodchasan-medium",
+  variable: "--font-kodchasan-medium"
 });
 
-
 export default function RootLayout({ children }) {
-
   return (
     <html lang="en">
-      <head >
+      <head>
         <Canonical />
-        <meta name="google-site-verification" content="2s7VVDUSWgOnw6WzgQoOhd-dz1K83tjl8UyA5mZdJRs" />
+        <meta
+          name="google-site-verification"
+          content="2s7VVDUSWgOnw6WzgQoOhd-dz1K83tjl8UyA5mZdJRs"
+        />
         <script
           dangerouslySetInnerHTML={{
             __html: `
@@ -42,21 +44,41 @@ export default function RootLayout({ children }) {
                   'google_translate_element'
                 );
               }
-            `,
+            `
           }}
         />
-
+        <Script
+          id="gtm-script"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+                     (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+                     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+                     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+                     })(window,document,'script','dataLayer','GTM-K59TF669');
+                   `
+          }}
+        />
         {/* Google Translate Script */}
         <script
           src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
           async
-        ></script>
+        />
       </head>
       <body className={`${KodchasanMedium.variable}`} cz-shortcut-listen="true">
-        <div id="google_translate_element" style={{ display: "none" }}></div>
+        <noscript>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-K59TF669"
+            height="0"
+            width="0"
+            style={{ display: "none", visibility: "hidden" }}
+          />
+        </noscript>
+        <div id="google_translate_element" style={{ display: "none" }} />
         <Header />
         {children}
-        
+
         <div className="hidden md:block fixed bottom-4 left-4 z-50">
           <Whatsapp />
         </div>
