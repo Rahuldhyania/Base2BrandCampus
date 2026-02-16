@@ -4,42 +4,42 @@ import React from "react";
 import { usePathname } from "next/navigation";
 const newCertificateData = [
   {
-    image: "/images/CertificateDress01.webp",
+    image: "/images/studentdresspic1.webp",
     description:
       "Learners completed hands-on training and earned certificates showcasing their practical skills and industry readiness."
   },
   {
-    image: "/images/CertificateDress02.webp",
+    image: "/images/studentdresspic2.webp",
     description:
       "Students gained real-world coding experience and received certifications validating their technical knowledge and expertise."
   },
   {
-    image: "/images/CertificateDress03.webp",
+    image: "/images/studentdresspic3.webp",
     description:
       "Certified learners demonstrated strong problem-solving abilities through project-based learning and practical training programs."
   },
   {
-    image: "/images/CertificateDress04.webp",
+    image: "/images/studentdresspic9.webp",
     description:
       "Graduates successfully completed intensive training and earned certificates reflecting their commitment to skill development."
   },
   {
-    image: "/images/CertificateDress05.webp",
+    image: "/images/studentdresspic5.webp",
     description:
       "Learners achieved certification after mastering hands-on tools, technologies, and real-world software development practices."
   },
   {
-    image: "/images/CertificateDress06.webp",
+    image: "/images/studentdresspic6.webp",
     description:
       "Students earned professional certificates by completing structured training focused on practical application and industry skills."
   },
   {
-    image: "/images/CertificateDress07.webp",
+    image: "/images/studentdresspic7.webp",
     description:
       "Certified professionals showcased their learning journey through successful completion of hands-on training and live projects."
   },
     {
-    image: "/images/CertificateDress08.webp",
+    image: "/images/studentdresspic12.webp",
     description:
       "Certified professionals showcased their learning journey through successful completion of hands-on training and live projects."
   },

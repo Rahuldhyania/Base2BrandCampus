@@ -1,5 +1,6 @@
 import React from 'react';
 import TruckDispatcherCanada from '../Components/Page-Components/TruckDispatcherCanada';
+import VideoPopup from '../Components/UiUx/VideoPopup';
 
 export const metadata = {
     title: 'Truck Dispatching Course for Canada | B2B Campus',
@@ -8,6 +9,7 @@ export const metadata = {
 const page = () => {
     return (
         <div>
+            <VideoPopup />
             <TruckDispatcherCanada /> 
         </div>
     )

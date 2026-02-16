@@ -17,6 +17,7 @@ import boylike from "../../../../public/images/boylike.webp";
 import turckleft from "../../../../public/images/turckleft.webp";
 import Youtubevideo from './Youtubevideo';
 import CourseExtracontent from '../Courses/CourseExtracontent';
+import VideoPopupCompo from './VideoPopupCompo';
 const faq_data = [
   {
     q: "What does the Truck Dispatcher Course USA cover for students interested in U.S. logistics?",
@@ -245,6 +246,7 @@ const TruckDispatcherUsa = () => {
                 description={"Master USA Logistics • Work-from-Home • Earn in INR or USD"}
                 leftposter={truckdispatchgirl}
                 rightposter={whitetruck}
+                showVideoPopupOnSubmit={true}
             />
             <CoursesCareer
                 items={items}
@@ -264,9 +266,10 @@ const TruckDispatcherUsa = () => {
                 description3={`Whether you aim to build an independent dispatch business or secure a position with a trucking or logistics company, the Truck dispatcher course USA provides strong fundamentals, practical insights, and the confidence needed for long-term success in the U.S. freight and transportation industry.`}
             />
             <Youtubevideo current_tab={'Truck Dispatching'} />
-            {/* <CourseExtracontent /> */}
+            <CourseExtracontent />
             <CourseCareerSupport />
             <WhyChoose featuresNumbered={featuresNumbered} />
+            <VideoPopupCompo />
             <div className="main-bg">
                 <CanJoin conjoin_data={conjoin_data} />
                 {/* <CanadaUSA /> */}

@@ -17,6 +17,7 @@ import boylike from "../../../../public/images/boylike.webp";
 import turckleft from "../../../../public/images/turckleft.webp";
 import Youtubevideo from './Youtubevideo';
 import CourseExtracontent from '../Courses/CourseExtracontent';
+import VideoPopupCompo from './VideoPopupCompo';
 const faq_data = [
   {
     q: "What does the truck dispatcher course cover for students interested in Canadian logistics?",
@@ -245,6 +246,7 @@ const TruckDispatcherCanada = () => {
                 description={"Master Canada Logistics • Work-from-Home • Earn in INR or USD"}
                 leftposter={truckdispatchgirl}
                 rightposter={whitetruck}
+                showVideoPopupOnSubmit={true}
             />
             <CoursesCareer
                 items={items}
@@ -264,9 +266,10 @@ const TruckDispatcherCanada = () => {
                 description3={`Whether your goal is to build an independent dispatch business or secure a role with a logistics company, this training equips you with strong fundamentals, real-world insights, and the confidence needed for long-term success in Canada’s freight industry.`}
             />
             <Youtubevideo current_tab={'Truck Dispatching'} />
-            {/* <CourseExtracontent /> */}
+            <CourseExtracontent />
             <CourseCareerSupport />
             <WhyChoose featuresNumbered={featuresNumbered} />
+            <VideoPopupCompo />
             <div className="main-bg">
                 <CanJoin conjoin_data={conjoin_data} />
                 {/* <CanadaUSA /> */}

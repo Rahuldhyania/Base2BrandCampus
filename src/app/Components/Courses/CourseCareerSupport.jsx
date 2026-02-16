@@ -43,7 +43,7 @@ const CourseCareerSupport = () => {
               text_color={"text-secondary"}
             />
           </div>
-          {pathname === "/truck-dispatching" || pathname === '/freight-broker'
+          {pathname === "/truck-dispatching" || pathname === '/freight-broker' || pathname === "/truck-dispatching-canada" || pathname === '/truck-dispatching-usa' || '/truck-dispatcher-training'
             ? <CertificateDress />
             : <Certificate />}
           <div className="buttons text-[25px] flex justify-center m-auto sm:mb-0 pt-6 md:pt-0"

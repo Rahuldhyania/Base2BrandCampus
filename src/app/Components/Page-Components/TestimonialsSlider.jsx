@@ -230,7 +230,7 @@ const TestimonialsSlider = () => {
               </div>
               <p className="text-base 2xl:text-lg font-normal">
                 {" "}<span className="font-bold">4.9</span> rating from{" "}
-                <span className="font-bold">81 reviews</span>{" "}
+                <span className="font-bold">93 reviews</span>{" "}
               </p>
               <div className="flex justify-center">
                 <div className="w-8 xl:w-10 h-8 xl:h-10 rounded-[50%] bg-green-600 flex items-center justify-center text-white text-xl">
