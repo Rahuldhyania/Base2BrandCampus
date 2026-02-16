@@ -3,7 +3,7 @@ import React from 'react';
 import Title from '../UiUx/Title';
 import Description from '../UiUx/Description';
 import smallbublebg from "../../../../public/images/smallbublebg.webp";
-import girlwithbook from "../../../../public/images/girlwithbook.webp"
+import girlwithbook from "../../../../public/images/girlwithbook2.png"
 const CanadaUSA = () => {
     return (
         <div>
@@ -37,7 +37,7 @@ const CanadaUSA = () => {
                                     width={1000}
                                     height={500}
                                     alt="Student"
-                                    className="w-auto max-h-[515px] object-cover rounded-4xl md:rounded-none"
+                                    className="w-auto max-h-[515px] object-cover rounded-4xl ps-3 md:rounded-l-[48px]"
                                 />
                             </div>
                         </div>
@@ -46,7 +46,7 @@ const CanadaUSA = () => {
                           <div className='ps-3 pe-3 md:ps-[10%] md:pe-[3%] py-8'>
                              <div>
                                 <p className='text-xl lg:text-2xl'>
-                                    <span className='text-2xl lg:text-[34px] text-primary'>Meet Anjali,</span> one of our successful students who started with zero experience and transformed her career through our Truck Dispatching Course.
+                                    <span className='text-2xl lg:text-[34px] text-primary'>Meet Jashanpreet Kaur,</span> one of our successful students who started with zero experience and transformed her career through our Truck Dispatching Course.
                                 </p>
                             </div>
                             <p className="font-medium text-gray-800 mb-4 py-3 text-lg">
