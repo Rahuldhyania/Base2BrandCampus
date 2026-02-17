@@ -13,24 +13,32 @@ const ServiceCard = ({
   linkpage,
   trandingCource
 }) => {
+  const getNextMonday = () => {
+    const today = new Date();
+    const day = today.getDay();
+    const daysUntilNextMonday = (8 - day) % 7 || 7;
+
+    const nextMonday = new Date(today);
+    nextMonday.setDate(today.getDate() + daysUntilNextMonday);
+
+    return nextMonday.toLocaleDateString("en-US", {
+      month: "long",
+      day: "numeric",
+      year: "numeric",
+    });
+  };
+  const nextBatchDate = getNextMonday();
+
   return (
     <Link href={`${linkpage}`}>
       <div className="group relative w-full ] rounded-2xl p-6 md:p-auto md:px-4 md:py-6 flex flex-col justify-between bg-white border border-[#5D38DE66] transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:bg-[#CEC5FF] gap-y-2 h-full">
         {trandingCource
           ? <div>
-              {/* <Image
-                src={"/images/trending.webp"}
-                alt="trending"
-                width={1000}
-                height={500}
-                className="max-w-14 absolute z-10 rounded-full -left-4 -top-4 rotate-333"
-              /> */}
-
-              <p class="text-[11px] w-fit absolute right-2 top-1 px-[8px] py-[3px] text-white rounded-[23px] flex items-center gap-1 animate-[bgBlink_1s_infinite]">
-                <span class="w-[6px] h-[6px] rounded-full animate-[dotBlink_1s_infinite]" />
-                NEXT BATCH — MARCH 2026
-              </p>
-            </div>
+            <p class="text-[11px] w-fit absolute right-2 top-1 px-[8px] py-[3px] text-white rounded-[23px] flex items-center gap-1 animate-[bgBlink_1s_infinite]">
+              <span class="w-[6px] h-[6px] rounded-full animate-[dotBlink_1s_infinite]" />
+              NEXT BATCH  — {nextBatchDate}
+            </p>
+          </div>
           : null}
 
         <div className="flex justify-between items-center">
