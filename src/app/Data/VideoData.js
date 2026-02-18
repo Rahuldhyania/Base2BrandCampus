@@ -356,5 +356,14 @@ export const allVideoCourses = [
     category: categoryname.DigitalMarketing,
     videoLink: "https://youtu.be/kbJ5cqx5mfA"
   },
-
+      {
+    id: 55,
+    category: categoryname.TruckDispatching,
+    videoLink: "https://youtu.be/GYIKue3EnBw"
+  },
+        {
+    id: 56,
+    category: categoryname.TruckDispatching,
+    videoLink: "https://youtu.be/-uZqvt2ZVFI"
+  },
 ];
