@@ -43,7 +43,7 @@ const Globaltitle = ({ titleStart, highlightText, titleEnd, description, showCon
           {description}
         </p>
 
-        {showContect &&
+        {/* {showContect && */}
           <div className="max-w-2xl m-auto pt-6 grid grid-cols-1 md:grid-cols-2 gap-y-2">
             <div className="flex items-center justify-center gap-4">
               <Image
@@ -69,7 +69,8 @@ const Globaltitle = ({ titleStart, highlightText, titleEnd, description, showCon
                 {" "}+1 (548) 255-4922
               </a>
             </div>
-          </div>}
+          </div>
+          {/* } */}
       </div>
     </div>
   );
