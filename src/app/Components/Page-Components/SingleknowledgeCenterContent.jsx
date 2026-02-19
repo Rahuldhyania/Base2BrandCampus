@@ -11,6 +11,8 @@ const SingleknowledgeCenterContent = ({ knowledgeCenter }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [showLoginModal, setShowLoginModal] = useState(false);
 
+
+  
   useEffect(() => {
     const checkLoginStatus = () => {
       setIsLoggedIn(hasEnrollmentToken());
