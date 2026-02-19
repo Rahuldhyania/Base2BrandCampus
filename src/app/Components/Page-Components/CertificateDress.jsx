@@ -3,46 +3,20 @@ import Image from "next/image";
 import React from "react";
 import { usePathname } from "next/navigation";
 const newCertificateData = [
-  {
-    image: "/images/studentdresspic1.webp",
-    description:
-      "Learners completed hands-on training and earned certificates showcasing their practical skills and industry readiness."
-  },
-  {
-    image: "/images/studentdresspic2.webp",
-    description:
-      "Students gained real-world coding experience and received certifications validating their technical knowledge and expertise."
-  },
-  {
-    image: "/images/studentdresspic3.webp",
-    description:
-      "Certified learners demonstrated strong problem-solving abilities through project-based learning and practical training programs."
-  },
-  {
-    image: "/images/studentdresspic9.webp",
-    description:
-      "Graduates successfully completed intensive training and earned certificates reflecting their commitment to skill development."
-  },
-  {
-    image: "/images/studentdresspic5.webp",
-    description:
-      "Learners achieved certification after mastering hands-on tools, technologies, and real-world software development practices."
-  },
-  {
-    image: "/images/studentdresspic6.webp",
-    description:
-      "Students earned professional certificates by completing structured training focused on practical application and industry skills."
-  },
-  {
-    image: "/images/studentdresspic7.webp",
-    description:
-      "Certified professionals showcased their learning journey through successful completion of hands-on training and live projects."
-  },
-    {
-    image: "/images/studentdresspic12.webp",
-    description:
-      "Certified professionals showcased their learning journey through successful completion of hands-on training and live projects."
-  },
+  { image: "/images/studentdresspic1.webp", description: "" },
+  { image: "/images/studentdresspic2.webp", description: "" },
+  { image: "/images/studentdresspic3.webp", description: "" },
+  { image: "/images/studentdresspic4.webp", description: "" },
+  { image: "/images/studentdresspic5.webp", description: "" },
+  { image: "/images/studentdresspic6.webp", description: "" },
+  { image: "/images/studentdresspic7.webp", description: "" },
+  { image: "/images/studentdresspic8.webp", description: "" },
+  { image: "/images/studentdresspic9.webp", description: "" },
+  { image: "/images/studentdresspic10.webp", description: "" },
+  { image: "/images/studentdresspic11.webp", description: "" },
+  { image: "/images/studentdresspic12.webp", description: "" },
+  // { image: "/images/studentdresspic13.webp", description: "" },
+  // { image: "/images/studentdresspic14.webp", description: "" },
 ];
 
 const CertificateDress = () => {

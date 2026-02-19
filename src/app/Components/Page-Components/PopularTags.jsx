@@ -17,13 +17,13 @@ const defaultTags = [
 
 export const PopularTags = ({ tags = [], onTagChange }) => {
   const [activeTags, setActiveTags] = useState([])
-
+  const [tagsLoadmore, setTagsLoadmore] = useState(6)
   // Extract unique tags from the tags array
   const uniqueTags = useMemo(() => {
     if (!tags || tags.length === 0) return defaultTags;
-    
+
     const tagSet = new Set();
-    
+
     tags.forEach(tag => {
       if (tag) {
         // Handle comma-separated tags
@@ -37,7 +37,7 @@ export const PopularTags = ({ tags = [], onTagChange }) => {
         }
       }
     });
-    
+
     const uniqueArray = Array.from(tagSet);
     return uniqueArray.length > 0 ? uniqueArray : defaultTags;
   }, [tags]);
@@ -47,12 +47,12 @@ export const PopularTags = ({ tags = [], onTagChange }) => {
       const newActiveTags = prev.includes(tag)
         ? prev.filter((t) => t !== tag)
         : [...prev, tag];
-      
+
       // Notify parent component about tag changes
       if (onTagChange) {
         onTagChange(newActiveTags);
       }
-      
+
       return newActiveTags;
     });
   }
@@ -61,7 +61,12 @@ export const PopularTags = ({ tags = [], onTagChange }) => {
     ...activeTags,
     ...uniqueTags.filter((tag) => !activeTags.includes(tag)),
   ]
-   
+  const visibleTags = orderedTags.slice(0, tagsLoadmore);
+  const hasMore = orderedTags.length > tagsLoadmore;
+
+  const handleLoadMore = () => {
+    setTagsLoadmore(tagsLoadmore + 6);
+  };
   return (
     <div className="bg-white rounded-2xl py-6 px-6">
       <h5 className="text-2xl text-secondary flex items-center gap-3">
@@ -74,9 +79,9 @@ export const PopularTags = ({ tags = [], onTagChange }) => {
         Popular Tags
       </h5>
 
-      <div className="pt-3 flex flex-wrap gap-3 ps-4">
-        {orderedTags.length > 0 ? (
-          orderedTags.map((tag, index) => {
+      <div className="pt-3 flex flex-wrap gap-3 ps-4 max-h-[300px] overflow-y-auto">
+        {visibleTags.length > 0 ? (
+          visibleTags.map((tag, index) => {
             const isActive = activeTags.includes(tag)
 
             return (
@@ -111,6 +116,17 @@ export const PopularTags = ({ tags = [], onTagChange }) => {
           <p className="text-gray-500">No tags available</p>
         )}
       </div>
+
+      {hasMore && (
+        <div className="flex justify-center mt-4">
+          <button
+            onClick={handleLoadMore}
+            className="bg-primary text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-[#4129BA] transition-colors"
+          >
+            Load More Tags
+          </button>
+        </div>
+      )}
     </div>
   )
 }

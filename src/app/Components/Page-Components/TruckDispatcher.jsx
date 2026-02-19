@@ -123,7 +123,6 @@ const TruckDispatcher = () => {
         "Anyone can start — strong communication skills and proper training are enough."
     },
   ];
-
   const items = [
     {
       icon: "/images/45days.webp",

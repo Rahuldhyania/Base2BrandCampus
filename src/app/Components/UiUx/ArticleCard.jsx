@@ -58,7 +58,7 @@ const ArticleCard = ({
             Featured
           </div>
         )}
-        <div className="absolute right-[1%] max-w-[98%] top-5  bg-[#FFFFFFE5] rounded-4xl text-primary text-base flex items-center gap-2 px-3 py-1.5 w-fit">
+        <div className="absolute right-[1%] max-w-[70%] line-clamp-1 top-5  bg-[#FFFFFFE5] rounded-4xl text-primary text-base flex items-center gap-2 px-3 py-1.5 w-fit">
           {displayTag}
         </div>
       </div>

@@ -1,11 +1,23 @@
 "use client";
 
-import React, { useState, useRef, useCallback } from "react";
+import React, { useState, useRef, useCallback, useEffect } from "react";
 import Title from "../UiUx/Title";
 import EnrollModal from "../UiUx/EnrollModal";
 import youtube from "../../../../public/images/youtube.webp";
 import Image from "next/image";
 import { allVideoCourses } from "@/app/Data/VideoData";
+import { hasEnrollmentToken } from "@/lib/enrollment";
+
+
+const shuffleArray = (array) => {
+  const shuffled = [...array];
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+  return shuffled;
+};
+
 export const Coursesbtn = [
   { id: 1, btn: "All Courses" },
   { id: 2, btn: "Marketing & Bussiness" },
@@ -35,9 +47,37 @@ export default function Youtubevideo({ current_tab }) {
   const [activeTab, setActiveTab] = useState(current_tab ? current_tab : 'All Courses');
   const [playingVideo, setPlayingVideo] = useState(null);
   const [visibleCount, setVisibleCount] = useState(8);
+  const [shuffledCourses, setShuffledCourses] = useState([]);
   const iframeRefs = useRef({});
+  
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [showLoginModal, setShowLoginModal] = useState(false);
+  const [pendingVideoId, setPendingVideoId] = useState(null);
 
-  /* ===== STOP ALL VIDEOS ===== */
+
+   useEffect(() => {
+    const shuffled = shuffleArray(allVideoCourses);
+    setShuffledCourses(shuffled);
+  }, []);
+
+
+  useEffect(() => {
+    const checkLoginStatus = () => {
+      setIsLoggedIn(hasEnrollmentToken());
+    };
+
+    checkLoginStatus();
+
+    window.addEventListener("storage", checkLoginStatus);
+
+    const interval = setInterval(checkLoginStatus, 1000);
+
+    return () => {
+      window.removeEventListener("storage", checkLoginStatus);
+      clearInterval(interval);
+    };
+  }, []);
+
   const stopAllVideos = useCallback(() => {
     Object.values(iframeRefs.current).forEach((iframe) => {
       try {
@@ -51,18 +91,38 @@ export default function Youtubevideo({ current_tab }) {
     iframeRefs.current = {};
   }, []);
 
-  /* ===== VIDEO CLICK ===== */
   const handleVideoClick = (id) => {
-    if (playingVideo === id) {
-      stopAllVideos();
-      setPlayingVideo(null);
-      return;
-    }
+    // if (!isLoggedIn) {
+    //   setPendingVideoId(id);
+    //   setShowLoginModal(true);
+    //   return;
+    // }
+
+    // if (playingVideo === id) {
+    //   stopAllVideos();
+    //   setPlayingVideo(null);
+    //   return;
+    // }
     stopAllVideos();
     setPlayingVideo(id);
   };
 
-  /* ===== TAB CHANGE ===== */
+  const handleLoginSuccess = () => {
+    setIsLoggedIn(true);
+    setShowLoginModal(false);
+    
+    if (pendingVideoId) {
+      stopAllVideos();
+      setPlayingVideo(pendingVideoId);
+      setPendingVideoId(null);
+    }
+  };
+
+  const handleCloseLoginModal = () => {
+    setShowLoginModal(false);
+    setPendingVideoId(null);
+  };
+
   const handleTabClick = (tab) => {
     stopAllVideos();
     setPlayingVideo(null);
@@ -70,10 +130,11 @@ export default function Youtubevideo({ current_tab }) {
     setVisibleCount(8);
   };
 
-  const filteredCourses =
+const filteredCourses =
     activeTab === "All Courses"
-      ? allVideoCourses
-      : allVideoCourses.filter((v) => v.category === activeTab);
+      ? shuffledCourses
+      : shuffledCourses.filter((v) => v.category === activeTab);
+
 
   return (
     <div className="main-bg py-10">
@@ -114,7 +175,7 @@ export default function Youtubevideo({ current_tab }) {
             {/* PLAY ICON */}
             {playingVideo !== course.id && (
               <div className="absolute inset-0 flex items-center justify-center z-10">
-                <Image src={youtube} alt="play" width={80} height={80} />
+                <Image src={youtube} alt="play" width={50} height={50} />
               </div>
             )}
 
@@ -149,6 +210,13 @@ export default function Youtubevideo({ current_tab }) {
           </button>
         </div>
       )}
+
+      {/* ===== LOGIN MODAL ===== */}
+      <EnrollModal
+        isOpen={showLoginModal}
+        onClose={handleCloseLoginModal}
+        onLoginSuccess={handleLoginSuccess}
+      />
     </div>
   );
 }

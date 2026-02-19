@@ -53,6 +53,7 @@ export const TrandingTopics = ({ data }) => {
     const [trendingTopics, setTrendingTopics] = useState([]);
     const [topics, setTopics] = useState([])
     const [loading, setLoading] = useState(true);
+    const [trendingTopicsLoadmore, settrendingTopicsLoadmore] = useState(4)
     const baseurl = process.env.NEXT_PUBLIC__API_URL
     useEffect(() => {
         const loadTrendingTopics = async () => {
@@ -89,9 +90,13 @@ export const TrandingTopics = ({ data }) => {
 
         loadTrendingTopics();
     }, []);
-
+      const handleLoadMore = () => {
+        settrendingTopicsLoadmore(trendingTopicsLoadmore + 4);
+    };
+    const visibleTopics = trendingTopics.slice(0, trendingTopicsLoadmore);
+    const hasMore = trendingTopics.length > trendingTopicsLoadmore;
     return (
-        <div className="bg-white rounded-2xl py-6 px-6">
+      <div className="bg-white rounded-2xl py-6 px-6">
             <h5 className="text-2xl text-secondary flex items-center gap-3">
                 <Image src="/icons/popularblack.svg" alt="" width={24} height={24} />
                 Trending Topics
@@ -100,18 +105,31 @@ export const TrandingTopics = ({ data }) => {
             {loading ? (
                 <div className="pt-3 text-center text-gray-500">Loading...</div>
             ) : (
-                <ul className="pt-3 grid gap-y-3 ps-4">
-                    {trendingTopics.map((item, i) => (
-                        <Link
-                            key={i}
-                            href={`/knowledge-center/${item.slugUrl}`}
-                        >
-                            <li className="text-lg list-disc hover:text-(--primary) hover:underline">
-                                {item.heading}
-                            </li>
-                        </Link>
-                    ))}
-                </ul>
+                <>
+                    <ul className="pt-3 grid gap-y-3 ps-4 max-h-[400px] overflow-y-auto">
+                        {visibleTopics.map((item, i) => (
+                            <Link
+                                key={i}
+                                href={`/knowledge-center/${item.slugUrl}`}
+                            >
+                                <li className="text-lg list-disc hover:text-(--primary) hover:underline">
+                                    {item.heading}
+                                </li>
+                            </Link>
+                        ))}
+                    </ul>
+                    
+                    {hasMore && (
+                        <div className="flex justify-center mt-4">
+                            <button
+                                onClick={handleLoadMore}
+                                className="bg-primary text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-[#4129BA] transition-colors"
+                            >
+                                Load More
+                            </button>
+                        </div>
+                    )}
+                </>
             )}
         </div>
     );
@@ -322,6 +340,7 @@ const KnowledgeCenter = () => {
                     <Globaltitle
                         highlightText="Knowledge Center"
                         description="Your hub for courses, career insights, and industry knowledge"
+                        showContect={true}
                     />
                 </div>
             </div>
@@ -420,12 +439,12 @@ const KnowledgeCenter = () => {
                                                     setcurrentpagecategories(cat.name);
                                                     setCurrentPage(1);
                                                 }}
-                                                className={`p-7 rounded-xl cursor-pointer ${isActive ? "bg-primary text-white" : "bg-white"
+                                                className={`py-4 px-4 rounded-xl cursor-pointer ${isActive ? "bg-primary text-white" : "bg-white"
                                                     }`}
                                             >
-                                                <IoCodeOutline fontSize={'40px'} color={isActive ? 'white' : 'var(--primary)'} />
-                                                <p className="pt-1 text-lg line-clamp-2">{cat.name}</p>
-                                                <p>{cat.knowledgeCenterCount} articles</p>
+                                                {/* <IoCodeOutline fontSize={'40px'} color={isActive ? 'white' : 'var(--primary)'} /> */}
+                                                <p className="pt-1 text-lg line-clamp-1">{cat.name}</p>
+                                                <p> ({cat.knowledgeCenterCount}) articles</p>
                                             </div>
                                         );
                                     })}
@@ -484,7 +503,7 @@ const KnowledgeCenter = () => {
                                 loading ?
                                     null
                                     :
-                                    <div className="flex gap-3 w-fit m-auto py-4 px-18 rounded-full border-[3px] border-primary sticky bottom-5 bg-white" >
+                                    <div className="flex gap-3 w-fit m-auto py-2 md:py-4 px-4 md:px-18 rounded-full border-[3px] border-primary sticky bottom-5 bg-white" >
                                         <div className="flex gap-2 items-center">
                                             <button
                                                 disabled={currentPage === 1}

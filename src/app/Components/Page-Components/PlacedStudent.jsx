@@ -1,4 +1,5 @@
-import React from "react";
+'use client'
+import React, { useMemo } from "react";
 import titlewhitebg from "../../../../public/images/titlewhitebg.webp";
 import Image from "next/image";
 import Title from "../UiUx/Title";
@@ -42,6 +43,22 @@ const studentplacedata = [
   }
 ];
 const PlacedStudent = ({ showdata, rownumber }) => {
+
+   const shuffleArray = (arr) => {
+    const a = [...arr];
+    for (let i = a.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+  };
+
+   const shuffledPlacedData = useMemo(() => {
+    return shuffleArray(studentplacedata).map(group => ({
+      ...group,
+      student: shuffleArray(group.student)
+    }));
+  }, []);
   return (
     <div>
       <div className="">
@@ -66,8 +83,8 @@ const PlacedStudent = ({ showdata, rownumber }) => {
           </div>
         </div>
         <div className="pt-12 md:pt-16">
-          {studentplacedata
-            .slice(0, showdata ? showdata : studentplacedata.length)
+          {shuffledPlacedData
+            .slice(0, showdata ? showdata : shuffledPlacedData.length)
             .map((data, index) =>
               <div
                 key={index}

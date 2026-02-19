@@ -1,11 +1,35 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import ReletedArticle from "./ReletedArticle";
 import SingleKnowledgeCareer from "./SingleKnowledgeCareer";
 import Link from "next/link";
 import Contactfrom from "./Contactfrom";
-
+import EnrollModal from '../UiUx/EnrollModal'
+import { hasEnrollmentToken } from '@/lib/enrollment'
 const SingleknowledgeCenterContent = ({ knowledgeCenter }) => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [showLoginModal, setShowLoginModal] = useState(false);
+
+  useEffect(() => {
+    const checkLoginStatus = () => {
+      setIsLoggedIn(hasEnrollmentToken());
+    };
+
+    checkLoginStatus();
+
+    window.addEventListener("storage", checkLoginStatus);
+    const interval = setInterval(checkLoginStatus, 1000);
+
+    return () => {
+      window.removeEventListener("storage", checkLoginStatus);
+      clearInterval(interval);
+    };
+  }, []);
+
+  const handleLoginSuccess = () => {
+    setIsLoggedIn(true);
+    setShowLoginModal(false);
+  };
   const readBlogSvg = (
     <svg
       className="w-3.5 h-[14px] sm:w-[16px] sm:h-[16px] md:w-[18px] md:h-[18px] lg:w-[20px] lg:h-[20px]"
@@ -155,12 +179,23 @@ const SingleknowledgeCenterContent = ({ knowledgeCenter }) => {
                   </div>
                 )}
 
-                {/* render single page content here */}
                 <div className="knowledge-center_signle_content pt-[40px]">
-                  <div
-                    className="prose prose-lg max-w-none text-[#364153] text-[14px] leading-[22px] sm:text-[14px] sm:leading-[24px] md:text-[16px] md:leading-[24px] lg:text-[16px] lg:leading-[24px] space-y-3 knowledge-centermain"
-                    dangerouslySetInnerHTML={{ __html: description }}
-                  />
+                   <div
+                      className="prose prose-lg max-w-none text-[#364153] text-[14px] leading-[22px] sm:text-[14px] sm:leading-[24px] md:text-[16px] md:leading-[24px] lg:text-[16px] lg:leading-[24px] space-y-3 knowledge-centermain"
+                      dangerouslySetInnerHTML={{ __html: description }}
+                    />
+                  {/* {isLoggedIn
+                    ?
+                    <div
+                      className="prose prose-lg max-w-none text-[#364153] text-[14px] leading-[22px] sm:text-[14px] sm:leading-[24px] md:text-[16px] md:leading-[24px] lg:text-[16px] lg:leading-[24px] space-y-3 knowledge-centermain"
+                      dangerouslySetInnerHTML={{ __html: description }}
+                    />
+                    :
+                    <ContentWithBlur
+                      description={description}
+                      onLoginClick={() => setShowLoginModal(true)}
+                    />} */}
+
                 </div>
               </div>
             </div>
@@ -203,7 +238,7 @@ const SingleknowledgeCenterContent = ({ knowledgeCenter }) => {
                 </ul>
               </div> */}
               <div>
-                 <Contactfrom singleColumn={true} description={false}/>
+                <Contactfrom singleColumn={true} description={false} showContact={true} />
               </div>
             </div>
           </div>
@@ -213,10 +248,150 @@ const SingleknowledgeCenterContent = ({ knowledgeCenter }) => {
           yes_btn="Yes"
           no_btn="No"
         />
-        <ReletedArticle title="Related Articles" />
+        {/* <ReletedArticle title="Related Articles" /> */}
+        <EnrollModal
+          isOpen={showLoginModal}
+          onClose={() => setShowLoginModal(false)}
+          onLoginSuccess={handleLoginSuccess}
+        />
       </div>
     </div>
   );
 };
+const ContentWithBlur = ({ description, onLoginClick }) => {
+  const [splitContent, setSplitContent] = useState({ visible: "", hidden: "" });
+  const [hasHiddenContent, setHasHiddenContent] = useState(false);
 
+  useEffect(
+    () => {
+      if (description && typeof window !== "undefined") {
+        // Split content after ~200 words
+        const tempDiv = document.createElement("div");
+        tempDiv.innerHTML = description;
+        const text = tempDiv.textContent || tempDiv.innerText;
+        const totalWords = text.split(/\s+/).filter(w => w.length > 0).length;
+
+        if (totalWords > 200) {
+          // Simple approach: split HTML by finding a good break point
+          const result = splitHtmlByWords(description, 200);
+          setSplitContent(result);
+          setHasHiddenContent(result.hidden.length > 0);
+        } else {
+          setSplitContent({ visible: description, hidden: "" });
+          setHasHiddenContent(false);
+        }
+      }
+    },
+    [description]
+  );
+
+  const splitHtmlByWords = (html, wordLimit) => {
+    const tempDiv = document.createElement("div");
+    tempDiv.innerHTML = html;
+
+    let wordCount = 0;
+    let splitIndex = 0;
+    const children = Array.from(tempDiv.children);
+
+    for (let i = 0; i < children.length; i++) {
+      const childText = children[i].textContent || "";
+      const childWords = childText.split(/\s+/).filter(w => w.length > 0)
+        .length;
+      wordCount += childWords;
+
+      if (wordCount >= wordLimit) {
+        splitIndex = i + 1;
+        break;
+      }
+    }
+
+    if (splitIndex === 0) {
+      return { visible: html, hidden: "" };
+    }
+
+    const visibleChildren = children.slice(0, splitIndex);
+    const hiddenChildren = children.slice(splitIndex);
+
+    const visibleHtml = visibleChildren.map(c => c.outerHTML).join("");
+    const hiddenHtml = hiddenChildren.map(c => c.outerHTML).join("");
+
+    return { visible: visibleHtml, hidden: hiddenHtml };
+  };
+
+  return (
+    <div className="relative">
+      {/* Visible content */}
+      <div
+        className="prose prose-lg max-w-none text-[#364153] text-[14px] leading-[22px] sm:text-[14px] sm:leading-[24px] md:text-[16px] md:leading-[24px] lg:text-[16px] lg:leading-[24px] space-y-2"
+        dangerouslySetInnerHTML={{ __html: splitContent.visible }}
+      />
+
+      {/* Blurred content with overlay */}
+      {hasHiddenContent &&
+        <div className="relative mt-4">
+          {/* Blurred content */}
+          <div
+            className="prose prose-lg max-w-none text-[#364153] text-[14px] leading-[22px] sm:text-[14px] sm:leading-[24px] md:text-[16px] md:leading-[24px] lg:text-[16px] lg:leading-[24px] space-y-2 blur-[6px] select-none pointer-events-none"
+            style={{
+              filter: "blur(6px)",
+              userSelect: "none",
+              maxHeight: "400px",
+              overflow: "hidden"
+            }}
+            dangerouslySetInnerHTML={{ __html: splitContent.hidden }}
+          />
+
+          {/* Gradient overlay */}
+          <div
+            className="absolute inset-0 bg-gradient-to-b from-transparent via-white/70 to-white"
+            style={{
+              background:
+                "linear-gradient(to bottom, transparent 0%, rgba(255,255,255,0.7) 30%, rgba(255,255,255,0.95) 70%, white 100%)"
+            }}
+          />
+
+          {/* Login prompt overlay */}
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="bg-white rounded-2xl shadow-2xl p-6 sm:p-8 mx-4 text-center max-w-md border border-[#E4DFFF]">
+              {/* Lock icon */}
+              <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-[#6346FA] to-[#8B6DFF] rounded-full flex items-center justify-center">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="w-8 h-8 text-white"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth={2}
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+                  />
+                </svg>
+              </div>
+
+              <h3 className="text-xl sm:text-2xl font-bold text-[#1a1a2e] mb-2">
+                Continue Reading
+              </h3>
+              <p className="text-gray-600 mb-6 text-sm sm:text-base">
+                Login to unlock the full article and access exclusive content
+              </p>
+
+              <button
+                onClick={onLoginClick}
+                className="w-full bg-gradient-to-r from-[#6346FA] to-[#8B6DFF] text-white py-3 px-6 rounded-xl font-semibold text-base sm:text-lg transition-all duration-300 hover:shadow-lg hover:scale-[1.02] hover:from-[#5639E0] hover:to-[#7B5DF0]"
+              >
+                Login to Read Full Article
+              </button>
+
+              <p className="mt-4 text-xs text-gray-500">
+                Free access with email verification
+              </p>
+            </div>
+          </div>
+        </div>}
+    </div>
+  );
+};
 export default SingleknowledgeCenterContent;

@@ -25,6 +25,7 @@ const CoursesBanner = ({ highlightText, titleEnd, description, leftposter, right
                             highlightText={highlightText}
                             titleEnd={titleEnd}
                             description={description}
+                            showContect={true}
                         />
                     </div>
                 </div>

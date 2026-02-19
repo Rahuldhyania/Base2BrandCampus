@@ -17,6 +17,7 @@ import insta from "../../../../public/images/insta.webp";
 import pinterest from "../../../../public/icons/pinterest.svg";
 import snapchat from "../../../../public/icons/snapchat.svg";
 import youtube from "../../../../public/icons/youtube.svg";
+
 const categories = [
   { name: "All Courses", key: "AllCourses" },
   { name: "Development", key: "Development" },
@@ -26,19 +27,19 @@ const categories = [
 ];
 const coursesData = {
   AllCourses: [
-    { name: "Freight Broker", path: "/freight-broker" },
-    { name: "Truck Dispatch", path: "/truck-dispatching" },
+    { name: "Freight Broker", path: "/freight-broker", trandingCource: true },
+    { name: "Truck Dispatch", path: "/truck-dispatching", trandingCource: true },
     { name: "Digital Marketing", path: "/digital-marketing-course" },
-    { name: "AI Course", path: "/ai-course" },
+    { name: "AI Course", path: "/ai-course", trandingCource: true, trandingSecondary: true },
     { name: "Cyber Security", path: "/cyber-security-course" },
     { name: "DevOps Engineer", path: "/devops-course" },
     { name: "Web Development", path: "/web-development-course" },
-    { name: "Graphic Design", path: "/graphic-design-course" },
+    { name: "Graphic Design", path: "/graphic-design-course", trandingCource: true, trandingSecondary: true },
     { name: "Internet of Things (IoT)", path: "/iot" },
     { name: "Full Stack Development", path: "/full-stack-development" },
-    { name: "Wordpress", path: "/wordpress-training-course" },
+    { name: "Wordpress", path: "/wordpress-training-course", trandingCource: true, trandingSecondary: true },
     { name: "Web Designing", path: "/web-designing-course" },
-    { name: "Video Editing", path: "/video-editing" },
+    { name: "Video Editing", path: "/video-editing", trandingCource: true, trandingSecondary: true },
     { name: "Python & Java ", path: "/python-java-course" },
     { name: "Shopify App Dev", path: "/shopify-app-development-course" },
     { name: "Shopify Theme Dev", path: "/shopify-theme-development-course" },
@@ -48,12 +49,12 @@ const coursesData = {
   ],
   Development: [
     { name: "Cyber Security", path: "/cyber-security-course" },
-    { name: "AI Course", path: "/ai-course" },
+    { name: "AI Course", path: "/ai-course", trandingCource: true, trandingSecondary: true },
     { name: "DevOps Engineer", path: "/devops-course" },
     { name: "Internet of Things (IoT)", path: "/iot" },
     { name: "Web Development", path: "/web-development-course" },
     { name: "Full Stack Development", path: "/full-stack-development" },
-    { name: "Wordpress", path: "/wordpress-training-course" },
+    { name: "Wordpress", path: "/wordpress-training-course", trandingCource: true, trandingSecondary: true },
     { name: "Web Designing", path: "/web-designing-course" },
     { name: "Python & Java ", path: "/python-java-course" },
     { name: "Shopify App Dev", path: "/shopify-app-development-course" },
@@ -63,12 +64,12 @@ const coursesData = {
     { name: "React Native", path: "/react-native" },
   ],
   Logistics: [
-    { name: "Truck Dispatch", path: "/truck-dispatching" },
-    { name: "Freight Broker", path: "/freight-broker" },
+    { name: "Truck Dispatch", path: "/truck-dispatching", trandingCource: true },
+    { name: "Freight Broker", path: "/freight-broker", trandingCource: true },
   ],
   Graphics: [
-    { name: "Graphic Design", path: "/graphic-design-course" },
-    { name: "Video Editing", path: "/video-editing" },
+    { name: "Graphic Design", path: "/graphic-design-course", trandingCource: true, trandingSecondary: true },
+    { name: "Video Editing", path: "/video-editing", trandingCource: true, trandingSecondary: true },
   ],
   MarketingBusiness: [
     { name: "Digital Marketing", path: "/digital-marketing-course" },
@@ -78,10 +79,12 @@ const socialLinks = [
   { icon: Footerfacebook, url: "https://www.facebook.com/CampusB2B" },
   { icon: insta, url: "https://www.instagram.com/b2bcampus/?hl=en" },
   { icon: linkedin, url: "https://www.linkedin.com/company/b2b-campus/" },
-  { icon: youtube, url: "https://www.youtube.com/channel/UCs1sxcuHQ7GWgB9gMyRXwXQ/featured" },
+  {
+    icon: youtube,
+    url: "https://www.youtube.com/channel/UCs1sxcuHQ7GWgB9gMyRXwXQ/featured",
+  },
   { icon: snapchat, url: "https://www.snapchat.com/@b2bcampus" },
   { icon: pinterest, url: "https://in.pinterest.com/b2bcampus/" },
-
 ];
 export default function Header() {
   const [open, setOpen] = useState(false);
@@ -100,41 +103,50 @@ export default function Header() {
 
     checkLoginStatus();
 
-    window.addEventListener('storage', checkLoginStatus);
+    window.addEventListener("storage", checkLoginStatus);
 
     const interval = setInterval(checkLoginStatus, 1000);
 
     return () => {
-      window.removeEventListener('storage', checkLoginStatus);
+      window.removeEventListener("storage", checkLoginStatus);
       clearInterval(interval);
     };
   }, []);
 
   const handleLogout = () => {
     const stopAllVideos = () => {
-      const iframes = document.querySelectorAll('iframe[src*="youtube.com"], iframe[src*="youtu.be"]');
-      iframes.forEach(iframe => {
+      const iframes = document.querySelectorAll(
+        'iframe[src*="youtube.com"], iframe[src*="youtu.be"]',
+      );
+      iframes.forEach((iframe) => {
         try {
           if (iframe.contentWindow) {
-            iframe.contentWindow.postMessage('{"event":"command","func":"stopVideo","args":""}', '*');
-            iframe.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
-            iframe.contentWindow.postMessage('{"event":"command","func":"setVolume","args":[0]}', '*');
+            iframe.contentWindow.postMessage(
+              '{"event":"command","func":"stopVideo","args":""}',
+              "*",
+            );
+            iframe.contentWindow.postMessage(
+              '{"event":"command","func":"pauseVideo","args":""}',
+              "*",
+            );
+            iframe.contentWindow.postMessage(
+              '{"event":"command","func":"setVolume","args":[0]}',
+              "*",
+            );
           }
-          iframe.src = 'about:blank';
+          iframe.src = "about:blank";
           if (iframe.parentNode) {
             iframe.parentNode.removeChild(iframe);
           }
-        } catch (e) {
-        }
+        } catch (e) { }
       });
-      const mediaElements = document.querySelectorAll('video, audio');
-      mediaElements.forEach(media => {
+      const mediaElements = document.querySelectorAll("video, audio");
+      mediaElements.forEach((media) => {
         try {
           media.pause();
           media.currentTime = 0;
           media.volume = 0;
-        } catch (e) {
-        }
+        } catch (e) { }
       });
     };
 
@@ -173,7 +185,6 @@ export default function Header() {
     { name: "Contact Us", path: "/contact-us" },
   ];
 
-
   useEffect(() => {
     const scrollbarWidth =
       window.innerWidth - document.documentElement.clientWidth;
@@ -187,7 +198,7 @@ export default function Header() {
     }
   }, [megaOpen, enrollModalOpen]);
   const languages = {
-     en: "English",
+    en: "English",
     hi: "Hindi",
     bn: "Bengali",
     te: "Telugu",
@@ -212,6 +223,38 @@ export default function Header() {
       }
     }, 100);
   };
+
+  const getNextMonday = () => {
+    const today = new Date();
+    const day = today.getDay();
+    const daysUntilNextMonday = (8 - day) % 7 || 7;
+
+    const nextMonday = new Date(today);
+    nextMonday.setDate(today.getDate() + daysUntilNextMonday);
+
+    return nextMonday.toLocaleDateString("en-US", {
+      month: "long",
+      day: "numeric",
+      year: "numeric",
+    });
+  };
+  const nextBatchDate = getNextMonday();
+  const getNextMondayTwoWeeksLater = () => {
+    const today = new Date();
+    const day = today.getDay();
+    const daysUntilNextMonday = (8 - day) % 7 || 7;
+
+    const nextMonday = new Date(today);
+    nextMonday.setDate(today.getDate() + daysUntilNextMonday);
+    nextMonday.setDate(nextMonday.getDate() + 14);
+
+    return nextMonday.toLocaleDateString("en-US", {
+      month: "long",
+      day: "numeric",
+      year: "numeric",
+    });
+  };
+  const nextBatchDateSecondary = getNextMondayTwoWeeksLater();
   return (
     <nav className="relative z-50">
       <div className="flex justify-between xl:justify-around items-center flex-wrap gap-2 2xl:gap-4 relative py-5 px-5 bg-white border-[0.5px] border-[#00000021]">
@@ -230,14 +273,9 @@ export default function Header() {
             {menuItems.map((item) => (
               <li key={item.name} className="relative">
                 {item.name === "Courses" ? (
-                  <div
-                    className="cursor-pointer px-1 text-gray-700 hover:text-purple-500 transition-colors"
-
-                  >
+                  <div className="cursor-pointer px-1 text-gray-700 hover:text-purple-500 transition-colors">
                     <span className="inline-flex items-center">
-                      <Link href={'/courses'}>
-                        {item.name}
-                      </Link>
+                      <Link href={"/courses"}>{item.name}</Link>
                       <Image
                         onClick={() => setMegaOpen(!megaOpen)}
                         src={arrowdown}
@@ -249,8 +287,8 @@ export default function Header() {
                       />
                     </span>
                   </div>
-
-                ) : item.name === "Industrial Training" || item.name === 'Blogs' ? (
+                ) : item.name === "Industrial Training" ||
+                  item.name === "Blogs" ? (
                   <div className="flex items-center gap-1">
                     <Link href={item.path}>
                       <span
@@ -267,10 +305,9 @@ export default function Header() {
                       onClick={(e) => {
                         e.stopPropagation();
                         setActiveDropdown(
-                          activeDropdown === item.name ? null : item.name
+                          activeDropdown === item.name ? null : item.name,
                         );
                       }}
-
                     >
                       <Image
                         src={arrowdown}
@@ -280,8 +317,6 @@ export default function Header() {
                         className={`transition-transform duration-300 ${activeDropdown === item.name ? "rotate-180" : ""
                           }`}
                       />
-
-
                     </button>
 
                     {activeDropdown === item.name && (
@@ -300,10 +335,8 @@ export default function Header() {
                           </li>
                         ))}
                       </ul>
-
                     )}
                   </div>
-
                 ) : (
                   <Link href={item.path}>
                     <span
@@ -322,7 +355,6 @@ export default function Header() {
               </li>
             ))}
           </ul>
-
         </div>
         <div className="flex items-center gap-4">
           <select
@@ -343,9 +375,8 @@ export default function Header() {
             ))}
           </select>
           <div className="flex items-center gap-3">
-            {isLoggedIn ? (
+            {/* {isLoggedIn ? (
               <div className="hidden md:flex items-center gap-3">
-                {/* User Icon */}
                 <div className="flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-br from-[#6346FA] to-[#732dec] text-white font-semibold text-lg cursor-pointer hover:scale-110 transition-transform">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -362,7 +393,6 @@ export default function Header() {
                     />
                   </svg>
                 </div>
-                {/* Logout Button */}
                 <button
                   onClick={handleLogout}
                   className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-[#5D38DE] border border-gray-300 rounded-xl hover:border-[#5D38DE] transition-colors"
@@ -370,19 +400,19 @@ export default function Header() {
                   Logout
                 </button>
               </div>
-            ) : (
+            ) : ( */}
               <div className="hidden md:flex">
                 <Link
                   href={'contact-us'}
                 >
-                  <Buttons
-                    btnname="Enroll Now"
-                    text_color="text-white"
+                <Buttons
+                  btnname="Enroll Now"
+                  text_color="text-white"
                   // onClick={() => setEnrollModalOpen(true)}
-                  />
+                />
                 </Link>
               </div>
-            )}
+            {/* )} */}
 
             <div
               className="xl:hidden cursor-pointer"
@@ -412,7 +442,6 @@ export default function Header() {
           </div>
         </div>
 
-
         <div
           className={`xl:hidden absolute top-full left-0 w-full bg-white shadow-lg rounded-b-lg overflow-hidden transition-all duration-500 ${open ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"
             }`}
@@ -425,13 +454,12 @@ export default function Header() {
                     className="cursor-pointer px-2 py-2 text-gray-700 flex items-center justify-between"
                     onClick={() => setOpen(false)}
                   >
-                    <Link href={'/courses'}>
+                    <Link href={"/courses"}>
                       <span>{item.name}</span>
                     </Link>
                     <Image
                       onClick={() => {
-                        setMegaOpen(!megaOpen)
-
+                        setMegaOpen(!megaOpen);
                       }}
                       src={arrowdown}
                       width={18}
@@ -465,7 +493,7 @@ export default function Header() {
                         onClick={(e) => {
                           e.stopPropagation();
                           setActiveDropdown(
-                            activeDropdown === item.name ? null : item.name
+                            activeDropdown === item.name ? null : item.name,
                           );
                         }}
                       >
@@ -518,7 +546,7 @@ export default function Header() {
               </li>
             ))}
 
-            {isLoggedIn ? (
+            {/* {isLoggedIn ? (
               <div className="flex flex-col gap-3 px-2">
                 <div className="flex items-center gap-3 py-2">
                   <div className="flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-br from-[#6346FA] to-[#732dec] text-white font-semibold">
@@ -549,28 +577,29 @@ export default function Header() {
                   Logout
                 </button>
               </div>
-            ) : (
-              <Link
-                href={'contact-us'}
-              >
-                <Buttons
-                  btnname="Enroll Now"
-                  text_color="text-white"
-                  onClick={() => {
-                    setOpen(false);
-                  }}
-                />
+            ) : ( */}
+               <Link
+                 href={'contact-us'}
+               >
+              <Buttons
+                btnname="Enroll Now"
+                text_color="text-white"
+                onClick={() => {
+                  setOpen(false);
+                  // setEnrollModalOpen(true);
+                }}
+              />
               </Link>
-            )}
+            {/* )} */}
             <div className="pt-4">
               <div className="flex gap-2">
-                {socialLinks.map((item, i) =>
+                {socialLinks.map((item, i) => (
                   <Link href={item.url} key={i} target="_blank">
                     <div className="p-3 sm:p-[11px] rounded-full bg-[#4924C9] flex justify-center items-center transition-transform duration-300 hover:scale-110">
                       <Image src={item.icon} width={16} height={16} alt="" />
                     </div>
                   </Link>
-                )}
+                ))}
               </div>
             </div>
             <div className="pt-4">
@@ -650,7 +679,12 @@ export default function Header() {
             <div className="md:w-3/4 w-full py-3 md:px-6 overflow-y-auto h-full">
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 md:max-h-[344px]">
                 {coursesData[activeCategory]?.map((course, index) => (
-                  <Link key={index} href={course.path} onClick={() => setOpen(!open)}>
+                  <Link
+                    key={index}
+                    href={course.path}
+                    onClick={() => setOpen(!open)}
+                    className="relative"
+                  >
                     <motion.div
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
@@ -664,6 +698,15 @@ export default function Header() {
                         </p>
                       </div>
                     </motion.div>
+
+                    {course.trandingCource
+                      ? <div>
+                        <p class="text-[9px] w-fit absolute right-2 top-1 px-[8px] py-[2px] text-white rounded-[23px] flex items-center gap-1 animate-[bgBlink_1s_infinite]">
+                          <span class="w-[6px] h-[6px] rounded-full animate-[dotBlink_1s_infinite]" />
+                          NEXT BATCH  — {course.trandingSecondary ? nextBatchDateSecondary : nextBatchDate}
+                        </p>
+                      </div>
+                      : null}
                   </Link>
                 ))}
               </div>
@@ -676,7 +719,12 @@ export default function Header() {
       <EnrollModal
         isOpen={enrollModalOpen}
         onClose={() => setEnrollModalOpen(false)}
+        onLoginSuccess={() => {
+          setIsLoggedIn(true);
+          setEnrollModalOpen(false);
+        }}
       />
+
     </nav>
   );
 }

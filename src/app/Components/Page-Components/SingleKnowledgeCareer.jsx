@@ -1,4 +1,6 @@
+import Image from 'next/image'
 import React from 'react'
+import { CanadaFlagIcon } from './Contactfrom'
 
 const SingleKnowledgeCareer = ({ title, description, yes_btn, no_btn }) => {
 
@@ -41,7 +43,32 @@ const SingleKnowledgeCareer = ({ title, description, yes_btn, no_btn }) => {
                             {nobtnsvg} {no_btn}
                         </a>
                     </div>
-
+                    <div className="max-w-2xl m-auto pt-6 grid grid-cols-1 md:grid-cols-2 gap-y-2">
+                        <div className="flex items-center justify-center gap-4">
+                            <Image
+                                src={"/images/Flag_of_India.svg.png"}
+                                alt=""
+                                width={30}
+                                height={30}
+                                className="rounded-[2px]"
+                            />
+                            <a
+                                href="tel:+919872487850"
+                                className="text-xl text-white hover:underline"
+                            >
+                                {" "}+91 98724-87850
+                            </a>
+                        </div>
+                        <div className="flex items-center justify-center gap-4">
+                            <CanadaFlagIcon />
+                            <a
+                                href="tel:+15482554922"
+                                className="text-xl text-white hover:underline"
+                            >
+                                {" "}+1 (548) 255-4922
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

@@ -122,7 +122,7 @@ const CoursesCareer = ({
                                         }}
                                     >
                                         <Buttons
-                                            btnname={"Start Your Training This Week"}
+                                            btnname={"Start Your Training"}
                                             text_color={"text-white"}
                                         />
                                     </div>

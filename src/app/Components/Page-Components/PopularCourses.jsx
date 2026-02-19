@@ -49,7 +49,7 @@ const allCourses = [
     buttonText: "Learn more",
     page_link: "/freight-broker",
     img: arrows2,
-    trandingCource:true
+    trandingCource: true
   },
   {
     id: 2,
@@ -61,7 +61,7 @@ const allCourses = [
     buttonText: "Learn more",
     page_link: "/truck-dispatching",
     img: arrows2,
-    trandingCource:true
+    trandingCource: true
   },
   {
     id: 1,
@@ -72,7 +72,9 @@ const allCourses = [
     color: "#0A9DFF",
     buttonText: "Learn more",
     page_link: "/graphic-design-course",
-    img: arrowicon
+    img: arrowicon,
+    trandingCource: true,
+    trandingSecondary : true
   },
   {
     id: 4,
@@ -83,7 +85,9 @@ const allCourses = [
     color: "#0A9DFF",
     buttonText: "Learn more",
     page_link: "/ai-course",
-    img: arrows4
+    img: arrows4,
+    trandingCource: true,
+     trandingSecondary : true
   },
   {
     id: 14,
@@ -149,7 +153,9 @@ const allCourses = [
     color: "#0A9DFF",
     buttonText: "Learn more",
     page_link: "/wordpress-training-course",
-    img: arrows4
+    img: arrows4,
+    trandingCource: true,
+     trandingSecondary : true
   },
   {
     id: 10,
@@ -171,7 +177,9 @@ const allCourses = [
     color: "#0A9DFF",
     buttonText: "Learn more",
     page_link: "/video-editing",
-    img: arrow1
+    img: arrow1,
+    trandingCource: true,
+     trandingSecondary : true
   },
   {
     id: 12,
