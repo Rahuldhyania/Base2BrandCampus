@@ -701,9 +701,9 @@ export default function Header() {
 
                     {course.trandingCource
                       ? <div>
-                        <p class="text-[9px] w-fit absolute right-2 top-1 px-[8px] py-[2px] text-white rounded-[23px] flex items-center gap-1 animate-[bgBlink_1s_infinite]">
+                        <p class="text-[8px] md:text-[9px] w-fit absolute right-2 top-1 px-[8px] py-[2px] text-white rounded-[23px] flex items-center gap-1 animate-[bgBlink_1s_infinite]">
                           <span class="w-[6px] h-[6px] rounded-full animate-[dotBlink_1s_infinite]" />
-                          NEXT BATCH  — {course.trandingSecondary ? nextBatchDateSecondary : nextBatchDate}
+                          {course.trandingSecondary ?  `Most Trending — ${nextBatchDateSecondary}` : `NEXT BATCH  — ${nextBatchDate}`}
                         </p>
                       </div>
                       : null}

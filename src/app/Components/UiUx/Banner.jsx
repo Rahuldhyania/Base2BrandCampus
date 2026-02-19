@@ -43,7 +43,7 @@ const Banner = () => {
             />
           </div>
         </div>
-        <div className="banner-wrap grid grid-cols-1 lg:grid-cols-3 gap-6 mt-4 items-end px-[2%]">
+        <div className="banner-wrap grid grid-cols-1 lg:grid-cols-3 gap-6 md:mt-4 items-end px-[2%]">
           <div className="boy relative w-full hidden md:block">
             <Image
               src={learnboys}
@@ -67,7 +67,7 @@ const Banner = () => {
               </div>
             </div>
           </div>
-          <div className="py-6">
+          <div className="md:pt-6 pb-6">
             <Contactfrom />
           </div>
           <div className="girl relative w-full hidden md:block">

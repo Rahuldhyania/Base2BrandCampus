@@ -372,7 +372,7 @@ const FooterNew = () => {
                       />
                     </svg>
                     <Link
-                      href={"/"}
+                      href={data.page_links}
                       className="text-white text-lg 2xl:text-xl hover:underline transition-all duration-500"
                     >
                       {data.page_name}
