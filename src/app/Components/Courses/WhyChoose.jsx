@@ -24,7 +24,7 @@ const WhyChoose = ({ featuresNumbered }) => {
           <div className="relative z-10 text-center">
             <Title
               title={
-                '<span class="text-primary">Why Choose Our Institute?</span> <br/>'
+                '<span class="text-primary">Why Choose Our Institute for Safety & Compliance Training?</span> <br/>'
               }
               text_color={"text-secondary"}
             />

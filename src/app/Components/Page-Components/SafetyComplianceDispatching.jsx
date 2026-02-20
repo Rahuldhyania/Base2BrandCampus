@@ -19,107 +19,146 @@ import Youtubevideo from './Youtubevideo';
 import CourseExtracontent from '../Courses/CourseExtracontent';
 import VideoPopupCompo from './VideoPopupCompo';
 const faq_data = [
-    {
-        q: "What does the B2B Campus safety & compliance course cover for students in Mohali?",
-        a: "The course covers DOT rules, FMCSA regulations, safety documentation, carrier compliance, audit preparation, and complete practical compliance training through flexible online and offline classes in Mohali."
-    },
-    {
-        q: "How long is the safety & compliance course at B2B Campus in Mohali?",
-        a: "The program duration is around 45 days, offering flexible schedules for students. Both online and offline classes are available to support beginners and working professionals effectively."
-    },
-    {
-        q: "Does B2B Campus provide practical training during compliance classes in Mohali?",
-        a: "Yes, students receive hands-on practice with compliance tools, safety files, documentation processes, and real industry workflows in both online and offline modes for practical learning."
-    },
-    {
-        q: "Do students need prior logistics experience to join the compliance course?",
-        a: "No prior experience is required. Beginners can easily enrol as the B2B Campus course starts with fundamentals and gradually progresses to advanced compliance concepts and real-work scenarios."
-    },
-    {
-        q: "Does B2B Campus offer placement support after course completion in Mohali?",
-        a: "Yes, B2B Campus provides placement assistance, interview guidance, resume preparation, and job referrals to help students secure compliance or logistics roles successfully after training."
-    },
-    {
-        q: "What study materials are provided in the safety & compliance course at B2B Campus?",
-        a: "Students receive notes, compliance templates, software training access, practice files, and recorded class sessions to support learning in both online and offline training modes."
-    },
-    {
-        q: "Who teaches the safety & compliance course at B2B Campus in Mohali?",
-        a: "Experienced industry professionals conduct training, offering real-world compliance insights, updated regulatory knowledge, and practical guidance to prepare students for professional roles."
-    },
-    {
-        q: "Can students shift between online and offline classes during the course?",
-        a: "Yes, B2B Campus allows flexible switching between online and offline batches, enabling students to continue learning conveniently based on schedule changes or personal requirements."
-    },
-    {
-        q: "Does the safety & compliance course cover US trucking regulations and standards?",
-        a: "Yes, the curriculum includes US trucking laws, safety standards, compliance procedures, and documentation responsibilities for building a strong international compliance career foundation."
-    },
-    {
-        q: "How can students enrol in the B2B Campus safety & compliance course in Mohali?",
-        a: "Students can register online or visit the Mohali campus. Basic details, identification documents, and selected batch mode are required for completing the admission process smoothly."
-    }
+  {
+    q: "What is the Safety & Compliance course about?",
+    a: "It trains you to manage DOT regulations, FMCSA compliance, ELD logs, audits, and trucking safety documentation for US & Canada carriers."
+  },
+  {
+    q: "Who can join this course?",
+    a: "Anyone with basic computer knowledge and good communication skills can enroll. No specific degree is required."
+  },
+  {
+    q: "Is prior dispatch experience required?",
+    a: "No, the course starts from fundamentals and gradually covers advanced compliance and safety operations."
+  },
+  {
+    q: "What is the course duration?",
+    a: "The program is a 45-day intensive training with practical, real-world compliance workflow sessions."
+  },
+  {
+    q: "Will I learn about ELD and HOS rules?",
+    a: "Yes, detailed training on ELD monitoring and Hours of Service (HOS) management is included."
+  },
+  {
+    q: "Are DOT and FMCSA regulations covered?",
+    a: "Yes, the curriculum is fully focused on US & Canada DOT and FMCSA compliance requirements."
+  },
+  {
+    q: "Can I work from home after this course?",
+    a: "Yes, many safety & compliance roles allow remote work with international trucking companies."
+  },
+  {
+    q: "What job roles can I apply for?",
+    a: "You can apply for Safety Executive, Compliance Officer, DQF Coordinator, or CSA Score Specialist roles."
+  },
+  {
+    q: "Is there practical training included?",
+    a: "Yes, the course includes hands-on documentation, audit preparation, and compliance workflow practice."
+  },
+  {
+    q: "Can I start my own compliance service business?",
+    a: "Yes, the training also guides you on setting up your own safety & compliance service agency."
+  }
 ];
 const SafetyComplianceDispatching = () => {
-    const Syllabus_data = [
-        {
-            title: "Module 1 - Introduction",
-            points: [
-                "What is dispatch business?",
-                "Required skills",
-                "Course overview",
-
-            ],
-        },
-        {
-            title: "Module 2 - Parties Involved",
-            points: ["Role of a dispatcher", "Benefits of dispatcher services", "Owner operations and small fleet owner"],
-        },
-        {
-            title: "Module 3 - Clients",
-            points: ["Setting up with your client – contact", "Requesting documents from your client", "Download – sample carrier profile form.", "Download –  Sample of documents you will be requesting.", "Verbal agreement – Scope of booking decision "],
-        },
-        {
-            title: "Module 4 - Equipment and Freight",
-            points: ["Types of Trucks", "Trailer types", "Weight", "Commodity"],
-        },
-        {
-            title: "Section 5 - Logistics",
-            points: ["Pick-up and delivery times and their importance", "Extra Stops (Multiple deliveries)"],
-        },
-        {
-            title: "Section 6 - Finding Freight",
-            points: ["Load boards –  electronic marketplace", "DAT", "Internet Truck Stop", "Private 3PL boards", "Posting trucks"],
-        },
-        {
-            title: "Module 7 - Booking Your First Load",
-            points: ["Getting the right information", "Acceptable rates and negotiation", "Negotiantion tips", "Checking broker’s credit", "Getting set up with broker"],
-        },
-    ];
+   const Syllabus_data = [
+  {
+    title: "Module 1 - Compliance Foundations",
+    points: [
+      "Introduction to Safety & Compliance",
+      "FMCSA Overview",
+      "Safety Rating System",
+      "BASIC Score (CSA)",
+      "Dispatcher Legal Boundaries",
+    ],
+  },
+  {
+    title: "Module 2 - Driver Compliance",
+    points: [
+      "CDL & Driver Qualification File",
+      "Hours of Service (HOS) Deep Dive",
+      "ELD Compliance",
+      "Drug & Alcohol Clearinghouse",
+      "Medical & Driver Fitness",
+    ],
+  },
+  {
+    title: "Module 3 - Vehicle & Equipment Compliance",
+    points: [
+      "Vehicle Inspection",
+      "Preventive Maintenance",
+      "Weight & Cargo Securement",
+      "Reefer & Hazmat Safety Basics",
+      "Roadside Inspections",
+    ],
+  },
+  {
+    title: "Module 4 - Insurance & Documentation",
+    points: [
+      "Insurance Types",
+      "COI & Broker Pack Compliance",
+      "Accident Reporting",
+      "Safety Audit Preparation",
+      "Record Keeping",
+    ],
+  },
+  {
+    title: "Module 5 - Risk Management & Dispatcher Protection",
+    points: [
+      "Double Brokering Prevention",
+      "Fraud & Load Scam Safety",
+      "Detention, Layover & Legal Claims",
+      "Dispatcher Contract Protection",
+      "Communication for Safety",
+    ],
+  },
+  {
+    title: "Module 6 - Practical Safety Dispatch Training",
+    points: [
+      "HOS Planning Exercises",
+      "Compliance-based Load Planning",
+      "Safety Violation Case Studies",
+      "Audit Simulation",
+      "Accident Response Role Play",
+      "Insurance Claim Practice",
+    ],
+  },
+  {
+    title: "Module 7 - Advanced Compliance & Final Assessment",
+    points: [
+      "Safety Score Improvement Strategy",
+      "Working with Safety Managers",
+      "Carrier Onboarding Compliance Checklist",
+      "Multi-truck Fleet Compliance Monitoring",
+      "Real Dispatch Violation Case Studies",
+      "Final Assessment & Certification",
+    ],
+  },
+];
     const featuresMain = [
         {
             icon: "/images/globe2.webp",
-            title: "Compliance Career Opportunities in US & Canada",
+            title: "Safety & Compliance Career Opportunities in US & Canada",
             subtitle:
-                "Start your career with high-demand compliance roles supporting US & Canada trucking companies."
+                "Build a high-demand career ensuring trucking companies meet DOT and FMCSA regulations while managing audits, documentation, and safety standards."
         },
         {
             icon: "/images/usertea.webp",
-            title: "Work Remotely as Compliance Executive",
+            title: "Remote Compliance Executive from India",
             subtitle:
-                "Manage safety documents, regulations, and carrier compliance from anywhere in India."
+                "Work from anywhere in India handling ELD monitoring, driver logs, safety reports, and regulatory documentation for international trucking companies."
         },
         {
             icon: "/images/moneyhigh.webp",
             title: "High-Income Compliance Specialist Potential",
             subtitle:
-                "Earn ₹50,000–₹1,80,000+ monthly based on experience, clients, and workload."
+                "Earn ₹40,000–₹1,80,000+ per month depending on expertise in safety audits, risk management, and compliance coordination."
         },
         {
             icon: "/images/digree.webp",
-            title: "No Logistics Degree Needed",
+            title: "No Degree Required",
             subtitle:
-                "Start your career with training, compliance knowledge, and strong attention to detail."
+                "Anyone can start, strong attention to detail, communication skills, and professional compliance training are enough to launch your career."
         },
     ];
     const items = [
@@ -145,15 +184,15 @@ const SafetyComplianceDispatching = () => {
         },
     ];
     const program_data = [
-        { text: "Safety & compliance fundamentals (US & Canada rules)", icon: "/images/greencheck.webp" },
-        { text: "Working with carriers, drivers & compliance officers", icon: "/images/greencheck.webp" },
-        { text: "Compliance tools & ELD systems – practical demo", icon: "/images/greencheck.webp" },
-        { text: "Regulation understanding & violation prevention", icon: "/images/greencheck.webp" },
-        { text: "DOT rules, FMCSA laws & safety documentation", icon: "/images/greencheck.webp" },
-        { text: "Audits, reports & issue resolution handling", icon: "/images/greencheck.webp" },
-        { text: "How to start your own compliance support service", icon: "/images/greencheck.webp" },
-        { text: "Real-world compliance workflow & procedures", icon: "/images/greencheck.webp" },
-        { text: "Career growth & remote compliance job guidance", icon: "/images/greencheck.webp" }
+        { text: " Trucking safety fundamentals (US & Canada regulations overview)", icon: "/images/greencheck.webp" },
+        { text: "DOT & FMCSA compliance requirements step-by-step", icon: "/images/greencheck.webp" },
+        { text: "ELD monitoring & Hours of Service (HOS) management", icon: "/images/greencheck.webp" },
+        { text: "Driver qualification files (DQF) & documentation handling", icon: "/images/greencheck.webp" },
+        { text: "IFTA basics, permits & safety audit preparation", icon: "/images/greencheck.webp" },
+        { text: "Accident reporting, risk management & violation handling", icon: "/images/greencheck.webp" },
+        { text: "Safety score management (CSA scores) & inspection readiness", icon: "/images/greencheck.webp" },
+        { text: "Compliance documentation, record keeping & reporting systems", icon: "/images/greencheck.webp" },
+        { text: "How to offer safety & compliance services to trucking companies", icon: "/images/greencheck.webp" }
     ];
     const conjoin_data = [
         { text: "Students & freshers", icon: "/images/greencheck.webp" },
@@ -163,56 +202,56 @@ const SafetyComplianceDispatching = () => {
         { text: "Anyone interested in compliance", icon: "/images/greencheck.webp" },
     ];
     const featuresNumbered = [
-        {
-            id: 1,
-            number: 1,
-            title: "Trusted safety & compliance training institute in Mohali",
-            description:
-                "Recognized institute offering practical trucking safety and compliance certification training."
-        },
-        {
-            id: 2,
-            number: 2,
-            title: "Trainers with real compliance & carrier experience",
-            description:
-                "Learn from mentors with hands-on experience in DOT, FMCSA, and carrier compliance operations."
-        },
-        {
-            id: 3,
-            number: 3,
-            title: "US & Canada regulation-focused curriculum",
-            description:
-                "Curriculum designed to meet real-world safety standards, audits, and compliance requirements."
-        },
-        {
-            id: 4,
-            number: 4,
-            title: "Live compliance tools & documentation training",
-            description:
-                "Practice with real checklists, safety files, logs, and end-to-end compliance workflow tasks."
-        },
-        {
-            id: 5,
-            number: 5,
-            title: "Offline classroom + Online live sessions",
-            description:
-                "Flexible learning options with interactive offline training and live online compliance sessions."
-        },
-        {
-            id: 6,
-            number: 6,
-            title: "Job, freelancing & compliance service guidance",
-            description:
-                "Get career support, freelancing tips, and guidance to start your own compliance support service."
-        }
-    ];
+  {
+    id: 1,
+    number: 1,
+    title: "Trusted logistics & compliance training institute in Mohali",
+    description:
+      "Recognized institute offering professional Safety & Compliance training for the US & Canada trucking industry."
+  },
+  {
+    id: 2,
+    number: 2,
+    title: "Trainers with real industry experience",
+    description:
+      "Learn from mentors who have hands-on experience in DOT regulations, FMCSA compliance, audits, and fleet safety operations."
+  },
+  {
+    id: 3,
+    number: 3,
+    title: "US & Canada regulation-focused curriculum",
+    description:
+      "Curriculum designed according to real-world safety standards, compliance requirements, and audit systems followed in US & Canada markets."
+  },
+  {
+    id: 4,
+    number: 4,
+    title: "Practical documentation & audit workflow training",
+    description:
+      "Gain hands-on experience with ELD monitoring, HOS management, DQ files, CSA scores, and end-to-end compliance processes."
+  },
+  {
+    id: 5,
+    number: 5,
+    title: "Offline classroom + Online live sessions",
+    description:
+      "Flexible learning options with interactive offline classes in Mohali and live online training sessions."
+  },
+  {
+    id: 6,
+    number: 6,
+    title: "Job, freelancing & compliance agency setup guidance",
+    description:
+      "Get complete career support, remote job guidance, and step-by-step assistance to start your own safety & compliance service agency."
+  }
+];
 
     return (
         <div>
             <CoursesBanner
-                highlightText={'Truck Dispatch Safety & Compliance Certification'}
+                highlightText={'Become a Certified Safety & Compliance Specialist in Truck Dispatching'}
                 titleEnd={'in 45 Days'}
-                description={"Master US & Canada Logistics • Work-from-Home • Earn in INR or USD"}
+                description={"Learn DOT Compliance • FMCSA Regulations • Safety Audits •"}
                 leftposter={truckdispatchgirl}
                 rightposter={whitetruck}
             />
@@ -220,24 +259,25 @@ const SafetyComplianceDispatching = () => {
                 items={items}
                 left_banner={boylike}
                 featuresMain={featuresMain}
-                title={'Why Truck Dispatch Safety & Compliance is the  <br/> <span class="text-primary">Next Big Career</span>'}
-                description={"Logistics industry in USA & Canada is booming — dispatchers are in massive demand."}
+                title={'Why Safety & Compliance in Truck Dispatching is the <br/> <span class="text-primary">Next Big Career</span>'}
+                description={"Transportation industry in the USA & Canada is strictly regulated, safety and compliance specialists are in massive demand."}
+                course_brocher={false}
             />
             <CourseProgram
                 program_data={program_data}
-                title={'<span class="text-primary">45-Day Intensive </span> <br/> Dispatching Program'}
+                title={'<span class="text-primary">45-Day Intensive </span> <br/> Safety & Compliance Program for Truck Dispatching'}
             />
             <AboutCourse
-                title={'About Safety & Compliance Course'}
-                description1={`
-    The <span class="font-semibold text-black">Safety & Compliance Training </span> is a practical learning program designed to prepare you for a successful career in trucking regulations, logistics compliance, and transportation operations.`}
-
-                description2={`
-    This <span class="font-semibold text-black">compliance certification course</span> covers essential skills like <span class="text-[#6346FA] font-medium">{" "}DOT rules, FMCSA regulations, safety documentation, and compliance software tools </span>. Ideal for aspiring compliance officers or logistics professionals, the training provides real-world knowledge and industry-level insights.`}
-
-                description3={`
-    Whether you want to work with carriers or start a compliance support service, this <span class="font-semibold text-black">safety & compliance course </span>
-    helps you build a strong foundation for long-term success in the transportation industry.
+            title={'About Safety & Compliance Course for Truck Dispatching'}
+            description1={`
+    The <span class="font-semibold text-black">Safety & Compliance Course for Truck Dispatching</span> is a practical, industry-focused training program designed to prepare you for a high-demand role in the US and Canada trucking industry.
+  `}
+  description2={`
+    This course equips you with the knowledge required to manage <span class="font-semibold text-black">safety regulations, compliance systems, and operational risk</span> in transportation businesses.
+  `}
+  description3={`
+    This <span class="font-semibold text-black">compliance training</span> covers essential areas such as <span class="font-semibold text-black">DOT & FMCSA regulations</span>, <span class="font-semibold text-black">Hours of Service (HOS) rules</span>, <span class="font-semibold text-black">ELD monitoring</span>, <span class="font-semibold text-black">Driver Qualification Files (DQF)</span>, <span class="font-semibold text-black">safety audits</span>, <span class="font-semibold text-black">CSA score management</span>, and regulatory documentation. 
+    It is ideal for individuals who want to work as <span class="font-semibold text-black">safety executives</span>, <span class="font-semibold text-black">compliance coordinators</span>, or <span class="font-semibold text-black">independent compliance consultants</span> for trucking companies.
   `}
             />
             <Youtubevideo current_tab={'Truck Dispatching'} />
@@ -252,8 +292,8 @@ const SafetyComplianceDispatching = () => {
 
             <CourseSyllabus title={'Truck Dispatching Course<br/> <span class="text-primary"> Syllabus</span>'} Syllabus_data={Syllabus_data} />
             <BecomeStudent
-                title={'From Training to Truck <span class="text-primary"> Compliance Success </span>'}
-                description={`Build a professional, efficient, and high-demand compliance career with real-world training. Learn how to manage safety records, understand regulations, and handle compliance processes like a pro. This course equips you with in-demand skills to work with carriers, logistics firms, or start your own compliance support service.`}
+                title={'From Training to Safety & <span class="text-primary"> Compliance Success </span>'}
+                description={`Build a Stable, High-Demand Career in Trucking Safety & Compliance with practical, real-world training. Learn how to manage DOT regulations, monitor ELD logs, maintain driver qualification files, and handle safety documentation like a professional. This course equips you with in-demand compliance skills to work with US & Canada trucking companies or launch your own safety & compliance service business.`}
                 right_image={turckleft}
             />
             <FaqSection faq_data={faq_data} />

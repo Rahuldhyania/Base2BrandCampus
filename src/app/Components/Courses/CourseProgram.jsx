@@ -21,7 +21,7 @@ const CourseProgram = ({ program_data ,title ,description }) => {
                     />
                 </div>
                 <Description
-                    description={"What You all Learn"}
+                    description={"What You Will Learn"}
                     text_color={"text-secondary"}
                 />
                 <section className="w-full py-8 md:py-16">
