@@ -63,6 +63,18 @@ const allCourses = [
     img: arrows2,
     trandingCource: true
   },
+   {
+    id: 25,
+    title: "Compliance Training",
+    des: "B2B Campus – Master Safety Compliance & Work Globally.",
+    category: "Logistics",
+    icon: TruckIcon,
+    color: "#60A5FA",
+    buttonText: "Learn more",
+    page_link: "/truck-dispatch-safety-compliance-course",
+    img: arrows2,
+    trandingCource: true
+  },
   {
     id: 1,
     title: "Graphic Design",
@@ -76,6 +88,7 @@ const allCourses = [
     trandingCource: true,
     trandingSecondary : true
   },
+  
   {
     id: 4,
     title: "AI Course",

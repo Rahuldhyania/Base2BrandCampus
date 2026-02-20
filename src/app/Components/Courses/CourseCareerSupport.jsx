@@ -17,7 +17,8 @@ const CourseCareerSupport = () => {
       {pathname === "/freight-broker" ||
         pathname === "/truck-dispatching" ||
         pathname === "/truck-dispatching-canada" ||
-        pathname === "/truck-dispatching-usa"
+        pathname === "/truck-dispatching-usa" || 
+        pathname === '/truck-dispatch-safety-compliance-course'
         ? null
         : <Professionalskill />}
       <div className="main-bg pt-12 md:pt-16 md:pb-16">

@@ -29,6 +29,7 @@ const coursesData = {
   AllCourses: [
     { name: "Freight Broker", path: "/freight-broker", trandingCource: true },
     { name: "Truck Dispatch", path: "/truck-dispatching", trandingCource: true },
+    { name: "Compliance Training", path: "/truck-dispatch-safety-compliance-course", trandingCource: true },
     { name: "Digital Marketing", path: "/digital-marketing-course" },
     { name: "AI Course", path: "/ai-course", trandingCource: true, trandingSecondary: true },
     { name: "Cyber Security", path: "/cyber-security-course" },

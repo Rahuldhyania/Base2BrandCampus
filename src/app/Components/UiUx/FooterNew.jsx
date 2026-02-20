@@ -28,6 +28,11 @@ const footerData = [
         page_name: "Truck Dispatch",
         page_links: "/truck-dispatching"
       },
+       {
+        id: 16,
+        page_name: "Compliance Training",
+        page_links: "/truck-dispatch-safety-compliance-course"
+      },
       {
         id: 1,
         page_name: "Graphic Design",
