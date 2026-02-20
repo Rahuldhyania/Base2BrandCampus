@@ -30,7 +30,7 @@ const footerData = [
       },
        {
         id: 16,
-        page_name: "Compliance Training",
+        page_name: "Safety & Compliance (Truck Dispatching)",
         page_links: "/truck-dispatch-safety-compliance-course"
       },
       {
