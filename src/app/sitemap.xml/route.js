@@ -94,7 +94,6 @@ export async function GET() {
     .map((slug) => safeJoin(baseUrl, `knowledge-center/${slug}`));
 
   const allUrls = Array.from(new Set([...staticUrls, ...blogUrls, ...knowledgeCenterUrls]));
-
   const urlsXml = allUrls.map((u) => toUrlNode(u)).join("");
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
