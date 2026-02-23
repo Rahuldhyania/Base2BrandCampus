@@ -3,7 +3,6 @@ export const dynamic = "force-dynamic";
 
 export async function GET() {
   const baseUrl = "https://www.b2bcampus.com";
-  const nowIso = new Date().toISOString();
 
   const staticPages = [
     "",
@@ -40,6 +39,7 @@ export async function GET() {
     "knowledge-center",
   ];
 
+  // helpers
   const escapeXml = (str = "") =>
     String(str)
       .replaceAll("&", "&amp;")
@@ -51,49 +51,68 @@ export async function GET() {
   const safeJoin = (a, b) =>
     `${a.replace(/\/+$/, "")}/${String(b || "").replace(/^\/+/, "")}`;
 
-  const toUrlNode = (loc, lastmod = nowIso, changefreq = "weekly", priority = "0.8") => `
+  const toUrlNode = (loc, changefreq = "weekly", priority = "0.8") => `
   <url>
     <loc>${escapeXml(loc)}</loc>
-    <lastmod>${escapeXml(lastmod)}</lastmod>
     <changefreq>${changefreq}</changefreq>
     <priority>${priority}</priority>
   </url>`;
 
-  // Fetch BOTH in parallel, single page, big limit
+  // ✅ Fetch both in parallel (2 calls only)
   const [blogsRes, kcRes] = await Promise.allSettled([
     fetch("https://backend.b2bcampus.com/api/B2Badmin/blogs?page=1&limit=5000", {
       next: { revalidate: 3600 },
       headers: { Accept: "application/json" },
     }),
-    fetch("https://backend.b2bcampus.com/api/B2Badmin/public/knowledge-center?page=1&limit=5000", {
-      next: { revalidate: 3600 },
-      headers: { Accept: "application/json" },
-    }),
+    fetch(
+      "https://backend.b2bcampus.com/api/B2Badmin/public/knowledge-center?page=1&limit=5000",
+      {
+        next: { revalidate: 3600 },
+        headers: { Accept: "application/json" },
+      }
+    ),
   ]);
 
+  // fallback safe
   let blogsData = { blogs: [] };
   let kcData = { knowledgeCenters: [] };
 
   if (blogsRes.status === "fulfilled" && blogsRes.value.ok) {
-    try { blogsData = await blogsRes.value.json(); } catch {}
+    try {
+      blogsData = await blogsRes.value.json();
+    } catch {}
   }
+
   if (kcRes.status === "fulfilled" && kcRes.value.ok) {
-    try { kcData = await kcRes.value.json(); } catch {}
+    try {
+      kcData = await kcRes.value.json();
+    } catch {}
   }
 
-  const staticUrls = staticPages.map((p) => safeJoin(baseUrl, p));
-
-  const blogUrls = (blogsData.blogs || [])
+  // 🔎 DEBUG (temporary): if you want, you can expose counts in header
+  const blogUrls = (blogsData?.blogs || [])
     .map((b) => b?.slugUrl)
     .filter(Boolean)
     .map((slug) => safeJoin(baseUrl, `blogs/${slug}`));
 
-  const knowledgeCenterUrls = (kcData.knowledgeCenters || [])
+  // If your API returns knowledgeCenters or knowledgeCentersList etc, handle both:
+  const kcArray =
+    kcData?.knowledgeCenters ||
+    kcData?.knowledgeCentersList ||
+    kcData?.data ||
+    [];
+
+  const knowledgeCenterUrls = (Array.isArray(kcArray) ? kcArray : [])
     .map((k) => k?.slugUrl)
     .filter(Boolean)
     .map((slug) => safeJoin(baseUrl, `knowledge-center/${slug}`));
 
-  const allUrls = Array.from(new Set([...staticUrls, ...blogUrls, ...knowledgeCenterUrls]));
+  const staticUrls = staticPages.map((p) => safeJoin(baseUrl, p));
+
+  const allUrls = Array.from(
+    new Set([...staticUrls, ...blogUrls, ...knowledgeCenterUrls])
+  );
+
   const urlsXml = allUrls.map((u) => toUrlNode(u)).join("");
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
@@ -105,6 +124,7 @@ ${urlsXml}
     headers: {
       "Content-Type": "application/xml; charset=utf-8",
       "Cache-Control": "public, s-maxage=3600, stale-while-revalidate=86400",
+      "X-SITEMAP-COUNTS": `static=${staticUrls.length};blogs=${blogUrls.length};kc=${knowledgeCenterUrls.length}`,
     },
   });
 }
