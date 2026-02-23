@@ -1,5 +1,9 @@
+export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
+
 export async function GET() {
   const baseUrl = "https://www.b2bcampus.com";
+  const nowIso = new Date().toISOString();
 
   const staticPages = [
     "",
@@ -36,7 +40,6 @@ export async function GET() {
     "knowledge-center",
   ];
 
-  // ---------- helpers ----------
   const escapeXml = (str = "") =>
     String(str)
       .replaceAll("&", "&amp;")
@@ -45,75 +48,50 @@ export async function GET() {
       .replaceAll('"', "&quot;")
       .replaceAll("'", "&apos;");
 
-  const toUrlNode = (loc, changefreq = "weekly", priority = "0.8") => `
-    <url>
-      <loc>${escapeXml(loc)}</loc>
-      <changefreq>${changefreq}</changefreq>
-      <priority>${priority}</priority>
-    </url>`;
-
   const safeJoin = (a, b) =>
     `${a.replace(/\/+$/, "")}/${String(b || "").replace(/^\/+/, "")}`;
 
-  async function fetchAllPages(urlBuilder, arrayKey) {
-    const all = [];
-    let page = 1;
-    let totalPages = 1;
+  const toUrlNode = (loc, lastmod = nowIso, changefreq = "weekly", priority = "0.8") => `
+  <url>
+    <loc>${escapeXml(loc)}</loc>
+    <lastmod>${escapeXml(lastmod)}</lastmod>
+    <changefreq>${changefreq}</changefreq>
+    <priority>${priority}</priority>
+  </url>`;
 
-    while (page <= totalPages) {
-      const url = urlBuilder(page);
+  // Fetch BOTH in parallel, single page, big limit
+  const [blogsRes, kcRes] = await Promise.allSettled([
+    fetch("https://backend.b2bcampus.com/api/B2Badmin/blogs?page=1&limit=5000", {
+      next: { revalidate: 3600 },
+      headers: { Accept: "application/json" },
+    }),
+    fetch("https://backend.b2bcampus.com/api/B2Badmin/public/knowledge-center?page=1&limit=5000", {
+      next: { revalidate: 3600 },
+      headers: { Accept: "application/json" },
+    }),
+  ]);
 
-      const res = await fetch(url, {
-        // next: { revalidate: 3600 }, // optional cache
-        cache: "no-store", // sitemap usually should be fresh
-      });
+  let blogsData = { blogs: [] };
+  let kcData = { knowledgeCenters: [] };
 
-      if (!res.ok) break;
-
-      const data = await res.json();
-
-      // try to read totalPages (fallback safe)
-      totalPages = Number(data?.totalPages || totalPages || 1);
-
-      const items = Array.isArray(data?.[arrayKey]) ? data[arrayKey] : [];
-      all.push(...items);
-
-      // safety break (avoid infinite loop if API sends wrong totalPages)
-      if (items.length === 0 && page > 1) break;
-
-      page += 1;
-      if (page > 300) break; // hard safety
-    }
-
-    return all;
+  if (blogsRes.status === "fulfilled" && blogsRes.value.ok) {
+    try { blogsData = await blogsRes.value.json(); } catch {}
+  }
+  if (kcRes.status === "fulfilled" && kcRes.value.ok) {
+    try { kcData = await kcRes.value.json(); } catch {}
   }
 
-  // ---------- fetch dynamic slugs ----------
-  // BLOGS
-  const blogItems = await fetchAllPages(
-    (page) => `https://backend.b2bcampus.com/api/B2Badmin/blogs?page=${page}&limit=2000`,
-    "blogs"
-  );
+  const staticUrls = staticPages.map((p) => safeJoin(baseUrl, p));
 
-  const blogUrls = blogItems
+  const blogUrls = (blogsData.blogs || [])
     .map((b) => b?.slugUrl)
     .filter(Boolean)
-    .map((slug) => safeJoin(baseUrl, `blogs/${slug}`)); // <-- change path if needed
+    .map((slug) => safeJoin(baseUrl, `blogs/${slug}`));
 
-  // KNOWLEDGE CENTER
-  const kcItems = await fetchAllPages(
-    (page) =>
-      `https://backend.b2bcampus.com/api/B2Badmin/public/knowledge-center?page=${page}&limit=2000`,
-    "knowledgeCenters"
-  );
-
-  const knowledgeCenterUrls = kcItems
+  const knowledgeCenterUrls = (kcData.knowledgeCenters || [])
     .map((k) => k?.slugUrl)
     .filter(Boolean)
-    .map((slug) => safeJoin(baseUrl, `knowledge-center/${slug}`)); // <-- change path if needed
-
-  // ---------- build final url list (dedupe) ----------
-  const staticUrls = staticPages.map((p) => safeJoin(baseUrl, p));
+    .map((slug) => safeJoin(baseUrl, `knowledge-center/${slug}`));
 
   const allUrls = Array.from(new Set([...staticUrls, ...blogUrls, ...knowledgeCenterUrls]));
 
@@ -121,10 +99,13 @@ export async function GET() {
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  ${urlsXml}
+${urlsXml}
 </urlset>`;
 
   return new Response(xml, {
-    headers: { "Content-Type": "application/xml" },
+    headers: {
+      "Content-Type": "application/xml; charset=utf-8",
+      "Cache-Control": "public, s-maxage=3600, stale-while-revalidate=86400",
+    },
   });
 }
