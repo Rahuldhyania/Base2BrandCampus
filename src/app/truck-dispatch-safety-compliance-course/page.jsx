@@ -4,8 +4,10 @@ import VideoPopup from '../Components/UiUx/VideoPopup'
 
 const page = () => {
     return (
-        <div>
+        <div className='ankit_thakr'>
             {/* <VideoPopup /> */}
+
+            
             <SafetyComplianceDispatching />
         </div>
     )
