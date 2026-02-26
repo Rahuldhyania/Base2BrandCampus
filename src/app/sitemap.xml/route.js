@@ -2,7 +2,7 @@ export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
 export async function GET() {
-  const baseUrl = "https://www.b2bcampus.com";
+  const baseUrl = "https://b2bcampus.com";
 
   const staticPages = [
     "",
@@ -23,6 +23,7 @@ export async function GET() {
     "graphic-design-course",
     "iot",
     "knowledgecenter",
+    "knowledge-center",
     "personality-development",
     "python-java-course",
     "truck-dispatcher-training",
@@ -35,11 +36,9 @@ export async function GET() {
     "shopify-theme-development-course",
     "flutter",
     "react-js-course",
-    "react-native",
-    "knowledge-center",
+    "react-native"
   ];
 
-  // helpers
   const escapeXml = (str = "") =>
     String(str)
       .replaceAll("&", "&amp;")
@@ -58,49 +57,40 @@ export async function GET() {
     <priority>${priority}</priority>
   </url>`;
 
-  // ✅ Fetch both in parallel (2 calls only)
-  const [blogsRes, kcRes] = await Promise.allSettled([
-    fetch("https://backend.b2bcampus.com/api/B2Badmin/blogs?page=1&limit=5000", {
-      next: { revalidate: 3600 },
-      headers: { Accept: "application/json" },
-    }),
-    fetch(
-      "https://backend.b2bcampus.com/api/B2Badmin/public/knowledge-center?page=1&limit=5000",
-      {
-        next: { revalidate: 3600 },
-        headers: { Accept: "application/json" },
-      }
-    ),
+  const fetchJson = async (url) => {
+    try {
+      const res = await fetch(url, {
+        cache: "no-store",
+        headers: { Accept: "application/json" }
+      });
+      if (!res.ok) return null;
+      return await res.json();
+    } catch {
+      return null;
+    }
+  };
+
+  const [blogsData, kcData] = await Promise.all([
+    fetchJson("https://backend.b2bcampus.com/api/B2Badmin/blogs?page=1&limit=5000"),
+    fetchJson("https://backend.b2bcampus.com/api/B2Badmin/public/knowledge-center?page=1&limit=5000")
   ]);
 
-  // fallback safe
-  let blogsData = { blogs: [] };
-  let kcData = { knowledgeCenters: [] };
+  const blogsArray =
+    blogsData?.blogs ||
+    blogsData?.data ||
+    blogsData?.items ||
+    [];
 
-  if (blogsRes.status === "fulfilled" && blogsRes.value.ok) {
-    try {
-      blogsData = await blogsRes.value.json();
-    } catch {}
-  }
-
-  if (kcRes.status === "fulfilled" && kcRes.value.ok) {
-    try {
-      kcData = await kcRes.value.json();
-    } catch {}
-  }
-
-  // 🔎 DEBUG (temporary): if you want, you can expose counts in header
-  const blogUrls = (blogsData?.blogs || [])
-    .map((b) => b?.slugUrl)
-    .filter(Boolean)
-    .map((slug) => safeJoin(baseUrl, `blogs/${slug}`));
-
-  // If your API returns knowledgeCenters or knowledgeCentersList etc, handle both:
   const kcArray =
     kcData?.knowledgeCenters ||
     kcData?.knowledgeCentersList ||
     kcData?.data ||
     [];
+
+  const blogUrls = (Array.isArray(blogsArray) ? blogsArray : [])
+    .map((b) => b?.slugUrl)
+    .filter(Boolean)
+    .map((slug) => safeJoin(baseUrl, `blogs/${slug}`));
 
   const knowledgeCenterUrls = (Array.isArray(kcArray) ? kcArray : [])
     .map((k) => k?.slugUrl)
@@ -123,8 +113,7 @@ ${urlsXml}
   return new Response(xml, {
     headers: {
       "Content-Type": "application/xml; charset=utf-8",
-      "Cache-Control": "public, s-maxage=3600, stale-while-revalidate=86400",
-      "X-SITEMAP-COUNTS": `static=${staticUrls.length};blogs=${blogUrls.length};kc=${knowledgeCenterUrls.length}`,
-    },
+      "Cache-Control": "no-store"
+    }
   });
 }
