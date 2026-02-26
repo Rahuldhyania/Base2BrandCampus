@@ -43,7 +43,7 @@ const ArticleCard = ({
           src={displayImage}
           alt={displayTitle}
           width={1000}
-          height={500}
+          height={400}
           className="rounded-t-2xl"
         />
         {showFeatured && (
@@ -66,9 +66,14 @@ const ArticleCard = ({
         <p className="text-[#6A7282] textbase uppercase">
           {displayCategory}
         </p>
-        <h3 className="text-3xl line-clamp-1 pt-3">
-          {displayTitle}
-        </h3>
+        <Link
+          href={`/knowledge-center/${slugUrl || id}`}
+        >
+          <h3 className="text-3xl line-clamp-1 pt-3 hover:text-(--primary) hover:underline">
+            {displayTitle}
+          </h3>
+        </Link>
+
         <p className="text-lg text-[#4A5565] line-clamp-2 pt-2"
           dangerouslySetInnerHTML={{ __html: displayDescription }}
         />

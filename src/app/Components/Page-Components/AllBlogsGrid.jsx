@@ -370,7 +370,7 @@ const AllBlogsGrid = ({ blog_title }) => {
                   {item.icon}
                 </div>
                 <h3 className={`text-center ${isactive ? 'text-white' : 'text-[#0A0A0A]'} font-regular text-[14px] leading-[18px] sm:text-[15px] sm:leading-[19px] md:text-[16px] md:leading-[20px] lg:text-[18px] lg:leading-[22px]`}>
-                  {item.title === "" ? "All"  : item.title === 'Uncategorized' ? 'Freelancing' : item.title }
+                  {item.title === "" ? "All" : item.title === 'Uncategorized' ? 'Freelancing' : item.title}
                 </h3>
 
               </div>
@@ -384,8 +384,12 @@ const AllBlogsGrid = ({ blog_title }) => {
           {blog_title}
         </h2>
         {loading ? (
-          <div className="text-center py-12">
-            <p className="text-lg text-gray-600">Loading blogs...</p>
+          <div className="grid_blogs grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[30px] md:gap-[30px]">
+            {Array.from({length: 6 }).map((_, index) => (
+               <div className="h-[425px] rounded-2xl skeleton" key={index}>
+                 
+               </div>
+            ))}
           </div>
         ) : displayBlogs.length === 0 ? (
           <div className="text-center py-12">

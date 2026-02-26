@@ -16,6 +16,7 @@ import Whatstudentget from "./Whatstudentget";
 import Youtubevideo from "./Youtubevideo";
 import PlacedStudent from "./PlacedStudent";
 import { TopPressReleases } from "./PressReleases";
+import SubscribeYoutube from "./SubscribeYoutube";
 const faq_data = [
   {
     q: "Is this course good for beginners?",
@@ -101,6 +102,7 @@ const Homewrap = () => {
       <PlacedStudent showdata={2} />
       <TestimonialsSlider />
       <TopCompanys clickscroll={scrollToEnrolment} />
+      <SubscribeYoutube />
       <FeaturedIn clickscroll={scrollToEnrolment} />
       <FaqSection faq_data={faq_data} />
       <Journeywithb2b2  PlacedStudent={false}/>

@@ -92,8 +92,9 @@ const FeaturedBlog = ({ title }) => {
                         {title}
                     </h2>
                     {loading ? (
-                        <div className="text-center py-12">
-                            <p className="text-lg text-gray-600">Loading featured blogs...</p>
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                            <div className="h-[700px] skeleton rounded-2xl"></div>
+                            <div className="h-[700px] skeleton rounded-2xl"></div>
                         </div>
                     ) : (
                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
@@ -101,7 +102,7 @@ const FeaturedBlog = ({ title }) => {
                             {featuredBlogs[0] && (
                                 <Link
                                     href={featuredBlogs[0].slug ? `/blog/${featuredBlogs[0].slug}` : '#'}
-                                    className="bg-white group h-fit cursor-pointer rounded-2xl overflow-hidden shadow-[0_7px_29px_rgba(100,100,111,0.2)] transition-all duration-300 hover:-translate-y-2">
+                                    className="bg-white  group h-full cursor-pointer rounded-2xl overflow-hidden shadow-[0_7px_29px_rgba(100,100,111,0.2)] transition-all duration-300 hover:-translate-y-2">
                                     <img src={featuredBlogs[0].image} alt={featuredBlogs[0].title} className="w-full h-[260px] md:h-[320px] object-cover" />
                                     <div className="p-6">
                                         {/* <span className="inline-block transition-all duration-300 ease-in-out text-[#6346FA] group-hover:text-[#fff] bg-[#E4E0FC] group-hover:bg-[#000] text-sm px-3 py-1 rounded-lg mb-3">{featuredBlogs[0].courseName}</span> */}
@@ -109,7 +110,7 @@ const FeaturedBlog = ({ title }) => {
                                             {featuredBlogs[0].title}
                                         </h3>
                                         <p
-                                            className="text-base lg:text-lg line-clamp-4 pt-3"
+                                            className="text-base lg:text-lg line-clamp-8 pt-3"
                                             dangerouslySetInnerHTML={{ __html: featuredBlogs[0].description }}
                                         >
                                         </p>

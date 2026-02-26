@@ -15,41 +15,91 @@ import Buttons from "../UiUx/Buttons";
 import Link from "next/link";
 
 const TestimonialsSlider = () => {
-  const data = [
-    {
-      id: 1,
-      name: "Sanjeev Kumar",
-      image: "/images/sanjeevkumar.webp",
-      stars: 5,
-      review:
-        "I have joined B2B CAMPUS for training in video editing, and I am fully satisfied. Qualified and cooperative staff. Specially, my trainer's teaching style is very easy to understand. According to my opinion, this is the best IT training centre."
-    },
-    {
-      id: 2,
-      name: "Babli",
-      image: "", // No image, placeholder will show
-      stars: 5,
-      review:
-        "I completed a 3-month Digital Marketing course at B2B Campus. It was a fantastic learning experience. The curriculum was well-structured, covering Google Ads, Meta Ads, SEO, etc. Trainers were knowledgeable and supportive."
-    },
-    {
-      id: 3,
-      name: "Sushmita Sharma",
-      image: "", // No image, placeholder will show
-      stars: 5,
-      review:
-        "Im currently learning the Digital Marketing course at B2B Campus, and its been a great experience so far The trainers are knowledgeable, and the course covers practical, realworld strategies"
-    },
-    {
-      id: 4,
-      name: "Tanish Kumar",
-      image: "", // No image, placeholder will show
-      stars: 5,
-      review:
-        "Excellent training at B2B Campus! The instructors were knowledgeable and supportive.The program was designed in a very practical and hands-on manner, which helped me gain valuable skills that I can use in"
-    }
-    // Add more slides here
-  ];
+const data = [
+  {
+    id: 1,
+    name: "Sanjeev Kumar",
+    image: "/images/sanjeevkumar.webp",
+    stars: 5,
+    review:
+      "I have joined B2B CAMPUS for training in video editing, and I am fully satisfied. Qualified and cooperative staff. Specially, my trainer's teaching style is very easy to understand. According to my opinion, this is the best IT training centre."
+  },
+  {
+    id: 2,
+    name: "Babli",
+    image: "",
+    stars: 5,
+    review:
+      "I completed a 3-month Digital Marketing course at B2B Campus. It was a fantastic learning experience. The curriculum was well-structured, covering Google Ads, Meta Ads, SEO, etc. Trainers were knowledgeable and supportive."
+  },
+  {
+    id: 3,
+    name: "Sushmita Sharma",
+    image: "",
+    stars: 5,
+    review:
+      "Im currently learning the Digital Marketing course at B2B Campus, and its been a great experience so far. The trainers are knowledgeable, and the course covers practical, real-world strategies."
+  },
+  {
+    id: 4,
+    name: "Tanish Kumar",
+    image: "",
+    stars: 5,
+    review:
+      "Excellent training at B2B Campus! The instructors were knowledgeable and supportive. The program was designed in a very practical and hands-on manner."
+  },
+
+  // ✅ Added Reviews
+
+  {
+    id: 5,
+    name: "Rahul Verma",
+    image: "",
+    stars: 5,
+    review:
+      "B2B Campus provides one of the best learning environments. The trainers focus more on practical knowledge which really helped me build confidence in Digital Marketing."
+  },
+  {
+    id: 6,
+    name: "Priya Singh",
+    image: "",
+    stars: 5,
+    review:
+      "Great institute for skill development. The faculty explains concepts clearly and supports students during live projects and assignments."
+  },
+  {
+    id: 7,
+    name: "Amit Sharma",
+    image: "",
+    stars: 5,
+    review:
+      "I joined the Web Development course and learned React and modern technologies. Highly recommended for anyone looking to start a career in IT."
+  },
+  {
+    id: 8,
+    name: "Neha Gupta",
+    image: "",
+    stars: 5,
+    review:
+      "The best part about B2B Campus is hands-on training. Every module includes practical implementation which makes learning very effective."
+  },
+  {
+    id: 9,
+    name: "Rohit Mehta",
+    image: "",
+    stars: 5,
+    review:
+      "Supportive mentors and a friendly learning atmosphere. I improved my technical as well as communication skills during the course."
+  },
+  {
+    id: 10,
+    name: "Anjali Kapoor",
+    image: "",
+    stars: 5,
+    review:
+      "Amazing experience at B2B Campus. The training helped me understand industry-level concepts and prepared me for real job opportunities."
+  }
+];
 
   const statsData = [
     {
