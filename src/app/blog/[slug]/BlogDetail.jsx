@@ -88,11 +88,24 @@ const BlogDetail = () => {
 
     if (loading) {
         return (
-            <div className="min-h-screen flex items-center justify-center">
-                <div className="text-center">
-                    <p className="text-lg text-gray-600">Loading blog...</p>
+            <div>
+                <div className='h-[110px] w-full skeleton'>
+
+                </div>
+                <div className="cus_container pb-[40px] sm:pb-[40px] md:pb-[48px] lg:pb-[60px] xl:pb-[70px]">
+
+                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8 pt-16">
+                        <div className="lg:col-span-2 ">
+                            <div className="w-[90%] max-w-[1001px] m-auto h-[2000px] rounded-2xl skeleton"></div>
+                        </div>
+                        <div>
+                            <div className="w-[90%] me-auto h-[2000px] rounded-2xl skeleton"></div>
+                        </div>
+
+                    </div>
                 </div>
             </div>
+
         );
     }
 

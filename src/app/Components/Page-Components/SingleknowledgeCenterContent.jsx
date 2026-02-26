@@ -10,9 +10,9 @@ import { hasEnrollmentToken } from '@/lib/enrollment'
 const SingleknowledgeCenterContent = ({ knowledgeCenter }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [showLoginModal, setShowLoginModal] = useState(false);
+  const [loading, setLoading] = useState(true)
 
 
-  
   useEffect(() => {
     const checkLoginStatus = () => {
       setIsLoggedIn(hasEnrollmentToken());
@@ -96,7 +96,17 @@ const SingleknowledgeCenterContent = ({ knowledgeCenter }) => {
   );
 
   if (!knowledgeCenter) {
-    return null
+    return <div className="cus_container pb-[40px] sm:pb-[40px] md:pb-[48px] lg:pb-[60px] xl:pb-[70px]">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8 pt-16">
+        <div className="lg:col-span-2 ">
+          <div className="w-[90%] max-w-[1001px] m-auto h-[2000px] rounded-2xl skeleton"></div>
+        </div>
+        <div>
+          <div className="w-[90%] me-auto h-[2000px] rounded-2xl skeleton"></div>
+        </div>
+
+      </div>
+    </div>
   }
 
   const heading = knowledgeCenter.heading || '';
@@ -183,10 +193,10 @@ const SingleknowledgeCenterContent = ({ knowledgeCenter }) => {
                 )}
 
                 <div className="knowledge-center_signle_content pt-[40px]">
-                   <div
-                      className="prose prose-lg max-w-none text-[#364153] text-[14px] leading-[22px] sm:text-[14px] sm:leading-[24px] md:text-[16px] md:leading-[24px] lg:text-[16px] lg:leading-[24px] space-y-3 knowledge-centermain"
-                      dangerouslySetInnerHTML={{ __html: description }}
-                    />
+                  <div
+                    className="prose prose-lg max-w-none text-[#364153] text-[14px] leading-[22px] sm:text-[14px] sm:leading-[24px] md:text-[16px] md:leading-[24px] lg:text-[16px] lg:leading-[24px] space-y-3 knowledge-centermain"
+                    dangerouslySetInnerHTML={{ __html: description }}
+                  />
                   {/* {isLoggedIn
                     ?
                     <div

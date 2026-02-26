@@ -172,3 +172,29 @@ body {
   0%,100% { background:#ffffff; }   /* white */
   50% { background:#22c55e; }       /* green */
 }
+
+.skeleton {
+  position: relative;
+  overflow: hidden;
+  background-color: #e5e7eb;
+}
+
+.skeleton::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255,255,255,0.5),
+    transparent
+  );
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
