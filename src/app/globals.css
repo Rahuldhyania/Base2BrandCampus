@@ -84,7 +84,19 @@ body {
   stroke: #fff;
   transition: ease-in-out 0.5s;
 }
+.single_blog_man_content div a {
+   color: var(--primary);
+}
+.single_blog_man_content div a:hover {
+  text-decoration: underline;
+}
 
+.knowledge-center_signle_content div a {
+   color: var(--primary) !important;
+}
+.knowledge-center_signle_content div a:hover {
+   text-decoration: underline;
+}
 
 .knowledge-centermain h2{
     font-weight: 600;

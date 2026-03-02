@@ -41,11 +41,16 @@ export const logos = [
         id: 7,
         src: "/images/facebook.webp",
         alt: "Facebook Blueprint"
-    }
+    },
+    {
+        id: 8,
+        src: "/images/msme.png",
+        alt: "Msme"
+    },
 ];
 
 
-const Professionalskill = ({clickscroll}) => {
+const Professionalskill = ({ clickscroll }) => {
     return (
         <div className=" pb-6 cus_container"
         >
@@ -63,7 +68,7 @@ const Professionalskill = ({clickscroll}) => {
                 {/* Title On Top */}
                 <div className="relative z-10 text-center">
                     <Title
-                        title={'We help students build real <br/> <span class="text-primary">professional skills</span>'}
+                        title={'Recognized & Certified By <br/> <span class="text-primary">Top Platforms</span>'}
                         text_color={'text-secondary'}
                     />
                 </div>
