@@ -12,7 +12,7 @@ const newCertificateData = [
   { image: "/images/studentdresspic7.webp", description: "" },
   { image: "/images/studentdresspic8.webp", description: "" },
   { image: "/images/studentdresspic9.webp", description: "" },
-  { image: "/images/studentdresspic10.webp", description: "" },
+  { image: "/images/studentdresspic13.webp", description: "" },
   { image: "/images/studentdresspic11.webp", description: "" },
   { image: "/images/studentdresspic12.webp", description: "" },
   // { image: "/images/studentdresspic13.webp", description: "" },
