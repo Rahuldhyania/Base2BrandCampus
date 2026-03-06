@@ -8,7 +8,7 @@ export const metadata = {
 }
 const Page = () => {
   return (
-    <div className="">
+    <div>
       <Homewrap />
     </div>
   );
