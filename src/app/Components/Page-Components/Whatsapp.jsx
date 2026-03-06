@@ -16,12 +16,12 @@ function Whatsapp() {
 
   return (
     <div>
-      {/* <a
+      <a
         href={`https://wa.me/9878300209?text=${message}`}
         target="_blank"
         rel="noopener noreferrer"
         className="max-w-12"
-      > */}
+      >
          <Player
             src="/whtasappjson.json"
             loop
@@ -31,7 +31,7 @@ function Whatsapp() {
               height: "max-content"
             }}
           />
-      {/* </a> */}
+      </a>
     </div>
   );
 }
