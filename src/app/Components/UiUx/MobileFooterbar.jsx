@@ -13,6 +13,7 @@ const MobileFooterbar = () => {
         "Please guide me with fees, duration & career opportunities."
     );
     return (
+        
         <div>
             <a
                 href={`https://wa.me/9878300209?text=${message}`}
